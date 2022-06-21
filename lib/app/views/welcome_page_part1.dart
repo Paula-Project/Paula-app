@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:paula/app/views/login_page.dart';
 
-class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+import 'welcome_page_part2.dart';
+
+class WelcomePage_part1 extends StatelessWidget {
+  const WelcomePage_part1({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +16,7 @@ class WelcomePage extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color.fromARGB(255, 100, 171, 226),
+              Color.fromARGB(200, 100, 171, 226),
               Color.fromARGB(255, 41, 171, 226),
             ],
           ),
@@ -50,7 +54,11 @@ class WelcomePage extends StatelessWidget {
                     height: 40,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, "/login");
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.fade,
+                                child: const WelcomePage_part2()));
                       },
                       onHover: (hover) {
                         print(hover);
@@ -70,6 +78,25 @@ class WelcomePage extends StatelessWidget {
                           const Text("Avançar", style: TextStyle(fontSize: 20)),
                     ),
                   ),
+                  Center(
+                    child: TextButton(
+                      child: const Text(
+                        "Já possuo login!",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            decoration: TextDecoration.underline),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.leftToRight,
+                                child: const LoginPage()));
+                      },
+                    ),
+                  )
                 ],
               ))
         ]),
