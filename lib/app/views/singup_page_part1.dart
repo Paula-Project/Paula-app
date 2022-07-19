@@ -73,11 +73,21 @@ class _SingupPageState extends State<SingupPage> {
                     Container(
                       height: 20,
                     ),
-                    Container(
-                        decoration: BoxDecoration(color: Colors.white),
-                        alignment: Alignment.bottomCenter,
-                        height: 50,
-                        child: Container())
+                    Expanded(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height*0.6,
+                        width: double.infinity,
+                        color: Colors.transparent,
+                        child: Container(
+                            decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(40.0),
+                                  topRight: Radius.circular(40.0),
+                                )),
+                            child:Container()),
+                      ),
+                    )
                   ]),
             ),
           ],
