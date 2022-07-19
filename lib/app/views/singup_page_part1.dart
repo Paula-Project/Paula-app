@@ -75,7 +75,6 @@ class _SingupPageState extends State<SingupPage> {
                     ),
                     Expanded(
                       child: Container(
-                        height: MediaQuery.of(context).size.height*0.6,
                         width: double.infinity,
                         color: Colors.transparent,
                         child: Container(
