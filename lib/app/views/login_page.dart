@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -148,6 +150,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: SizedBox(
                           width: 110,
                           child: ElevatedButton(
+
                             style: ButtonStyle(
                                 foregroundColor:
                                     MaterialStateProperty.all<Color>(
@@ -166,7 +169,11 @@ class _LoginPageState extends State<LoginPage> {
                                   fontWeight: FontWeight.w600,
                                 )),
                             onPressed: () {
-                              print(MediaQuery.of(context).size.width - 10);
+                             Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.fade,
+                                child: const HomePage()));
                             },
                           ),
                         ),

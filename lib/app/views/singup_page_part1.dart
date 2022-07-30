@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import 'components/paulaTitle.dart';
+
 class SingupPage extends StatefulWidget {
   const SingupPage({Key? key}) : super(key: key);
 
@@ -32,16 +34,7 @@ class _SingupPageState extends State<SingupPage> {
           children: [
             const Expanded(
               flex: 3,
-              child: Center(
-                child: Text("PAULA",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 60,
-                      fontFamily: "Nunito",
-                      fontWeight: FontWeight.normal,
-                      letterSpacing: 20,
-                    )),
-              ),
+              child: PaulaTitleComponent(),
             ),
             Expanded(
               flex: 8,
