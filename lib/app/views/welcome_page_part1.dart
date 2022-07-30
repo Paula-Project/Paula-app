@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/login_page.dart';
 
+import 'components/paulaTitle.dart';
 import 'welcome_page_part2.dart';
 
 class WelcomePage_part1 extends StatelessWidget {
@@ -24,16 +25,7 @@ class WelcomePage_part1 extends StatelessWidget {
         child: Column(children: [
           const Expanded(
             flex: 3,
-            child: Center(
-              child: Text("PAULA",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 60,
-                    fontFamily: "Nunito",
-                    fontWeight: FontWeight.normal,
-                    letterSpacing: 20,
-                  )),
-            ),
+            child: PaulaTitleComponent(),
           ),
           Expanded(
               flex: 8,
@@ -104,3 +96,4 @@ class WelcomePage_part1 extends StatelessWidget {
     );
   }
 }
+
