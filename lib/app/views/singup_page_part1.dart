@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 import 'components/paulaTitle.dart';
 
@@ -77,7 +76,100 @@ class _SingupPageState extends State<SingupPage> {
                                   topLeft: Radius.circular(40.0),
                                   topRight: Radius.circular(40.0),
                                 )),
-                            child:Container()),
+                            child: Column(
+                              children: [
+                                Center(
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        height: 20,
+                                      ),
+                                      const Text("Seu Nome",
+                                          style: TextStyle(
+                                              color: Colors.blueAccent,
+                                              fontSize: 20,
+                                              fontFamily: "Nunito",
+                                              fontWeight: FontWeight.w500)),
+                                      Container(
+                                        decoration:
+                                            const BoxDecoration(boxShadow: [
+                                          BoxShadow(
+                                            color: Color.fromARGB(50, 0, 0, 0),
+                                            blurRadius: 15,
+                                            offset: Offset(0, 5),
+                                          ),
+                                        ]),
+                                        child: TextField(
+                                          decoration: InputDecoration(
+                                            contentPadding:
+                                                const EdgeInsets.symmetric(
+                                                    vertical: 10,
+                                                    horizontal: 6),
+                                            isDense: true,
+                                            hintText: '****',
+                                            fillColor: Colors.white,
+                                            filled: true,
+                                            border: OutlineInputBorder(
+                                              borderSide: BorderSide.none,
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                          ),
+                                          obscureText: true,
+                                          style: const TextStyle(
+                                              color: Colors.black),
+                                          onChanged: (value) {
+                                            password = value;
+                                          },
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 20,
+                                      ),
+                                      const Text("Profissão",
+                                          style: TextStyle(
+                                              color: Colors.blueAccent,
+                                              fontSize: 20,
+                                              fontFamily: "Nunito",
+                                              fontWeight: FontWeight.w500)),
+                                      Container(
+                                        decoration:
+                                            const BoxDecoration(boxShadow: [
+                                          BoxShadow(
+                                            color: Color.fromARGB(50, 0, 0, 0),
+                                            blurRadius: 15,
+                                            offset: Offset(0, 5),
+                                          ),
+                                        ]),
+                                        child: TextField(
+                                          decoration: InputDecoration(
+                                            contentPadding:
+                                                const EdgeInsets.symmetric(
+                                                    vertical: 10,
+                                                    horizontal: 6),
+                                            isDense: true,
+                                            hintText: '****',
+                                            fillColor: Colors.white,
+                                            filled: true,
+                                            border: OutlineInputBorder(
+                                              borderSide: BorderSide.none,
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                          ),
+                                          obscureText: true,
+                                          style: const TextStyle(
+                                              color: Colors.black),
+                                          onChanged: (value) {
+                                            password = value;
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            )),
                       ),
                     )
                   ]),
