@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'components/paulaTitle.dart';
 
 class SingupPage extends StatefulWidget {
@@ -24,6 +24,10 @@ class _SingupPageState extends State<SingupPage> {
 
   @override
   Widget build(BuildContext context) {
+    var pickeddate;
+    var pickedtime;
+    String date = "";
+    DateTime selectedDate = DateTime.now();
     return Material(
       child: Container(
         decoration: BackgroundBlueGradiend,
@@ -36,7 +40,7 @@ class _SingupPageState extends State<SingupPage> {
               child: PaulaTitleComponent(),
             ),
             Expanded(
-              flex: 8,
+              flex: 12,
               child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -104,7 +108,7 @@ class _SingupPageState extends State<SingupPage> {
                                             contentPadding:
                                                 const EdgeInsets.symmetric(
                                                     vertical: 10,
-                                                    horizontal: 6),
+                                                    horizontal: 4),
                                             isDense: true,
                                             hintText: '****',
                                             fillColor: Colors.white,
@@ -164,6 +168,44 @@ class _SingupPageState extends State<SingupPage> {
                                             password = value;
                                           },
                                         ),
+                                      ),
+                                      Container(
+                                        height: 20,
+                                      ),
+                                      FloatingActionButton.extended(
+                                        onPressed: () {
+                                          DatePicker.showDatePicker(context,
+                                              showTitleActions: true,
+                                              minTime: DateTime(1910, 1, 1),
+                                              maxTime: DateTime(2022, 12, 31), onChanged: (date) {
+                                                print('change $date');
+                                                setState(() {
+                                                  pickeddate = "${date.day}";
+                                                });
+                                              }, onConfirm: (date) {
+                                                print('confirm $date');
+                                                setState(() {
+                                                  pickeddate =
+                                                  "Picked Date is : ${date.day}/${date.month}/${date.year}";
+                                                });
+                                              }, currentTime: DateTime.now());
+
+                                        },
+                                        label: Text("Data de Nascismento,",
+                                            style: TextStyle(
+                                                color: Colors.blueAccent,
+                                                fontSize: 20,
+                                                fontFamily: "Nunito",
+                                                fontWeight: FontWeight.w500),
+                                        ),
+                                        icon: Icon(Icons.date_range),
+                                        backgroundColor: Color.fromARGB(255, 100, 171, 226),
+
+
+                                      ),
+
+                                      Container(
+                                        height: 20,
                                       ),
                                     ],
                                   ),
