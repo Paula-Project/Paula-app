@@ -150,7 +150,6 @@ class _LoginPageState extends State<LoginPage> {
                         child: SizedBox(
                           width: 110,
                           child: ElevatedButton(
-
                             style: ButtonStyle(
                                 foregroundColor:
                                     MaterialStateProperty.all<Color>(
@@ -169,11 +168,13 @@ class _LoginPageState extends State<LoginPage> {
                                   fontWeight: FontWeight.w600,
                                 )),
                             onPressed: () {
-                             Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: const HomePage()));
+                              Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const HomePage(),
+                                ),
+                                (route) => false,
+                              );
                             },
                           ),
                         ),
