@@ -61,12 +61,12 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding: EdgeInsets.fromLTRB(50, 50, 50, 50),
           child: Column(children: const [
-            ModuleButton(Alignment.centerLeft, "Vogais"),
-            ModuleButton(Alignment.centerRight, "Consoantes \n parte 1"),
-            ModuleButton(Alignment.centerLeft, "Consoantes \n parte 2"),
-            ModuleButton(Alignment.centerRight, "Primeiras \n sílabas"),
-            ModuleButton(Alignment.centerLeft, "Consoantes \n parte 3"),
-            ModuleButton(Alignment.centerRight, "Palavras 1"),
+            ModuleButton(Alignment.centerLeft, "Vogais", HomePage()),
+            ModuleButton(Alignment.centerRight, "Consoantes \n parte 1",HomePage()),
+            ModuleButton(Alignment.centerLeft, "Consoantes \n parte 2",HomePage()),
+            ModuleButton(Alignment.centerRight, "Primeiras \n sílabas",HomePage()),
+            ModuleButton(Alignment.centerLeft, "Consoantes \n parte 3",HomePage()),
+            ModuleButton(Alignment.centerRight, "Palavras 1",HomePage()),
           ]),
         ),
       ),
