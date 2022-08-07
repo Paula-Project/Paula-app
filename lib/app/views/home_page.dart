@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'components/module_button.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -20,171 +22,54 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(backgroundColor: Colors.white70, actions: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Text("57% Completo",
-
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold)),
-            LinearProgressIndicator(
-            value: 57,
-            backgroundColor: Colors.white70,
-            color: Color.fromARGB(255, 89, 233, 95),
-            semanticsLabel: 'Linear progress indicator',
-          ),
-          ],
-          ),
-        ]),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(50, 50, 50, 50),
+      backgroundColor: Colors.white,
+      appBar: AppBar(backgroundColor: Colors.white70,
+          title: OutlinedButton(onPressed: () {  },
+          child: const Icon(Icons.logout),),
+          actions: [
+        Container(
+          margin: const EdgeInsets.only(right: 20),
+          child: SizedBox(
+            width: 120,
             child: Column(
-              children:[
-                Align(
-                  alignment: Alignment.centerLeft,
-
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(120.0, 120.0),
-                      shape: CircleBorder(),
-
-                      primary: Colors.blue, // <-- Button color
-                      onPrimary: Colors.red, // <-- Splash color
-                    ),
-                    child: const Text("Vogais",
-                      style: TextStyle(
-                        color: Colors.white,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text("57% Completo",
+                    style: TextStyle(
+                        color: Colors.black,
                         fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                        fontWeight: FontWeight.bold)),
+                LinearProgressIndicator(
+                  value: 0.57,
+                  backgroundColor: Colors.red,
+                  color: Color.fromARGB(255, 89, 233, 95),
+                  semanticsLabel: 'Linear progress indicator',
                 ),
-              Align(
-                alignment: Alignment.centerRight,
-
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(120.0, 120.0),
-                    shape: CircleBorder(),
-
-                    primary: Colors.blue, // <-- Button color
-                    onPrimary: Colors.red, // <-- Splash color
-                  ),
-                  child: const Text("Consoantes \n parte 1",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-
-                  ),
-                  ),
-                ),
-              ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(120.0, 120.0),
-                      shape: CircleBorder(),
-
-                      primary: Colors.blue, // <-- Button color
-                      onPrimary: Colors.red, // <-- Splash color
-                    ),
-                    child: const Text("Consoantes \n parte 2",
-                        textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(120.0, 120.0),
-                      shape: CircleBorder(),
-
-                      primary: Colors.blue, // <-- Button color
-                      onPrimary: Colors.red, // <-- Splash color
-                    ),
-                    child: const Text("Primeiras \n sílabas",
-                        textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(120.0, 120.0),
-                      shape: CircleBorder(),
-
-                      primary: Colors.blue, // <-- Button color
-                      onPrimary: Colors.red, // <-- Splash color
-                    ),
-                    child: const Text("Consoantes \n parte 3",
-                        textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(120.0, 120.0),
-                      shape: CircleBorder(),
-
-                      primary: Colors.blue, // <-- Button color
-                      onPrimary: Colors.red, // <-- Splash color
-                    ),
-                    child: const Text("Palavras 1",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ]
-
+              ],
             ),
           ),
-        )
+        ),
+      ]),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(50, 50, 50, 50),
+          child: Column(children: const [
+            ModuleButton(Alignment.centerLeft, "Vogais"),
+            ModuleButton(Alignment.centerRight, "Consoantes \n parte 1"),
+            ModuleButton(Alignment.centerLeft, "Consoantes \n parte 2"),
+            ModuleButton(Alignment.centerRight, "Primeiras \n sílabas"),
+            ModuleButton(Alignment.centerLeft, "Consoantes \n parte 3"),
+            ModuleButton(Alignment.centerRight, "Palavras 1"),
+          ]),
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home),
+        label: "teste1"),
+        BottomNavigationBarItem(icon: Icon(Icons.person),
+        label: "teste"),
 
-        /*bottomNavigationBar: BottomNavigationBar(
-            items: [],)
-          )*/
-        );
+      ]),
+    );
   }
 }
