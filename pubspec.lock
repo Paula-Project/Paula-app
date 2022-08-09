@@ -7,7 +7,7 @@ packages:
       name: archive
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.3.0"
+    version: "3.3.1"
   args:
     dependency: transitive
     description:
@@ -109,6 +109,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  gender_picker:
+    dependency: "direct main"
+    description:
+      name: gender_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   image:
     dependency: transitive
     description:
