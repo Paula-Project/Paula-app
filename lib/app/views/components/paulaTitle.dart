@@ -10,7 +10,7 @@ class PaulaTitleComponent extends StatelessWidget {
     return Center(
       child: Text("PAULA",
           style: TextStyle(
-            color: Colors.red,
+            color: Colors.white,
             fontSize: 60,
             fontFamily: "Nunito",
             fontWeight: FontWeight.normal,

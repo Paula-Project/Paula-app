@@ -20,7 +20,7 @@ class _SingupPageState extends State<SingupPage> {
             Color.fromARGB(255, 100, 171, 226),
             Color.fromARGB(255, 41, 171, 226)
           ]));
-
+  List<bool> isSelected = List.generate(3, (int) => false);
   String nickname = '';
   String password = '';
 
@@ -30,6 +30,7 @@ class _SingupPageState extends State<SingupPage> {
     var pickedtime;
     String date = "";
     DateTime selectedDate = DateTime.now();
+
     return Material(
       child: Container(
         decoration: BackgroundBlueGradiend,
@@ -127,7 +128,6 @@ class _SingupPageState extends State<SingupPage> {
                                                   vertical: 10,
                                                   horizontal: 4),
                                               isDense: true,
-                                              hintText: '****',
                                               fillColor: Colors.white,
                                               filled: true,
                                               border: OutlineInputBorder(
@@ -140,7 +140,6 @@ class _SingupPageState extends State<SingupPage> {
                                             style: const TextStyle(
                                                 color: Colors.black),
                                             onChanged: (value) {
-                                              password = value;
                                             },
                                           ),
                                         ),
@@ -161,7 +160,7 @@ class _SingupPageState extends State<SingupPage> {
                                         ),
                                         Container(
                                           decoration:
-                                            BoxDecoration(boxShadow: [
+                                          BoxDecoration(boxShadow: [
                                             BoxShadow(
                                               color: Color.fromARGB(50, 0, 0, 0),
                                               blurRadius: 15,
@@ -188,7 +187,7 @@ class _SingupPageState extends State<SingupPage> {
                                             style: const TextStyle(
                                                 color: Colors.black),
                                             onChanged: (value) {
-                                              password = value;
+
                                             },
                                           ),
                                         ),
@@ -232,6 +231,34 @@ class _SingupPageState extends State<SingupPage> {
                                         ),
                                         Container(
                                           height: 20,
+                                        ),
+                                        ToggleButtons(
+                                          constraints: BoxConstraints(),
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.boy_outlined,
+                                              color: Colors.grey,
+                                            ),
+                                            Icon(
+                                              Icons.girl_outlined,
+                                              color: Colors.grey,),
+                                            Icon(
+                                              Icons.transgender_outlined,
+                                              color: Colors.grey,
+                                            ),
+                                          ],
+                                          onPressed: (int index) {
+                                            setState(() {
+                                              for (int buttonIndex = 0; buttonIndex < isSelected.length; buttonIndex++) {
+                                                if (buttonIndex == index) {
+                                                  isSelected[buttonIndex] = true;
+                                                } else {
+                                                  isSelected[buttonIndex] = false;
+                                                }
+                                              }
+                                            });
+                                          },
+                                          isSelected: isSelected,
                                         ),
                                         SizedBox(
                                           width: 140,
