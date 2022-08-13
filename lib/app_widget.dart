@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/views/lesson.dart';
 import 'package:paula/app/views/singup_page_part1.dart';
 import 'app/views/welcome_page_part1.dart';
 import 'app/views/welcome_page_part2.dart';
