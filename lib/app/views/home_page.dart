@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
           backgroundColor: Colors.white70,
-          elevation: 0,
+          elevation: 3.0,
           title: OutlinedButton(
             onPressed: () {},
             child: const Icon(
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                     LinearProgressIndicator(
                       value: 0.57,
                       backgroundColor: Colors.grey,
-                      color: Color.fromARGB(255, 89, 233, 95),
+                      color: Color.fromARGB(255, 41, 171, 226),
                       semanticsLabel: 'Linear progress indicator',
                     ),
                   ],
@@ -59,26 +59,41 @@ class _HomePageState extends State<HomePage> {
           ]),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(50, 50, 50, 50),
+          padding: EdgeInsets.fromLTRB(50, 30, 50, 50),
           child: Column(children: const [
-            ModuleButton(Alignment.centerLeft, "Vogais", HomePage()),
-            ModuleButton(Alignment.centerRight, "Consoantes \n parte 1",HomePage()),
-            ModuleButton(Alignment.centerLeft, "Consoantes \n parte 2",HomePage()),
-            ModuleButton(Alignment.centerRight, "Primeiras \n sílabas",HomePage()),
-            ModuleButton(Alignment.centerLeft, "Consoantes \n parte 3",HomePage()),
-            ModuleButton(Alignment.centerRight, "Palavras 1",HomePage()),
+            ModuleButton(Alignment.centerLeft, "Vogais", HomePage(), Colors.blue),
+            ModuleButton(Alignment.centerRight, "Consoantes \n Parte 1",HomePage(), Colors.grey),
+            ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 2",HomePage(), Colors.grey),
+            ModuleButton(Alignment.centerRight, "Primeiras \n sílabas",HomePage(), Colors.grey),
+            ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 3",HomePage(), Colors.grey),
+            ModuleButton(Alignment.centerRight, "Palavras 1",HomePage(), Colors.grey),
           ]),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          elevation: 100,
-          selectedItemColor: Colors.blueAccent,
-          unselectedItemColor: Colors.black,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
-          ]),
+      bottomNavigationBar:
+
+      Container(
+        decoration: const BoxDecoration(
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+                color: Colors.black45,
+                blurRadius: 30.0,
+                offset: Offset(0.0, 0.75)
+            ),
+          ],
+        ),
+
+        child: BottomNavigationBar(
+
+            backgroundColor: Colors.white70,
+
+            selectedItemColor: Colors.blueAccent,
+            unselectedItemColor: Colors.black,
+            items:  const [
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
+              BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
+            ]),
+      ),
     );
   }
 }
