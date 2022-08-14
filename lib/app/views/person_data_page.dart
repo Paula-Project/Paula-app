@@ -79,15 +79,45 @@ class PersonData extends StatelessWidget {
               ],
             ),
             Container(
+              padding: const EdgeInsets.all(15),
               decoration: const BoxDecoration(
-                color: Color.fromARGB(100, 207, 218, 216) ,
-                  borderRadius: BorderRadius.all(Radius.circular(20))
-              ),
-              margin: const EdgeInsetsDirectional.only(top: 30,bottom: 30),
-              height: MediaQuery.of(context).size.height/4.2 ,
+                  color: Color.fromARGB(100, 207, 218, 216),
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              margin: const EdgeInsetsDirectional.only(top: 30, bottom: 30),
+              height: MediaQuery.of(context).size.height / 4.2,
+              width: MediaQuery.of(context).size.width,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: const <Widget>[
-
+                  Text(
+                    "Dados Pessoais",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 25
+                    ),
+                    textAlign: TextAlign.left,
+                  )
+                ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(15),
+              decoration: const BoxDecoration(
+                  color: Color.fromARGB(100, 207, 218, 216),
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              height: MediaQuery.of(context).size.height / 4.2,
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const <Widget>[
+                  Text(
+                    "Conquistas",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 25
+                    ),
+                    textAlign: TextAlign.left,
+                  )
                 ],
               ),
             ),
@@ -118,5 +148,3 @@ class PersonData extends StatelessWidget {
     );
   }
 }
-
-
