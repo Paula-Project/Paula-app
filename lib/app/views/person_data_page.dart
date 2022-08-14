@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'home_page.dart';
+
 class PersonData extends StatelessWidget {
   const PersonData({Key? key}) : super(key: key);
 
@@ -41,12 +43,56 @@ class PersonData extends StatelessWidget {
               ),
             ),
           ]),
-      body: Column(
-        children: [
-          Container(),
-          Container(),
-          Container(),
-        ],
+      body: Container(
+        margin: const EdgeInsetsDirectional.all(30),
+        child: Column(
+          children: [
+            Row(
+              children: <Widget>[
+                CircleAvatar(
+                  backgroundColor: Colors.grey,
+                  radius: 50,
+                  child: LayoutBuilder(builder: (context, constraint) {
+                    return IconButton(
+                      icon: const Icon(Icons.person_outline_sharp),
+                      iconSize: constraint.maxWidth / (1.4),
+                      color: Colors.white,
+                      onPressed: () {},
+                    );
+                  }),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(left: 30),
+                  child: Column(
+                    children: const <Widget>[
+                      Text(
+                        "@apelido",
+                        style: TextStyle(color: Colors.black, fontSize: 22),
+                      ),
+                      Text(
+                        'Nome',
+                        style: TextStyle(color: Colors.black, fontSize: 22),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(100, 207, 218, 216) ,
+                  borderRadius: BorderRadius.all(Radius.circular(20))
+              ),
+              margin: const EdgeInsetsDirectional.only(top: 30,bottom: 30),
+              height: MediaQuery.of(context).size.height/4.2 ,
+              child: Column(
+                children: const <Widget>[
+
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: 1,
@@ -54,6 +100,17 @@ class PersonData extends StatelessWidget {
           elevation: 100,
           selectedItemColor: Colors.blueAccent,
           unselectedItemColor: Colors.black,
+          onTap: (index) {
+            switch (index) {
+              case 0:
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => const HomePage(),
+                  ),
+                  (route) => false,
+                );
+            }
+          },
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
@@ -61,3 +118,5 @@ class PersonData extends StatelessWidget {
     );
   }
 }
+
+

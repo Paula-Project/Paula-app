@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/views/login_page.dart';
+import 'package:paula/app/views/person_data_page.dart';
 
 import 'components/module_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -18,6 +21,9 @@ class _HomePageState extends State<HomePage> {
         Color.fromARGB(255, 100, 171, 226),
         Color.fromARGB(255, 41, 171, 226)
       ]));
+
+  final int indexPage = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +77,23 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+          currentIndex: indexPage,
           backgroundColor: Colors.white,
           elevation: 100,
           selectedItemColor: Colors.blueAccent,
           unselectedItemColor: Colors.black,
+          onTap: (index){
+            switch (index){
+              case 1:
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                    const PersonData(),
+                  ),
+                      (route) => false,
+                );
+            }
+          },
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
