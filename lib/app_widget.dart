@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:paula/app/views/lessons/lesson.dart';
 import 'package:paula/app/views/singup_page_part1.dart';
 import 'app/views/welcome_page_part1.dart';
 import 'app/views/welcome_page_part2.dart';
@@ -11,7 +13,7 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
