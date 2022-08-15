@@ -91,10 +91,7 @@ class PersonData extends StatelessWidget {
                 children: const <Widget>[
                   Text(
                     "Dados Pessoais",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 25
-                    ),
+                    style: TextStyle(color: Colors.black, fontSize: 25),
                     textAlign: TextAlign.left,
                   )
                 ],
@@ -112,10 +109,7 @@ class PersonData extends StatelessWidget {
                 children: const <Widget>[
                   Text(
                     "Conquistas",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 25
-                    ),
+                    style: TextStyle(color: Colors.black, fontSize: 25),
                     textAlign: TextAlign.left,
                   )
                 ],
@@ -128,6 +122,7 @@ class PersonData extends StatelessWidget {
           currentIndex: 1,
           backgroundColor: Colors.white,
           elevation: 100,
+          iconSize: 40,
           selectedItemColor: Colors.blueAccent,
           unselectedItemColor: Colors.black,
           onTap: (index) {
@@ -142,8 +137,16 @@ class PersonData extends StatelessWidget {
             }
           },
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                ),
+                label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person,
+                ),
+                label: "Perfil"),
           ]),
     );
   }

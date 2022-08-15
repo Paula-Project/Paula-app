@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               margin: const EdgeInsets.only(right: 20),
               child: SizedBox(
-                width: 120,
+                width: 150,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 17,
-                            fontWeight: FontWeight.bold)),
+                            fontWeight: FontWeight.normal)),
                     LinearProgressIndicator(
                       value: 0.57,
                       backgroundColor: Colors.grey,
@@ -97,7 +97,8 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: indexPage,
           backgroundColor: Colors.white,
-          elevation: 100,
+          elevation: 50,
+          iconSize: 40,
           selectedItemColor: Colors.blueAccent,
           unselectedItemColor: Colors.black,
           onTap: (index) {
@@ -112,8 +113,16 @@ class _HomePageState extends State<HomePage> {
             }
           },
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                ),
+                label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person,
+                ),
+                label: "Perfil"),
           ]),
     );
   }
