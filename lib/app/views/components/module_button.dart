@@ -6,7 +6,7 @@ class ModuleButton extends StatefulWidget {
 
   final AlignmentGeometry _align;
   final String _text;
-  final Widget _page;
+  final Widget _page
 
   @override
   State<ModuleButton> createState() => _ModuleButtonState();
@@ -28,12 +28,13 @@ class _ModuleButtonState extends State<ModuleButton> {
             (route) => false,
           );
         },
-        style: ElevatedButton.styleFrom(
+        style: ElevatedButton.styleFrom
           minimumSize: Size(120.0, 120.0),
           shape: CircleBorder(),
 
           primary: Colors.blue, // <-- Button color
           onPrimary: Colors.red, // <-- Splash color
+
         ),
         child: Text(
           widget._text,
@@ -42,6 +43,7 @@ class _ModuleButtonState extends State<ModuleButton> {
             color: Colors.white,
             fontSize: 17,
             fontWeight: FontWeight.bold,
+
           ),
         ),
       ),

@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
           backgroundColor: Colors.white70,
           elevation: 0,
+
           title: OutlinedButton(
             onPressed: () {},
             child: const Icon(
@@ -55,7 +56,9 @@ class _HomePageState extends State<HomePage> {
                     LinearProgressIndicator(
                       value: 0.57,
                       backgroundColor: Colors.grey,
+
                       color: Color.fromARGB(255, 89, 233, 95),
+
                       semanticsLabel: 'Linear progress indicator',
                     ),
                   ],
@@ -65,6 +68,7 @@ class _HomePageState extends State<HomePage> {
           ]),
       body: SingleChildScrollView(
         child: Padding(
+
           padding: EdgeInsets.fromLTRB(50, 50, 50, 50),
           child: Column(children: const [
             ModuleButton(Alignment.centerLeft, "Vogais", HomePage()),
@@ -98,6 +102,7 @@ class _HomePageState extends State<HomePage> {
             BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
           ]),
+
     );
   }
 }
