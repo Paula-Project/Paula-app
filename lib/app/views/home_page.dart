@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/views/task_page.dart';
 import 'package:paula/app/views/login_page.dart';
 import 'package:paula/app/views/person_data_page.dart';
+
 
 import 'components/module_button.dart';
 
@@ -71,12 +73,12 @@ class _HomePageState extends State<HomePage> {
 
           padding: EdgeInsets.fromLTRB(50, 50, 50, 50),
           child: Column(children: const [
-            ModuleButton(Alignment.centerLeft, "Vogais", HomePage()),
-            ModuleButton(Alignment.centerRight, "Consoantes \n parte 1",HomePage()),
-            ModuleButton(Alignment.centerLeft, "Consoantes \n parte 2",HomePage()),
-            ModuleButton(Alignment.centerRight, "Primeiras \n sílabas",HomePage()),
-            ModuleButton(Alignment.centerLeft, "Consoantes \n parte 3",HomePage()),
-            ModuleButton(Alignment.centerRight, "Palavras 1",HomePage()),
+            ModuleButton(Alignment.centerLeft, "Vogais", TaskPage(), Colors.blue),
+            ModuleButton(Alignment.centerRight, "Consoantes \n Parte 1",HomePage(), Colors.grey),
+            ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 2",HomePage(), Colors.grey),
+            ModuleButton(Alignment.centerRight, "Primeiras \n sílabas",HomePage(), Colors.grey),
+            ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 3",HomePage(), Colors.grey),
+            ModuleButton(Alignment.centerRight, "Palavras 1",HomePage(), Colors.grey),
           ]),
         ),
       ),
