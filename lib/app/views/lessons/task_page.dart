@@ -50,13 +50,17 @@ class _TaskPageState extends State<TaskPage> {
                 children: [
                   Column(
                     children: const <Widget>[
-                      AudioButton(),
+                      AudioButton(
+                        audioUrl: 'oculos.mp3',
+                      ),
                       CardImage('assets/images/oculos.png', 5.0),
                     ],
                   ),
                   Column(
                     children: const <Widget>[
-                      AudioButton(),
+                      AudioButton(
+                        audioUrl: 'uva.mp3',
+                      ),
                       CardImage('assets/images/uva.png', 6.0),
                     ],
                   ),
@@ -67,7 +71,9 @@ class _TaskPageState extends State<TaskPage> {
                 children: [
                   Column(
                     children: [
-                      const AudioButton(),
+                      const AudioButton(
+                        audioUrl: 'arvore.mp3',
+                      ),
                       MaterialButton(
                         onPressed: () {
                           Navigator.of(context).pushAndRemoveUntil(
@@ -82,7 +88,9 @@ class _TaskPageState extends State<TaskPage> {
                   ),
                   Column(
                     children: const <Widget>[
-                      AudioButton(),
+                      AudioButton(
+                        audioUrl: 'escada.mp3',
+                      ),
                       CardImage('assets/images/escada.png', 6.0),
                     ],
                   ),
@@ -106,8 +114,10 @@ class _TaskPageState extends State<TaskPage> {
 }
 
 class AudioButton extends StatefulWidget {
+  final String audioUrl;
   const AudioButton({
     Key? key,
+    required this.audioUrl,
   }) : super(key: key);
 
   @override
@@ -115,36 +125,27 @@ class AudioButton extends StatefulWidget {
 }
 
 class _AudioButtonState extends State<AudioButton> {
-  final audioPlayer = AudioPlayer();
-  bool isPlaying = false;
+  AudioPlayer? audioPlayer;
+
+  _runAudio(String path) async {
+    try {
+      await audioPlayer?.play(AssetSource(path));
+    } catch (error) {
+      print(error.toString());
+    }
+  }
 
   @override
   void initState() {
+    audioPlayer = AudioPlayer();
     super.initState();
-
-    setAudio();
-
-    audioPlayer.onPlayerStateChanged.listen((state) {
-      setState(() {
-        isPlaying = state == PlayerState.PLAYING;
-      });
-    });
-  }
-
-  Future setAudio() async {
-    /* final player = AudioCache(prefix: "audios/");
-    final url = await player.load("lata.mp3");
-    await audioPlayer.setUrl(
-        "https://soarvoice-storage-proxy.b-cdn.net/api/v1/audio-optmizer/?source=https://nyc3.digitaloceanspaces.com/soar-storage/media-storage/e/em/emersonteles21@gmail.com/Soar-paula-93akk.mp3&speed=0.9",
-        isLocal: false);*/
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () async {
-        await audioPlayer.play(
-            'https://soarvoice-storage-proxy.b-cdn.net/api/v1/audio-optmizer/?source=https://nyc3.digitaloceanspaces.com/soar-storage/media-storage/e/em/emersonteles21@gmail.com/Soar-paula-93akk.mp3&speed=0.9');
+        _runAudio("audios/${widget.audioUrl}");
       },
       child: Container(
         margin: const EdgeInsets.fromLTRB(0, 20, 0, 10),

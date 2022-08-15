@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'home_page.dart';
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -96,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: InputDecoration(
                             contentPadding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 6),
-                            hintText: 'joaozinho123',
+                            labelText: 'joaozinho123',
                             fillColor: Colors.white,
                             filled: true,
                             border: OutlineInputBorder(
@@ -169,7 +168,6 @@ class _LoginPageState extends State<LoginPage> {
                                   fontWeight: FontWeight.w600,
                                 )),
                             onPressed: () {
-
                               Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
                                   builder: (BuildContext context) =>

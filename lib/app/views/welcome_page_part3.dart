@@ -37,8 +37,10 @@ class WelcomePage_part3 extends StatelessWidget {
                       width: MediaQuery.of(context).size.width - 150,
                     ),
                     const DialogTextBox(
-                        TextContent:
-                            "Para começar vamos precisar de algumas informações suas, tudo bem?"),
+                      TextContent:
+                          "Para começar vamos precisar de algumas informações suas, \ntudo bem?",
+                      audioUrl: 'paula02.ogg',
+                    ),
                     const SizedBox(height: 30),
                     SizedBox(
                       width: 140,
