@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:paula/app/views/lesson.dart';
+import 'package:paula/app/views/lessons/lesson_introduction.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -172,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                                   context,
                                   PageTransition(
                                       type: PageTransitionType.leftToRight,
-                                      child: const Lesson()));
+                                      child: const LessonIntroduction()));
                             },
                           ),
                         ),

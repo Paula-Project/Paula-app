@@ -28,17 +28,13 @@ class _LessonState extends State<Lesson> {
                   height: 100.0,
                   decoration: const BoxDecoration(
                       color: Color.fromRGBO(37, 85, 124, 1),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15.0),
-                          topRight: Radius.circular(15.0),
-                          bottomLeft: Radius.circular(15.0),
-                          bottomRight: Radius.circular(15.0))),
-                  child: Center(
-                    child: const Padding(
+                      borderRadius: BorderRadius.all(Radius.circular(15.0))),
+                  child: const Center(
+                    child: Padding(
                       padding: EdgeInsets.all(12.0),
                       child: Text(
                         "Aqui estão alguns exemplos de objetos com “A”:",
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w300),
                       ),
                     ),
@@ -150,11 +146,7 @@ class _LessonCardState extends State<LessonCard> {
           height: 120.0,
           decoration: const BoxDecoration(
               color: Color.fromRGBO(209, 220, 221, 1),
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15.0),
-                  topRight: Radius.circular(15.0),
-                  bottomLeft: Radius.circular(15.0),
-                  bottomRight: Radius.circular(15.0))),
+              borderRadius: BorderRadius.all(Radius.circular(15.0))),
           child: Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 20.0, vertical: 00.0),
