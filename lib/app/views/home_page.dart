@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:paula/app/views/task_page.dart';
+import 'package:paula/app/views/lessons/lesson_introduction.dart';
 import 'package:paula/app/views/login_page.dart';
 import 'package:paula/app/views/person_data_page.dart';
-
-
 import 'components/module_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
-
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -26,7 +23,6 @@ class _HomePageState extends State<HomePage> {
 
   final int indexPage = 0;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +30,15 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
           backgroundColor: Colors.white70,
           elevation: 0,
-
           title: OutlinedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => const LoginPage(),
+                ),
+                (route) => false,
+              );
+            },
             child: const Icon(
               Icons.logout,
               color: Colors.grey,
@@ -58,9 +60,7 @@ class _HomePageState extends State<HomePage> {
                     LinearProgressIndicator(
                       value: 0.57,
                       backgroundColor: Colors.grey,
-
                       color: Color.fromARGB(255, 89, 233, 95),
-
                       semanticsLabel: 'Linear progress indicator',
                     ),
                   ],
@@ -70,15 +70,27 @@ class _HomePageState extends State<HomePage> {
           ]),
       body: SingleChildScrollView(
         child: Padding(
-
           padding: EdgeInsets.fromLTRB(50, 50, 50, 50),
           child: Column(children: const [
-            ModuleButton(Alignment.centerLeft, "Vogais", TaskPage(), Colors.blue),
-            ModuleButton(Alignment.centerRight, "Consoantes \n Parte 1",HomePage(), Colors.grey),
-            ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 2",HomePage(), Colors.grey),
-            ModuleButton(Alignment.centerRight, "Primeiras \n sílabas",HomePage(), Colors.grey),
-            ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 3",HomePage(), Colors.grey),
-            ModuleButton(Alignment.centerRight, "Palavras 1",HomePage(), Colors.grey),
+            ModuleButton(
+                Alignment.centerLeft, "Vogais", LessonIntroduction(), true),
+            ModuleButton(Alignment.centerRight, "Consoantes \n Parte 1",
+                HomePage(), false),
+            ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 2",
+                HomePage(), false),
+            ModuleButton(Alignment.centerRight, "Primeiras \n sílabas",
+                HomePage(), false),
+            ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 3",
+                HomePage(), false),
+            ModuleButton(
+                Alignment.centerRight, "Palavras 1", HomePage(), false),
+
+            //ModuleButton(Alignment.centerLeft, "Vogais", TaskPage(), Colors.blue),
+            //ModuleButton(Alignment.centerRight, "Consoantes \n Parte 1",HomePage(), Colors.grey),
+            //ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 2",HomePage(), Colors.grey),
+            //ModuleButton(Alignment.centerRight, "Primeiras \n sílabas",HomePage(), Colors.grey),
+            //ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 3",HomePage(), Colors.grey),
+            //ModuleButton(Alignment.centerRight, "Palavras 1",HomePage(), Colors.grey),
           ]),
         ),
       ),
@@ -88,15 +100,14 @@ class _HomePageState extends State<HomePage> {
           elevation: 100,
           selectedItemColor: Colors.blueAccent,
           unselectedItemColor: Colors.black,
-          onTap: (index){
-            switch (index){
+          onTap: (index) {
+            switch (index) {
               case 1:
                 Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(
-                    builder: (BuildContext context) =>
-                    const PersonData(),
+                    builder: (BuildContext context) => const PersonData(),
                   ),
-                      (route) => false,
+                  (route) => false,
                 );
             }
           },
@@ -104,7 +115,6 @@ class _HomePageState extends State<HomePage> {
             BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
           ]),
-
     );
   }
 }

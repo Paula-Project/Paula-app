@@ -50,12 +50,19 @@ class _LessonIntroductionState extends State<LessonIntroduction> {
                         "Esta é a letra “A”, ela é a primeira letra do alfabeto."),
               ),
               const SizedBox(
-                height: 20.0,
+                height: 10.0,
               ),
               Container(
-                  alignment: Alignment.bottomCenter,
-                  width: (MediaQuery.of(context).size.width - 150),
-                  child: Image.asset('assets/images/Avatar-Maker(2).png')),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
+                alignment: Alignment.bottomCenter,
+                width: (MediaQuery.of(context).size.width * 0.55),
+                child: Image.asset(
+                  'assets/images/Avatar-Maker(2).png',
+                  scale: 1,
+                ),
+              ),
             ],
           )),
     );

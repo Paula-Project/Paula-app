@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-
-import 'home_page.dart';
+import 'package:paula/app/views/components/ButtonNext.dart';
+import '../home_page.dart';
 
 class TaskPage extends StatefulWidget {
   const TaskPage({Key? key}) : super(key: key);
@@ -52,13 +51,13 @@ class _TaskPageState extends State<TaskPage> {
                   Column(
                     children: const <Widget>[
                       AudioButton(),
-                      CardImage('images/oculos.png', 5.0),
+                      CardImage('assets/images/oculos.png', 5.0),
                     ],
                   ),
                   Column(
                     children: const <Widget>[
                       AudioButton(),
-                      CardImage('images/uva.png', 6.0),
+                      CardImage('assets/images/uva.png', 6.0),
                     ],
                   ),
                 ],
@@ -77,14 +76,14 @@ class _TaskPageState extends State<TaskPage> {
                                   child: const HomePage()),
                               (route) => false);
                         },
-                        child: const CardImage('images/arvore.png', 5.0),
+                        child: const CardImage('assets/images/arvore.png', 5.0),
                       ),
                     ],
                   ),
                   Column(
                     children: const <Widget>[
                       AudioButton(),
-                      CardImage('images/escada.png', 6.0),
+                      CardImage('assets/images/escada.png', 6.0),
                     ],
                   ),
                 ],
@@ -92,27 +91,11 @@ class _TaskPageState extends State<TaskPage> {
               Container(
                 margin: const EdgeInsets.only(top: 30.0),
                 child: SizedBox(
-                  width: 200,
-                  height: 40,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    onHover: (hover) {
-                      print(hover);
-                    },
-                    style: ButtonStyle(
-                      foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white),
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.blue),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              side: BorderSide.none)),
-                    ),
-                    child:
-                        const Text("Avançar", style: TextStyle(fontSize: 20)),
-                  ),
-                ),
+                    width: 200,
+                    height: 40,
+                    child: ButtonNext(
+                      pageWidget: HomePage(),
+                    )),
               ),
             ],
           ),

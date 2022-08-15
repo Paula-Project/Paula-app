@@ -1,6 +1,8 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:paula/app/views/components/ButtonNext.dart';
+import 'package:paula/app/views/lessons/task_page.dart';
 
 class Lesson extends StatefulWidget {
   const Lesson({Key? key}) : super(key: key);
@@ -59,34 +61,11 @@ class _LessonState extends State<Lesson> {
                 const SizedBox(
                   height: 50,
                 ),
-                Center(
+                const Center(
                   child: SizedBox(
                     width: 180,
                     height: 50,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                          foregroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white),
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.blue),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      side: BorderSide.none))),
-                      child: const Text('AVANÇAR',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          )),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.leftToRight,
-                                child: const Lesson()));
-                      },
-                    ),
+                    child: ButtonNext(pageWidget: TaskPage()),
                   ),
                 ),
               ],
@@ -164,7 +143,7 @@ class _LessonCardState extends State<LessonCard> {
                     child: Center(
                       child: Text(widget.nameTxt,
                           style: TextStyle(
-                              fontSize: 40.0, fontWeight: FontWeight.w900)),
+                              fontSize: 30.0, fontWeight: FontWeight.w900)),
                     ),
                   ),
                 ),
