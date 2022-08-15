@@ -20,27 +20,18 @@ class _TaskPageState extends State<TaskPage> {
         decoration: const BoxDecoration(
           color: Colors.white,
         ),
-        width: MediaQuery
-            .of(context)
-            .size
-            .width,
-        height: MediaQuery
-            .of(context)
-            .size
-            .height,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 25.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 height: 100.0,
                 decoration: const BoxDecoration(
                     color: Color.fromRGBO(37, 85, 124, 1),
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15.0),
-                        topRight: Radius.circular(15.0),
-                        bottomLeft: Radius.circular(15.0),
-                        bottomRight: Radius.circular(15.0))),
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
                 child: const Center(
                   child: Padding(
                     padding: EdgeInsets.all(12.0),
@@ -59,34 +50,15 @@ class _TaskPageState extends State<TaskPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
-                    children: [
-                      LessonCard(),
-                      Container(
-                          height: 140.00,
-                          width: 140.00,
-                          decoration: const BoxDecoration(
-                              color: Color.fromRGBO(209, 220, 221, 1),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(15.0),
-                              )),
-                          child: Image.asset('images/oculos.png', scale: 5.0,)
-
-                      ),
+                    children: const <Widget>[
+                      AudioButton(),
+                      CardImage('images/oculos.png', 5.0),
                     ],
                   ),
                   Column(
-                    children: [
-                      LessonCard(),
-                      Container(
-                          height: 140.00,
-                          width: 140.00,
-                          decoration: const BoxDecoration(
-                              color: Color.fromRGBO(209, 220, 221, 1),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(15.0),
-                              )),
-                          child: Image.asset('images/uva.png', scale: 6.0,)
-                      ),
+                    children: const <Widget>[
+                      AudioButton(),
+                      CardImage('images/uva.png', 6.0),
                     ],
                   ),
                 ],
@@ -96,43 +68,23 @@ class _TaskPageState extends State<TaskPage> {
                 children: [
                   Column(
                     children: [
-                      const LessonCard(),
+                      const AudioButton(),
                       MaterialButton(
                         onPressed: () {
                           Navigator.of(context).pushAndRemoveUntil(
                               PageTransition(
                                   type: PageTransitionType.leftToRight,
-                                  child: const HomePage()), (route) => false);
+                                  child: const HomePage()),
+                              (route) => false);
                         },
-                        child: Container(
-                          height: 140.00,
-                          width: 140.00,
-                          decoration: const BoxDecoration(
-                              color: Color.fromRGBO(209, 220, 221, 1),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(15.0),
-                              )),
-                          child: Image.asset('/images/arvore.png'
-                            , scale: 5.0,),
-
-                        ),
+                        child: const CardImage('images/arvore.png', 5.0),
                       ),
                     ],
                   ),
                   Column(
-                    children: [
-                      LessonCard(),
-                      Container(
-                        height: 140.00,
-                        width: 140.00,
-                        decoration: const BoxDecoration(
-                            color: Color.fromRGBO(209, 220, 221, 1),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(15.0),
-                            )),
-                        child: Image.asset('/images/escada.png'
-                          , scale: 6.0,),
-                      ),
+                    children: const <Widget>[
+                      AudioButton(),
+                      CardImage('images/escada.png', 6.0),
                     ],
                   ),
                 ],
@@ -149,16 +101,16 @@ class _TaskPageState extends State<TaskPage> {
                     },
                     style: ButtonStyle(
                       foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white),
+                          MaterialStateProperty.all<Color>(Colors.white),
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
+                          MaterialStateProperty.all<Color>(Colors.blue),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                               side: BorderSide.none)),
                     ),
                     child:
-                    const Text("Avançar", style: TextStyle(fontSize: 20)),
+                        const Text("Avançar", style: TextStyle(fontSize: 20)),
                   ),
                 ),
               ),
@@ -170,16 +122,16 @@ class _TaskPageState extends State<TaskPage> {
   }
 }
 
-class LessonCard extends StatefulWidget {
-  const LessonCard({
+class AudioButton extends StatefulWidget {
+  const AudioButton({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<LessonCard> createState() => _LessonCardState();
+  State<AudioButton> createState() => _AudioButtonState();
 }
 
-class _LessonCardState extends State<LessonCard> {
+class _AudioButtonState extends State<AudioButton> {
   final audioPlayer = AudioPlayer();
   bool isPlaying = false;
 
@@ -223,5 +175,27 @@ class _LessonCardState extends State<LessonCard> {
         ),
       ),
     );
+  }
+}
+
+class CardImage extends StatelessWidget {
+  const CardImage(this.imageUrl, this.scale, {Key? key}) : super(key: key);
+  final String imageUrl;
+  final double scale;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: (MediaQuery.of(context).size.height) * 0.17,
+        width: (MediaQuery.of(context).size.width) * 0.38,
+        decoration: const BoxDecoration(
+            color: Color.fromRGBO(209, 220, 221, 1),
+            borderRadius: BorderRadius.all(
+              Radius.circular(15.0),
+            )),
+        child: Image.asset(
+          imageUrl,
+          scale: scale,
+        ));
   }
 }
