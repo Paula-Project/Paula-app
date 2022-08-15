@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'components/DIalogTextBox.dart';
 
+import 'components/paulaTitle.dart';
+
 class WelcomePage_part2 extends StatelessWidget {
   const WelcomePage_part2({Key? key}) : super(key: key);
 
@@ -21,16 +23,7 @@ class WelcomePage_part2 extends StatelessWidget {
         child: Column(children: [
           const Expanded(
             flex: 3,
-            child: Center(
-              child: Text("PAULA",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 60,
-                    fontFamily: "Nunito",
-                    fontWeight: FontWeight.normal,
-                    letterSpacing: 20,
-                  )),
-            ),
+            child: PaulaTitleComponent(),
           ),
           Expanded(
               flex: 8,
