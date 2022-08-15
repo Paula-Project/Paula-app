@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/views/task_page.dart';
 
 import 'components/module_button.dart';
 
@@ -61,7 +62,7 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding: EdgeInsets.fromLTRB(50, 30, 50, 50),
           child: Column(children: const [
-            ModuleButton(Alignment.centerLeft, "Vogais", HomePage(), Colors.blue),
+            ModuleButton(Alignment.centerLeft, "Vogais", TaskPage(), Colors.blue),
             ModuleButton(Alignment.centerRight, "Consoantes \n Parte 1",HomePage(), Colors.grey),
             ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 2",HomePage(), Colors.grey),
             ModuleButton(Alignment.centerRight, "Primeiras \n sílabas",HomePage(), Colors.grey),
