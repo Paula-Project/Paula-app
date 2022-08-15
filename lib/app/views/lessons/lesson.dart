@@ -1,6 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/components/ButtonNext.dart';
 import 'package:paula/app/views/lessons/task_page.dart';
 
@@ -46,18 +45,26 @@ class _LessonState extends State<Lesson> {
                   height: 60,
                 ),
                 const LessonCard(
-                    imageUrl: 'assets/images/lata.png', nameTxt: "L A T A"),
+                  imageUrl: 'assets/images/lata.png',
+                  nameTxt: "L A T A",
+                  audioUrl: 'lata.mp3',
+                ),
                 const SizedBox(
                   height: 40,
                 ),
                 const LessonCard(
-                    imageUrl: 'assets/images/plane.png', nameTxt: "A V I Ã O"),
+                  imageUrl: 'assets/images/plane.png',
+                  nameTxt: "A V I Ã O",
+                  audioUrl: 'aviao.mp3',
+                ),
                 const SizedBox(
                   height: 40,
                 ),
                 const LessonCard(
-                    imageUrl: 'assets/images/pineapple.png',
-                    nameTxt: "A B A C A X I"),
+                  imageUrl: 'assets/images/pineapple.png',
+                  nameTxt: "A B A C A X I",
+                  audioUrl: 'abacaxi.mp3',
+                ),
                 const SizedBox(
                   height: 50,
                 ),
@@ -78,11 +85,13 @@ class _LessonState extends State<Lesson> {
 class LessonCard extends StatefulWidget {
   final String imageUrl;
   final String nameTxt;
+  final String audioUrl;
 
   const LessonCard({
     Key? key,
     required this.imageUrl,
     required this.nameTxt,
+    required this.audioUrl,
   }) : super(key: key);
 
   @override
@@ -90,36 +99,27 @@ class LessonCard extends StatefulWidget {
 }
 
 class _LessonCardState extends State<LessonCard> {
-  final audioPlayer = AudioPlayer();
-  bool isPlaying = false;
+  AudioPlayer? audioPlayer;
+
+  _runAudio(String path) async {
+    try {
+      await audioPlayer?.play(AssetSource(path));
+    } catch (error) {
+      print(error.toString());
+    }
+  }
 
   @override
   void initState() {
+    audioPlayer = AudioPlayer();
     super.initState();
-
-    setAudio();
-
-    audioPlayer.onPlayerStateChanged.listen((state) {
-      setState(() {
-        isPlaying = state == PlayerState.PLAYING;
-      });
-    });
-  }
-
-  Future setAudio() async {
-    /* final player = AudioCache(prefix: "audios/");
-    final url = await player.load("lata.mp3");
-    await audioPlayer.setUrl(
-        "https://soarvoice-storage-proxy.b-cdn.net/api/v1/audio-optmizer/?source=https://nyc3.digitaloceanspaces.com/soar-storage/media-storage/e/em/emersonteles21@gmail.com/Soar-paula-93akk.mp3&speed=0.9",
-        isLocal: false);*/
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () async {
-        await audioPlayer.play(
-            'https://soarvoice-storage-proxy.b-cdn.net/api/v1/audio-optmizer/?source=https://nyc3.digitaloceanspaces.com/soar-storage/media-storage/e/em/emersonteles21@gmail.com/Soar-paula-93akk.mp3&speed=0.9');
+        _runAudio("audios/${widget.audioUrl}");
       },
       child: Container(
           height: 120.0,
