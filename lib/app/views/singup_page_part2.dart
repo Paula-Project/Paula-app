@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:paula/app/views/singup_page_part2.dart';
 import 'components/paulaTitle.dart';
-import 'package:gender_picker/source/enums.dart';
-import 'package:gender_picker/source/gender_picker.dart';
+import 'home_page.dart';
 
-class SingupPage extends StatefulWidget {
-  const SingupPage({Key? key}) : super(key: key);
+class SingupPage2 extends StatefulWidget {
+  const SingupPage2({Key? key}) : super(key: key);
 
   @override
-  State<SingupPage> createState() => _SingupPageState();
+  State<SingupPage2> createState() => _SingupPageState2();
 }
 
-class _SingupPageState extends State<SingupPage> {
+class _SingupPageState2 extends State<SingupPage2> {
   static const BackgroundBlueGradiend = BoxDecoration(
       gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -27,10 +25,6 @@ class _SingupPageState extends State<SingupPage> {
 
   @override
   Widget build(BuildContext context) {
-    var pickeddate;
-    var pickedtime;
-    String date = "";
-    DateTime selectedDate = DateTime.now();
 
     return Material(
       child: Container(
@@ -46,7 +40,7 @@ class _SingupPageState extends State<SingupPage> {
         child: Column(
           children: [
             const Expanded(
-              flex: 3,
+              flex: 4,
               child: PaulaTitleComponent(),
             ),
             Expanded(
@@ -59,13 +53,13 @@ class _SingupPageState extends State<SingupPage> {
                     Center(
                       child: Column(
                         children: const [
-                          Text("Vamos nos cadastrar?",
+                          Text("Informações de Acesso",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 30,
                                   fontFamily: "Nunito",
                                   fontWeight: FontWeight.w500)),
-                          Text("Queremos te conhecer!",
+                          Text("Você usará essas informações para acessar a Paula Novamente",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.white,
@@ -77,7 +71,7 @@ class _SingupPageState extends State<SingupPage> {
                       ),
                     ),
                     Container(
-                      height: 20,
+                      height: 80,
                     ),
                     Expanded(
 
@@ -105,7 +99,7 @@ class _SingupPageState extends State<SingupPage> {
                                           padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                                           child: Align(
                                             alignment: Alignment.centerLeft,
-                                            child: Text("Seu Nome",
+                                            child: Text("Apelido",
                                                 style: TextStyle(
                                                     color: Colors.blueAccent,
                                                     fontSize: 25,
@@ -151,7 +145,7 @@ class _SingupPageState extends State<SingupPage> {
                                           padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                                           child: Align(
                                             alignment: Alignment.centerLeft,
-                                            child: Text("Profissão",
+                                            child: Text("Senha",
                                                 style: TextStyle(
                                                     color: Colors.blueAccent,
                                                     fontSize: 25,
@@ -195,49 +189,11 @@ class _SingupPageState extends State<SingupPage> {
                                         Container(
                                           height: 20,
                                         ),
-
-                                        FloatingActionButton.extended(
-                                          onPressed: () {
-                                            DatePicker.showDatePicker(context,
-                                                showTitleActions: true,
-                                                minTime: DateTime(1910, 1, 1),
-                                                maxTime: DateTime(2022, 12, 31),
-                                                onChanged: (date) {
-                                                  print('change $date');
-                                                  setState(() {
-                                                    pickeddate = "${date.day}";
-                                                  });
-                                                },
-                                                onConfirm: (date) {
-                                                  print('confirm $date');
-                                                  setState(() {
-                                                    pickeddate =
-                                                    "Picked Date is : ${date
-                                                        .day}/${date.month}/${date
-                                                        .year}";
-                                                  });
-                                                },
-                                                currentTime: DateTime.now());
-                                          },
-                                          label: Text(
-                                            "Data de Nascimento",
-                                            style: TextStyle(
-                                                color: Colors.blueAccent,
-                                                fontSize: 25,
-                                                fontFamily: "Nunito",
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                          icon: Icon(Icons.date_range),
-                                          backgroundColor: Colors.white,
-                                        ),
-                                        Container(
-                                          height: 20,
-                                        ),
                                         Padding(
                                           padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                                           child: Align(
                                             alignment: Alignment.centerLeft,
-                                            child: Text("Gênero",
+                                            child: Text("Confirmar Senha",
                                                 style: TextStyle(
                                                     color: Colors.blueAccent,
                                                     fontSize: 25,
@@ -246,76 +202,36 @@ class _SingupPageState extends State<SingupPage> {
                                           ),
                                         ),
                                         Container(
-                                          height: 20,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 30, bottom: 30),
-                                          child: Transform.scale(
-                                            scale: 2.5,
-                                            child: ToggleButtons(
-                                              children: <Widget>[
-                                                Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: <Widget>[
-                                                    Icon(
-                                                      Icons.boy_outlined,
-                                                      color: Colors.grey,
-                                                    ),
-                                                    Text("HOMEM",
-                                                        style: TextStyle(
-                                                            color: Colors.blueAccent,
-                                                            fontSize: 7,
-                                                            fontFamily: "Nunito",
-                                                            fontWeight: FontWeight.w500)
-                                                    ),
-                                                  ],
-                                                ),
-                                                Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    Icon(
-                                                      Icons.girl_outlined,
-                                                      color: Colors.grey,),
-                                                    Text("MULHER",
-                                                        style: TextStyle(
-                                                            color: Colors.blueAccent,
-                                                            fontSize: 7,
-                                                            fontFamily: "Nunito",
-                                                            fontWeight: FontWeight.w500)
-                                                    ),
-                                                  ],
-                                                ),
-                                                Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    Icon(
-                                                      Icons.transgender_outlined,
-                                                      color: Colors.grey,
-                                                    ),
-                                                    Text("OUTRO",
-                                                        style: TextStyle(
-                                                            color: Colors.blueAccent,
-                                                            fontSize: 7,
-                                                            fontFamily: "Nunito",
-                                                            fontWeight: FontWeight.w500)
-                                                    ),
-                                                  ],
-                                                ),
-
-                                              ],
-                                              onPressed: (int index) {
-                                                setState(() {
-                                                  for (int buttonIndex = 0; buttonIndex < isSelected.length; buttonIndex++) {
-                                                    if (buttonIndex == index) {
-                                                      isSelected[buttonIndex] = true;
-                                                    } else {
-                                                      isSelected[buttonIndex] = false;
-                                                    }
-                                                  }
-                                                });
-                                              },
-                                              isSelected: isSelected,
+                                          decoration:
+                                          BoxDecoration(boxShadow: [
+                                            BoxShadow(
+                                              color: Color.fromARGB(50, 0, 0, 0),
+                                              blurRadius: 15,
+                                              offset: Offset(0, 5),
                                             ),
+                                          ]),
+                                          child: TextField(
+                                            decoration: InputDecoration(
+                                              contentPadding:
+                                              const EdgeInsets.symmetric(
+                                                  vertical: 15,
+                                                  horizontal: 6),
+                                              isDense: true,
+                                              fillColor: Colors.white,
+                                              filled: true,
+
+                                              border: OutlineInputBorder(
+                                                borderSide: BorderSide.none,
+                                                borderRadius:
+                                                BorderRadius.circular(8),
+                                              ),
+                                            ),
+                                            obscureText: true,
+                                            style: const TextStyle(
+                                                color: Colors.black),
+                                            onChanged: (value) {
+
+                                            },
                                           ),
                                         ),
                                         Container(
@@ -328,7 +244,7 @@ class _SingupPageState extends State<SingupPage> {
                                             onPressed: () {
                                               Navigator.push(context,
                                                   MaterialPageRoute(
-                                                    builder: (BuildContext context) => const SingupPage2(),
+                                                    builder: (BuildContext context) => const HomePage(),
                                                   )
                                               );
                                             },
@@ -344,7 +260,7 @@ class _SingupPageState extends State<SingupPage> {
                                                       borderRadius: BorderRadius.circular(10),
                                                       side: BorderSide.none)),
                                             ),
-                                            child: const Text("Próximo",
+                                            child: const Text("Cadastrar",
                                                 style: TextStyle(fontSize: 25)),
                                           ),
                                         ),
