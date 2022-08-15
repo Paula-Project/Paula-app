@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/views/login_page.dart';
+import 'package:paula/app/views/person_data_page.dart';
 
 import 'components/module_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -19,13 +22,17 @@ class _HomePageState extends State<HomePage> {
         Color.fromARGB(255, 41, 171, 226)
       ]));
 
+  final int indexPage = 0;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
           backgroundColor: Colors.white70,
-          elevation: 3.0,
+          elevation: 0,
+
           title: OutlinedButton(
             onPressed: () {},
             child: const Icon(
@@ -49,7 +56,9 @@ class _HomePageState extends State<HomePage> {
                     LinearProgressIndicator(
                       value: 0.57,
                       backgroundColor: Colors.grey,
-                      color: Color.fromARGB(255, 41, 171, 226),
+
+                      color: Color.fromARGB(255, 89, 233, 95),
+
                       semanticsLabel: 'Linear progress indicator',
                     ),
                   ],
@@ -59,41 +68,41 @@ class _HomePageState extends State<HomePage> {
           ]),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(50, 30, 50, 50),
+
+          padding: EdgeInsets.fromLTRB(50, 50, 50, 50),
           child: Column(children: const [
-            ModuleButton(Alignment.centerLeft, "Vogais", HomePage(), Colors.blue),
-            ModuleButton(Alignment.centerRight, "Consoantes \n Parte 1",HomePage(), Colors.grey),
-            ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 2",HomePage(), Colors.grey),
-            ModuleButton(Alignment.centerRight, "Primeiras \n sílabas",HomePage(), Colors.grey),
-            ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 3",HomePage(), Colors.grey),
-            ModuleButton(Alignment.centerRight, "Palavras 1",HomePage(), Colors.grey),
+            ModuleButton(Alignment.centerLeft, "Vogais", HomePage()),
+            ModuleButton(Alignment.centerRight, "Consoantes \n parte 1",HomePage()),
+            ModuleButton(Alignment.centerLeft, "Consoantes \n parte 2",HomePage()),
+            ModuleButton(Alignment.centerRight, "Primeiras \n sílabas",HomePage()),
+            ModuleButton(Alignment.centerLeft, "Consoantes \n parte 3",HomePage()),
+            ModuleButton(Alignment.centerRight, "Palavras 1",HomePage()),
           ]),
         ),
       ),
-      bottomNavigationBar:
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: indexPage,
+          backgroundColor: Colors.white,
+          elevation: 100,
+          selectedItemColor: Colors.blueAccent,
+          unselectedItemColor: Colors.black,
+          onTap: (index){
+            switch (index){
+              case 1:
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                    const PersonData(),
+                  ),
+                      (route) => false,
+                );
+            }
+          },
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
+          ]),
 
-      Container(
-        decoration: const BoxDecoration(
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                color: Colors.black45,
-                blurRadius: 30.0,
-                offset: Offset(0.0, 0.75)
-            ),
-          ],
-        ),
-
-        child: BottomNavigationBar(
-
-            backgroundColor: Colors.white70,
-
-            selectedItemColor: Colors.blueAccent,
-            unselectedItemColor: Colors.black,
-            items:  const [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
-              BottomNavigationBarItem(icon: Icon(Icons.person), label: ""),
-            ]),
-      ),
     );
   }
 }
