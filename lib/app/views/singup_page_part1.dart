@@ -107,7 +107,7 @@ class _SingupPageState extends State<SingupPage> {
                                             child: Text("Seu Nome",
                                                 style: TextStyle(
                                                     color: Colors.blueAccent,
-                                                    fontSize: 20,
+                                                    fontSize: 25,
                                                     fontFamily: "Nunito",
                                                     fontWeight: FontWeight.w500)),
                                           ),
@@ -125,7 +125,7 @@ class _SingupPageState extends State<SingupPage> {
                                             decoration: InputDecoration(
                                               contentPadding:
                                               const EdgeInsets.symmetric(
-                                                  vertical: 10,
+                                                  vertical: 15,
                                                   horizontal: 4),
                                               isDense: true,
                                               fillColor: Colors.white,
@@ -153,7 +153,7 @@ class _SingupPageState extends State<SingupPage> {
                                             child: Text("Profissão",
                                                 style: TextStyle(
                                                     color: Colors.blueAccent,
-                                                    fontSize: 20,
+                                                    fontSize: 25,
                                                     fontFamily: "Nunito",
                                                     fontWeight: FontWeight.w500)),
                                           ),
@@ -171,7 +171,7 @@ class _SingupPageState extends State<SingupPage> {
                                             decoration: InputDecoration(
                                               contentPadding:
                                               const EdgeInsets.symmetric(
-                                                  vertical: 10,
+                                                  vertical: 15,
                                                   horizontal: 6),
                                               isDense: true,
                                               fillColor: Colors.white,
@@ -222,7 +222,7 @@ class _SingupPageState extends State<SingupPage> {
                                             "Data de Nascimento",
                                             style: TextStyle(
                                                 color: Colors.blueAccent,
-                                                fontSize: 20,
+                                                fontSize: 25,
                                                 fontFamily: "Nunito",
                                                 fontWeight: FontWeight.w500),
                                           ),
@@ -232,37 +232,97 @@ class _SingupPageState extends State<SingupPage> {
                                         Container(
                                           height: 20,
                                         ),
-                                        ToggleButtons(
-                                          constraints: BoxConstraints(),
-                                          children: <Widget>[
-                                            Icon(
-                                              Icons.boy_outlined,
-                                              color: Colors.grey,
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                                          child: Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text("Gênero",
+                                                style: TextStyle(
+                                                    color: Colors.blueAccent,
+                                                    fontSize: 25,
+                                                    fontFamily: "Nunito",
+                                                    fontWeight: FontWeight.w500)),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 20,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 30, bottom: 30),
+                                          child: Transform.scale(
+                                            scale: 2.5,
+                                            child: ToggleButtons(
+                                              children: <Widget>[
+                                                Column(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Icon(
+                                                      Icons.boy_outlined,
+                                                      color: Colors.grey,
+                                                    ),
+                                                    Text("HOMEM",
+                                                        style: TextStyle(
+                                                            color: Colors.blueAccent,
+                                                            fontSize: 7,
+                                                            fontFamily: "Nunito",
+                                                            fontWeight: FontWeight.w500)
+                                                    ),
+                                                  ],
+                                                ),
+                                                Column(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  children: [
+                                                    Icon(
+                                                      Icons.girl_outlined,
+                                                      color: Colors.grey,),
+                                                    Text("MULHER",
+                                                        style: TextStyle(
+                                                            color: Colors.blueAccent,
+                                                            fontSize: 7,
+                                                            fontFamily: "Nunito",
+                                                            fontWeight: FontWeight.w500)
+                                                    ),
+                                                  ],
+                                                ),
+                                                Column(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  children: [
+                                                    Icon(
+                                                      Icons.transgender_outlined,
+                                                      color: Colors.grey,
+                                                    ),
+                                                    Text("OUTRO",
+                                                        style: TextStyle(
+                                                            color: Colors.blueAccent,
+                                                            fontSize: 7,
+                                                            fontFamily: "Nunito",
+                                                            fontWeight: FontWeight.w500)
+                                                    ),
+                                                  ],
+                                                ),
+
+                                              ],
+                                              onPressed: (int index) {
+                                                setState(() {
+                                                  for (int buttonIndex = 0; buttonIndex < isSelected.length; buttonIndex++) {
+                                                    if (buttonIndex == index) {
+                                                      isSelected[buttonIndex] = true;
+                                                    } else {
+                                                      isSelected[buttonIndex] = false;
+                                                    }
+                                                  }
+                                                });
+                                              },
+                                              isSelected: isSelected,
                                             ),
-                                            Icon(
-                                              Icons.girl_outlined,
-                                              color: Colors.grey,),
-                                            Icon(
-                                              Icons.transgender_outlined,
-                                              color: Colors.grey,
-                                            ),
-                                          ],
-                                          onPressed: (int index) {
-                                            setState(() {
-                                              for (int buttonIndex = 0; buttonIndex < isSelected.length; buttonIndex++) {
-                                                if (buttonIndex == index) {
-                                                  isSelected[buttonIndex] = true;
-                                                } else {
-                                                  isSelected[buttonIndex] = false;
-                                                }
-                                              }
-                                            });
-                                          },
-                                          isSelected: isSelected,
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 20,
                                         ),
                                         SizedBox(
-                                          width: 140,
-                                          height: 40,
+                                          width: 160,
+                                          height: 50,
                                           child: ElevatedButton(
                                             onPressed: () {
 
@@ -280,7 +340,7 @@ class _SingupPageState extends State<SingupPage> {
                                                       side: BorderSide.none)),
                                             ),
                                             child: const Text("Próximo",
-                                                style: TextStyle(fontSize: 20)),
+                                                style: TextStyle(fontSize: 25)),
                                           ),
                                         ),
                                       ],
