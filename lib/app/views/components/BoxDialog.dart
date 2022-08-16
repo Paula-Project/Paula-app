@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 
 class BoxDialog extends StatelessWidget {
-  const BoxDialog({Key? key, required this.messageButton, required this.message, required this.color})
+  const BoxDialog({Key? key, required this.feedback, required this.resposta})
       : super(key: key);
 
-  final String messageButton;
-  final String message;
-  final Color color;
+  final String resposta;
+  final bool feedback;
 
   @override
   Widget build(BuildContext context) {
+
+    String message = 'VOCÊ ACERTOU!';
+    String messageButton = 'CONTINUAR';
+    Color color = Colors.green;
+    double padding = 15.0;
+    if(!feedback) {
+      message = 'Incorreto \n Resposta: $resposta';
+      messageButton = 'TENTAR DE NOVO';
+      color = Colors.red;
+      padding = 0;
+    }
+
+
     return AlertDialog(
       insetPadding: EdgeInsets.zero,
       backgroundColor: Colors.white,
@@ -21,13 +33,15 @@ class BoxDialog extends StatelessWidget {
           var width = MediaQuery.of(context).size.width;
 
           return Container(
-            padding: EdgeInsets.only(top: 30),
+            padding: EdgeInsets.only(top: padding),
             height: height * 0.08,
             width: width,
             child: Text(
               message,
               textAlign: TextAlign.center,
-              style: TextStyle(color: color),
+              style: TextStyle(color: color,
+              fontSize: 30,
+              fontWeight: FontWeight.bold),
             ),
           );
         },
