@@ -3,8 +3,10 @@ import 'package:page_transition/page_transition.dart';
 
 class ButtonNext extends StatelessWidget {
   final Widget pageWidget;
+  final bool allowedReturn;
 
   const ButtonNext({
+    this.allowedReturn = true,
     Key? key,
     required this.pageWidget,
   }) : super(key: key);
@@ -31,10 +33,11 @@ class ButtonNext extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 )),
             onPressed: () {
-              Navigator.of(context).push(
+              Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
                   builder: (BuildContext context) => pageWidget,
                 ),
+                (route) => allowedReturn,
               );
             },
           ),

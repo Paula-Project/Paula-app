@@ -27,13 +27,15 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_datetime_picker: ^1.3.5
+  gender_picker: ^1.1.0
   flutter:
     sdk: flutter
 
   http: "^0.13.3"
   shared_preferences: "^2.0.6"
   page_transition: "^2.0.9"
-  audioplayers: "^0.20.1"
+  audioplayers: ^1.0.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -77,10 +79,22 @@ flutter:
     - assets/images/lata.png
     - assets/images/plane.png
     - assets/images/pineapple.png
-    - assets/audios/aviao.ogg
-    - assets/audios/abacaxi.ogg
-    - assets/audios/lata.ogg
+    - assets/images/abajur.png
+    - assets/images/antena.png
+    - assets/images/apito.png
+    - assets/images/arroz.png
+    - assets/images/fireworks.png
+
+    - assets/audios/paula01.mp3
+    - assets/audios/paula02.ogg
+
+    - assets/audios/aviao.mp3
+    - assets/audios/abacaxi.mp3
     - assets/audios/lata.mp3
+    - assets/audios/uva.mp3
+    - assets/audios/arvore.mp3
+    - assets/audios/escada.mp3
+    - assets/audios/oculos.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -107,3 +121,12 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Light.ttf
+          weight: 100
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 400
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 600

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -201,11 +200,13 @@ class _LoginPageState extends State<LoginPage> {
                               FocusScopeNode currentFocus =
                                   FocusScope.of(context);
                               if (_formkey.currentState!.validate()) {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => HomePage()));
-
+                                Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const HomePage(),
+                                ),
+                                (route) => false,
+                              );
                                 /*bool loginOk = await login();
                                 if (!currentFocus.hasPrimaryFocus) {
                                   currentFocus.unfocus();
@@ -217,6 +218,7 @@ class _LoginPageState extends State<LoginPage> {
                                           builder: (context) => HomePage()));
                                 }*/
                               }
+
                             },
                           ),
                         ),

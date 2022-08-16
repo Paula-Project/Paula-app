@@ -39,6 +39,7 @@ class WelcomePage_part2 extends StatelessWidget {
                     const DialogTextBox(
                       TextContent:
                           "Oi, eu me chamo Paula, e eu vou acompanhar o seu aprendizado de perto!",
+                      audioUrl: "paula01.mp3",
                     ),
                     const SizedBox(height: 30),
                     SizedBox(
