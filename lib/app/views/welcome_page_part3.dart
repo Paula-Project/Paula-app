@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/views/components/DIalogTextBox.dart';
 
-import 'components/BoxDialog.dart';
 import 'components/paulaTitle.dart';
 
 class WelcomePage_part3 extends StatelessWidget {
@@ -47,14 +46,9 @@ class WelcomePage_part3 extends StatelessWidget {
                       width: 140,
                       height: 40,
                       child: ElevatedButton(
-                        onPressed: () => showDialog<String>(
-                          context: context,
-                          builder: (BuildContext context) =>
-                              const BoxDialog(feedback: false, resposta: "LATA",),
-                          /*{
+                        onPressed: () {
                           Navigator.pushNamed(context, "/singup_part1");
-                        }*/
-                        ),
+                        },
                         onHover: (hover) {},
                         style: ButtonStyle(
                           foregroundColor:
