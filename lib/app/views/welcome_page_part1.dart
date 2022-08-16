@@ -1,12 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/login_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'components/paulaTitle.dart';
 import 'welcome_page_part2.dart';
 
-class WelcomePage_part1 extends StatelessWidget {
+class WelcomePage_part1 extends StatefulWidget {
   const WelcomePage_part1({Key? key}) : super(key: key);
+
+  @override
+  State<WelcomePage_part1> createState() => _WelcomePage_part1State();
+}
+
+class _WelcomePage_part1State extends State<WelcomePage_part1>{
+
+  @override
+  void initState() {
+    super.initState();
+    verificarToken().then((value) {
+      if(value){
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,5 +113,14 @@ class WelcomePage_part1 extends StatelessWidget {
       ),
     );
   }
-}
 
+  Future<bool> verificarToken() async{
+    SharedPreferences sharedPreference = await SharedPreferences.getInstance();
+    if(sharedPreference.getString('token') != null){
+      return true;
+    } else{
+      return false;
+    }
+  }
+
+}

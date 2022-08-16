@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'home_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
+import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -19,6 +21,10 @@ class _LoginPageState extends State<LoginPage> {
         Color.fromARGB(255, 100, 171, 226),
         Color.fromARGB(255, 41, 171, 226)
       ]));
+
+  final _formkey = GlobalKey<FormState>();
+  final _nicknameController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   String nickname = '';
   String password = '';
@@ -76,73 +82,97 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         ),
                       ),
-                      Container(
-                        height: 20,
-                      ),
-                      const Text("Apelido",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w300)),
-                      Container(
-                        decoration: const BoxDecoration(boxShadow: [
-                          BoxShadow(
-                            color: Color.fromARGB(50, 0, 0, 0),
-                            blurRadius: 15,
-                            offset: Offset(0, 5),
-                          ),
-                        ]),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 6),
-                            hintText: 'joaozinho123',
-                            fillColor: Colors.white,
-                            filled: true,
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(8)),
-                            isDense: true,
-                          ),
-                          style: TextStyle(color: Colors.black),
-                          onChanged: (value) {
-                            nickname = value;
-                          },
-                        ),
-                      ),
-                      Container(height: 10),
-                      const Text("Senha",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w300)),
-                      Container(
-                        decoration: const BoxDecoration(boxShadow: [
-                          BoxShadow(
-                            color: Color.fromARGB(50, 0, 0, 0),
-                            blurRadius: 15,
-                            offset: Offset(0, 5),
-                          ),
-                        ]),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 6),
-                            isDense: true,
-                            hintText: '****',
-                            fillColor: Colors.white,
-                            filled: true,
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(8),
+                      Form(
+                        key: _formkey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                                Container(
+                              height: 20,
                             ),
-                          ),
-                          obscureText: true,
-                          style: TextStyle(color: Colors.black),
-                          onChanged: (value) {
-                            password = value;
-                          },
-                        ),
+                            const Text("Apelido",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w300)),
+                            Container(
+                              decoration: const BoxDecoration(boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(50, 0, 0, 0),
+                                  blurRadius: 15,
+                                  offset: Offset(0, 5),
+                                ),
+                              ]),
+                              child: TextFormField(
+                                controller: _nicknameController,
+                                keyboardType: TextInputType.text,
+                                validator: (nickname){
+                                  if(nickname == null || nickname.isEmpty){
+                                    return 'Por favor, digite seu apelido';
+                                  }
+                                  return null;
+                                },
+                                decoration: InputDecoration(
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 6),
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(8)),
+                                  isDense: true,
+                                ),
+                                style: TextStyle(color: Colors.black),
+                                onChanged: (value) {
+                                  nickname = value;
+                                },
+                              ),
+                            ),
+                            Container(height: 10),
+                            const Text("Senha",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w300)),
+                            Container(
+                              decoration: const BoxDecoration(boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(50, 0, 0, 0),
+                                  blurRadius: 15,
+                                  offset: Offset(0, 5),
+                                ),
+                              ]),
+                              child: TextFormField(
+                                controller: _passwordController,
+                                keyboardType: TextInputType.text,
+                                validator: (senha){
+                                  if(senha == null || senha.isEmpty){
+                                    return 'Por favor, digite sua senha';
+                                  } else if(senha.length < 4){
+                                    return 'Por favor, digite uma senha maior';
+                                  }
+                                  return null;
+                                },
+
+                                decoration: InputDecoration(
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 6),
+                                  isDense: true,
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                obscureText: true,
+                                style: TextStyle(color: Colors.black),
+                                onChanged: (value) {
+                                  password = value;
+                                },
+                              ),
+                            ),
+                        ],)
                       ),
                       Container(
                         height: 20,
@@ -168,7 +198,19 @@ class _LoginPageState extends State<LoginPage> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
                                 )),
-                            onPressed: () {
+                            onPressed: () async {
+                              FocusScopeNode currentFocus = FocusScope.of(context);
+                              if(_formkey.currentState!.validate()){
+                                bool loginOk = await login();
+                                if(!currentFocus.hasPrimaryFocus){
+                                  currentFocus.unfocus();
+                                }
+                                if (loginOk){
+                                  Navigator.pushReplacement(context, 
+                                    MaterialPageRoute(
+                                      builder: (context) => HomePage()));
+                                }
+                              }
 
                               Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
@@ -202,4 +244,20 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
+  Future<bool> login() async{
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    var url = Uri.parse(' '); // URL DO LOGIN
+    var resposta = await http.post(url, 
+    body: {
+      'username': _nicknameController.text, 
+      'password': _passwordController.text},);
+
+    if(resposta.statusCode == 200){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
