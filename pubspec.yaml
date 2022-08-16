@@ -77,6 +77,10 @@ flutter:
     - assets/images/lata.png
     - assets/images/plane.png
     - assets/images/pineapple.png
+    - assets/images/abajur.png
+    - assets/images/antena.png
+    - assets/images/apito.png
+    - assets/images/arroz.png
 
     - assets/audios/paula01.mp3
     - assets/audios/paula02.ogg
