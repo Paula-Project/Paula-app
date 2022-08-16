@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/views/components/ButtonNext.dart';
 import 'package:paula/app/views/components/CardImage.dart';
+import '../components/BoxDialog.dart';
 import '../home_page.dart';
 
 class TaskPage extends StatefulWidget {
@@ -118,11 +119,50 @@ class _TaskPageState extends State<TaskPage> {
               ),
               Container(
                 margin: const EdgeInsets.only(top: 30.0),
-                child: const SizedBox(
+                child: Container(
                     width: 200,
                     height: 40,
-                    child: ButtonNext(
-                      pageWidget: HomePage(),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 50.0,
+                          width: 150.0,
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                                foregroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.white),
+                                backgroundColor: cardSelected != 0
+                                    ? MaterialStateProperty.all<Color>(
+                                        Colors.blue)
+                                    : MaterialStateProperty.all<Color>(
+                                        Colors.grey),
+                                shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        side: BorderSide.none))),
+                            child: const Text('VERIFICAR',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                )),
+                            onPressed: () {
+                              if (cardSelected != 0) {
+                                showDialog<String>(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (BuildContext context) => BoxDialog(
+                                      feedback:
+                                          (cardSelected == 3) ? true : false,
+                                      resposta: "Árvore"),
+                                );
+                              }
+                            },
+                          ),
+                        ),
+                      ],
                     )),
               ),
             ],

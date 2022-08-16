@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/views/lessons/congratulations_page.dart';
 
 class BoxDialog extends StatelessWidget {
   const BoxDialog({Key? key, required this.feedback, required this.resposta})
@@ -9,18 +10,16 @@ class BoxDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     String message = 'VOCÊ ACERTOU!';
     String messageButton = 'CONTINUAR';
     Color color = Colors.green;
     double padding = 15.0;
-    if(!feedback) {
+    if (!feedback) {
       message = 'Incorreto \n Resposta: $resposta';
       messageButton = 'TENTAR DE NOVO';
       color = Colors.red;
       padding = 0;
     }
-
 
     return AlertDialog(
       insetPadding: EdgeInsets.zero,
@@ -39,9 +38,8 @@ class BoxDialog extends StatelessWidget {
             child: Text(
               message,
               textAlign: TextAlign.center,
-              style: TextStyle(color: color,
-              fontSize: 30,
-              fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: color, fontSize: 30, fontWeight: FontWeight.bold),
             ),
           );
         },
@@ -49,9 +47,17 @@ class BoxDialog extends StatelessWidget {
       actionsAlignment: MainAxisAlignment.center,
       actions: <Widget>[
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                builder: (BuildContext context) => const CongratulationsPage(),
+              ),
+              (route) => false,
+            );
+          },
           style: ButtonStyle(
-            padding: MaterialStateProperty.resolveWith((states) => EdgeInsets.fromLTRB(50,20,50,20)),
+            padding: MaterialStateProperty.resolveWith(
+                (states) => EdgeInsets.fromLTRB(50, 20, 50, 20)),
             backgroundColor: MaterialStateColor.resolveWith((states) => color),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
