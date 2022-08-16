@@ -14,18 +14,7 @@ class WelcomePage_part1 extends StatefulWidget {
   State<WelcomePage_part1> createState() => _WelcomePage_part1State();
 }
 
-class _WelcomePage_part1State extends State<WelcomePage_part1>{
-
-  @override
-  void initState() {
-    super.initState();
-    verificarToken().then((value) {
-      if(value){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
-      }
-    });
-  }
-
+class _WelcomePage_part1State extends State<WelcomePage_part1> {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -114,13 +103,12 @@ class _WelcomePage_part1State extends State<WelcomePage_part1>{
     );
   }
 
-  Future<bool> verificarToken() async{
+  Future<bool> verificarToken() async {
     SharedPreferences sharedPreference = await SharedPreferences.getInstance();
-    if(sharedPreference.getString('token') != null){
+    if (sharedPreference.getString('token') != null) {
       return true;
-    } else{
+    } else {
       return false;
     }
   }
-
 }

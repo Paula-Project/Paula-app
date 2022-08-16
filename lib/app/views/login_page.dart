@@ -83,97 +83,96 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       Form(
-                        key: _formkey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                                Container(
-                              height: 20,
-                            ),
-                            const Text("Apelido",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w300)),
-                            Container(
-                              decoration: const BoxDecoration(boxShadow: [
-                                BoxShadow(
-                                  color: Color.fromARGB(50, 0, 0, 0),
-                                  blurRadius: 15,
-                                  offset: Offset(0, 5),
-                                ),
-                              ]),
-                              child: TextFormField(
-                                controller: _nicknameController,
-                                keyboardType: TextInputType.text,
-                                validator: (nickname){
-                                  if(nickname == null || nickname.isEmpty){
-                                    return 'Por favor, digite seu apelido';
-                                  }
-                                  return null;
-                                },
-                                decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 6),
-                                  fillColor: Colors.white,
-                                  filled: true,
-                                  border: OutlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(8)),
-                                  isDense: true,
-                                ),
-                                style: TextStyle(color: Colors.black),
-                                onChanged: (value) {
-                                  nickname = value;
-                                },
+                          key: _formkey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                height: 20,
                               ),
-                            ),
-                            Container(height: 10),
-                            const Text("Senha",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w300)),
-                            Container(
-                              decoration: const BoxDecoration(boxShadow: [
-                                BoxShadow(
-                                  color: Color.fromARGB(50, 0, 0, 0),
-                                  blurRadius: 15,
-                                  offset: Offset(0, 5),
-                                ),
-                              ]),
-                              child: TextFormField(
-                                controller: _passwordController,
-                                keyboardType: TextInputType.text,
-                                validator: (senha){
-                                  if(senha == null || senha.isEmpty){
-                                    return 'Por favor, digite sua senha';
-                                  } else if(senha.length < 4){
-                                    return 'Por favor, digite uma senha maior';
-                                  }
-                                  return null;
-                                },
-
-                                decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 6),
-                                  isDense: true,
-                                  fillColor: Colors.white,
-                                  filled: true,
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide.none,
-                                    borderRadius: BorderRadius.circular(8),
+                              const Text("Apelido",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w300)),
+                              Container(
+                                decoration: const BoxDecoration(boxShadow: [
+                                  BoxShadow(
+                                    color: Color.fromARGB(50, 0, 0, 0),
+                                    blurRadius: 15,
+                                    offset: Offset(0, 5),
                                   ),
+                                ]),
+                                child: TextFormField(
+                                  controller: _nicknameController,
+                                  keyboardType: TextInputType.text,
+                                  validator: (nickname) {
+                                    if (nickname == null || nickname.isEmpty) {
+                                      return 'Por favor, digite seu apelido';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: InputDecoration(
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        vertical: 10, horizontal: 6),
+                                    fillColor: Colors.white,
+                                    filled: true,
+                                    border: OutlineInputBorder(
+                                        borderSide: BorderSide.none,
+                                        borderRadius: BorderRadius.circular(8)),
+                                    isDense: true,
+                                  ),
+                                  style: TextStyle(color: Colors.black),
+                                  onChanged: (value) {
+                                    nickname = value;
+                                  },
                                 ),
-                                obscureText: true,
-                                style: TextStyle(color: Colors.black),
-                                onChanged: (value) {
-                                  password = value;
-                                },
                               ),
-                            ),
-                        ],)
-                      ),
+                              Container(height: 10),
+                              const Text("Senha",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w300)),
+                              Container(
+                                decoration: const BoxDecoration(boxShadow: [
+                                  BoxShadow(
+                                    color: Color.fromARGB(50, 0, 0, 0),
+                                    blurRadius: 15,
+                                    offset: Offset(0, 5),
+                                  ),
+                                ]),
+                                child: TextFormField(
+                                  controller: _passwordController,
+                                  keyboardType: TextInputType.text,
+                                  validator: (senha) {
+                                    if (senha == null || senha.isEmpty) {
+                                      return 'Por favor, digite sua senha';
+                                    } else if (senha.length < 4) {
+                                      return 'Por favor, digite uma senha maior';
+                                    }
+                                    return null;
+                                  },
+                                  decoration: InputDecoration(
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        vertical: 10, horizontal: 6),
+                                    isDense: true,
+                                    fillColor: Colors.white,
+                                    filled: true,
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
+                                  obscureText: true,
+                                  style: TextStyle(color: Colors.black),
+                                  onChanged: (value) {
+                                    password = value;
+                                  },
+                                ),
+                              ),
+                            ],
+                          )),
                       Container(
                         height: 20,
                       ),
@@ -199,26 +198,25 @@ class _LoginPageState extends State<LoginPage> {
                                   fontWeight: FontWeight.w600,
                                 )),
                             onPressed: () async {
-                              FocusScopeNode currentFocus = FocusScope.of(context);
-                              if(_formkey.currentState!.validate()){
-                                bool loginOk = await login();
-                                if(!currentFocus.hasPrimaryFocus){
+                              FocusScopeNode currentFocus =
+                                  FocusScope.of(context);
+                              if (_formkey.currentState!.validate()) {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HomePage()));
+
+                                /*bool loginOk = await login();
+                                if (!currentFocus.hasPrimaryFocus) {
                                   currentFocus.unfocus();
                                 }
-                                if (loginOk){
-                                  Navigator.pushReplacement(context, 
-                                    MaterialPageRoute(
-                                      builder: (context) => HomePage()));
-                                }
+                                if (loginOk) {
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HomePage()));
+                                }*/
                               }
-
-                              Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const HomePage(),
-                                ),
-                                (route) => false,
-                              );
                             },
                           ),
                         ),
@@ -245,19 +243,21 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Future<bool> login() async{
+  Future<bool> login() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var url = Uri.parse(' '); // URL DO LOGIN
-    var resposta = await http.post(url, 
-    body: {
-      'username': _nicknameController.text, 
-      'password': _passwordController.text},);
+    var resposta = await http.post(
+      url,
+      body: {
+        'username': _nicknameController.text,
+        'password': _passwordController.text
+      },
+    );
 
-    if(resposta.statusCode == 200){
+    if (resposta.statusCode == 200) {
       return true;
     } else {
       return false;
     }
   }
-
 }
