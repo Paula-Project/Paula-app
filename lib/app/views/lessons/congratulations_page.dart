@@ -46,8 +46,10 @@ class _CongratulationsPageState extends State<CongratulationsPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.asset('images/fireworks.png', scale: 6.0),
-                          Image.asset('images/fireworks.png', scale: 6.0),
+                          Image.asset('assets/images/fireworks.png',
+                              scale: 6.0),
+                          Image.asset('assets/images/fireworks.png',
+                              scale: 6.0),
                         ],
                       ),
                     ),
@@ -66,7 +68,8 @@ class _CongratulationsPageState extends State<CongratulationsPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 30),
-                      child: Image.asset('images/fireworks.png', scale: 6.0),
+                      child: Image.asset('assets/images/fireworks.png',
+                          scale: 6.0),
                     ),
                   ],
                 ),
