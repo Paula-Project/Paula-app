@@ -81,6 +81,7 @@ flutter:
     - assets/images/antena.png
     - assets/images/apito.png
     - assets/images/arroz.png
+    - assets/images/fireworks.png
 
     - assets/audios/paula01.mp3
     - assets/audios/paula02.ogg
