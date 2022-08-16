@@ -18,9 +18,9 @@ class _SingupPageState extends State<SingupPage> {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Color.fromARGB(255, 100, 171, 226),
-            Color.fromARGB(255, 41, 171, 226)
-          ]));
+        Color.fromARGB(255, 100, 171, 226),
+        Color.fromARGB(255, 41, 171, 226)
+      ]));
   List<bool> isSelected = List.generate(3, (int) => false);
   String nickname = '';
   String password = '';
@@ -35,18 +35,12 @@ class _SingupPageState extends State<SingupPage> {
     return Material(
       child: Container(
         decoration: BackgroundBlueGradiend,
-        width: MediaQuery
-            .of(context)
-            .size
-            .width,
-        height: MediaQuery
-            .of(context)
-            .size
-            .height,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: Column(
           children: [
             const Expanded(
-              flex: 3,
+              flex: 4,
               child: PaulaTitleComponent(),
             ),
             Expanded(
@@ -77,10 +71,9 @@ class _SingupPageState extends State<SingupPage> {
                       ),
                     ),
                     Container(
-                      height: 20,
+                      height: 80,
                     ),
                     Expanded(
-
                       child: Container(
                         width: double.infinity,
                         color: Colors.transparent,
@@ -101,8 +94,9 @@ class _SingupPageState extends State<SingupPage> {
                                         Container(
                                           height: 20,
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                                        const Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(15, 0, 15, 0),
                                           child: Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text("Seu Nome",
@@ -110,14 +104,16 @@ class _SingupPageState extends State<SingupPage> {
                                                     color: Colors.blueAccent,
                                                     fontSize: 25,
                                                     fontFamily: "Nunito",
-                                                    fontWeight: FontWeight.w500)),
+                                                    fontWeight:
+                                                        FontWeight.w500)),
                                           ),
                                         ),
                                         Container(
                                           decoration:
-                                          const BoxDecoration(boxShadow: [
+                                              const BoxDecoration(boxShadow: [
                                             BoxShadow(
-                                              color: Color.fromARGB(50, 0, 0, 0),
+                                              color:
+                                                  Color.fromARGB(50, 0, 0, 0),
                                               blurRadius: 15,
                                               offset: Offset(0, 5),
                                             ),
@@ -125,77 +121,27 @@ class _SingupPageState extends State<SingupPage> {
                                           child: TextField(
                                             decoration: InputDecoration(
                                               contentPadding:
-                                              const EdgeInsets.symmetric(
-                                                  vertical: 15,
-                                                  horizontal: 4),
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 15,
+                                                      horizontal: 4),
                                               isDense: true,
                                               fillColor: Colors.white,
                                               filled: true,
                                               border: OutlineInputBorder(
                                                 borderSide: BorderSide.none,
                                                 borderRadius:
-                                                BorderRadius.circular(8),
+                                                    BorderRadius.circular(8),
                                               ),
                                             ),
                                             obscureText: true,
                                             style: const TextStyle(
                                                 color: Colors.black),
-                                            onChanged: (value) {
-                                            },
+                                            onChanged: (value) {},
                                           ),
                                         ),
                                         Container(
                                           height: 20,
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                                          child: Align(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text("Profissão",
-                                                style: TextStyle(
-                                                    color: Colors.blueAccent,
-                                                    fontSize: 25,
-                                                    fontFamily: "Nunito",
-                                                    fontWeight: FontWeight.w500)),
-                                          ),
-                                        ),
-                                        Container(
-                                          decoration:
-                                          BoxDecoration(boxShadow: [
-                                            BoxShadow(
-                                              color: Color.fromARGB(50, 0, 0, 0),
-                                              blurRadius: 15,
-                                              offset: Offset(0, 5),
-                                            ),
-                                          ]),
-                                          child: TextField(
-                                            decoration: InputDecoration(
-                                              contentPadding:
-                                              const EdgeInsets.symmetric(
-                                                  vertical: 15,
-                                                  horizontal: 6),
-                                              isDense: true,
-                                              fillColor: Colors.white,
-                                              filled: true,
-
-                                              border: OutlineInputBorder(
-                                                borderSide: BorderSide.none,
-                                                borderRadius:
-                                                BorderRadius.circular(8),
-                                              ),
-                                            ),
-                                            obscureText: true,
-                                            style: const TextStyle(
-                                                color: Colors.black),
-                                            onChanged: (value) {
-
-                                            },
-                                          ),
-                                        ),
-                                        Container(
-                                          height: 20,
-                                        ),
-
                                         FloatingActionButton.extended(
                                           onPressed: () {
                                             DatePicker.showDatePicker(context,
@@ -203,21 +149,17 @@ class _SingupPageState extends State<SingupPage> {
                                                 minTime: DateTime(1910, 1, 1),
                                                 maxTime: DateTime(2022, 12, 31),
                                                 onChanged: (date) {
-                                                  print('change $date');
-                                                  setState(() {
-                                                    pickeddate = "${date.day}";
-                                                  });
-                                                },
-                                                onConfirm: (date) {
-                                                  print('confirm $date');
-                                                  setState(() {
-                                                    pickeddate =
-                                                    "Picked Date is : ${date
-                                                        .day}/${date.month}/${date
-                                                        .year}";
-                                                  });
-                                                },
-                                                currentTime: DateTime.now());
+                                              print('change $date');
+                                              setState(() {
+                                                pickeddate = "${date.day}";
+                                              });
+                                            }, onConfirm: (date) {
+                                              print('confirm $date');
+                                              setState(() {
+                                                pickeddate =
+                                                    "Picked Date is : ${date.day}/${date.month}/${date.year}";
+                                              });
+                                            }, currentTime: DateTime.now());
                                           },
                                           label: Text(
                                             "Data de Nascimento",
@@ -233,8 +175,9 @@ class _SingupPageState extends State<SingupPage> {
                                         Container(
                                           height: 20,
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                                        const Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(15, 0, 15, 0),
                                           child: Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text("Gênero",
@@ -242,20 +185,23 @@ class _SingupPageState extends State<SingupPage> {
                                                     color: Colors.blueAccent,
                                                     fontSize: 25,
                                                     fontFamily: "Nunito",
-                                                    fontWeight: FontWeight.w500)),
+                                                    fontWeight:
+                                                        FontWeight.w500)),
                                           ),
                                         ),
                                         Container(
                                           height: 20,
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 30, bottom: 30),
+                                          padding: const EdgeInsets.only(
+                                              top: 30, bottom: 30),
                                           child: Transform.scale(
                                             scale: 2.5,
                                             child: ToggleButtons(
                                               children: <Widget>[
                                                 Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
                                                   children: <Widget>[
                                                     Icon(
                                                       Icons.boy_outlined,
@@ -263,53 +209,70 @@ class _SingupPageState extends State<SingupPage> {
                                                     ),
                                                     Text("HOMEM",
                                                         style: TextStyle(
-                                                            color: Colors.blueAccent,
+                                                            color: Colors
+                                                                .blueAccent,
                                                             fontSize: 7,
-                                                            fontFamily: "Nunito",
-                                                            fontWeight: FontWeight.w500)
-                                                    ),
+                                                            fontFamily:
+                                                                "Nunito",
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500)),
                                                   ],
                                                 ),
                                                 Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
                                                   children: [
                                                     Icon(
                                                       Icons.girl_outlined,
-                                                      color: Colors.grey,),
+                                                      color: Colors.grey,
+                                                    ),
                                                     Text("MULHER",
                                                         style: TextStyle(
-                                                            color: Colors.blueAccent,
+                                                            color: Colors
+                                                                .blueAccent,
                                                             fontSize: 7,
-                                                            fontFamily: "Nunito",
-                                                            fontWeight: FontWeight.w500)
-                                                    ),
+                                                            fontFamily:
+                                                                "Nunito",
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500)),
                                                   ],
                                                 ),
                                                 Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
                                                   children: [
                                                     Icon(
-                                                      Icons.transgender_outlined,
+                                                      Icons
+                                                          .transgender_outlined,
                                                       color: Colors.grey,
                                                     ),
                                                     Text("OUTRO",
                                                         style: TextStyle(
-                                                            color: Colors.blueAccent,
+                                                            color: Colors
+                                                                .blueAccent,
                                                             fontSize: 7,
-                                                            fontFamily: "Nunito",
-                                                            fontWeight: FontWeight.w500)
-                                                    ),
+                                                            fontFamily:
+                                                                "Nunito",
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500)),
                                                   ],
                                                 ),
-
                                               ],
                                               onPressed: (int index) {
                                                 setState(() {
-                                                  for (int buttonIndex = 0; buttonIndex < isSelected.length; buttonIndex++) {
+                                                  for (int buttonIndex = 0;
+                                                      buttonIndex <
+                                                          isSelected.length;
+                                                      buttonIndex++) {
                                                     if (buttonIndex == index) {
-                                                      isSelected[buttonIndex] = true;
+                                                      isSelected[buttonIndex] =
+                                                          true;
                                                     } else {
-                                                      isSelected[buttonIndex] = false;
+                                                      isSelected[buttonIndex] =
+                                                          false;
                                                     }
                                                   }
                                                 });
@@ -326,22 +289,28 @@ class _SingupPageState extends State<SingupPage> {
                                           height: 50,
                                           child: ElevatedButton(
                                             onPressed: () {
-                                              Navigator.push(context,
+                                              Navigator.push(
+                                                  context,
                                                   MaterialPageRoute(
-                                                    builder: (BuildContext context) => const SingupPage2(),
-                                                  )
-                                              );
+                                                    builder: (BuildContext
+                                                            context) =>
+                                                        const SingupPage2(),
+                                                  ));
                                             },
                                             onHover: (hover) {},
                                             style: ButtonStyle(
                                               foregroundColor:
-                                              MaterialStateProperty.all<Color>(Colors.white),
+                                                  MaterialStateProperty.all<
+                                                      Color>(Colors.white),
                                               backgroundColor:
-                                              MaterialStateProperty.all<Color>(Colors.blue),
-                                              shape:
-                                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                  MaterialStateProperty.all<
+                                                      Color>(Colors.blue),
+                                              shape: MaterialStateProperty.all<
+                                                      RoundedRectangleBorder>(
                                                   RoundedRectangleBorder(
-                                                      borderRadius: BorderRadius.circular(10),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
                                                       side: BorderSide.none)),
                                             ),
                                             child: const Text("Próximo",

@@ -16,27 +16,20 @@ class _SingupPageState2 extends State<SingupPage2> {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Color.fromARGB(255, 100, 171, 226),
-            Color.fromARGB(255, 41, 171, 226)
-          ]));
+        Color.fromARGB(255, 100, 171, 226),
+        Color.fromARGB(255, 41, 171, 226)
+      ]));
   List<bool> isSelected = List.generate(3, (int) => false);
   String nickname = '';
   String password = '';
 
   @override
   Widget build(BuildContext context) {
-
     return Material(
       child: Container(
         decoration: BackgroundBlueGradiend,
-        width: MediaQuery
-            .of(context)
-            .size
-            .width,
-        height: MediaQuery
-            .of(context)
-            .size
-            .height,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: Column(
           children: [
             const Expanded(
@@ -50,31 +43,34 @@ class _SingupPageState2 extends State<SingupPage2> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Center(
-                      child: Column(
-                        children: const [
-                          Text("Informações de Acesso",
-                              style: TextStyle(
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Center(
+                        child: Column(
+                          children: const [
+                            Text("Informações de Acesso",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 30,
+                                    fontFamily: "Nunito",
+                                    fontWeight: FontWeight.w500)),
+                            Text(
+                                "Você usará essas informações para acessar a Paula Novamente",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 30,
-                                  fontFamily: "Nunito",
-                                  fontWeight: FontWeight.w500)),
-                          Text("Você usará essas informações para acessar a Paula Novamente",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                height: 1.5,
-                                fontWeight: FontWeight.w300,
-                              )),
-                        ],
+                                  fontSize: 20,
+                                  height: 1.5,
+                                  fontWeight: FontWeight.w300,
+                                )),
+                          ],
+                        ),
                       ),
                     ),
                     Container(
                       height: 80,
                     ),
                     Expanded(
-
                       child: Container(
                         width: double.infinity,
                         color: Colors.transparent,
@@ -96,7 +92,8 @@ class _SingupPageState2 extends State<SingupPage2> {
                                           height: 20,
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                                          padding: const EdgeInsets.fromLTRB(
+                                              15, 0, 15, 0),
                                           child: Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text("Apelido",
@@ -104,14 +101,16 @@ class _SingupPageState2 extends State<SingupPage2> {
                                                     color: Colors.blueAccent,
                                                     fontSize: 25,
                                                     fontFamily: "Nunito",
-                                                    fontWeight: FontWeight.w500)),
+                                                    fontWeight:
+                                                        FontWeight.w500)),
                                           ),
                                         ),
                                         Container(
                                           decoration:
-                                          const BoxDecoration(boxShadow: [
+                                              const BoxDecoration(boxShadow: [
                                             BoxShadow(
-                                              color: Color.fromARGB(50, 0, 0, 0),
+                                              color:
+                                                  Color.fromARGB(50, 0, 0, 0),
                                               blurRadius: 15,
                                               offset: Offset(0, 5),
                                             ),
@@ -119,30 +118,30 @@ class _SingupPageState2 extends State<SingupPage2> {
                                           child: TextField(
                                             decoration: InputDecoration(
                                               contentPadding:
-                                              const EdgeInsets.symmetric(
-                                                  vertical: 15,
-                                                  horizontal: 4),
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 15,
+                                                      horizontal: 4),
                                               isDense: true,
                                               fillColor: Colors.white,
                                               filled: true,
                                               border: OutlineInputBorder(
                                                 borderSide: BorderSide.none,
                                                 borderRadius:
-                                                BorderRadius.circular(8),
+                                                    BorderRadius.circular(8),
                                               ),
                                             ),
                                             obscureText: true,
                                             style: const TextStyle(
                                                 color: Colors.black),
-                                            onChanged: (value) {
-                                            },
+                                            onChanged: (value) {},
                                           ),
                                         ),
                                         Container(
                                           height: 20,
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                                          padding: const EdgeInsets.fromLTRB(
+                                              15, 0, 15, 0),
                                           child: Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text("Senha",
@@ -150,14 +149,15 @@ class _SingupPageState2 extends State<SingupPage2> {
                                                     color: Colors.blueAccent,
                                                     fontSize: 25,
                                                     fontFamily: "Nunito",
-                                                    fontWeight: FontWeight.w500)),
+                                                    fontWeight:
+                                                        FontWeight.w500)),
                                           ),
                                         ),
                                         Container(
-                                          decoration:
-                                          BoxDecoration(boxShadow: [
+                                          decoration: BoxDecoration(boxShadow: [
                                             BoxShadow(
-                                              color: Color.fromARGB(50, 0, 0, 0),
+                                              color:
+                                                  Color.fromARGB(50, 0, 0, 0),
                                               blurRadius: 15,
                                               offset: Offset(0, 5),
                                             ),
@@ -165,32 +165,30 @@ class _SingupPageState2 extends State<SingupPage2> {
                                           child: TextField(
                                             decoration: InputDecoration(
                                               contentPadding:
-                                              const EdgeInsets.symmetric(
-                                                  vertical: 15,
-                                                  horizontal: 6),
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 15,
+                                                      horizontal: 6),
                                               isDense: true,
                                               fillColor: Colors.white,
                                               filled: true,
-
                                               border: OutlineInputBorder(
                                                 borderSide: BorderSide.none,
                                                 borderRadius:
-                                                BorderRadius.circular(8),
+                                                    BorderRadius.circular(8),
                                               ),
                                             ),
                                             obscureText: true,
                                             style: const TextStyle(
                                                 color: Colors.black),
-                                            onChanged: (value) {
-
-                                            },
+                                            onChanged: (value) {},
                                           ),
                                         ),
                                         Container(
                                           height: 20,
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                                          padding: const EdgeInsets.fromLTRB(
+                                              15, 0, 15, 0),
                                           child: Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text("Confirmar Senha",
@@ -198,14 +196,15 @@ class _SingupPageState2 extends State<SingupPage2> {
                                                     color: Colors.blueAccent,
                                                     fontSize: 25,
                                                     fontFamily: "Nunito",
-                                                    fontWeight: FontWeight.w500)),
+                                                    fontWeight:
+                                                        FontWeight.w500)),
                                           ),
                                         ),
                                         Container(
-                                          decoration:
-                                          BoxDecoration(boxShadow: [
+                                          decoration: BoxDecoration(boxShadow: [
                                             BoxShadow(
-                                              color: Color.fromARGB(50, 0, 0, 0),
+                                              color:
+                                                  Color.fromARGB(50, 0, 0, 0),
                                               blurRadius: 15,
                                               offset: Offset(0, 5),
                                             ),
@@ -213,25 +212,22 @@ class _SingupPageState2 extends State<SingupPage2> {
                                           child: TextField(
                                             decoration: InputDecoration(
                                               contentPadding:
-                                              const EdgeInsets.symmetric(
-                                                  vertical: 15,
-                                                  horizontal: 6),
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 15,
+                                                      horizontal: 6),
                                               isDense: true,
                                               fillColor: Colors.white,
                                               filled: true,
-
                                               border: OutlineInputBorder(
                                                 borderSide: BorderSide.none,
                                                 borderRadius:
-                                                BorderRadius.circular(8),
+                                                    BorderRadius.circular(8),
                                               ),
                                             ),
                                             obscureText: true,
                                             style: const TextStyle(
                                                 color: Colors.black),
-                                            onChanged: (value) {
-
-                                            },
+                                            onChanged: (value) {},
                                           ),
                                         ),
                                         Container(
@@ -242,22 +238,28 @@ class _SingupPageState2 extends State<SingupPage2> {
                                           height: 50,
                                           child: ElevatedButton(
                                             onPressed: () {
-                                              Navigator.push(context,
+                                              Navigator.push(
+                                                  context,
                                                   MaterialPageRoute(
-                                                    builder: (BuildContext context) => const HomePage(),
-                                                  )
-                                              );
+                                                    builder: (BuildContext
+                                                            context) =>
+                                                        const HomePage(),
+                                                  ));
                                             },
                                             onHover: (hover) {},
                                             style: ButtonStyle(
                                               foregroundColor:
-                                              MaterialStateProperty.all<Color>(Colors.white),
+                                                  MaterialStateProperty.all<
+                                                      Color>(Colors.white),
                                               backgroundColor:
-                                              MaterialStateProperty.all<Color>(Colors.blue),
-                                              shape:
-                                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                  MaterialStateProperty.all<
+                                                      Color>(Colors.blue),
+                                              shape: MaterialStateProperty.all<
+                                                      RoundedRectangleBorder>(
                                                   RoundedRectangleBorder(
-                                                      borderRadius: BorderRadius.circular(10),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
                                                       side: BorderSide.none)),
                                             ),
                                             child: const Text("Cadastrar",
