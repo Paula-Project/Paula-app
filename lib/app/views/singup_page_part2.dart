@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'components/paulaTitle.dart';
 import 'home_page.dart';
+import 'package:flutter/services.dart';
 
 class SingupPage2 extends StatefulWidget {
   const SingupPage2({Key? key}) : super(key: key);
@@ -59,12 +60,28 @@ class _SingupPageState2 extends State<SingupPage2> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Colors.white,
+<<<<<<< Updated upstream
                                   fontSize: 20,
                                   height: 1.5,
                                   fontWeight: FontWeight.w300,
                                 )),
                           ],
                         ),
+=======
+                                  fontSize: 30,
+                                  fontFamily: "Nunito",
+                                  fontWeight: FontWeight.w500)),
+                          Text(
+                              "Você usará essas informações para acessar a Paula Novamente",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                height: 1.5,
+                                fontWeight: FontWeight.w300,
+                              )),
+                        ],
+>>>>>>> Stashed changes
                       ),
                     ),
                     Container(
@@ -91,9 +108,15 @@ class _SingupPageState2 extends State<SingupPage2> {
                                         Container(
                                           height: 20,
                                         ),
+<<<<<<< Updated upstream
                                         Padding(
                                           padding: const EdgeInsets.fromLTRB(
                                               15, 0, 15, 0),
+=======
+                                        const Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(15, 0, 15, 0),
+>>>>>>> Stashed changes
                                           child: Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text("Apelido",
@@ -115,7 +138,14 @@ class _SingupPageState2 extends State<SingupPage2> {
                                               offset: Offset(0, 5),
                                             ),
                                           ]),
-                                          child: TextField(
+                                          child: TextFormField(
+                                            maxLength: 20,
+                                            inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]'))],
+                                            validator: (value){
+                                              if (value!.isEmpty) return ' Informe o nome';
+                                              if(value.length < 3) return 'Tamanho inferior a 3';
+                                              return null;
+                                            },
                                             decoration: InputDecoration(
                                               contentPadding:
                                                   const EdgeInsets.symmetric(
@@ -130,7 +160,6 @@ class _SingupPageState2 extends State<SingupPage2> {
                                                     BorderRadius.circular(8),
                                               ),
                                             ),
-                                            obscureText: true,
                                             style: const TextStyle(
                                                 color: Colors.black),
                                             onChanged: (value) {},
@@ -139,9 +168,15 @@ class _SingupPageState2 extends State<SingupPage2> {
                                         Container(
                                           height: 20,
                                         ),
+<<<<<<< Updated upstream
                                         Padding(
                                           padding: const EdgeInsets.fromLTRB(
                                               15, 0, 15, 0),
+=======
+                                        const Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(15, 0, 15, 0),
+>>>>>>> Stashed changes
                                           child: Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text("Senha",
@@ -154,7 +189,12 @@ class _SingupPageState2 extends State<SingupPage2> {
                                           ),
                                         ),
                                         Container(
+<<<<<<< Updated upstream
                                           decoration: BoxDecoration(boxShadow: [
+=======
+                                          decoration:
+                                              const BoxDecoration(boxShadow: [
+>>>>>>> Stashed changes
                                             BoxShadow(
                                               color:
                                                   Color.fromARGB(50, 0, 0, 0),
@@ -186,9 +226,15 @@ class _SingupPageState2 extends State<SingupPage2> {
                                         Container(
                                           height: 20,
                                         ),
+<<<<<<< Updated upstream
                                         Padding(
                                           padding: const EdgeInsets.fromLTRB(
                                               15, 0, 15, 0),
+=======
+                                        const Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(15, 0, 15, 0),
+>>>>>>> Stashed changes
                                           child: Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text("Confirmar Senha",
@@ -201,7 +247,12 @@ class _SingupPageState2 extends State<SingupPage2> {
                                           ),
                                         ),
                                         Container(
+<<<<<<< Updated upstream
                                           decoration: BoxDecoration(boxShadow: [
+=======
+                                          decoration:
+                                              const BoxDecoration(boxShadow: [
+>>>>>>> Stashed changes
                                             BoxShadow(
                                               color:
                                                   Color.fromARGB(50, 0, 0, 0),
