@@ -97,7 +97,6 @@ class _SingupPageState extends State<SingupPage> {
                                         const Padding(
                                           padding:
                                               EdgeInsets.fromLTRB(15, 0, 15, 0),
-n
                                           child: Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text("Seu Nome",
