@@ -33,10 +33,12 @@ dependencies:
     sdk: flutter
 
   page_transition: "^2.0.9"
+  audioplayers: ^1.0.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  get:
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +69,25 @@ flutter:
     - assets/images/Avatar-Maker(1).png
     - assets/images/Avatar-Maker(2).png
     - assets/images/Avatar-Maker(4).png
+
+    - assets/images/arvore.png
+    - assets/images/oculos.png
+    - assets/images/uva.png
+    - assets/images/escada.png
+    - assets/images/lata.png
+    - assets/images/plane.png
+    - assets/images/pineapple.png
+
+    - assets/audios/paula01.mp3
+    - assets/audios/paula02.ogg
+
+    - assets/audios/aviao.mp3
+    - assets/audios/abacaxi.mp3
+    - assets/audios/lata.mp3
+    - assets/audios/uva.mp3
+    - assets/audios/arvore.mp3
+    - assets/audios/escada.mp3
+    - assets/audios/oculos.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
