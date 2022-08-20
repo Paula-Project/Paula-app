@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:paula/app/views/components/Input.dart';
 import 'components/paulaTitle.dart';
 import 'home_page.dart';
 import 'package:flutter/services.dart';
@@ -20,7 +21,7 @@ class _SingupPageState2 extends State<SingupPage2> {
         Color.fromARGB(255, 100, 171, 226),
         Color.fromARGB(255, 41, 171, 226)
       ]));
-  List<bool> isSelected = List.generate(3, (int) => false);
+  List<bool> isSelected = List.generate(3, (int index) => false);
   String nickname = '';
   String password = '';
 
@@ -60,14 +61,12 @@ class _SingupPageState2 extends State<SingupPage2> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Colors.white,
-
                                   fontSize: 20,
                                   height: 1.5,
                                   fontWeight: FontWeight.w300,
                                 )),
                           ],
                         ),
-
                       ),
                     ),
                     Container(
@@ -94,20 +93,18 @@ class _SingupPageState2 extends State<SingupPage2> {
                                         Container(
                                           height: 20,
                                         ),
-
-                                        Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              15, 0, 15, 0),
-
+                                        const Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(5, 0, 0, 0),
                                           child: Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text("Apelido",
                                                 style: TextStyle(
-                                                    color: Colors.blueAccent,
+                                                    color: Colors.blue,
                                                     fontSize: 25,
                                                     fontFamily: "Nunito",
                                                     fontWeight:
-                                                        FontWeight.w500)),
+                                                        FontWeight.w300)),
                                           ),
                                         ),
                                         Container(
@@ -115,34 +112,32 @@ class _SingupPageState2 extends State<SingupPage2> {
                                               const BoxDecoration(boxShadow: [
                                             BoxShadow(
                                               color:
-                                                  Color.fromARGB(50, 0, 0, 0),
-                                              blurRadius: 15,
+                                                  Color.fromARGB(30, 0, 0, 0),
+                                              blurRadius: 5,
                                               offset: Offset(0, 5),
                                             ),
                                           ]),
                                           child: TextFormField(
-                                            maxLength: 20,
-
-                                            inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]'))],
-                                            validator: (value){
-                                              if (value!.isEmpty) return ' Informe o nome';
-                                              if(value.length < 3) return 'Tamanho inferior a 3';
+                                            inputFormatters: [
+                                              FilteringTextInputFormatter.allow(
+                                                  RegExp(r'[a-zA-Z0-9]'))
+                                            ],
+                                            validator: (value) {
+                                              if (value!.isEmpty)
+                                                return ' Informe o nome';
+                                              if (value.length < 3)
+                                                return 'Tamanho inferior a 3';
 
                                               return null;
                                             },
-                                            decoration: InputDecoration(
+                                            decoration: const InputDecoration(
                                               contentPadding:
-                                                  const EdgeInsets.symmetric(
+                                                  EdgeInsets.symmetric(
                                                       vertical: 15,
                                                       horizontal: 4),
                                               isDense: true,
                                               fillColor: Colors.white,
                                               filled: true,
-                                              border: OutlineInputBorder(
-                                                borderSide: BorderSide.none,
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
                                             ),
                                             style: const TextStyle(
                                                 color: Colors.black),
@@ -152,113 +147,34 @@ class _SingupPageState2 extends State<SingupPage2> {
                                         Container(
                                           height: 20,
                                         ),
-                                        const Padding(
-                                          padding:
-                                              EdgeInsets.fromLTRB(15, 0, 15, 0),
-                                          child: Align(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text("Senha",
-                                                style: TextStyle(
-                                                    color: Colors.blueAccent,
-                                                    fontSize: 25,
-                                                    fontFamily: "Nunito",
-                                                    fontWeight:
-                                                        FontWeight.w500)),
-                                          ),
-                                        ),
-                                        Container(
-                                          decoration: BoxDecoration(boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Color.fromARGB(50, 0, 0, 0),
-                                              blurRadius: 15,
-                                              offset: Offset(0, 5),
-                                            ),
-                                          ]),
-                                          child: TextField(
-                                            decoration: InputDecoration(
-                                              contentPadding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 15,
-                                                      horizontal: 6),
-                                              isDense: true,
-                                              fillColor: Colors.white,
-                                              filled: true,
-                                              border: OutlineInputBorder(
-                                                borderSide: BorderSide.none,
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                            ),
-                                            obscureText: true,
-                                            style: const TextStyle(
-                                                color: Colors.black),
-                                            onChanged: (value) {},
-                                          ),
+                                        const Input(
+                                          labelInputTxt: "Senha",
+                                          obscureTxt: true,
                                         ),
                                         Container(
                                           height: 20,
                                         ),
-                                        const Padding(
-                                          padding:
-                                              EdgeInsets.fromLTRB(15, 0, 15, 0),
-                                          child: Align(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text("Confirmar Senha",
-                                                style: TextStyle(
-                                                    color: Colors.blueAccent,
-                                                    fontSize: 25,
-                                                    fontFamily: "Nunito",
-                                                    fontWeight:
-                                                        FontWeight.w500)),
-                                          ),
+                                        const Input(
+                                          labelInputTxt: "Confirmar senha",
+                                          obscureTxt: true,
                                         ),
                                         Container(
-                                          decoration: BoxDecoration(boxShadow: [
-
-                                            BoxShadow(
-                                              color:
-                                                  Color.fromARGB(50, 0, 0, 0),
-                                              blurRadius: 15,
-                                              offset: Offset(0, 5),
-                                            ),
-                                          ]),
-                                          child: TextField(
-                                            decoration: InputDecoration(
-                                              contentPadding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 15,
-                                                      horizontal: 6),
-                                              isDense: true,
-                                              fillColor: Colors.white,
-                                              filled: true,
-                                              border: OutlineInputBorder(
-                                                borderSide: BorderSide.none,
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                            ),
-                                            obscureText: true,
-                                            style: const TextStyle(
-                                                color: Colors.black),
-                                            onChanged: (value) {},
-                                          ),
-                                        ),
-                                        Container(
-                                          height: 20,
+                                          height: 40,
                                         ),
                                         SizedBox(
                                           width: 160,
                                           height: 50,
                                           child: ElevatedButton(
                                             onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (BuildContext
-                                                            context) =>
-                                                        const HomePage(),
-                                                  ));
+                                              Navigator.of(context)
+                                                  .pushAndRemoveUntil(
+                                                MaterialPageRoute(
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          HomePage(),
+                                                ),
+                                                (route) => false,
+                                              );
                                             },
                                             onHover: (hover) {},
                                             style: ButtonStyle(

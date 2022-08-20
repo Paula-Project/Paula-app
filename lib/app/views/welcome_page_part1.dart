@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'components/paulaTitle.dart';
 import 'welcome_page_part2.dart';
 
@@ -59,9 +57,6 @@ class _WelcomePage_part1State extends State<WelcomePage_part1> {
                                 type: PageTransitionType.fade,
                                 child: const WelcomePage_part2()));
                       },
-                      onHover: (hover) {
-                        print(hover);
-                      },
                       style: ButtonStyle(
                         foregroundColor:
                             MaterialStateProperty.all<Color>(Colors.blue),
@@ -90,9 +85,10 @@ class _WelcomePage_part1State extends State<WelcomePage_part1> {
                       onPressed: () {
                         Navigator.push(
                             context,
-                            PageTransition(
-                                type: PageTransitionType.leftToRight,
-                                child: const LoginPage()));
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const LoginPage(),
+                            ));
                       },
                     ),
                   )

@@ -39,6 +39,7 @@ class _AppWidgetState extends State<AppWidget> {
         fontFamily: 'Nunito',
       ),
       initialRoute: "/",
+      locale: const Locale("pt", "BR"),
       routes: {
         "/": (context) => const WelcomePage_part1(),
         "/welcome_part2": (context) => const WelcomePage_part2(),
