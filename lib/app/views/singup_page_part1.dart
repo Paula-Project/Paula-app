@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:paula/app/views/components/Input.dart';
 import 'package:paula/app/views/singup_page_part2.dart';
 import 'components/paulaTitle.dart';
-import 'package:gender_picker/source/enums.dart';
-import 'package:gender_picker/source/gender_picker.dart';
 
 class SingupPage extends StatefulWidget {
   const SingupPage({Key? key}) : super(key: key);
@@ -21,17 +21,36 @@ class _SingupPageState extends State<SingupPage> {
         Color.fromARGB(255, 100, 171, 226),
         Color.fromARGB(255, 41, 171, 226)
       ]));
-  List<bool> isSelected = List.generate(3, (int) => false);
+
   String nickname = '';
   String password = '';
+  DateTime _date = DateTime.now();
+  var selectedDateTxt;
+  List<bool> isSelected = List.generate(3, (int index) => false);
+
+  Future<Null> _selectDate(BuildContext context) async {
+    DateTime? _datePicker = await showDatePicker(
+        context: context,
+        initialDate: _date,
+        firstDate: DateTime(1910, 1, 1),
+        lastDate: DateTime.now());
+
+    if (_datePicker != null && _datePicker != _date) {
+      setState(() {
+        _date = _datePicker;
+        selectedDateTxt = DateFormat('dd/MM/yyyy').format(_datePicker);
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    selectedDateTxt = DateFormat('dd/MM/yyyy').format(_date);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    var pickeddate;
-    var pickedtime;
-    String date = "";
-    DateTime selectedDate = DateTime.now();
-
     return Material(
       child: Container(
         decoration: BackgroundBlueGradiend,
@@ -58,7 +77,7 @@ class _SingupPageState extends State<SingupPage> {
                                   color: Colors.white,
                                   fontSize: 30,
                                   fontFamily: "Nunito",
-                                  fontWeight: FontWeight.w500)),
+                                  fontWeight: FontWeight.w300)),
                           Text("Queremos te conhecer!",
                               textAlign: TextAlign.center,
                               style: TextStyle(
@@ -94,192 +113,173 @@ class _SingupPageState extends State<SingupPage> {
                                         Container(
                                           height: 20,
                                         ),
+                                        const Input(labelInputTxt: "Seu nome"),
+                                        Container(
+                                          height: 20,
+                                        ),
                                         const Padding(
                                           padding:
-                                              EdgeInsets.fromLTRB(15, 0, 15, 0),
+                                              EdgeInsets.fromLTRB(5, 0, 15, 0),
                                           child: Align(
                                             alignment: Alignment.centerLeft,
-                                            child: Text("Seu Nome",
+                                            child: Text("Data de Nascimento",
                                                 style: TextStyle(
-                                                    color: Colors.blueAccent,
+                                                    color: Colors.blue,
                                                     fontSize: 25,
                                                     fontFamily: "Nunito",
                                                     fontWeight:
-                                                        FontWeight.w500)),
+                                                        FontWeight.w300)),
                                           ),
                                         ),
                                         Container(
-                                          decoration:
-                                              const BoxDecoration(boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Color.fromARGB(50, 0, 0, 0),
-                                              blurRadius: 15,
-                                              offset: Offset(0, 5),
-                                            ),
-                                          ]),
-                                          child: TextField(
-                                            decoration: InputDecoration(
-                                              contentPadding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 15,
-                                                      horizontal: 4),
-                                              isDense: true,
-                                              fillColor: Colors.white,
-                                              filled: true,
-                                              border: OutlineInputBorder(
-                                                borderSide: BorderSide.none,
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                            ),
-                                            obscureText: true,
-                                            style: const TextStyle(
-                                                color: Colors.black),
-                                            onChanged: (value) {},
+                                          height: 5,
+                                        ),
+                                        ElevatedButton(
+                                          style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Colors.white),
+                                            foregroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Colors.blue),
                                           ),
-                                        ),
-                                        Container(
-                                          height: 20,
-                                        ),
-                                        FloatingActionButton.extended(
                                           onPressed: () {
-                                            DatePicker.showDatePicker(context,
-                                                showTitleActions: true,
-                                                minTime: DateTime(1910, 1, 1),
-                                                maxTime: DateTime(2022, 12, 31),
-                                                onChanged: (date) {
-                                              print('change $date');
-                                              setState(() {
-                                                pickeddate = "${date.day}";
-                                              });
-                                            }, onConfirm: (date) {
-                                              print('confirm $date');
-                                              setState(() {
-                                                pickeddate =
-                                                    "Picked Date is : ${date.day}/${date.month}/${date.year}";
-                                              });
-                                            }, currentTime: DateTime.now());
+                                            _selectDate(context);
                                           },
-                                          label: Text(
-                                            "Data de Nascimento",
-                                            style: TextStyle(
-                                                color: Colors.blueAccent,
-                                                fontSize: 25,
-                                                fontFamily: "Nunito",
-                                                fontWeight: FontWeight.w500),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                const Icon(
+                                                  Icons.date_range,
+                                                ),
+                                                Text(
+                                                  selectedDateTxt,
+                                                  style: const TextStyle(
+                                                      fontSize: 25,
+                                                      fontFamily: "Nunito",
+                                                      fontWeight:
+                                                          FontWeight.w300),
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                          icon: Icon(Icons.date_range),
-                                          backgroundColor: Colors.white,
                                         ),
                                         Container(
                                           height: 20,
                                         ),
                                         const Padding(
                                           padding:
-                                              EdgeInsets.fromLTRB(15, 0, 15, 0),
+                                              EdgeInsets.fromLTRB(5, 0, 15, 0),
                                           child: Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text("Gênero",
                                                 style: TextStyle(
-                                                    color: Colors.blueAccent,
+                                                    color: Colors.blue,
                                                     fontSize: 25,
                                                     fontFamily: "Nunito",
                                                     fontWeight:
-                                                        FontWeight.w500)),
+                                                        FontWeight.w300)),
                                           ),
                                         ),
                                         Container(
-                                          height: 20,
+                                          height: 5,
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 30, bottom: 30),
-                                          child: Transform.scale(
-                                            scale: 2.5,
-                                            child: ToggleButtons(
-                                              children: <Widget>[
-                                                Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: <Widget>[
-                                                    Icon(
-                                                      Icons.boy_outlined,
-                                                      color: Colors.grey,
-                                                    ),
-                                                    Text("HOMEM",
-                                                        style: TextStyle(
-                                                            color: Colors
-                                                                .blueAccent,
-                                                            fontSize: 7,
-                                                            fontFamily:
-                                                                "Nunito",
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w500)),
-                                                  ],
-                                                ),
-                                                Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Icon(
-                                                      Icons.girl_outlined,
-                                                      color: Colors.grey,
-                                                    ),
-                                                    Text("MULHER",
-                                                        style: TextStyle(
-                                                            color: Colors
-                                                                .blueAccent,
-                                                            fontSize: 7,
-                                                            fontFamily:
-                                                                "Nunito",
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w500)),
-                                                  ],
-                                                ),
-                                                Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Icon(
-                                                      Icons
-                                                          .transgender_outlined,
-                                                      color: Colors.grey,
-                                                    ),
-                                                    Text("OUTRO",
-                                                        style: TextStyle(
-                                                            color: Colors
-                                                                .blueAccent,
-                                                            fontSize: 7,
-                                                            fontFamily:
-                                                                "Nunito",
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w500)),
-                                                  ],
-                                                ),
-                                              ],
-                                              onPressed: (int index) {
-                                                setState(() {
-                                                  for (int buttonIndex = 0;
-                                                      buttonIndex <
-                                                          isSelected.length;
-                                                      buttonIndex++) {
-                                                    if (buttonIndex == index) {
-                                                      isSelected[buttonIndex] =
-                                                          true;
-                                                    } else {
-                                                      isSelected[buttonIndex] =
-                                                          false;
-                                                    }
-                                                  }
-                                                });
-                                              },
-                                              isSelected: isSelected,
+                                        ToggleButtons(
+                                          onPressed: (int index) {
+                                            setState(() {
+                                              for (int buttonIndex = 0;
+                                                  buttonIndex <
+                                                      isSelected.length;
+                                                  buttonIndex++) {
+                                                if (buttonIndex == index) {
+                                                  isSelected[buttonIndex] =
+                                                      !isSelected[buttonIndex];
+                                                } else {
+                                                  isSelected[buttonIndex] =
+                                                      false;
+                                                }
+                                              }
+                                            });
+                                          },
+                                          borderWidth: 0,
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(20)),
+                                          textStyle: const TextStyle(
+                                              fontSize: 18,
+                                              fontFamily: "Nunito",
+                                              fontWeight: FontWeight.w300),
+                                          isSelected: isSelected,
+                                          color: Colors.grey,
+                                          selectedColor: Colors.blue,
+                                          fillColor:
+                                              Color.fromARGB(25, 3, 168, 244),
+                                          hoverColor: Colors.blueAccent,
+                                          children: <Widget>[
+                                            Container(
+                                              width: (MediaQuery.of(context)
+                                                          .size
+                                                          .width -
+                                                      60) /
+                                                  3,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: const [
+                                                  Icon(
+                                                    Icons.girl_outlined,
+                                                    size: 75,
+                                                  ),
+                                                  Text(
+                                                    "MULHER",
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                          ),
+                                            Container(
+                                              width: (MediaQuery.of(context)
+                                                          .size
+                                                          .width -
+                                                      60) /
+                                                  3,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: const [
+                                                  Icon(
+                                                    Icons.boy_outlined,
+                                                    size: 75,
+                                                  ),
+                                                  Text(
+                                                    "HOMEM",
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: (MediaQuery.of(context)
+                                                          .size
+                                                          .width -
+                                                      60) /
+                                                  3,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: const [
+                                                  Icon(
+                                                    Icons.transgender_outlined,
+                                                    size: 75,
+                                                  ),
+                                                  Text(
+                                                    "OUTRO",
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                         Container(
                                           height: 20,

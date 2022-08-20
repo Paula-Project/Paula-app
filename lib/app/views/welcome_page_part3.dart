@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/views/components/DIalogTextBox.dart';
+import 'package:paula/app/views/singup_page_part1.dart';
 
 import 'components/paulaTitle.dart';
 
@@ -47,7 +48,12 @@ class WelcomePage_part3 extends StatelessWidget {
                       height: 40,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, "/singup_part1");
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const SingupPage(),
+                              ));
                         },
                         onHover: (hover) {},
                         style: ButtonStyle(
