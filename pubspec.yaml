@@ -131,6 +131,12 @@ flutter:
     - assets/audios/sucess_sound.mp3
     - assets/audios/failed_sound.mp3
 
+    - assets/alphabet/letter-a.png
+    - assets/alphabet/letter-e.png
+    - assets/alphabet/letter-i.png
+    - assets/alphabet/letter-o.png
+    - assets/alphabet/letter-u.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
