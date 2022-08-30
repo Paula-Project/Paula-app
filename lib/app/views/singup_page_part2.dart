@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:paula/app/views/components/Input.dart';
 import 'components/paulaTitle.dart';
 import 'home_page.dart';
@@ -13,7 +12,7 @@ class SingupPage2 extends StatefulWidget {
 }
 
 class _SingupPageState2 extends State<SingupPage2> {
-  static const BackgroundBlueGradiend = BoxDecoration(
+  static const backgroundBlueGradiend = BoxDecoration(
       gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
@@ -22,14 +21,19 @@ class _SingupPageState2 extends State<SingupPage2> {
         Color.fromARGB(255, 41, 171, 226)
       ]));
   List<bool> isSelected = List.generate(3, (int index) => false);
-  String nickname = '';
-  String password = '';
+
+  final GlobalKey<FormState> _key = GlobalKey<FormState>();
+
+  final TextEditingController _senhaController = TextEditingController();
+  final TextEditingController _senhaConfirmaController =
+      TextEditingController();
+  final TextEditingController _apelidoController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        decoration: BackgroundBlueGradiend,
+        decoration: backgroundBlueGradiend,
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(
@@ -83,123 +87,116 @@ class _SingupPageState2 extends State<SingupPage2> {
                                   topLeft: Radius.circular(40.0),
                                   topRight: Radius.circular(40.0),
                                 )),
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                              child: Column(
-                                children: [
-                                  Center(
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          height: 20,
-                                        ),
-                                        const Padding(
-                                          padding:
-                                              EdgeInsets.fromLTRB(5, 0, 0, 0),
-                                          child: Align(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text("Apelido",
-                                                style: TextStyle(
-                                                    color: Colors.blue,
-                                                    fontSize: 25,
-                                                    fontFamily: "Nunito",
-                                                    fontWeight:
-                                                        FontWeight.w300)),
-                                          ),
-                                        ),
-                                        Container(
-                                          decoration:
-                                              const BoxDecoration(boxShadow: [
-                                            BoxShadow(
-                                              color:
-                                                  Color.fromARGB(30, 0, 0, 0),
-                                              blurRadius: 5,
-                                              offset: Offset(0, 5),
-                                            ),
-                                          ]),
-                                          child: TextFormField(
-                                            inputFormatters: [
-                                              FilteringTextInputFormatter.allow(
-                                                  RegExp(r'[a-zA-Z0-9]'))
-                                            ],
-                                            validator: (value) {
-                                              if (value!.isEmpty)
-                                                return ' Informe o nome';
-                                              if (value.length < 3)
-                                                return 'Tamanho inferior a 3';
-
-                                              return null;
-                                            },
-                                            decoration: const InputDecoration(
-                                              contentPadding:
-                                                  EdgeInsets.symmetric(
-                                                      vertical: 15,
-                                                      horizontal: 4),
-                                              isDense: true,
-                                              fillColor: Colors.white,
-                                              filled: true,
-                                            ),
-                                            style: const TextStyle(
-                                                color: Colors.black),
-                                            onChanged: (value) {},
-                                          ),
-                                        ),
-                                        Container(
-                                          height: 20,
-                                        ),
-                                        const Input(
-                                          labelInputTxt: "Senha",
-                                          obscureTxt: true,
-                                        ),
-                                        Container(
-                                          height: 20,
-                                        ),
-                                        const Input(
-                                          labelInputTxt: "Confirmar senha",
-                                          obscureTxt: true,
-                                        ),
-                                        Container(
-                                          height: 40,
-                                        ),
-                                        SizedBox(
-                                          width: 160,
-                                          height: 50,
-                                          child: ElevatedButton(
-                                            onPressed: () {
+                            child: Form(
+                              key: _key,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(30, 20, 30, 0),
+                                child: Center(
+                                  child: Column(
+                                    children: [
+                                      Input(
+                                        labelInputTxt: 'Apelido',
+                                        controller: _apelidoController,
+                                        keyboardType: TextInputType.text,
+                                        valid: (value) {
+                                          if (value!.isEmpty) {
+                                            return ' Informe o nome';
+                                          }
+                                          if (value.length < 3) {
+                                            return 'Tamanho inferior a 3';
+                                          }
+                                          return null;
+                                        },
+                                        formatters: [
+                                          FilteringTextInputFormatter.allow(
+                                              RegExp(r'[a-zA-Z0-9]'))
+                                        ],
+                                      ),
+                                      Container(
+                                        height: 20,
+                                      ),
+                                      Input(
+                                        labelInputTxt: "Senha",
+                                        obscureTxt: true,
+                                        controller: _senhaController,
+                                        keyboardType: TextInputType.text,
+                                        valid: (value) {
+                                          if (value!.trim().isEmpty) {
+                                            return 'Informe uma Senha';
+                                          }
+                                          if (value.trim().length < 4) {
+                                            return 'Senha muito pequena';
+                                          }
+                                          return null;
+                                        },
+                                      ),
+                                      Container(
+                                        height: 20,
+                                      ),
+                                      Input(
+                                        labelInputTxt: "Confirmar senha",
+                                        obscureTxt: true,
+                                        controller: _senhaConfirmaController,
+                                        keyboardType: TextInputType.text,
+                                        valid: (value) {
+                                          if (value!.trim().isEmpty) {
+                                            return 'Informe uma Senha';
+                                          }
+                                          if (value.trim().length < 4) {
+                                            return 'Senha muito pequena';
+                                          }
+                                          if (!(_senhaConfirmaController
+                                                  .value ==
+                                              _senhaController.value)) {
+                                            return 'Senha informada esta diferente';
+                                          }
+                                          return null;
+                                        },
+                                      ),
+                                      Container(
+                                        height: 40,
+                                      ),
+                                      SizedBox(
+                                        width: 160,
+                                        height: 50,
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            if (_key.currentState!.validate()) {
                                               Navigator.of(context)
                                                   .pushAndRemoveUntil(
                                                 MaterialPageRoute(
                                                   builder:
                                                       (BuildContext context) =>
-                                                          HomePage(),
+                                                          const HomePage(),
                                                 ),
                                                 (route) => false,
                                               );
-                                            },
-                                            onHover: (hover) {},
-                                            style: ButtonStyle(
-                                              foregroundColor:
-                                                  MaterialStateProperty.all<
-                                                      Color>(Colors.white),
-                                              backgroundColor:
-                                                  MaterialStateProperty.all<
-                                                      Color>(Colors.blue),
-                                              shape: MaterialStateProperty.all<
-                                                      RoundedRectangleBorder>(
-                                                  RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      side: BorderSide.none)),
-                                            ),
-                                            child: const Text("Cadastrar",
-                                                style: TextStyle(fontSize: 25)),
+                                            }
+                                          },
+                                          onHover: (hover) {},
+                                          style: ButtonStyle(
+                                            foregroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Colors.white),
+                                            backgroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Colors.blue),
+                                            shape: MaterialStateProperty.all<
+                                                    RoundedRectangleBorder>(
+                                                RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    side: BorderSide.none)),
                                           ),
+                                          child: const Text("Cadastrar",
+                                              style: TextStyle(fontSize: 25)),
                                         ),
-                                      ],
-                                    ),
-                                  )
-                                ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             )),
                       ),

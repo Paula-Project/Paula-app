@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Input extends StatelessWidget {
   final String labelInputTxt;
   final bool obscureTxt;
-  const Input({
+  final TextEditingController controller;
+  final List<TextInputFormatter> formatters;
+  final TextInputType keyboardType;
+  String? Function(String?)? valid;
+
+  Input({
     Key? key,
     this.labelInputTxt = "",
     this.obscureTxt = false,
+    this.formatters = const [],
+    this.valid,
+    required this.controller,
+    required this.keyboardType,
   }) : super(key: key);
 
   @override
@@ -34,6 +44,7 @@ class Input extends StatelessWidget {
             ),
           ]),
           child: TextFormField(
+            controller: controller,
             autofocus: false,
             decoration: const InputDecoration(
               contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 4),
@@ -41,7 +52,10 @@ class Input extends StatelessWidget {
               fillColor: Colors.white,
               filled: true,
             ),
-            obscureText: false,
+            inputFormatters: formatters,
+            validator: valid,
+            keyboardType: keyboardType,
+            obscureText: obscureTxt,
             style: const TextStyle(color: Colors.black),
             onChanged: (value) {},
           ),
