@@ -150,6 +150,36 @@ class _TaskPageState extends State<TaskPage> {
                                 )),
                             onPressed: () {
                               if (cardSelected != 0) {
+                                showGeneralDialog(
+                                    barrierColor: Colors.black.withOpacity(0.5),
+                                    transitionBuilder:
+                                        (context, a1, a2, widget) {
+                                      final curvedValue =
+                                          Curves.easeInOut.transform(a1.value) -
+                                              1;
+                                      return Transform(
+                                        transform: Matrix4.translationValues(
+                                            0.0, (curvedValue * -300), 0.0),
+                                        child: Opacity(
+                                          opacity: a1.value,
+                                          child: BoxDialog(
+                                              feedback: (cardSelected == 3)
+                                                  ? true
+                                                  : false,
+                                              resposta: "Árvore"),
+                                        ),
+                                      );
+                                    },
+                                    transitionDuration:
+                                        const Duration(milliseconds: 250),
+                                    barrierDismissible: false,
+                                    barrierLabel: '',
+                                    context: context,
+                                    pageBuilder:
+                                        (context, animation1, animation2) {
+                                      return widget;
+                                    });
+                                /*
                                 showDialog<String>(
                                   context: context,
                                   barrierDismissible: false,
@@ -157,7 +187,7 @@ class _TaskPageState extends State<TaskPage> {
                                       feedback:
                                           (cardSelected == 3) ? true : false,
                                       resposta: "Árvore"),
-                                );
+                                );*/
                               }
                             },
                           ),
