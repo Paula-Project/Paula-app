@@ -67,7 +67,11 @@ class WelcomePage_part2 extends StatelessWidget {
                         height: 40,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, "/welcome_part3");
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.rightToLeft,
+                                    child: const WelcomePage_part3()));
                           },
                           onHover: (hover) {},
                           style: ButtonStyle(

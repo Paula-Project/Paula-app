@@ -68,10 +68,9 @@ class WelcomePage_part3 extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const SingupPage(),
-                                ));
+                                PageTransition(
+                                    type: PageTransitionType.rightToLeft,
+                                    child: const SingupPage()));
                           },
                           onHover: (hover) {},
                           style: ButtonStyle(

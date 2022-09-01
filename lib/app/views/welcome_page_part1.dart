@@ -63,7 +63,7 @@ class _WelcomePage_part1State extends State<WelcomePage_part1> {
                           Navigator.push(
                               context,
                               PageTransition(
-                                  type: PageTransitionType.fade,
+                                  type: PageTransitionType.rightToLeft,
                                   child: const WelcomePage_part2()));
                         },
                         style: ButtonStyle(
