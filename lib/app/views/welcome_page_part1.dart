@@ -94,10 +94,9 @@ class _WelcomePage_part1State extends State<WelcomePage_part1> {
                         onPressed: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    const LoginPage(),
-                              ));
+                              PageTransition(
+                                  type: PageTransitionType.rightToLeft,
+                                  child: const LoginPage()));
                         },
                       ),
                     )
