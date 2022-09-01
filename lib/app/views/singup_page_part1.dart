@@ -53,325 +53,343 @@ class _SingupPageState extends State<SingupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: backgroundBlueGradiend,
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          children: [
-            const Expanded(
-              flex: 4,
-              child: PaulaTitleComponent(),
-            ),
-            Expanded(
-              flex: 12,
-              child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: Column(
-                        children: const [
-                          Text("Vamos nos cadastrar?",
-                              style: TextStyle(
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: backgroundBlueGradiend,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            children: [
+              const Expanded(
+                flex: 4,
+                child: PaulaTitleComponent(),
+              ),
+              Expanded(
+                flex: 12,
+                child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                        child: Column(
+                          children: const [
+                            Text("Vamos nos cadastrar?",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 30,
+                                    fontFamily: "Nunito",
+                                    fontWeight: FontWeight.w300)),
+                            Text("Queremos te conhecer!",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 30,
-                                  fontFamily: "Nunito",
-                                  fontWeight: FontWeight.w300)),
-                          Text("Queremos te conhecer!",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                height: 1.5,
-                                fontWeight: FontWeight.w300,
-                              )),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 80,
-                    ),
-                    Expanded(
-                      child: Container(
-                        width: double.infinity,
-                        color: Colors.transparent,
-                        child: Container(
-                            decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(40.0),
-                                  topRight: Radius.circular(40.0),
+                                  fontSize: 20,
+                                  height: 1.5,
+                                  fontWeight: FontWeight.w300,
                                 )),
-                            child: Form(
-                              key: _key,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(30, 20, 30, 0),
-                                child: Column(
-                                  children: [
-                                    Center(
-                                      child: Column(
-                                        children: [
-                                          Input(
-                                            labelInputTxt: "Seu nome",
-                                            controller: _nameController,
-                                            valid: (value) {
-                                              if (value!.isEmpty) {
-                                                return ' Informe o nome';
-                                              }
-                                              if (value.length < 3) {
-                                                return 'Nome inválido';
-                                              }
-                                              return null;
-                                            },
-                                            keyboardType: TextInputType.text,
-                                            formatters: [
-                                              FilteringTextInputFormatter.allow(
-                                                  RegExp(r'[a-zA-Z]'))
-                                            ],
-                                          ),
-                                          const Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                                5, 20, 15, 0),
-                                            child: Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text("Data de Nascimento",
-                                                  style: TextStyle(
-                                                      color: Colors.blue,
-                                                      fontSize: 25,
-                                                      fontFamily: "Nunito",
-                                                      fontWeight:
-                                                          FontWeight.w300)),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 80,
+                      ),
+                      Expanded(
+                        child: Container(
+                          width: double.infinity,
+                          color: Colors.transparent,
+                          child: Container(
+                              decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(40.0),
+                                    topRight: Radius.circular(40.0),
+                                  )),
+                              child: Form(
+                                key: _key,
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(30, 20, 30, 0),
+                                  child: Column(
+                                    children: [
+                                      Center(
+                                        child: Column(
+                                          children: [
+                                            Input(
+                                              labelInputTxt: "Seu nome",
+                                              controller: _nameController,
+                                              valid: (value) {
+                                                if (value!.isEmpty) {
+                                                  return ' Informe o nome';
+                                                }
+                                                if (value.length < 3) {
+                                                  return 'Nome inválido';
+                                                }
+                                                return null;
+                                              },
+                                              keyboardType: TextInputType.text,
+                                              formatters: [
+                                                FilteringTextInputFormatter
+                                                    .allow(RegExp(r'[a-zA-Z]'))
+                                              ],
                                             ),
-                                          ),
-                                          Container(
-                                            height: 5,
-                                          ),
-                                          ElevatedButton(
-                                            style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all<
-                                                      Color>(Colors.white),
-                                              foregroundColor:
-                                                  MaterialStateProperty.all<
-                                                      Color>(Colors.blue),
-                                            ),
-                                            onPressed: () {
-                                              _selectDate(context);
-                                            },
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  const Icon(
-                                                    Icons.date_range,
-                                                  ),
-                                                  Text(
-                                                    selectedDateTxt,
-                                                    style: const TextStyle(
+                                            const Padding(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  5, 20, 15, 0),
+                                              child: Align(
+                                                alignment: Alignment.centerLeft,
+                                                child: Text(
+                                                    "Data de Nascimento",
+                                                    style: TextStyle(
+                                                        color: Colors.blue,
                                                         fontSize: 25,
                                                         fontFamily: "Nunito",
                                                         fontWeight:
-                                                            FontWeight.w300),
-                                                  ),
-                                                ],
+                                                            FontWeight.w300)),
                                               ),
                                             ),
-                                          ),
-                                          Container(
-                                            height: 20,
-                                          ),
-                                          const Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                                5, 0, 15, 0),
-                                            child: Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text("Gênero",
-                                                  style: TextStyle(
-                                                      color: Colors.blue,
-                                                      fontSize: 25,
-                                                      fontFamily: "Nunito",
-                                                      fontWeight:
-                                                          FontWeight.w300)),
+                                            Container(
+                                              height: 5,
                                             ),
-                                          ),
-                                          Container(
-                                            height: 5,
-                                          ),
-                                          ToggleButtons(
-                                            onPressed: (int index) {
-                                              setState(() {
-                                                for (int buttonIndex = 0;
-                                                    buttonIndex <
-                                                        isSelected.length;
-                                                    buttonIndex++) {
-                                                  if (buttonIndex == index) {
-                                                    isSelected[buttonIndex] =
-                                                        !isSelected[
-                                                            buttonIndex];
-                                                  } else {
-                                                    isSelected[buttonIndex] =
-                                                        false;
-                                                  }
-                                                }
-                                              });
-                                            },
-                                            borderWidth: 0,
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(20)),
-                                            textStyle: const TextStyle(
-                                                fontSize: 18,
-                                                fontFamily: "Nunito",
-                                                fontWeight: FontWeight.w300),
-                                            isSelected: isSelected,
-                                            color: Colors.grey,
-                                            selectedColor: Colors.blue,
-                                            fillColor: const Color.fromARGB(
-                                                25, 3, 168, 244),
-                                            hoverColor: Colors.blueAccent,
-                                            children: <Widget>[
-                                              SizedBox(
-                                                width: (MediaQuery.of(context)
-                                                            .size
-                                                            .width -
-                                                        60) /
-                                                    3,
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: const [
-                                                    Icon(
-                                                      Icons.girl_outlined,
-                                                      size: 75,
-                                                    ),
-                                                    Text(
-                                                      "MULHER",
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: (MediaQuery.of(context)
-                                                            .size
-                                                            .width -
-                                                        60) /
-                                                    3,
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: const [
-                                                    Icon(
-                                                      Icons.boy_outlined,
-                                                      size: 75,
-                                                    ),
-                                                    Text(
-                                                      "HOMEM",
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: (MediaQuery.of(context)
-                                                            .size
-                                                            .width -
-                                                        60) /
-                                                    3,
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: const [
-                                                    Icon(
-                                                      Icons
-                                                          .transgender_outlined,
-                                                      size: 75,
-                                                    ),
-                                                    Text(
-                                                      "OUTRO",
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Container(
-                                            height: 20,
-                                          ),
-                                          SizedBox(
-                                            width: 160,
-                                            height: 50,
-                                            child: ElevatedButton(
-                                              onPressed: () {
-                                                DateTime hoje = DateTime.now();
-                                                if (_key.currentState!.validate()) {
-                                                  if ((hoje.difference(_date)
-                                                      .inDays)/365 > 5 &&
-                                                      (isSelected[0] ||
-                                                          isSelected[1] ||
-                                                          isSelected[2])) {
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (BuildContext
-                                                                  context) =>
-                                                              const SingupPage2(),
-                                                        ));
-                                                  }
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    const SnackBar(
-                                                        backgroundColor:
-                                                            Color.fromARGB(255,
-                                                                41, 171, 226),
-                                                        content: Text(
-                                                          'Data de Nascimento inválida'
-                                                          ' e/ou genêro não selecionado',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.white),
-                                                        )),
-                                                  );
-                                                }
-                                              },
-                                              onHover: (hover) {},
+                                            ElevatedButton(
                                               style: ButtonStyle(
-                                                foregroundColor:
-                                                    MaterialStateProperty.all<
-                                                        Color>(Colors.white),
                                                 backgroundColor:
                                                     MaterialStateProperty.all<
+                                                        Color>(Colors.white),
+                                                foregroundColor:
+                                                    MaterialStateProperty.all<
                                                         Color>(Colors.blue),
-                                                shape: MaterialStateProperty.all<
-                                                        RoundedRectangleBorder>(
-                                                    RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        side: BorderSide.none)),
                                               ),
-                                              child: const Text("Próximo",
-                                                  style:
-                                                      TextStyle(fontSize: 25)),
+                                              onPressed: () {
+                                                _selectDate(context);
+                                              },
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    const Icon(
+                                                      Icons.date_range,
+                                                    ),
+                                                    Text(
+                                                      selectedDateTxt,
+                                                      style: const TextStyle(
+                                                          fontSize: 25,
+                                                          fontFamily: "Nunito",
+                                                          fontWeight:
+                                                              FontWeight.w300),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                                            Container(
+                                              height: 20,
+                                            ),
+                                            const Padding(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  5, 0, 15, 0),
+                                              child: Align(
+                                                alignment: Alignment.centerLeft,
+                                                child: Text("Gênero",
+                                                    style: TextStyle(
+                                                        color: Colors.blue,
+                                                        fontSize: 25,
+                                                        fontFamily: "Nunito",
+                                                        fontWeight:
+                                                            FontWeight.w300)),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 5,
+                                            ),
+                                            ToggleButtons(
+                                              onPressed: (int index) {
+                                                setState(() {
+                                                  for (int buttonIndex = 0;
+                                                      buttonIndex <
+                                                          isSelected.length;
+                                                      buttonIndex++) {
+                                                    if (buttonIndex == index) {
+                                                      isSelected[buttonIndex] =
+                                                          !isSelected[
+                                                              buttonIndex];
+                                                    } else {
+                                                      isSelected[buttonIndex] =
+                                                          false;
+                                                    }
+                                                  }
+                                                });
+                                              },
+                                              borderWidth: 0,
+                                              borderRadius:
+                                                  const BorderRadius.all(
+                                                      Radius.circular(20)),
+                                              textStyle: const TextStyle(
+                                                  fontSize: 18,
+                                                  fontFamily: "Nunito",
+                                                  fontWeight: FontWeight.w300),
+                                              isSelected: isSelected,
+                                              color: Colors.grey,
+                                              selectedColor: Colors.blue,
+                                              fillColor: const Color.fromARGB(
+                                                  25, 3, 168, 244),
+                                              hoverColor: Colors.blueAccent,
+                                              children: <Widget>[
+                                                SizedBox(
+                                                  width: (MediaQuery.of(context)
+                                                              .size
+                                                              .width -
+                                                          60) /
+                                                      3,
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: const [
+                                                      Icon(
+                                                        Icons.girl_outlined,
+                                                        size: 75,
+                                                      ),
+                                                      Text(
+                                                        "MULHER",
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: (MediaQuery.of(context)
+                                                              .size
+                                                              .width -
+                                                          60) /
+                                                      3,
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: const [
+                                                      Icon(
+                                                        Icons.boy_outlined,
+                                                        size: 75,
+                                                      ),
+                                                      Text(
+                                                        "HOMEM",
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: (MediaQuery.of(context)
+                                                              .size
+                                                              .width -
+                                                          60) /
+                                                      3,
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: const [
+                                                      Icon(
+                                                        Icons
+                                                            .transgender_outlined,
+                                                        size: 75,
+                                                      ),
+                                                      Text(
+                                                        "OUTRO",
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Container(
+                                              height: 20,
+                                            ),
+                                            SizedBox(
+                                              width: 160,
+                                              height: 50,
+                                              child: ElevatedButton(
+                                                onPressed: () {
+                                                  DateTime hoje =
+                                                      DateTime.now();
+                                                  if (_key.currentState!
+                                                      .validate()) {
+                                                    if ((hoje
+                                                                    .difference(
+                                                                        _date)
+                                                                    .inDays) /
+                                                                365 >
+                                                            5 &&
+                                                        (isSelected[0] ||
+                                                            isSelected[1] ||
+                                                            isSelected[2])) {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (BuildContext
+                                                                    context) =>
+                                                                const SingupPage2(),
+                                                          ));
+                                                    }
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      const SnackBar(
+                                                          backgroundColor:
+                                                              Color.fromARGB(
+                                                                  255,
+                                                                  41,
+                                                                  171,
+                                                                  226),
+                                                          content: Text(
+                                                            'Data de Nascimento inválida'
+                                                            ' e/ou genêro não selecionado',
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white),
+                                                          )),
+                                                    );
+                                                  }
+                                                },
+                                                onHover: (hover) {},
+                                                style: ButtonStyle(
+                                                  foregroundColor:
+                                                      MaterialStateProperty.all<
+                                                          Color>(Colors.white),
+                                                  backgroundColor:
+                                                      MaterialStateProperty.all<
+                                                          Color>(Colors.blue),
+                                                  shape: MaterialStateProperty
+                                                      .all<RoundedRectangleBorder>(
+                                                          RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
+                                                              side: BorderSide
+                                                                  .none)),
+                                                ),
+                                                child: const Text("Próximo",
+                                                    style: TextStyle(
+                                                        fontSize: 25)),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            )),
-                      ),
-                    )
-                  ]),
-            ),
-          ],
+                              )),
+                        ),
+                      )
+                    ]),
+              ),
+            ],
+          ),
         ),
       ),
     );
