@@ -43,6 +43,7 @@ class _SingupPageState extends State<SingupPage> {
 
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
+  String _gender = '';
 
   @override
   void initState() {
@@ -207,6 +208,16 @@ class _SingupPageState extends State<SingupPage> {
                                           ToggleButtons(
                                             onPressed: (int index) {
                                               setState(() {
+                                                switch (index) {
+                                                  case 0:
+                                                    _gender = "female";
+                                                    break;
+                                                  case 1:
+                                                    _gender = "male";
+                                                    break;
+                                                  case 2:
+                                                    _gender = "other";
+                                                }
                                                 for (int buttonIndex = 0;
                                                     buttonIndex <
                                                         isSelected.length;
@@ -309,18 +320,25 @@ class _SingupPageState extends State<SingupPage> {
                                             child: ElevatedButton(
                                               onPressed: () {
                                                 DateTime hoje = DateTime.now();
-                                                if (_key.currentState!.validate()) {
-                                                  if ((hoje.difference(_date)
-                                                      .inDays)/365 > 5 &&
+                                                if (_key.currentState!
+                                                    .validate()) {
+                                                  if ((hoje
+                                                                  .difference(
+                                                                      _date)
+                                                                  .inDays) /
+                                                              365 >
+                                                          5 &&
                                                       (isSelected[0] ||
                                                           isSelected[1] ||
                                                           isSelected[2])) {
-                                                    Navigator.push(
-                                                        context,
+                                                    Navigator.push(context,
                                                         MaterialPageRoute(
                                                           builder: (BuildContext
                                                                   context) =>
-                                                              const SingupPage2(),
+                                                              SingupPage2(
+                                                                name: _nameController.text,
+                                                                date: _date,
+                                                                gender: _gender,),
                                                         ));
                                                   }
                                                   ScaffoldMessenger.of(context)

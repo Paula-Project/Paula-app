@@ -1,11 +1,19 @@
+
 import 'package:flutter/material.dart';
+import 'package:paula/app/http/webclient.dart';
 import 'package:paula/app/views/components/Input.dart';
 import 'components/paulaTitle.dart';
 import 'home_page.dart';
 import 'package:flutter/services.dart';
 
 class SingupPage2 extends StatefulWidget {
-  const SingupPage2({Key? key}) : super(key: key);
+  final String name;
+  final DateTime date;
+  final String gender;
+
+  const SingupPage2(
+      {this.name = '', required this.date, required this.gender, Key? key})
+      : super(key: key);
 
   @override
   State<SingupPage2> createState() => _SingupPageState2();
@@ -31,7 +39,8 @@ class _SingupPageState2 extends State<SingupPage2> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return Scaffold(
+        body: SingleChildScrollView(
       child: Container(
         decoration: backgroundBlueGradiend,
         width: MediaQuery.of(context).size.width,
@@ -161,17 +170,27 @@ class _SingupPageState2 extends State<SingupPage2> {
                                         width: 160,
                                         height: 50,
                                         child: ElevatedButton(
-                                          onPressed: () {
+                                          onPressed: () async {
                                             if (_key.currentState!.validate()) {
-                                              Navigator.of(context)
-                                                  .pushAndRemoveUntil(
-                                                MaterialPageRoute(
-                                                  builder:
-                                                      (BuildContext context) =>
-                                                          const HomePage(),
-                                                ),
-                                                (route) => false,
-                                              );
+                                              var usuario =
+                                                  await cadastroUsuario();
+                                              if (usuario != null) {
+                                                Navigator.of(context)
+                                                    .pushAndRemoveUntil(
+                                                  MaterialPageRoute(
+                                                    builder: (BuildContextcontext) =>
+                                                        const HomePage(),), (route) => false,);
+                                              } else {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  const SnackBar(
+                                                      backgroundColor:
+                                                          Color.fromARGB(255, 41, 171, 226),
+                                                      content: Text('Apelido ja cadastrado',
+                                                        style: TextStyle(color: Colors.white,fontSize: 30),
+                                                      )),
+                                                );
+                                              }
                                             }
                                           },
                                           onHover: (hover) {},
@@ -206,6 +225,6 @@ class _SingupPageState2 extends State<SingupPage2> {
           ],
         ),
       ),
-    );
+    ));
   }
 }

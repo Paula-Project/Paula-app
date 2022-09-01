@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/http/webclient.dart';
 import 'package:paula/app/views/components/DIalogTextBox.dart';
 import 'package:paula/app/views/singup_page_part1.dart';
 
@@ -52,7 +53,7 @@ class WelcomePage_part3 extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    const SingupPage(),
+                                const SingupPage(),
                               ));
                         },
                         onHover: (hover) {},
