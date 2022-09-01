@@ -50,44 +50,44 @@ class _SingupPageState2 extends State<SingupPage2> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Center(
-                          child: Column(
-                            children: const [
-                              Text("Informações de Acesso",
-                                  style: TextStyle(
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Center(
+                            child: Column(
+                              children: const [
+                                Text("Informações de Acesso",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 30,
+                                        fontFamily: "Nunito",
+                                        fontWeight: FontWeight.w500)),
+                                Text(
+                                    "Você usará essas informações para acessar a Paula Novamente",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 30,
-                                      fontFamily: "Nunito",
-                                      fontWeight: FontWeight.w500)),
-                              Text(
-                                  "Você usará essas informações para acessar a Paula Novamente",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    height: 1.5,
-                                    fontWeight: FontWeight.w300,
-                                  )),
-                            ],
+                                      fontSize: 20,
+                                      height: 1.5,
+                                      fontWeight: FontWeight.w300,
+                                    )),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                       Container(
-                        height: 80,
-                      ),
-                      Expanded(
+                        width: double.infinity,
+                        color: Colors.transparent,
                         child: Container(
-                          width: double.infinity,
-                          color: Colors.transparent,
-                          child: Container(
-                              decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(40.0),
-                                    topRight: Radius.circular(40.0),
-                                  )),
+                            decoration: const BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(40.0),
+                                  topRight: Radius.circular(40.0),
+                                )),
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom: 50),
                               child: Form(
                                 key: _key,
                                 child: Padding(
@@ -163,13 +163,14 @@ class _SingupPageState2 extends State<SingupPage2> {
                                           height: 50,
                                           child: ElevatedButton(
                                             onPressed: () {
-                                              if (_key.currentState!.validate()) {
+                                              if (_key.currentState!
+                                                  .validate()) {
                                                 Navigator.of(context)
                                                     .pushAndRemoveUntil(
                                                   MaterialPageRoute(
-                                                    builder:
-                                                        (BuildContext context) =>
-                                                            const HomePage(),
+                                                    builder: (BuildContext
+                                                            context) =>
+                                                        const HomePage(),
                                                   ),
                                                   (route) => false,
                                                 );
@@ -199,8 +200,8 @@ class _SingupPageState2 extends State<SingupPage2> {
                                     ),
                                   ),
                                 ),
-                              )),
-                        ),
+                              ),
+                            )),
                       )
                     ]),
               ),
