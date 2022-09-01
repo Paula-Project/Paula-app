@@ -12,8 +12,7 @@ class LessonIntroduction extends StatefulWidget {
 }
 
 class _LessonIntroductionState extends State<LessonIntroduction> {
-  final _timer =
-      Timer(const Duration(seconds: 5), () => {Get.to(const Lesson())});
+  //final _timer =   Timer(const Duration(seconds: 5), () => {Get.to(const Lesson())});
 
   @override
   Widget build(BuildContext context) {
@@ -52,15 +51,49 @@ class _LessonIntroductionState extends State<LessonIntroduction> {
               const SizedBox(
                 height: 10.0,
               ),
-              Container(
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                ),
-                alignment: Alignment.bottomCenter,
-                width: (MediaQuery.of(context).size.width * 0.55),
-                child: Image.asset(
-                  'assets/images/Avatar-Maker(2).png',
-                  scale: 1,
+              Expanded(
+                child: Stack(
+                  alignment: Alignment.bottomRight,
+                  children: [
+                    Container(
+                      alignment: Alignment.bottomCenter,
+                      width: (MediaQuery.of(context).size.width),
+                      height: 275,
+                      child: Image.asset(
+                        'assets/images/Avatar-Maker(2).png',
+                        scale: 1,
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 30,
+                      right: 30,
+                      child: Container(
+                        height: 60,
+                        width: 60,
+                        decoration: const BoxDecoration(
+                          color: Colors.lightBlue,
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                        ),
+                        child: Center(
+                          child: IconButton(
+                            color: Colors.white,
+                            iconSize: 40,
+                            icon: const Icon(
+                              Icons.arrow_forward_outlined,
+                            ),
+                            onPressed: () async {
+                              Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) => const Lesson(),
+                                ),
+                                (route) => false,
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
