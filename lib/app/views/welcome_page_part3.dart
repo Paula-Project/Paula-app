@@ -6,28 +6,29 @@ import 'welcome_page_part2.dart';
 
 import 'components/paulaTitle.dart';
 
-class WelcomePage_part3 extends StatelessWidget {
-  const WelcomePage_part3({Key? key}) : super(key: key);
+class WelcomePagePart3 extends StatelessWidget {
+  const WelcomePagePart3({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onPanUpdate: (details){
-        if(details.delta.dx < 0)
+      onPanUpdate: (details) {
+        if (details.delta.dx < 0) {
           Navigator.push(
               context,
               PageTransition(
                   type: PageTransitionType.rightToLeft,
                   child: const SingupPage()));
-        if(details.delta.dx > 0)
+        }
+        if (details.delta.dx > 0) {
           Navigator.push(
               context,
               PageTransition(
                   type: PageTransitionType.leftToRight,
-                  child: const WelcomePage_part2()));
+                  child: const WelcomePagePart2()));
+        }
       },
       child: Material(
-
         child: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -78,11 +79,11 @@ class WelcomePage_part3 extends StatelessWidget {
                                 MaterialStateProperty.all<Color>(Colors.blue),
                             backgroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white),
-                            shape:
-                                MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        side: BorderSide.none)),
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    side: BorderSide.none)),
                           ),
                           child: const Text("Vamos lá!",
                               style: TextStyle(fontSize: 20)),

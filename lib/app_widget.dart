@@ -41,9 +41,9 @@ class _AppWidgetState extends State<AppWidget> {
       initialRoute: "/",
       locale: const Locale("pt", "BR"),
       routes: {
-        "/": (context) => const WelcomePage_part1(),
-        "/welcome_part2": (context) => const WelcomePage_part2(),
-        "/welcome_part3": (context) => const WelcomePage_part3(),
+        "/": (context) => const WelcomePagePart1(),
+        "/welcome_part2": (context) => const WelcomePagePart2(),
+        "/welcome_part3": (context) => const WelcomePagePart3(),
         "/login": (context) => const LoginPage(),
         "/singup_part1": (context) => const SingupPage(),
         "/home": (context) => const HomePage()

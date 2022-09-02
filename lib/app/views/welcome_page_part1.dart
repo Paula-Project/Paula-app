@@ -5,24 +5,20 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'components/paulaTitle.dart';
 import 'welcome_page_part2.dart';
 
-class WelcomePage_part1 extends StatefulWidget {
-  const WelcomePage_part1({Key? key}) : super(key: key);
+class WelcomePagePart1 extends StatelessWidget {
+  const WelcomePagePart1({Key? key}) : super(key: key);
 
-  @override
-  State<WelcomePage_part1> createState() => _WelcomePage_part1State();
-}
-
-class _WelcomePage_part1State extends State<WelcomePage_part1> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onPanUpdate: (details){
-        if(details.delta.dx < 0)
+      onPanUpdate: (details) {
+        if (details.delta.dx < 0) {
           Navigator.push(
               context,
               PageTransition(
                   type: PageTransitionType.rightToLeft,
-                  child: const WelcomePage_part2()));
+                  child: const WelcomePagePart2()));
+        }
       },
       child: Material(
         child: Container(
@@ -48,11 +44,13 @@ class _WelcomePage_part1State extends State<WelcomePage_part1> {
                   children: [
                     Container(
                         width: (MediaQuery.of(context).size.width - 150),
-                        child: Image.asset('assets/images/Avatar-Maker(2).png')),
+                        child:
+                            Image.asset('assets/images/Avatar-Maker(2).png')),
                     const SizedBox(height: 20),
-                    Text(
+                    const Text(
                       "Seja Bem Vindo!",
-                      style: TextStyle(fontSize: 35, fontWeight: FontWeight.w500),
+                      style:
+                          TextStyle(fontSize: 35, fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(height: 30),
                     SizedBox(
@@ -64,7 +62,7 @@ class _WelcomePage_part1State extends State<WelcomePage_part1> {
                               context,
                               PageTransition(
                                   type: PageTransitionType.rightToLeft,
-                                  child: const WelcomePage_part2()));
+                                  child: const WelcomePagePart2()));
                         },
                         style: ButtonStyle(
                           foregroundColor:
@@ -77,8 +75,8 @@ class _WelcomePage_part1State extends State<WelcomePage_part1> {
                                       borderRadius: BorderRadius.circular(10),
                                       side: BorderSide.none)),
                         ),
-                        child:
-                            const Text("Avançar", style: TextStyle(fontSize: 20)),
+                        child: const Text("Avançar",
+                            style: TextStyle(fontSize: 20)),
                       ),
                     ),
                     Center(

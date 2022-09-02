@@ -5,29 +5,30 @@ import 'components/DIalogTextBox.dart';
 import 'welcome_page_part3.dart';
 import 'welcome_page_part1.dart';
 
-
 import 'components/paulaTitle.dart';
 
-class WelcomePage_part2 extends StatelessWidget {
-  const WelcomePage_part2({Key? key}) : super(key: key);
+class WelcomePagePart2 extends StatelessWidget {
+  const WelcomePagePart2({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: GestureDetector(
-        onPanUpdate: (details){
-          if(details.delta.dx < 0)
+        onPanUpdate: (details) {
+          if (details.delta.dx < 0) {
             Navigator.push(
                 context,
                 PageTransition(
                     type: PageTransitionType.rightToLeft,
-                    child: const WelcomePage_part3()));
-          if(details.delta.dx >0)
+                    child: const WelcomePagePart3()));
+          }
+          if (details.delta.dx > 0) {
             Navigator.push(
                 context,
                 PageTransition(
                     type: PageTransitionType.leftToRight,
-                    child: const WelcomePage_part1()));
+                    child: const WelcomePagePart1()));
+          }
         },
         child: Container(
           decoration: const BoxDecoration(
@@ -71,7 +72,7 @@ class WelcomePage_part2 extends StatelessWidget {
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.rightToLeft,
-                                    child: const WelcomePage_part3()));
+                                    child: const WelcomePagePart3()));
                           },
                           onHover: (hover) {},
                           style: ButtonStyle(
@@ -79,11 +80,11 @@ class WelcomePage_part2 extends StatelessWidget {
                                 MaterialStateProperty.all<Color>(Colors.blue),
                             backgroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white),
-                            shape:
-                                MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        side: BorderSide.none)),
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    side: BorderSide.none)),
                           ),
                           child: const Text("Próximo",
                               style: TextStyle(fontSize: 20)),
