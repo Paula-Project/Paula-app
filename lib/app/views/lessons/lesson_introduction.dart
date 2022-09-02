@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:paula/app/views/components/DIalogTextBoxDown.dart';
 import 'package:get/get.dart';
-import 'package:paula/app/views/lessons/lesson.dart';
+import 'package:paula/app/views/lessons/lesson_a.dart';
 
 class LessonIntroduction extends StatefulWidget {
   const LessonIntroduction({Key? key}) : super(key: key);
