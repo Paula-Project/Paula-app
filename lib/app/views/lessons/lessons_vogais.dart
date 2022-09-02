@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:paula/app/views/components/lesson_button.dart';
+import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/lessons/lesson_introduction.dart';
-
-import '../home_page.dart';
+import 'package:paula/app/views/person_data_page.dart';
 
 class LessonsVogais extends StatelessWidget {
   const LessonsVogais({Key? key}) : super(key: key);
@@ -19,8 +20,7 @@ class LessonsVogais extends StatelessWidget {
               Navigator.push(
                   context,
                   PageTransition(
-                      type: PageTransitionType.fade,
-                      child: const HomePage()));
+                      type: PageTransitionType.fade, child: const HomePage()));
             },
             child: const Icon(
               Icons.logout,
@@ -31,7 +31,7 @@ class LessonsVogais extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(right: 20),
               child: SizedBox(
-                width: 120,
+                width: 150,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
@@ -51,96 +51,35 @@ class LessonsVogais extends StatelessWidget {
               ),
             ),
           ]),
-      body: Column(
-        children: [
-          Container(
-            height: 40,
-          ),
-          SizedBox(
-            width: 300,
-            height: 60,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    PageTransition(
-                        type: PageTransitionType.fade,
-                        child: const LessonIntroduction()));
-              },
-              style: ButtonStyle(
-                foregroundColor:
-                MaterialStateProperty.all<Color>(Colors.white),
-                backgroundColor:
-                MaterialStateProperty.all<Color>(Colors.blue),
-                shape:
-                MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        side: BorderSide.none)),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              LessonButton(
+                isActive: true,
+                textContent: 'A - E - O',
+                lessonPage: LessonIntroduction(),
               ),
-              child:
-              const Text("A - E - U", style: TextStyle(fontSize: 20)),
-            ),
-          ),
-          Container(
-            height: 40,
-          ),
-          SizedBox(
-            width: 300,
-            height: 60,
-            child: ElevatedButton(
-              onPressed: () {
-              },
-              style: ButtonStyle(
-                foregroundColor:
-                MaterialStateProperty.all<Color>(Colors.white),
-                backgroundColor:
-                MaterialStateProperty.all<Color>(Colors.blue),
-                shape:
-                MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        side: BorderSide.none)),
+              LessonButton(
+                isActive: false,
+                textContent: 'I - U',
+                lessonPage: HomePage(),
               ),
-              child:
-              const Text("I - O", style: TextStyle(fontSize: 20)),
-            ),
-          ),
-          Container(
-            height: 40,
-          ),
-          SizedBox(
-            width: 300,
-            height: 60,
-            child: ElevatedButton(
-              onPressed: () {
-              },
-              style: ButtonStyle(
-                foregroundColor:
-                MaterialStateProperty.all<Color>(Colors.white),
-                backgroundColor:
-                MaterialStateProperty.all<Color>(Colors.blue),
-                shape:
-                MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        side: BorderSide.none)),
+              LessonButton(
+                isActive: false,
+                textContent: 'LIÇÃO FINAL',
+                lessonPage: HomePage(),
               ),
-              child:
-              const Text("LIÇÃO FINAL", style: TextStyle(fontSize: 20)),
-            ),
+            ],
           ),
-          Container(
-            height: 40,
-          ),
-        ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: 1,
           backgroundColor: Colors.white,
           elevation: 100,
           iconSize: 40,
-          selectedItemColor: Colors.blueAccent,
+          selectedItemColor: Colors.black,
           unselectedItemColor: Colors.black,
           onTap: (index) {
             switch (index) {
@@ -149,8 +88,17 @@ class LessonsVogais extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (BuildContext context) => const HomePage(),
                   ),
-                      (route) => false,
+                  (route) => false,
                 );
+                break;
+              case 1:
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => const PersonData(),
+                  ),
+                  (route) => false,
+                );
+                break;
             }
           },
           items: const [
