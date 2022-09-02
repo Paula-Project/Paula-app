@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paula/app/views/lessons/lesson_introduction.dart';
+import 'package:paula/app/views/lessons/lessons_vogais.dart';
 import 'package:paula/app/views/login_page.dart';
 import 'package:paula/app/views/person_data_page.dart';
 import 'components/module_button.dart';
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
           padding: EdgeInsets.fromLTRB(50, 50, 50, 50),
           child: Column(children: const [
             ModuleButton(
-                Alignment.centerLeft, "Vogais", LessonIntroduction(), true),
+                Alignment.centerLeft, "Vogais", LessonsVogais(), true),
             ModuleButton(Alignment.centerRight, "Consoantes \n Parte 1",
                 HomePage(), false),
             ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 2",
