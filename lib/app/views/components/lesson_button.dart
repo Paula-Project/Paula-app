@@ -34,7 +34,7 @@ class LessonButton extends StatelessWidget {
             foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
             backgroundColor: isActive
                 ? MaterialStateProperty.all<Color>(Colors.blue)
-                : MaterialStateProperty.all<Color>(Colors.white70),
+                : MaterialStateProperty.all<Color>(Colors.grey),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
