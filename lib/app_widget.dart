@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paula/app/views/lessons/lesson_a.dart';
+import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 import 'package:paula/app/views/singup_page_part1.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app/views/welcome_page_part1.dart';
@@ -41,7 +42,7 @@ class _AppWidgetState extends State<AppWidget> {
       initialRoute: "/",
       locale: const Locale("pt", "BR"),
       routes: {
-        "/": (context) => const WelcomePagePart1(),
+        "/": (context) => const TaskVogalSelection(),
         "/welcome_part2": (context) => const WelcomePagePart2(),
         "/welcome_part3": (context) => const WelcomePagePart3(),
         "/login": (context) => const LoginPage(),
