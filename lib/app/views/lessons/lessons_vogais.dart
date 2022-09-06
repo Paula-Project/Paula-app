@@ -4,6 +4,7 @@ import 'package:paula/app/views/components/lesson_button.dart';
 import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/lessons/lesson_introduction.dart';
 import 'package:paula/app/views/person_data_page.dart';
+import 'package:paula/app/views/lessons/LessonFinal.dart';
 
 class LessonsVogais extends StatelessWidget {
   const LessonsVogais({Key? key}) : super(key: key);
@@ -58,17 +59,17 @@ class LessonsVogais extends StatelessWidget {
               LessonButton(
                 isActive: true,
                 textContent: 'A - E - O',
-                lessonPage: LessonIntroduction(),
+                lessonPage: const LessonIntroduction(),
               ),
               LessonButton(
                 isActive: false,
                 textContent: 'I - U',
-                lessonPage: HomePage(),
+                lessonPage: const HomePage(),
               ),
               LessonButton(
-                isActive: false,
+                isActive: true,
                 textContent: 'LIÇÃO FINAL',
-                lessonPage: HomePage(),
+                lessonPage: const LessonFinal(imageUrl: '',),
               ),
             ],
           ),
