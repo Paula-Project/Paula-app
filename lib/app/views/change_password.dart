@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/views/components/Input.dart';
+import 'package:paula/app/views/login_page.dart';
 import 'components/paulaTitle.dart';
 import 'home_page.dart';
 import 'package:flutter/services.dart';
@@ -170,7 +171,7 @@ class _ChangePassword extends State<ChangePassword> {
                                                   MaterialPageRoute(
                                                     builder: (BuildContext
                                                     context) =>
-                                                    const HomePage(),
+                                                    const LoginPage(),
                                                   ),
                                                       (route) => false,
                                                 );
@@ -192,8 +193,8 @@ class _ChangePassword extends State<ChangePassword> {
                                                           10),
                                                       side: BorderSide.none)),
                                             ),
-                                            child: const Text("Cadastrar",
-                                                style: TextStyle(fontSize: 25)),
+                                            child: const Text("Redefinir Senha",
+                                                style: TextStyle(fontSize: 18)),
                                           ),
                                         ),
                                       ],
