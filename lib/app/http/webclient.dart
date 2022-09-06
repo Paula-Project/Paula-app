@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http_interceptor/http_interceptor.dart';
 
+import 'package:paula/app/model/usuario.dart';
 import '../model/usuarioAPI.dart';
 
 
@@ -21,12 +21,34 @@ class LoggingInterceptor implements InterceptorContract {
   }
 }
 
-Future<UsuarioAPI?> cadastroUsuario() async {
+Future<UsuarioAPI?> loginUsuario(String username, String password) async {
   final Client client =
   InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
-  final String clienteJson = jsonEncode(
-      {"username":"caiov","password":"123456","gender":"male","name":"caiov","birthdate":"2010-08-03","age":12});
+  final String clienteJson = jsonEncode({"username":username,"password":password});
+
+  final Response response = await client.post(
+      Uri.http('127.0.0.1:8000', '/login/'),
+      headers: {'Content-type': 'application/json'},
+      body: clienteJson);
+
+  Map<String, dynamic> json = jsonDecode(response.body);
+
+  if(response.statusCode == 200){
+    return UsuarioAPI(json['name'], json['username'], json['gender'], json['age'],
+        json['birthdate'], id: json['id'], token: json['token']);
+  }
+
+
+  return null;
+}
+
+
+Future<UsuarioAPI?> cadastroUsuario(Usuario usuario) async {
+  final Client client =
+  InterceptedClient.build(interceptors: [LoggingInterceptor()]);
+
+  final String clienteJson = jsonEncode(usuario.mapJson());
 
   final Response response = await client.post(
       Uri.http('127.0.0.1:8000', '/cadastro/'),
@@ -35,11 +57,10 @@ Future<UsuarioAPI?> cadastroUsuario() async {
 
   Map<String, dynamic> json = jsonDecode(response.body);
 
-  if(response.statusCode == 400){
-    return null;
+  if(response.statusCode == 201){
+    return UsuarioAPI(json['name'], json['username'], json['gender'], json['age'],
+        json['birthdate']);
   }
 
-
-  return UsuarioAPI(json['name'], json['username'], json['gender'], json['age'],
-      json['birthdate']);
+  return null;
 }

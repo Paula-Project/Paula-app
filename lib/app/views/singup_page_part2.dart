@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/http/webclient.dart';
+import 'package:paula/app/model/usuario.dart';
+import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/components/Input.dart';
+import 'package:provider/provider.dart';
 import 'components/paulaTitle.dart';
 import 'home_page.dart';
 import 'package:flutter/services.dart';
@@ -169,9 +172,7 @@ class _SingupPageState2 extends State<SingupPage2> {
                                         child: ElevatedButton(
                                           onPressed: () async {
                                             if (_key.currentState!.validate()) {
-                                              var usuario =
-                                                  await cadastroUsuario();
-                                              if (usuario != null) {
+                                              if (await cadastro()) {
                                                 Navigator.of(context)
                                                     .pushAndRemoveUntil(
                                                   MaterialPageRoute(
@@ -231,5 +232,24 @@ class _SingupPageState2 extends State<SingupPage2> {
         ),
       ),
     );
+  }
+
+  Future<bool> cadastro() async {
+    var usuarioLogado = await cadastroUsuario(Usuario(
+        widget.name,
+        _apelidoController.text,
+        widget.gender,
+        _senhaController.text,
+        widget.date));
+
+    if (usuarioLogado != null) {
+      print(usuarioLogado);
+      var listaDeClientes = Provider.of<UsuarioState>(context, listen: false);
+      listaDeClientes.adicionaUsuario(usuarioLogado);
+
+      return true;
+    } else {
+      return false;
+    }
   }
 }
