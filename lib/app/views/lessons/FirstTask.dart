@@ -1,5 +1,5 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:paula/app/views/components/ButtonNext.dart';
 import 'package:paula/app/views/components/CardImage.dart';
 import '../components/BoxDialog.dart';
@@ -13,7 +13,23 @@ class FirstTask extends StatefulWidget {
 }
 
 class _FirstTaskState extends State<FirstTask> {
+  AudioPlayer? audioPlayer;
   var cardSelected = 0;
+
+  _runAudio(String path) async {
+    try {
+      await audioPlayer?.play(AssetSource(path));
+    } catch (error) {
+      print(error.toString());
+    }
+  }
+
+  @override
+  void initState() {
+    audioPlayer = AudioPlayer();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,23 +40,25 @@ class _FirstTaskState extends State<FirstTask> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 15.0),
+          padding: const EdgeInsets.only(
+              top: 60.0, bottom: 40.0, left: 15.0, right: 15.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                height: (MediaQuery.of(context).size.height) * 0.17,
-                width: (MediaQuery.of(context).size.width) * 0.38,
-                padding: const EdgeInsets.fromLTRB(0,30,0,30),
-
-                decoration: const BoxDecoration(
-                    color: Color.fromRGBO(37, 85, 124, 1),
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-                child: const FittedBox(
-
-                  child: Icon(
-
-                      Icons.volume_up_outlined),
+              MaterialButton(
+                onPressed: () {
+                  _runAudio("audios/marqueA.ogg");
+                },
+                child: Container(
+                  height: (MediaQuery.of(context).size.height) * 0.17,
+                  width: (MediaQuery.of(context).size.width) * 0.38,
+                  padding: const EdgeInsets.fromLTRB(0, 30, 0, 30),
+                  decoration: const BoxDecoration(
+                      color: Color.fromRGBO(37, 85, 124, 1),
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                  child: const FittedBox(
+                    child: Icon(Icons.volume_up_outlined),
+                  ),
                 ),
               ),
               Row(
@@ -51,7 +69,7 @@ class _FirstTaskState extends State<FirstTask> {
                       CardImage(
                         imageUrl: 'assets/alphabet/letter-a.png',
                         scale: 5.0,
-                        audioUrl: 'oculos.mp3',
+                        audioUrl: '',
                         isSelected: cardSelected == 1 ? true : false,
                         onPress: () {
                           setState(() {
@@ -65,7 +83,7 @@ class _FirstTaskState extends State<FirstTask> {
                     children: <Widget>[
                       CardImage(
                         imageUrl: 'assets/alphabet/letter-e.png',
-                        audioUrl: 'uva.mp3',
+                        audioUrl: '',
                         scale: 5.0,
                         isSelected: cardSelected == 2 ? true : false,
                         onPress: () {
@@ -85,7 +103,7 @@ class _FirstTaskState extends State<FirstTask> {
                     children: [
                       CardImage(
                         imageUrl: 'assets/alphabet/letter-i.png',
-                        audioUrl: 'arvore.mp3',
+                        audioUrl: '',
                         scale: 5.0,
                         isSelected: cardSelected == 3 ? true : false,
                         onPress: () {
@@ -101,7 +119,7 @@ class _FirstTaskState extends State<FirstTask> {
                       CardImage(
                         imageUrl: 'assets/alphabet/letter-o.png',
                         scale: 5.0,
-                        audioUrl: 'escada.mp3',
+                        audioUrl: '',
                         isSelected: cardSelected == 4 ? true : false,
                         onPress: () {
                           setState(() {
@@ -127,15 +145,15 @@ class _FirstTaskState extends State<FirstTask> {
                           child: ElevatedButton(
                             style: ButtonStyle(
                                 foregroundColor:
-                                MaterialStateProperty.all<Color>(
-                                    Colors.white),
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.white),
                                 backgroundColor: cardSelected != 0
                                     ? MaterialStateProperty.all<Color>(
-                                    Colors.blue)
+                                        Colors.blue)
                                     : MaterialStateProperty.all<Color>(
-                                    Colors.grey),
+                                        Colors.grey),
                                 shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
+                                        RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(10),
                                         side: BorderSide.none))),
@@ -151,8 +169,8 @@ class _FirstTaskState extends State<FirstTask> {
                                   barrierDismissible: false,
                                   builder: (BuildContext context) => BoxDialog(
                                       feedback:
-                                      (cardSelected == 3) ? true : false,
-                                      resposta: "Árvore"),
+                                          (cardSelected == 1) ? true : false,
+                                      resposta: "A"),
                                 );
                               }
                             },
