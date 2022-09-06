@@ -130,7 +130,7 @@ class _SingupPageState extends State<SingupPage> {
                                             keyboardType: TextInputType.text,
                                             formatters: [
                                               FilteringTextInputFormatter.allow(
-                                                  RegExp(r'[a-zA-Z]'))
+                                                  RegExp(r'[a-zA-Z\s]'))
                                             ],
                                           ),
                                           const Padding(
@@ -345,7 +345,7 @@ class _SingupPageState extends State<SingupPage> {
                                                               41, 171, 226),
                                                           content: Text(
                                                             'Data de Nascimento inválida'
-                                                                ' e/ou genêro não selecionado',
+                                                                ' e/ou gênero não selecionado',
                                                             style: TextStyle(
                                                                 color:
                                                                 Colors.white),

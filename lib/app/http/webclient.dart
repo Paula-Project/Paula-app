@@ -28,7 +28,7 @@ Future<UsuarioAPI?> loginUsuario(String username, String password) async {
   final String clienteJson = jsonEncode({"username":username,"password":password});
 
   final Response response = await client.post(
-      Uri.http('127.0.0.1:8000', '/login/'),
+      Uri.https('paula-api.herokuapp.com', '/login/'),
       headers: {'Content-type': 'application/json'},
       body: clienteJson);
 
@@ -52,7 +52,7 @@ Future<UsuarioAPI?> cadastroUsuario(Usuario usuario) async {
   final String clienteJson = jsonEncode(usuario.mapJson());
 
   final Response response = await client.post(
-      Uri.http('127.0.0.1:8000', '/cadastro/'),
+      Uri.https('paula-api.herokuapp.com', '/cadastro/'),
       headers: {'Content-type': 'application/json'},
       body: clienteJson);
 
