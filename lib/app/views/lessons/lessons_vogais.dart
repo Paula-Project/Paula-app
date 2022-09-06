@@ -3,6 +3,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/components/lesson_button.dart';
 import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/lessons/lesson_introduction.dart';
+import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 import 'package:paula/app/views/person_data_page.dart';
 import 'package:paula/app/views/lessons/LessonFinal.dart';
 
@@ -67,10 +68,9 @@ class LessonsVogais extends StatelessWidget {
                 lessonPage: const HomePage(),
               ),
               LessonButton(
-                isActive: true,
-                textContent: 'LIÇÃO FINAL',
-                lessonPage: const LessonFinal(imageUrl: '',),
-              ),
+                  isActive: true,
+                  textContent: 'LIÇÃO FINAL',
+                  lessonPage: const TaskVogalSelection()),
             ],
           ),
         ),
