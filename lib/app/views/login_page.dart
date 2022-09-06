@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:paula/app/views/change_password.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'home_page.dart';
@@ -233,7 +234,13 @@ class _LoginPageState extends State<LoginPage> {
                                 fontWeight: FontWeight.w300,
                                 decoration: TextDecoration.underline),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.rightToLeft,
+                                    child: const ChangePassword()));
+                          },
                         ),
                       )
                     ]),
