@@ -210,13 +210,19 @@ class _LoginPageState extends State<LoginPage> {
                                         (route) => false,
                                   );
                                 } else {
-                                  ScaffoldMessenger.of(context)
+                                  ScaffoldMessenger.of(
+                                      context)
                                       .showSnackBar(
                                     const SnackBar(
                                         backgroundColor:
-                                        Color.fromARGB(255, 41, 171, 226),
-                                        content: Text('Usuário não encontrado',
-                                          style: TextStyle(color: Colors.white,fontSize: 30),
+                                        Colors.white,
+                                        content: Text(
+                                          'Usuário ou senha inválidos',
+                                          style: TextStyle(
+                                              color:
+                                              Color.fromARGB(255,
+                                                  41, 171, 226),
+                                          fontSize: 20),
                                         )),
                                   );
                                 }

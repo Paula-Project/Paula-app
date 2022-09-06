@@ -32,9 +32,10 @@ Future<UsuarioAPI?> loginUsuario(String username, String password) async {
       headers: {'Content-type': 'application/json'},
       body: clienteJson);
 
-  Map<String, dynamic> json = jsonDecode(response.body);
+
 
   if(response.statusCode == 200){
+    Map<String, dynamic> json = jsonDecode(response.body);
     return UsuarioAPI(json['name'], json['username'], json['gender'], json['age'],
         json['birthdate'], id: json['id'], token: json['token']);
   }
