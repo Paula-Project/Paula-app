@@ -339,21 +339,23 @@ class _SingupPageState extends State<SingupPage> {
                                                             gender: _gender,
                                                           ),
                                                         ));
+                                                  } else {
+                                                    ScaffoldMessenger.of(
+                                                        context)
+                                                        .showSnackBar(
+                                                      const SnackBar(
+                                                          backgroundColor:
+                                                          Color.fromARGB(255,
+                                                              41, 171, 226),
+                                                          content: Text(
+                                                            'Data de Nascimento inválida'
+                                                                ' e/ou genêro não selecionado',
+                                                            style: TextStyle(
+                                                                color:
+                                                                Colors.white),
+                                                          )),
+                                                    );
                                                   }
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    const SnackBar(
-                                                        backgroundColor:
-                                                            Color.fromARGB(255,
-                                                                41, 171, 226),
-                                                        content: Text(
-                                                          'Data de Nascimento inválida'
-                                                          ' e/ou genêro não selecionado',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.white),
-                                                        )),
-                                                  );
                                                 }
                                               },
                                               onHover: (hover) {},
