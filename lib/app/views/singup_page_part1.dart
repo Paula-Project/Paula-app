@@ -319,15 +319,10 @@ class _SingupPageState extends State<SingupPage> {
                                             height: 50,
                                             child: ElevatedButton(
                                               onPressed: () {
-                                                DateTime hoje = DateTime.now();
+
                                                 if (_key.currentState!
                                                     .validate()) {
-                                                  if ((hoje
-                                                                  .difference(
-                                                                      _date)
-                                                                  .inDays) /
-                                                              365 >
-                                                          5 &&
+                                                  if (calcAge() > 5 &&
                                                       (isSelected[0] ||
                                                           isSelected[1] ||
                                                           isSelected[2])) {
@@ -393,5 +388,18 @@ class _SingupPageState extends State<SingupPage> {
         ),
       ),
     );
+  }
+
+  int calcAge(){
+    DateTime hoje = DateTime.now();
+    int idade = hoje.year - _date.year;
+    if (hoje.month<_date.month) {
+      idade--;
+    } else if (hoje.month==_date.month){
+      if (hoje.day<_date.day) {
+        idade--;
+      }
+    }
+    return idade;
   }
 }
