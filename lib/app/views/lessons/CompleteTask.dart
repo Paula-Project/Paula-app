@@ -2,6 +2,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../components/BoxDialog.dart';
 
 class CompleteTask extends StatefulWidget {
   const CompleteTask({Key? key}) : super(key: key);
@@ -13,7 +16,8 @@ class CompleteTask extends StatefulWidget {
 class _CompleteTaskState extends State<CompleteTask> {
   @override
 
-
+  int qtdTargets = 6;
+  int targetsCompletos = 0;
 
 
 
@@ -48,6 +52,7 @@ class _CompleteTaskState extends State<CompleteTask> {
             color: Color.fromRGBO(37, 85, 124, 1),
           ),
           child: accepted == true ? LetterBox(letterReceived) : LetterBox(''),
+
         ),
       );
 
@@ -56,6 +61,7 @@ class _CompleteTaskState extends State<CompleteTask> {
 
         accepted = true;
         letterReceived = letter;
+        targetsCompletos = targetsCompletos +1;
 
 
     },
@@ -114,7 +120,7 @@ class _CompleteTaskState extends State<CompleteTask> {
                       borderRadius: BorderRadius.all(Radius.circular(15))
                   ),
 
-                  height: MediaQuery.of(context).size.height*0.55,
+                  height: MediaQuery.of(context).size.height*0.5,
                 child: Column(
                   children: [
                     Padding(
@@ -231,7 +237,7 @@ class _CompleteTaskState extends State<CompleteTask> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.fromLTRB(20.0,20.0,20.0,0),
                 child: Row(
 
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -246,7 +252,43 @@ class _CompleteTaskState extends State<CompleteTask> {
 
                   ],
                 ),
-              )
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 30.0),
+                child: Container(
+                    width: 200,
+                    height: 40,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 50.0,
+                          width: 150.0,
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                                foregroundColor:
+                                MaterialStateProperty.all<Color>(
+                                    Colors.white),
+
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        side: BorderSide.none))),
+                            child: const Text('VERIFICAR',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                )),
+                            onPressed: () {
+                              qtdTargets == targetsCompletos ? print('Atividade completa'): print('Atividade NÃO COMPLETA');
+
+                            },
+                          ),
+                        ),
+                      ],
+                    )),
+              ),
 
 
 
