@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
+import 'package:paula/app/http/webclient.dart';
+import 'package:provider/provider.dart';
+import '../state/usuario_state.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -30,8 +30,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Container(
+    return Scaffold(
+      body: Container(
         decoration: backgroundBlueGradiend,
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -121,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                                         borderRadius: BorderRadius.circular(8)),
                                     isDense: true,
                                   ),
-                                  style: TextStyle(color: Colors.black),
+                                  style: const TextStyle(color: Colors.black),
                                   onChanged: (value) {
                                     nickname = value;
                                   },
@@ -164,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                   ),
                                   obscureText: true,
-                                  style: TextStyle(color: Colors.black),
+                                  style: const TextStyle(color: Colors.black),
                                   onChanged: (value) {
                                     password = value;
                                   },
@@ -196,34 +196,46 @@ class _LoginPageState extends State<LoginPage> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
                                 )),
-                            onPressed: () async {
-                              FocusScopeNode currentFocus =
-                                  FocusScope.of(context);
-                              if (_formkey.currentState!.validate()) {
-                                Navigator.of(context).pushAndRemoveUntil(
+                            onLongPress: () {
+                              Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
                                   builder: (BuildContext context) =>
                                       const HomePage(),
                                 ),
                                 (route) => false,
                               );
-                                /*bool loginOk = await login();
-                                if (!currentFocus.hasPrimaryFocus) {
-                                  currentFocus.unfocus();
+                            },
+                            onPressed: () async {
+                              FocusScopeNode currentFocus =
+                                  FocusScope.of(context);
+                              if (_formkey.currentState!.validate()) {
+                                if (await login()) {
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          const HomePage(),
+                                    ),
+                                    (route) => false,
+                                  );
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        backgroundColor: Colors.white,
+                                        content: Text(
+                                          'Usuário ou senha inválidos',
+                                          style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 41, 171, 226),
+                                              fontSize: 20),
+                                        )),
+                                  );
                                 }
-                                if (loginOk) {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => HomePage()));
-                                }*/
                               }
-
                             },
                           ),
                         ),
                       ),
-                      Center(
+                      /*Center(
                         child: TextButton(
                           child: const Text(
                             "Esqueci a minha senha!",
@@ -235,7 +247,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           onPressed: () {},
                         ),
-                      )
+                      )*/
                     ]),
               ),
             ],
@@ -246,17 +258,12 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<bool> login() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var url = Uri.parse(' '); // URL DO LOGIN
-    var resposta = await http.post(
-      url,
-      body: {
-        'username': _nicknameController.text,
-        'password': _passwordController.text
-      },
-    );
+    var usuarioLogado =
+        await loginUsuario(_nicknameController.text, _passwordController.text);
 
-    if (resposta.statusCode == 200) {
+    if (usuarioLogado != null) {
+      var listaDeClientes = Provider.of<UsuarioState>(context, listen: false);
+      listaDeClientes.adicionaUsuario(usuarioLogado);
       return true;
     } else {
       return false;
