@@ -13,13 +13,13 @@ class PersonData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Layout(
-      indexPage: 2,
+      indexPage: 1,
       bodyContent: Consumer<UsuarioState>(
         builder: (context, usuarioState, child) {
-          UsuarioAPI usuarioLogado = usuarioState.getUsuario();
+          UsuarioAPI? usuarioLogado = usuarioState.getUsuario();
 
           var dateTxt = DateFormat('dd/MM/yyyy')
-              .format(DateTime.parse(usuarioLogado.birthdate));
+              .format(DateTime.parse(usuarioLogado!.birthdate));
           var gender = ' ';
           switch (usuarioLogado.gender) {
             case 'male':
@@ -76,7 +76,7 @@ class PersonData extends StatelessWidget {
                       color: Color.fromARGB(100, 207, 218, 216),
                       borderRadius: BorderRadius.all(Radius.circular(20))),
                   margin: const EdgeInsetsDirectional.only(top: 30, bottom: 30),
-                  height: MediaQuery.of(context).size.height / 4.2,
+                  height: MediaQuery.of(context).size.height / 4.5,
                   width: MediaQuery.of(context).size.width,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

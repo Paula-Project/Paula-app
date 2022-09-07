@@ -230,16 +230,6 @@ class _LoginPageState extends State<LoginPage> {
                                         )),
                                   );
                                 }
-                                /*bool loginOk = await login();
-                                if (!currentFocus.hasPrimaryFocus) {
-                                  currentFocus.unfocus();
-                                }
-                                if (loginOk) {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => HomePage()));
-                                }*/
                               }
                             },
                           ),
