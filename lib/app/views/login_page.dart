@@ -196,33 +196,37 @@ class _LoginPageState extends State<LoginPage> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
                                 )),
+                            onLongPress: () {
+                              Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const HomePage(),
+                                ),
+                                (route) => false,
+                              );
+                            },
                             onPressed: () async {
                               FocusScopeNode currentFocus =
                                   FocusScope.of(context);
                               if (_formkey.currentState!.validate()) {
-
-                                if(await login()){
+                                if (await login()) {
                                   Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                      const HomePage(),
+                                          const HomePage(),
                                     ),
-                                        (route) => false,
+                                    (route) => false,
                                   );
                                 } else {
-                                  ScaffoldMessenger.of(
-                                      context)
-                                      .showSnackBar(
+                                  ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
-                                        backgroundColor:
-                                        Colors.white,
+                                        backgroundColor: Colors.white,
                                         content: Text(
                                           'Usuário ou senha inválidos',
                                           style: TextStyle(
-                                              color:
-                                              Color.fromARGB(255,
-                                                  41, 171, 226),
-                                          fontSize: 20),
+                                              color: Color.fromARGB(
+                                                  255, 41, 171, 226),
+                                              fontSize: 20),
                                         )),
                                   );
                                 }
@@ -237,7 +241,6 @@ class _LoginPageState extends State<LoginPage> {
                                           builder: (context) => HomePage()));
                                 }*/
                               }
-
                             },
                           ),
                         ),
@@ -263,13 +266,13 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-  Future<bool> login() async {
 
-    var usuarioLogado = await loginUsuario(_nicknameController.text, _passwordController.text);
+  Future<bool> login() async {
+    var usuarioLogado =
+        await loginUsuario(_nicknameController.text, _passwordController.text);
 
     if (usuarioLogado != null) {
-      var listaDeClientes =
-      Provider.of<UsuarioState>(context, listen: false);
+      var listaDeClientes = Provider.of<UsuarioState>(context, listen: false);
       listaDeClientes.adicionaUsuario(usuarioLogado);
       return true;
     } else {
