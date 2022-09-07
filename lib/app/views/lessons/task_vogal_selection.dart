@@ -19,13 +19,13 @@ class TaskVogalSelection extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(15))),
             child: const Center(
               child: Padding(
-                padding: EdgeInsets.all(12.0),
+                padding: EdgeInsets.all(28.0),
                 child: Text(
-                  "SELECIONE AS VOGAIS: ",
+                  "SELECIONE AS VOGAIS ",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 30,
+                    fontSize: 25,
                     fontWeight: FontWeight.w300,
                     decoration: TextDecoration.none,
                   ),
@@ -45,7 +45,7 @@ class TaskVogalSelection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 18.0),
+                  padding: const EdgeInsets.only(bottom: 30.0, top: 12.0),
                   child: Container(
                       height: 87.0, child: Image.asset('images/escada.png')),
                 ),
@@ -85,7 +85,7 @@ class TaskVogalSelection extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 18.0),
+                  padding: const EdgeInsets.only(bottom: 24.0),
                   child: Container(
                       height: 87.0, child: Image.asset('images/uva.png')),
                 ),
@@ -112,7 +112,8 @@ class TaskVogalSelection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(40.0),
           child: Container(
-            height: 50.0,
+            height: 45.0,
+            width: 200.0,
             child: ElevatedButton(
               style: ButtonStyle(
                   foregroundColor:
@@ -121,11 +122,11 @@ class TaskVogalSelection extends StatelessWidget {
                       MaterialStateProperty.all<Color>(Colors.blue),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(30),
                           side: BorderSide.none))),
-              child: const Text('CONFIRMAR',
+              child: const Text('Confirmar',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 25,
                     fontWeight: FontWeight.w600,
                   )),
               onPressed: () {},
