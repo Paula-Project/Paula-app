@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
+import 'package:paula/app/views/layout/layout.dart';
 import 'package:provider/provider.dart';
 
 import '../state/usuario_state.dart';
@@ -11,43 +12,9 @@ class PersonData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-          backgroundColor: Colors.white70,
-          elevation: 0,
-          title: OutlinedButton(
-            onPressed: () {},
-            child: const Icon(
-              Icons.logout,
-              color: Colors.grey,
-            ),
-          ),
-          actions: [
-            Container(
-              margin: const EdgeInsets.only(right: 20),
-              child: SizedBox(
-                width: 120,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text("57% Completo",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold)),
-                    LinearProgressIndicator(
-                      value: 0.57,
-                      backgroundColor: Colors.grey,
-                      color: Color.fromARGB(255, 89, 233, 95),
-                      semanticsLabel: 'Linear progress indicator',
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ]),
-      body: Consumer<UsuarioState>(
+    return Layout(
+      indexPage: 2,
+      bodyContent: Consumer<UsuarioState>(
         builder: (context, usuarioState, child) {
           UsuarioAPI usuarioLogado = usuarioState.getUsuario();
 
