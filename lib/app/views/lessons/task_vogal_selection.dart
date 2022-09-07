@@ -21,7 +21,7 @@ class TaskVogalSelection extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(12.0),
                 child: Text(
-                  "Selecione as vogais: ",
+                  "SELECIONE AS VOGAIS: ",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -39,7 +39,7 @@ class TaskVogalSelection extends StatelessWidget {
           child: Container(
             height: 200.0,
             decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 105, 112, 118),
+                color: Color.fromARGB(255, 194, 197, 199),
                 borderRadius: BorderRadius.all(Radius.circular(15))),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -80,7 +80,7 @@ class TaskVogalSelection extends StatelessWidget {
           child: Container(
             height: 200.0,
             decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 105, 112, 118),
+                color: Color.fromARGB(255, 194, 197, 199),
                 borderRadius: BorderRadius.all(Radius.circular(15))),
             child: Column(
               children: [
@@ -123,7 +123,7 @@ class TaskVogalSelection extends StatelessWidget {
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                           side: BorderSide.none))),
-              child: const Text('CONTINUAR',
+              child: const Text('CONFIRMAR',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
