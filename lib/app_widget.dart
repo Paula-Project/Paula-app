@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:paula/app/views/lessons/lesson_a.dart';
+import 'package:paula/app/model/lessonsModel.dart';
 import 'package:paula/app/views/singup_page_part1.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app/views/welcome_page_part1.dart';
@@ -18,9 +18,10 @@ class AppWidget extends StatefulWidget {
 
 class _AppWidgetState extends State<AppWidget> {
   bool isAuthenticated = false;
-
+  AssetsPopulate assetsPopulate = AssetsPopulate();
   @override
   Widget build(BuildContext context) {
+    print(assetsPopulate.toJson());
     @override
     void initState() {
       super.initState();
