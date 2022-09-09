@@ -1,7 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/views/components/ButtonNext.dart';
-import 'package:paula/app/views/lessons/task_page.dart';
+import 'package:paula/app/views/lessons/task_select_image.dart';
 
 class Lesson extends StatefulWidget {
   const Lesson({Key? key}) : super(key: key);
@@ -53,7 +53,7 @@ class _LessonState extends State<Lesson> {
                   height: 40,
                 ),
                 const LessonCard(
-                  imageUrl: 'assets/images/plane.png',
+                  imageUrl: 'assets/images/aviao.png',
                   nameTxt: "A V I Ã O",
                   audioUrl: 'aviao.mp3',
                 ),
@@ -72,7 +72,7 @@ class _LessonState extends State<Lesson> {
                   child: SizedBox(
                     width: 180,
                     height: 50,
-                    child: ButtonNext(pageWidget: TaskPage()),
+                    child: ButtonNext(pageWidget: TaskSelectImage()),
                   ),
                 ),
               ],

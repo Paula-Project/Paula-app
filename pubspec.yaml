@@ -39,7 +39,6 @@ dependencies:
   audioplayers: ^1.0.1
   provider: ^6.0.3
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -81,7 +80,7 @@ flutter:
     - assets/images/uva.png
     - assets/images/escada.png
     - assets/images/lata.png
-    - assets/images/plane.png
+    - assets/images/aviao.png
     - assets/images/pineapple.png
     - assets/images/abajur.png
     - assets/images/antena.png
