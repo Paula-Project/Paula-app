@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:paula/app/views/lessons/task_page.dart';
 
 import '../components/ButtonNext.dart';
+import 'lesson_a.dart';
 
 class TaskVogalSelection extends StatelessWidget {
   const TaskVogalSelection({Key? key}) : super(key: key);
+
+  get widget => null;
 
   @override
   Widget build(BuildContext context) {
@@ -124,18 +127,27 @@ class TaskVogalSelection extends StatelessWidget {
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                           side: BorderSide.none))),
+              onPressed: () => {
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => const Lesson(),
+                  ),
+                  (route) => false,
+                ),
+              },
               child: const Text('Confirmar',
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.w600,
                   )),
-              onPressed: () {},
             ),
           ),
         ),
       ],
     );
   }
+
+  setState(Null Function() param0) {}
 }
 
 class SelectLetterButton extends StatelessWidget {
@@ -153,14 +165,21 @@ class SelectLetterButton extends StatelessWidget {
       width: 40,
       margin: const EdgeInsets.all(5),
       child: TextButton(
+        onPressed: () => {
+          setState(() {
+            color:
+            Colors.black;
+          })
+        },
         style: TextButton.styleFrom(
           backgroundColor: Colors.white70,
           primary: Colors.black,
           textStyle: const TextStyle(fontSize: 40, fontWeight: FontWeight.w700),
         ),
-        onPressed: () {},
         child: Text(letter),
       ),
     );
   }
+
+  setState(Null Function() param0) {}
 }
