@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/views/lessons/task_page.dart';
-
 import '../components/ButtonNext.dart';
 import 'lesson_a.dart';
 
@@ -150,7 +149,7 @@ class TaskVogalSelection extends StatelessWidget {
   setState(Null Function() param0) {}
 }
 
-class SelectLetterButton extends StatelessWidget {
+class SelectLetterButton extends StatefulWidget {
   final String letter;
 
   const SelectLetterButton({
@@ -158,6 +157,12 @@ class SelectLetterButton extends StatelessWidget {
     required this.letter,
   }) : super(key: key);
 
+  @override
+  State<SelectLetterButton> createState() => _SelectLetterButtonState();
+}
+
+class _SelectLetterButtonState extends State<SelectLetterButton> {
+  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -167,19 +172,16 @@ class SelectLetterButton extends StatelessWidget {
       child: TextButton(
         onPressed: () => {
           setState(() {
-            color:
-            Colors.black;
+            isSelected = !isSelected;
           })
         },
         style: TextButton.styleFrom(
-          backgroundColor: Colors.white70,
+          backgroundColor: isSelected ? Colors.blue : Colors.white70,
           primary: Colors.black,
           textStyle: const TextStyle(fontSize: 40, fontWeight: FontWeight.w700),
         ),
-        child: Text(letter),
+        child: Text(widget.letter),
       ),
     );
   }
-
-  setState(Null Function() param0) {}
 }
