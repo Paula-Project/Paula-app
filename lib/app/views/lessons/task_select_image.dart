@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/task_select_image_controller.dart';
+import 'package:paula/app/model/task_select_image_model.dart';
 import 'package:paula/app/model/word.dart';
 import 'package:paula/app/model/words.dart';
 import 'package:paula/app/views/components/CardImage.dart';
@@ -6,7 +8,8 @@ import 'package:paula/app/views/components/BoxDialog.dart';
 import 'package:paula/app/views/components/task_progress.dart';
 
 class TaskSelectImage extends StatefulWidget {
-  const TaskSelectImage({Key? key}) : super(key: key);
+  final TaskSelectImageModel task;
+  const TaskSelectImage({Key? key, required this.task}) : super(key: key);
 
   @override
   State<TaskSelectImage> createState() => _TaskSelectImageState();
@@ -14,18 +17,9 @@ class TaskSelectImage extends StatefulWidget {
 
 class _TaskSelectImageState extends State<TaskSelectImage> {
   String cardSelected = "";
-  String answer = "Árvore";
-  Words words = Words();
-  late List<Word> taskwords;
-
+  @override
   void initState() {
     super.initState();
-    taskwords = [
-      words.words[5],
-      words.words[6],
-      words.words[4],
-      words.words[7],
-    ];
   }
 
   @override
@@ -73,7 +67,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                       spacing: 0,
                       runSpacing: 100,
                       crossAxisAlignment: WrapCrossAlignment.center,
-                      children: taskwords
+                      children: widget.task.words
                           .map(
                             (e) => CardImage(
                               imageUrl: "assets/images/${e.imagePath}",
@@ -147,11 +141,15 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                                             child: Opacity(
                                               opacity: a1.value,
                                               child: BoxDialog(
-                                                  feedback:
-                                                      (cardSelected == answer)
-                                                          ? true
-                                                          : false,
-                                                  resposta: answer),
+                                                  feedback: (cardSelected ==
+                                                          this
+                                                              .widget
+                                                              .task
+                                                              .answer)
+                                                      ? true
+                                                      : false,
+                                                  resposta:
+                                                      this.widget.task.answer),
                                             ),
                                           );
                                         },
