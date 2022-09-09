@@ -42,7 +42,9 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
               top: 50.0, bottom: 50.0, left: 15.0, right: 15.0),
           child: Column(
             children: [
-              TaskProgress(),
+              TaskProgress(
+                tasksNUmber: 5,
+              ),
               const SizedBox(height: 20.0),
               Expanded(
                 child: Column(
