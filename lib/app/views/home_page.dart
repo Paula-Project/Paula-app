@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/module_vogal_controller.dart';
 import 'package:paula/app/views/layout/layout.dart';
 import 'package:paula/app/views/lessons/lessons_vogais.dart';
 import 'components/module_button.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
-  ModuleVogalController moduleVogalController = ModuleVogalController();
   final int indexPage = 0;
 
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller.dart';
+import 'package:paula/app/controllers/task_select_image_controller.dart';
 import 'package:paula/app/model/task_select_image_model.dart';
 import 'package:paula/app/views/components/CardImage.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
@@ -7,12 +8,14 @@ import 'package:paula/app/views/components/task_progress.dart';
 
 class TaskSelectImage extends StatefulWidget {
   final TaskSelectImageModel task;
-  final LessonController controller;
+  final LessonController lessonController;
+  final TaskSelectImageController taskController;
 
   const TaskSelectImage({
     Key? key,
     required this.task,
-    required this.controller,
+    required this.lessonController,
+    required this.taskController,
   }) : super(key: key);
 
   @override
@@ -20,14 +23,20 @@ class TaskSelectImage extends StatefulWidget {
 }
 
 class _TaskSelectImageState extends State<TaskSelectImage> {
-  String cardSelected = "";
   @override
   void initState() {
+    widget.taskController.reset();
     super.initState();
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print(widget.taskController.cardSelected);
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -40,8 +49,9 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
               top: 50.0, bottom: 50.0, left: 15.0, right: 15.0),
           child: Column(
             children: [
-              const TaskProgress(
-                tasksNUmber: 5,
+              TaskProgress(
+                tasksNumber: widget.lessonController.getTaskQuantity(),
+                correctAnswer: widget.lessonController.getTaskCorrectAnswers(),
               ),
               const SizedBox(height: 20.0),
               Expanded(
@@ -77,11 +87,14 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                               imageUrl: "assets/images/${word.imagePath}",
                               scale: 5.0,
                               audioUrl: word.soundPath,
-                              isSelected:
-                                  cardSelected == word.text ? true : false,
+                              isSelected: widget.taskController.cardSelected ==
+                                      word.text
+                                  ? true
+                                  : false,
                               onPress: () {
                                 setState(() {
-                                  cardSelected = word.text;
+                                  widget.taskController.cardSelected =
+                                      word.text;
                                 });
                               },
                             ),
@@ -104,11 +117,12 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                                       foregroundColor:
                                           MaterialStateProperty.all<Color>(
                                               Colors.white),
-                                      backgroundColor: cardSelected != ""
-                                          ? MaterialStateProperty.all<Color>(
-                                              Colors.blue)
-                                          : MaterialStateProperty.all<Color>(
-                                              Colors.grey),
+                                      backgroundColor:
+                                          widget.taskController.cardSelected != ""
+                                              ? MaterialStateProperty.all<Color>(
+                                                  Colors.blue)
+                                              : MaterialStateProperty.all<
+                                                  Color>(Colors.grey),
                                       shape: MaterialStateProperty.all<
                                               RoundedRectangleBorder>(
                                           RoundedRectangleBorder(
@@ -121,7 +135,10 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                                         fontWeight: FontWeight.w600,
                                       )),
                                   onPressed: () {
-                                    if (cardSelected != "") {
+                                    if (widget.taskController.cardSelected !=
+                                        "") {
+                                      widget.taskController.verify(widget.task);
+                                      widget.lessonController.verifyAnswer();
                                       showGeneralDialog(
                                         barrierColor:
                                             Colors.black.withOpacity(0.5),
@@ -139,6 +156,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                                           final curvedValue = Curves.easeInOut
                                                   .transform(a1.value) -
                                               1;
+
                                           return Transform(
                                             transform:
                                                 Matrix4.translationValues(0.0,
@@ -146,15 +164,13 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                                             child: Opacity(
                                               opacity: a1.value,
                                               child: BoxDialog(
-                                                  controller:
-                                                      this.widget.controller,
-                                                  feedback: (cardSelected ==
-                                                          this
-                                                              .widget
-                                                              .task
-                                                              .answer)
-                                                      ? true
-                                                      : false,
+                                                  controller: this
+                                                      .widget
+                                                      .lessonController,
+                                                  feedback: this
+                                                      .widget
+                                                      .task
+                                                      .isCorrect,
                                                   resposta:
                                                       this.widget.task.answer),
                                             ),

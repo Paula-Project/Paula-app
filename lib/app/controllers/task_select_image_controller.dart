@@ -5,7 +5,7 @@ class TaskSelectImageController {
   late TaskSelectImageModel vogaisA;
   late TaskSelectImageModel vogaisE;
   Words words = Words();
-
+  String cardSelected = "";
   TaskSelectImageController() {
     vogaisA = TaskSelectImageModel(
         title: "Qual imagem começa com a letra “A”:",
@@ -37,13 +37,19 @@ class TaskSelectImageController {
     return vogaisE;
   }
 
-  bool verifyAnswer(String answer, TaskSelectImageModel task) {
-    if (answer == task.answer) {
+  bool verify(TaskSelectImageModel task) {
+    if (cardSelected == task.answer) {
       task.isCorrect = true;
       return true;
     } else {
       task.isCorrect = false;
       return false;
     }
+  }
+
+  void reset() {
+    vogaisA.isCorrect = false;
+    vogaisE.isCorrect = false;
+    cardSelected = "";
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:paula/app/controllers/module_vogal_controller.dart';
 import 'package:paula/app/views/components/lesson_button.dart';
 import 'package:paula/app/views/person_data_page.dart';
 
