@@ -1,7 +1,11 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/views/components/ButtonNext.dart';
+import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/lessons/task_select_image.dart';
+import 'package:provider/provider.dart';
+
+import '../../controllers/module_vogal_controller.dart';
 
 class Lesson extends StatefulWidget {
   const Lesson({Key? key}) : super(key: key);
@@ -13,6 +17,8 @@ class Lesson extends StatefulWidget {
 class _LessonState extends State<Lesson> {
   @override
   Widget build(BuildContext context) {
+    var modulo = Provider.of<ModuleVogalController>(context, listen: false);
+
     return Material(
       child: Container(
         decoration: const BoxDecoration(
@@ -68,11 +74,11 @@ class _LessonState extends State<Lesson> {
                 const SizedBox(
                   height: 50,
                 ),
-                const Center(
+                Center(
                   child: SizedBox(
                     width: 180,
                     height: 50,
-                    child: ButtonNext(pageWidget: TaskSelectImage()),
+                    child: ButtonNext(pageWidget: HomePage()),
                   ),
                 ),
               ],

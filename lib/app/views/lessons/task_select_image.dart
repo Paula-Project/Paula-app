@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/task_select_image_controller.dart';
+import 'package:paula/app/controllers/lesson_controller.dart';
 import 'package:paula/app/model/task_select_image_model.dart';
-import 'package:paula/app/model/word.dart';
-import 'package:paula/app/model/words.dart';
 import 'package:paula/app/views/components/CardImage.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
 import 'package:paula/app/views/components/task_progress.dart';
 
 class TaskSelectImage extends StatefulWidget {
   final TaskSelectImageModel task;
-  const TaskSelectImage({Key? key, required this.task}) : super(key: key);
+  final LessonController controller;
+
+  const TaskSelectImage({
+    Key? key,
+    required this.task,
+    required this.controller,
+  }) : super(key: key);
 
   @override
   State<TaskSelectImage> createState() => _TaskSelectImageState();
@@ -36,7 +40,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
               top: 50.0, bottom: 50.0, left: 15.0, right: 15.0),
           child: Column(
             children: [
-              TaskProgress(
+              const TaskProgress(
                 tasksNUmber: 5,
               ),
               const SizedBox(height: 20.0),
@@ -49,13 +53,13 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                       decoration: const BoxDecoration(
                           color: Color.fromRGBO(37, 85, 124, 1),
                           borderRadius: BorderRadius.all(Radius.circular(15))),
-                      child: const Center(
+                      child: Center(
                         child: Padding(
-                          padding: EdgeInsets.all(12.0),
+                          padding: const EdgeInsets.all(12.0),
                           child: Text(
-                            "Qual imagem começa com a letra “A”:",
+                            widget.task.title,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w300,
                             ),
@@ -69,14 +73,15 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: widget.task.words
                           .map(
-                            (e) => CardImage(
-                              imageUrl: "assets/images/${e.imagePath}",
+                            (word) => CardImage(
+                              imageUrl: "assets/images/${word.imagePath}",
                               scale: 5.0,
-                              audioUrl: e.soundPath,
-                              isSelected: cardSelected == e.text ? true : false,
+                              audioUrl: word.soundPath,
+                              isSelected:
+                                  cardSelected == word.text ? true : false,
                               onPress: () {
                                 setState(() {
-                                  cardSelected = e.text;
+                                  cardSelected = word.text;
                                 });
                               },
                             ),
@@ -141,6 +146,8 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                                             child: Opacity(
                                               opacity: a1.value,
                                               child: BoxDialog(
+                                                  controller:
+                                                      this.widget.controller,
                                                   feedback: (cardSelected ==
                                                           this
                                                               .widget

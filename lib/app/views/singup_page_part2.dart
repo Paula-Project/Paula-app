@@ -178,7 +178,7 @@ class _SingupPageState2 extends State<SingupPage2> {
                                                   MaterialPageRoute(
                                                     builder:
                                                         (BuildContextcontext) =>
-                                                            const HomePage(),
+                                                            HomePage(),
                                                   ),
                                                   (route) => false,
                                                 );

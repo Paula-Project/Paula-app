@@ -1,30 +1,25 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/task_select_image_controller.dart';
-import 'package:paula/app/model/task_select_image_model.dart';
+import 'package:paula/app/views/lessons/task_select_image.dart';
 
-class ModuleVogalController {
+class ModuleVogalController extends ChangeNotifier {
   late TaskSelectImageController selectImageController;
 
   ModuleVogalController() {
     selectImageController = TaskSelectImageController();
   }
 
-  void lessonX() {
+  lessonX(context) {
     int correct_answers = 0;
     int tasks_quantity = 0;
 
-    List tasks = [
-      selectImageController.getVogaisA(),
-      selectImageController.getVogaisE()
-    ];
+    List tasksWidgets = [];
 
-    for (TaskSelectImageModel task in tasks) {
-      if (task.isCorrect) {
-        correct_answers++;
-      }
-    }
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(
+        builder: (BuildContext context) => tasksWidgets[0],
+      ),
+      (route) => false,
+    );
   }
-
-  void LessonY() {}
-  void LessonZ() {}
 }

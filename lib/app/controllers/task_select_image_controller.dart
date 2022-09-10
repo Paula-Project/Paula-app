@@ -8,21 +8,23 @@ class TaskSelectImageController {
 
   TaskSelectImageController() {
     vogaisA = TaskSelectImageModel(
-        answer: words.words[4].text,
+        title: "Qual imagem começa com a letra “A”:",
+        answer: words.words[4].text, // arvore
         words: [
-          words.words[5],
-          words.words[6],
-          words.words[4],
-          words.words[7],
+          words.words[5], //escada
+          words.words[6], //oculos
+          words.words[4], //arvore
+          words.words[7], //uva
         ],
         isCorrect: false);
     vogaisE = TaskSelectImageModel(
-        answer: words.words[7].text,
+        title: "Qual imagem começa com a letra “E”:",
+        answer: words.words[5].text, //escada
         words: [
-          words.words[5],
-          words.words[6],
-          words.words[4],
-          words.words[7],
+          words.words[5], //escada
+          words.words[6], //oculos
+          words.words[4], //arvore
+          words.words[7], //uva
         ],
         isCorrect: false);
   }

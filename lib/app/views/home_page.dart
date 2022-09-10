@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/module_vogal_controller.dart';
 import 'package:paula/app/views/layout/layout.dart';
 import 'package:paula/app/views/lessons/lessons_vogais.dart';
 import 'components/module_button.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
+  HomePage({Key? key}) : super(key: key);
+  ModuleVogalController moduleVogalController = ModuleVogalController();
   final int indexPage = 0;
 
   @override
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
         indexPage: 0,
         bodyContent: Padding(
             padding: const EdgeInsets.fromLTRB(50, 50, 50, 50),
-            child: Column(children: const [
+            child: Column(children: [
               ModuleButton(
                   Alignment.centerLeft, "Vogais", LessonsVogais(), true),
               ModuleButton(Alignment.centerRight, "Consoantes \n Parte 1",

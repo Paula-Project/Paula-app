@@ -44,7 +44,7 @@ class _AppWidgetState extends State<AppWidget> {
         "/welcome_part3": (context) => const WelcomePagePart3(),
         "/login": (context) => const LoginPage(),
         "/singup_part1": (context) => const SingupPage(),
-        "/home": (context) => const HomePage()
+        "/home": (context) => HomePage()
       },
     );
   }
