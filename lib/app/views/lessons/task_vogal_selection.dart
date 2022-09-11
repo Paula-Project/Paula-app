@@ -5,7 +5,7 @@ import '../components/ButtonNext.dart';
 import 'lesson_a.dart';
 
 class TaskVogalSelection extends StatelessWidget {
-  const TaskVogalSelection({Key? key}) : super(key: key);
+  TaskVogalSelection({Key? key}) : super(key: key);
 
   var letterSelected = 0;
 
@@ -67,7 +67,7 @@ class TaskVogalSelection extends StatelessWidget {
                         letter: 'E',
                       ),
                       SelectLetterButton(
-                        isSelected: letterSelected == 3 ? true : false,
+                        isSelected: letterSelected == 2 ? true : false,
                         onPress: () {
                           setState(() {
                             letterSelected = 2;
