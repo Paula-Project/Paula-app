@@ -126,7 +126,7 @@ flutter:
     - assets/audios/words/meia.mp3
     - assets/audios/words/ovo.mp3
     - assets/audios/words/padaria.mp3
-    # - assets/audios/words/onibus.mp3
+    - assets/audios/words/onibus.mp3
 
     - assets/audios/sucess_sound.mp3
     - assets/audios/failed_sound.mp3
