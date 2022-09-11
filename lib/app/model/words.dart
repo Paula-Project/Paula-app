@@ -27,8 +27,8 @@ class Words {
     'ioio', // 20
     'meia', // 21
     'ovo', // 22
-    'padaria' // 23
-        'onibus', // 24
+    'padaria', // 23
+    'onibus', // 24
   ];
   List<String> soundsList = [
     'abajur.mp3',
@@ -54,8 +54,8 @@ class Words {
     'ioio.mp3',
     'meia.mp3',
     'ovo.mp3',
-    'padaria.mp3'
-        'onibus.mp3',
+    'padaria.mp3',
+    'onibus.mp3',
   ];
   List<String> imagesList = [
     'abajur.png',
@@ -81,8 +81,8 @@ class Words {
     'ioio.png',
     'meia.png',
     'ovo.png',
-    'padaria.png'
-        'onibus.png',
+    'padaria.png',
+    'onibus.png',
   ];
   void populate() {
     for (int i = 0; i < wordsList.length; i++) {
