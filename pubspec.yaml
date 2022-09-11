@@ -71,33 +71,62 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/Avatar-Maker(1).png
-    - assets/images/Avatar-Maker(2).png
-    - assets/images/Avatar-Maker(4).png
+    - assets/images/paula/Avatar-Maker(1).png
+    - assets/images/paula/Avatar-Maker(2).png
+    - assets/images/paula/Avatar-Maker(4).png
 
-    - assets/images/arvore.png
-    - assets/images/oculos.png
-    - assets/images/uva.png
-    - assets/images/escada.png
-    - assets/images/lata.png
-    - assets/images/aviao.png
-    - assets/images/pineapple.png
-    - assets/images/abajur.png
-    - assets/images/antena.png
-    - assets/images/apito.png
-    - assets/images/arroz.png
+    - assets/images/words/arvore.png
+    - assets/images/words/oculos.png
+    - assets/images/words/uva.png
+    - assets/images/words/escada.png
+    - assets/images/words/lata.png
+    - assets/images/words/aviao.png
+    - assets/images/words/abacaxi.png
+    - assets/images/words/abajur.png
+    - assets/images/words/antena.png
+    - assets/images/words/apito.png
+    - assets/images/words/arroz.png
+    - assets/images/words/bebida.png
+    - assets/images/words/boia.png
+    - assets/images/words/bola.png
+    - assets/images/words/caneta.png
+    - assets/images/words/capa.png
+    - assets/images/words/cavalo.png
+    - assets/images/words/dados.png
+    - assets/images/words/envelope.png
+    - assets/images/words/iguana.png
+    - assets/images/words/ioio.png
+    - assets/images/words/meia.png
+    - assets/images/words/onibus.png
+    - assets/images/words/ovo.png
+    - assets/images/words/padaria.png
+
     - assets/images/fireworks.png
 
-    - assets/audios/paula01.mp3
-    - assets/audios/paula02.ogg
+    - assets/audios/paula/paula01.mp3
+    - assets/audios/paula/paula02.ogg
 
-    - assets/audios/aviao.mp3
-    - assets/audios/abacaxi.mp3
-    - assets/audios/lata.mp3
-    - assets/audios/uva.mp3
-    - assets/audios/arvore.mp3
-    - assets/audios/escada.mp3
-    - assets/audios/oculos.mp3
+    - assets/audios/words/aviao.mp3
+    - assets/audios/words/abacaxi.mp3
+    - assets/audios/words/lata.mp3
+    - assets/audios/words/uva.mp3
+    - assets/audios/words/arvore.mp3
+    - assets/audios/words/escada.mp3
+    - assets/audios/words/oculos.mp3
+    - assets/audios/words/bebida.mp3
+    - assets/audios/words/boia.mp3
+    - assets/audios/words/bola.mp3
+    - assets/audios/words/caneta.mp3
+    - assets/audios/words/capa.mp3
+    - assets/audios/words/cavalo.mp3
+    - assets/audios/words/dado.mp3
+    - assets/audios/words/envelope.mp3
+    - assets/audios/words/iguana.mp3
+    - assets/audios/words/ioio.mp3
+    - assets/audios/words/meia.mp3
+    - assets/audios/words/ovo.mp3
+    - assets/audios/words/padaria.mp3
+    # - assets/audios/words/onibus.mp3
 
     - assets/audios/sucess_sound.mp3
     - assets/audios/failed_sound.mp3
