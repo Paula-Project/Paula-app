@@ -70,7 +70,7 @@ class LessonsVogais extends StatelessWidget {
               LessonButton(
                   isActive: true,
                   textContent: 'LIÇÃO FINAL',
-                  lessonPage: const TaskVogalSelection()),
+                  lessonPage: TaskVogalSelection()),
             ],
           ),
         ),
