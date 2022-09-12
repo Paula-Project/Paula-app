@@ -24,7 +24,6 @@ class LessonAEUController extends LessonController {
     nextPage = -1;
     completed = false;
     correctAnswers = 0;
-    /*
     widgetsRouters.add(LessonIntroduction(
       letter: 'A',
       titleIntroduction:
@@ -50,17 +49,14 @@ class LessonAEUController extends LessonController {
       taskController: selectImageController,
       lessonController: this,
     ));
-    */
     widgetsRouters.add(TaskVogalSelection(
       task: vogalSelectionController.getTask1(),
       lessonController: this,
       taskController: vogalSelectionController,
     ));
-    /*
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
     ));
-    */
     widgetsRouters.add(const CongratulationsPage());
   }
 
