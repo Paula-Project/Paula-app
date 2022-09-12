@@ -60,27 +60,33 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
                     children: <Widget>[
                       SelectLetterButton(
                         letter: 'E',
-                          onSelected: addVogal
+                        onSelected: addVogal,
+                        onUnselected: removeVogal,
                       ),
                       SelectLetterButton(
                         letter: 'S',
-                          onSelected: addVogal
+                        onSelected: addVogal,
+                        onUnselected: removeVogal,
                       ),
                       SelectLetterButton(
                         letter: 'C',
-                          onSelected: addVogal
+                        onSelected: addVogal,
+                        onUnselected: removeVogal,
                       ),
                       SelectLetterButton(
                         letter: 'A',
-                          onSelected: addVogal
+                        onSelected: addVogal,
+                        onUnselected: removeVogal,
                       ),
                       SelectLetterButton(
                         letter: 'D',
-                          onSelected: addVogal
+                        onSelected: addVogal,
+                        onUnselected: removeVogal,
                       ),
                       SelectLetterButton(
-                          letter: 'A',
-                          onSelected: addVogal
+                        letter: 'A',
+                        onSelected: addVogal,
+                        onUnselected: removeVogal,
                       ),
                     ])
               ],
@@ -107,18 +113,22 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
                       SelectLetterButton(
                         letter: 'F',
                         onSelected: addVogal,
+                        onUnselected: removeVogal,
                       ),
                       SelectLetterButton(
                         letter: 'A',
                         onSelected: addVogal,
+                        onUnselected: removeVogal,
                       ),
                       SelectLetterButton(
                         letter: 'C',
                         onSelected: addVogal,
+                        onUnselected: removeVogal,
                       ),
                       SelectLetterButton(
                         letter: 'A',
                         onSelected: addVogal,
+                        onUnselected: removeVogal,
                       ),
                     ]),
               ],
@@ -133,21 +143,24 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
             child: ElevatedButton(
               style: ButtonStyle(
                   foregroundColor:
-                  MaterialStateProperty.all<Color>(Colors.white),
+                      MaterialStateProperty.all<Color>(Colors.white),
                   backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.blue),
+                      MaterialStateProperty.all<Color>(Colors.blue),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                           side: BorderSide.none))),
               onPressed: () => {
                 debugPrint(_vogaisSelecionadas.toString()),
-                // Navigator.of(context).pushAndRemoveUntil(
-                //   MaterialPageRoute(
-                //     builder: (BuildContext context) => const Lesson(),
-                //   ),
-                //       (route) => false,
-                // ),
+                if (verifyAnswer())
+                  {
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => const Lesson(),
+                      ),
+                      (route) => false,
+                    ),
+                  }
               },
               child: const Text('Confirmar',
                   style: TextStyle(
@@ -166,16 +179,28 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
       _vogaisSelecionadas.add(vogal);
     });
   }
+
+  void removeVogal(String vogal) {
+    setState(() {
+      _vogaisSelecionadas.remove(vogal);
+    });
+  }
+
+  bool verifyAnswer() {
+    return _vogaisSelecionadas.every((element) => _vogais.contains(element));
+  }
 }
 
 class SelectLetterButton extends StatefulWidget {
   final String letter;
   final Function(String) onSelected;
+  final Function(String) onUnselected;
 
   SelectLetterButton({
     Key? key,
     required this.letter,
     required this.onSelected,
+    required this.onUnselected,
   }) : super(key: key);
 
   @override
@@ -193,9 +218,10 @@ class _SelectLetterButtonState extends State<SelectLetterButton> {
       margin: const EdgeInsets.all(5),
       child: TextButton(
         onPressed: () => {
-          widget.onSelected(widget.letter),
           setState(() => {
                 isSelected = !isSelected,
+                if (isSelected) {widget.onSelected(widget.letter)},
+                if (!isSelected) {widget.onUnselected(widget.letter)},
               }),
         },
         style: TextButton.styleFrom(
