@@ -22,9 +22,9 @@ class TaskSelectImageController {
         answer: words.words[5].text, //escada
         words: [
           words.words[5], //escada
-          words.words[6], //oculos
-          words.words[4], //arvore
-          words.words[7], //uva
+          words.words[14], //ceneta
+          words.words[2], //apito
+          words.words[23], //padaria
         ],
         isCorrect: false);
   }

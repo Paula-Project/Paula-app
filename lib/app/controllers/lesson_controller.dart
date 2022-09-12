@@ -4,4 +4,5 @@ class LessonController {
   verifyAnswer() {}
   getTaskQuantity() {}
   getTaskCorrectAnswers() {}
+  verifyAnswerNonControlled() {}
 }
