@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:paula/app/views/components/BoxDialog.dart';
-import 'package:paula/app/views/lessons/task_page.dart';
-import '../components/ButtonNext.dart';
 import 'lesson_a.dart';
 
-class TaskVogalSelection extends StatelessWidget {
-  const TaskVogalSelection({super.key});
+class TaskVogalSelection extends StatefulWidget {
+  const TaskVogalSelection({Key? key}) : super(key: key);
+
+  @override
+  State<TaskVogalSelection> createState() => _TaskVogalSelectionState();
+}
+
+class _TaskVogalSelectionState extends State<TaskVogalSelection> {
+  final List<String> _vogais = ['A', 'E', 'I', 'O', 'U'];
+  List<String> _vogaisSelecionadas = [];
 
   @override
   Widget build(BuildContext context) {
@@ -55,21 +60,27 @@ class TaskVogalSelection extends StatelessWidget {
                     children: <Widget>[
                       SelectLetterButton(
                         letter: 'E',
+                          onSelected: addVogal
                       ),
                       SelectLetterButton(
                         letter: 'S',
+                          onSelected: addVogal
                       ),
                       SelectLetterButton(
                         letter: 'C',
+                          onSelected: addVogal
                       ),
                       SelectLetterButton(
                         letter: 'A',
+                          onSelected: addVogal
                       ),
                       SelectLetterButton(
                         letter: 'D',
+                          onSelected: addVogal
                       ),
                       SelectLetterButton(
-                        letter: 'A',
+                          letter: 'A',
+                          onSelected: addVogal
                       ),
                     ])
               ],
@@ -95,15 +106,19 @@ class TaskVogalSelection extends StatelessWidget {
                     children: <Widget>[
                       SelectLetterButton(
                         letter: 'F',
+                        onSelected: addVogal,
                       ),
                       SelectLetterButton(
                         letter: 'A',
+                        onSelected: addVogal,
                       ),
                       SelectLetterButton(
                         letter: 'C',
+                        onSelected: addVogal,
                       ),
                       SelectLetterButton(
                         letter: 'A',
+                        onSelected: addVogal,
                       ),
                     ]),
               ],
@@ -118,20 +133,21 @@ class TaskVogalSelection extends StatelessWidget {
             child: ElevatedButton(
               style: ButtonStyle(
                   foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white),
+                  MaterialStateProperty.all<Color>(Colors.white),
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
+                  MaterialStateProperty.all<Color>(Colors.blue),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                           side: BorderSide.none))),
               onPressed: () => {
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => const Lesson(),
-                  ),
-                  (route) => false,
-                ),
+                debugPrint(_vogaisSelecionadas.toString()),
+                // Navigator.of(context).pushAndRemoveUntil(
+                //   MaterialPageRoute(
+                //     builder: (BuildContext context) => const Lesson(),
+                //   ),
+                //       (route) => false,
+                // ),
               },
               child: const Text('Confirmar',
                   style: TextStyle(
@@ -144,14 +160,22 @@ class TaskVogalSelection extends StatelessWidget {
       ],
     );
   }
+
+  void addVogal(String vogal) {
+    setState(() {
+      _vogaisSelecionadas.add(vogal);
+    });
+  }
 }
 
 class SelectLetterButton extends StatefulWidget {
   final String letter;
+  final Function(String) onSelected;
 
   SelectLetterButton({
     Key? key,
     required this.letter,
+    required this.onSelected,
   }) : super(key: key);
 
   @override
@@ -161,6 +185,7 @@ class SelectLetterButton extends StatefulWidget {
 class _SelectLetterButtonState extends State<SelectLetterButton> {
   bool isSelected = false;
 
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: 60,
@@ -168,6 +193,7 @@ class _SelectLetterButtonState extends State<SelectLetterButton> {
       margin: const EdgeInsets.all(5),
       child: TextButton(
         onPressed: () => {
+          widget.onSelected(widget.letter),
           setState(() => {
                 isSelected = !isSelected,
               }),
