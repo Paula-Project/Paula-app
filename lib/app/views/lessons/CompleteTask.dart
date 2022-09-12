@@ -16,9 +16,9 @@ class CompleteTask extends StatefulWidget {
 class _CompleteTaskState extends State<CompleteTask> {
   @override
 
-  int qtdTargets = 6;
-  int targetsCompletos = 0;
 
+  var gabarito = ['O','A','A','A','E','A'];
+  var tentativa = ['','','','','',''];
 
 
   Widget NoDraggableLetter(letter)=> Container(
@@ -39,7 +39,7 @@ class _CompleteTaskState extends State<CompleteTask> {
   );
 
 
-  Widget Target(letterReceived,bool accepted)=> DragTarget<String>(
+  Widget Target(int numLista,bool accepted, gab)=> DragTarget<String>(
 
     builder: (BuildContext context, List<Object?> candidateData, List<dynamic> rejectedData) {
       return Padding(
@@ -51,7 +51,7 @@ class _CompleteTaskState extends State<CompleteTask> {
             borderRadius: BorderRadius.all(Radius.circular(20)),
             color: Color.fromRGBO(37, 85, 124, 1),
           ),
-          child: accepted == true ? LetterBox(letterReceived) : LetterBox(''),
+          child: accepted == true ? NoDraggableLetter(gab) : LetterBox(''),
 
         ),
       );
@@ -59,14 +59,17 @@ class _CompleteTaskState extends State<CompleteTask> {
     },
     onAccept: (letter){
 
+        gab = letter;
         accepted = true;
-        letterReceived = letter;
-        targetsCompletos = targetsCompletos +1;
+        tentativa[numLista] = letter;
 
 
-    },
+
+        },
     onWillAccept: (letter) {
-      return letter == letterReceived ? true : false;
+
+      return true;
+
     },
 
   );
@@ -146,9 +149,9 @@ class _CompleteTaskState extends State<CompleteTask> {
                                 children: [
 
                                   NoDraggableLetter('B'),
-                                  Target('O',false),
+                                  Target(0,false, tentativa[0]),
                                   NoDraggableLetter('L'),
-                                  Target('A',false),
+                                  Target(1,false,tentativa[1]),
 
 
                                 ],
@@ -182,9 +185,9 @@ class _CompleteTaskState extends State<CompleteTask> {
                                 children: [
 
                                   NoDraggableLetter('L'),
-                                  Target('A',false),
+                                  Target(2,false, tentativa[2]),
                                   NoDraggableLetter('T'),
-                                  Target('A',false),
+                                  Target(3,false, tentativa[3]),
 
 
                                 ],
@@ -214,13 +217,14 @@ class _CompleteTaskState extends State<CompleteTask> {
                             flex: 8,
                             child: SizedBox(
                               width: double.infinity,
+
                               child: Row(
                                 children: [
 
                                   NoDraggableLetter('S'),
-                                  Target('E',false),
+                                  Target(4,false, tentativa[4]),
                                   NoDraggableLetter('T'),
-                                  Target('A',false),
+                                  Target(5,false, tentativa[5]),
 
 
                                 ],
@@ -281,7 +285,8 @@ class _CompleteTaskState extends State<CompleteTask> {
                                   fontWeight: FontWeight.w600,
                                 )),
                             onPressed: () {
-                              qtdTargets == targetsCompletos ? print('Atividade completa'): print('Atividade NÃO COMPLETA');
+
+
 
                             },
                           ),
@@ -336,6 +341,16 @@ class LetterBox extends StatelessWidget {
 
 
 }
+
+class Target extends StatelessWidget {
+  const Target({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
 
 
 
