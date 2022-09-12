@@ -5,11 +5,7 @@ import '../components/ButtonNext.dart';
 import 'lesson_a.dart';
 
 class TaskVogalSelection extends StatelessWidget {
-  TaskVogalSelection({Key? key}) : super(key: key);
-
-  var letterSelected = 0;
-
-  get widget => null;
+  const TaskVogalSelection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,57 +54,21 @@ class TaskVogalSelection extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       SelectLetterButton(
-                        isSelected: letterSelected == 1 ? true : false,
-                        onPress: () {
-                          setState(() {
-                            letterSelected = 1;
-                          });
-                        },
                         letter: 'E',
                       ),
                       SelectLetterButton(
-                        isSelected: letterSelected == 2 ? true : false,
-                        onPress: () {
-                          setState(() {
-                            letterSelected = 2;
-                          });
-                        },
                         letter: 'S',
                       ),
                       SelectLetterButton(
-                        isSelected: letterSelected == 3 ? true : false,
-                        onPress: () {
-                          setState(() {
-                            letterSelected = 3;
-                          });
-                        },
                         letter: 'C',
                       ),
                       SelectLetterButton(
-                        isSelected: letterSelected == 4 ? true : false,
-                        onPress: () {
-                          setState(() {
-                            letterSelected = 4;
-                          });
-                        },
                         letter: 'A',
                       ),
                       SelectLetterButton(
-                        isSelected: letterSelected == 5 ? true : false,
-                        onPress: () {
-                          setState(() {
-                            letterSelected = 5;
-                          });
-                        },
                         letter: 'D',
                       ),
                       SelectLetterButton(
-                        isSelected: letterSelected == 6 ? true : false,
-                        onPress: () {
-                          setState(() {
-                            letterSelected = 6;
-                          });
-                        },
                         letter: 'A',
                       ),
                     ])
@@ -134,39 +94,15 @@ class TaskVogalSelection extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       SelectLetterButton(
-                        isSelected: letterSelected == 7 ? true : false,
-                        onPress: () {
-                          setState(() {
-                            letterSelected = 7;
-                          });
-                        },
                         letter: 'F',
                       ),
                       SelectLetterButton(
-                        isSelected: letterSelected == 8 ? true : false,
-                        onPress: () {
-                          setState(() {
-                            letterSelected = 8;
-                          });
-                        },
                         letter: 'A',
                       ),
                       SelectLetterButton(
-                        isSelected: letterSelected == 9 ? true : false,
-                        onPress: () {
-                          setState(() {
-                            letterSelected = 9;
-                          });
-                        },
                         letter: 'C',
                       ),
                       SelectLetterButton(
-                        isSelected: letterSelected == 10 ? true : false,
-                        onPress: () {
-                          setState(() {
-                            letterSelected = 10;
-                          });
-                        },
                         letter: 'A',
                       ),
                     ]),
@@ -208,18 +144,14 @@ class TaskVogalSelection extends StatelessWidget {
       ],
     );
   }
-
-  setState(Null Function() param0) {}
 }
 
 class SelectLetterButton extends StatefulWidget {
   final String letter;
 
-  const SelectLetterButton({
+  SelectLetterButton({
     Key? key,
     required this.letter,
-    required bool isSelected,
-    required Null Function() onPress,
   }) : super(key: key);
 
   @override
@@ -236,32 +168,9 @@ class _SelectLetterButtonState extends State<SelectLetterButton> {
       margin: const EdgeInsets.all(5),
       child: TextButton(
         onPressed: () => {
-          if (isSelected != 0)
-            {
-              showGeneralDialog(
-                  barrierColor: Colors.black,
-                  transitionDuration: const Duration(milliseconds: 500),
-                  barrierDismissible: true,
-                  barrierLabel: '',
-                  context: context,
-                  pageBuilder: (context, animation, secondaryAnimation) {
-                    return widget;
-                  },
-                  transitionBuilder: (context, a1, a2, widget) {
-                    final curvedValue =
-                        Curves.easeInOutBack.transform(a1.value) - 1.0;
-                    return Transform(
-                      transform: Matrix4.translationValues(
-                          0.0, curvedValue * 200, 0.0),
-                      child: Opacity(
-                        opacity: a1.value,
-                        child: BoxDialog(
-                            feedback: (isSelected == 1) ? true : false,
-                            resposta: 'Parabens!'),
-                      ),
-                    );
-                  })
-            }
+          setState(() => {
+                isSelected = !isSelected,
+              }),
         },
         style: TextButton.styleFrom(
           backgroundColor: isSelected ? Colors.blue : Colors.white70,
