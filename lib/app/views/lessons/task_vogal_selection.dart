@@ -187,7 +187,8 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
   }
 
   bool verifyAnswer() {
-    return _vogaisSelecionadas.every((element) => _vogais.contains(element));
+    return _vogaisSelecionadas.every((element) => _vogais.contains(element)) &&
+        _vogaisSelecionadas.isNotEmpty;
   }
 }
 
