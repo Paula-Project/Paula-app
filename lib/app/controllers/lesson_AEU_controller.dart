@@ -3,6 +3,7 @@ import 'package:paula/app/controllers/task_select_image_controller.dart';
 import 'package:paula/app/views/lessons/congratulations_page.dart';
 import 'package:paula/app/views/lessons/lesson_introduction.dart';
 import 'package:paula/app/views/lessons/task_select_image.dart';
+import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 
 class LessonAEUController extends LessonController {
   TaskSelectImageController selectImageController = TaskSelectImageController();
@@ -37,12 +38,18 @@ class LessonAEUController extends LessonController {
       taskController: selectImageController,
       lessonController: this,
     ));
+
+    widgetsRouters.add(const TaskVogalSelection());
     widgetsRouters.add(const CongratulationsPage());
   }
 
   @override
   nextTask() {
-    nextPage++;
+    if (nextPage < tasksQuantity) {
+      nextPage++;
+    } else {
+      nextPage = 0;
+    }
     return widgetsRouters[nextPage];
   }
 

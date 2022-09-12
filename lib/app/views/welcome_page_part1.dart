@@ -44,8 +44,8 @@ class WelcomePagePart1 extends StatelessWidget {
                   children: [
                     Container(
                         width: (MediaQuery.of(context).size.width - 150),
-                        child:
-                            Image.asset('assets/images/Avatar-Maker(2).png')),
+                        child: Image.asset(
+                            'assets/images/paula/Avatar-Maker(2).png')),
                     const SizedBox(height: 20),
                     const Text(
                       "Seja Bem Vindo!",

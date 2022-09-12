@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:paula/app/controllers/lesson_AEU_controller.dart';
 import 'package:paula/app/views/components/lesson_button.dart';
+import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/person_data_page.dart';
-import 'package:paula/app/views/lessons/LessonFinal.dart';
-
-import '../../controllers/lesson_AEU_controller.dart';
-import '../home_page.dart';
 
 class LessonsVogais extends StatelessWidget {
   LessonAEUController lessonAEUController = LessonAEUController();
@@ -67,12 +65,13 @@ class LessonsVogais extends StatelessWidget {
               LessonButton(
                 isActive: false,
                 textContent: 'I - U',
-                lessonPage: const HomePage(),
+                lessonPage: HomePage(),
               ),
               LessonButton(
-                  isActive: true,
-                  textContent: 'LIÇÃO FINAL',
-                  lessonPage: TaskVogalSelection()),
+                isActive: false,
+                textContent: 'LIÇÃO FINAL',
+                lessonPage: HomePage(),
+              ),
             ],
           ),
         ),

@@ -65,7 +65,7 @@ class _LessonIntroductionState extends State<LessonIntroduction> {
                       width: (MediaQuery.of(context).size.width),
                       height: 275,
                       child: Image.asset(
-                        'assets/images/Avatar-Maker(2).png',
+                        'assets/images/paula/Avatar-Maker(2).png',
                         scale: 1,
                       ),
                     ),

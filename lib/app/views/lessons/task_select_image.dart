@@ -84,7 +84,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                       children: widget.task.words
                           .map(
                             (word) => CardImage(
-                              imageUrl: "assets/images/${word.imagePath}",
+                              imageUrl: "assets/images/words/${word.imagePath}",
                               scale: 5.0,
                               audioUrl: word.soundPath,
                               isSelected: widget.taskController.cardSelected ==

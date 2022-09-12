@@ -14,163 +14,168 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Container(
-            height: 100.0,
-            decoration: const BoxDecoration(
-                color: Color.fromRGBO(37, 85, 124, 1),
-                borderRadius: BorderRadius.all(Radius.circular(15))),
-            child: const Center(
-              child: Padding(
-                padding: EdgeInsets.all(28.0),
-                child: Text(
-                  "SELECIONE AS VOGAIS ",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.w300,
-                    decoration: TextDecoration.none,
+    return Container(
+      decoration: const BoxDecoration(color: Colors.white),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Container(
+              height: 100.0,
+              decoration: const BoxDecoration(
+                  color: Color.fromRGBO(37, 85, 124, 1),
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              child: const Center(
+                child: Padding(
+                  padding: EdgeInsets.all(28.0),
+                  child: Text(
+                    "SELECIONE AS VOGAIS ",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.w300,
+                      decoration: TextDecoration.none,
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Container(
-            height: 200.0,
-            decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 194, 197, 199),
-                borderRadius: BorderRadius.all(Radius.circular(15))),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 30.0, top: 12.0),
-                  child: Container(
-                      height: 87.0, child: Image.asset('images/escada.png')),
-                ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      SelectLetterButton(
-                        letter: 'E',
-                        onSelected: addVogal,
-                        onUnselected: removeVogal,
-                      ),
-                      SelectLetterButton(
-                        letter: 'S',
-                        onSelected: addVogal,
-                        onUnselected: removeVogal,
-                      ),
-                      SelectLetterButton(
-                        letter: 'C',
-                        onSelected: addVogal,
-                        onUnselected: removeVogal,
-                      ),
-                      SelectLetterButton(
-                        letter: 'A',
-                        onSelected: addVogal,
-                        onUnselected: removeVogal,
-                      ),
-                      SelectLetterButton(
-                        letter: 'D',
-                        onSelected: addVogal,
-                        onUnselected: removeVogal,
-                      ),
-                      SelectLetterButton(
-                        letter: 'A',
-                        onSelected: addVogal,
-                        onUnselected: removeVogal,
-                      ),
-                    ])
-              ],
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Container(
+              height: 200.0,
+              decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 194, 197, 199),
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 30.0, top: 12.0),
+                    child: Container(
+                        height: 87.0,
+                        child: Image.asset('assets/images/words/escada.png')),
+                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SelectLetterButton(
+                          letter: 'E',
+                          onSelected: addVogal,
+                          onUnselected: removeVogal,
+                        ),
+                        SelectLetterButton(
+                          letter: 'S',
+                          onSelected: addVogal,
+                          onUnselected: removeVogal,
+                        ),
+                        SelectLetterButton(
+                          letter: 'C',
+                          onSelected: addVogal,
+                          onUnselected: removeVogal,
+                        ),
+                        SelectLetterButton(
+                          letter: 'A',
+                          onSelected: addVogal,
+                          onUnselected: removeVogal,
+                        ),
+                        SelectLetterButton(
+                          letter: 'D',
+                          onSelected: addVogal,
+                          onUnselected: removeVogal,
+                        ),
+                        SelectLetterButton(
+                          letter: 'A',
+                          onSelected: addVogal,
+                          onUnselected: removeVogal,
+                        ),
+                      ])
+                ],
+              ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Container(
-            height: 200.0,
-            decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 194, 197, 199),
-                borderRadius: BorderRadius.all(Radius.circular(15))),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 24.0),
-                  child: Container(
-                      height: 87.0, child: Image.asset('images/uva.png')),
-                ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      SelectLetterButton(
-                        letter: 'F',
-                        onSelected: addVogal,
-                        onUnselected: removeVogal,
-                      ),
-                      SelectLetterButton(
-                        letter: 'A',
-                        onSelected: addVogal,
-                        onUnselected: removeVogal,
-                      ),
-                      SelectLetterButton(
-                        letter: 'C',
-                        onSelected: addVogal,
-                        onUnselected: removeVogal,
-                      ),
-                      SelectLetterButton(
-                        letter: 'A',
-                        onSelected: addVogal,
-                        onUnselected: removeVogal,
-                      ),
-                    ]),
-              ],
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Container(
+              height: 200.0,
+              decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 194, 197, 199),
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 24.0),
+                    child: Container(
+                        height: 87.0,
+                        child: Image.asset('assets/images/words/uva.png')),
+                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SelectLetterButton(
+                          letter: 'F',
+                          onSelected: addVogal,
+                          onUnselected: removeVogal,
+                        ),
+                        SelectLetterButton(
+                          letter: 'A',
+                          onSelected: addVogal,
+                          onUnselected: removeVogal,
+                        ),
+                        SelectLetterButton(
+                          letter: 'C',
+                          onSelected: addVogal,
+                          onUnselected: removeVogal,
+                        ),
+                        SelectLetterButton(
+                          letter: 'A',
+                          onSelected: addVogal,
+                          onUnselected: removeVogal,
+                        ),
+                      ]),
+                ],
+              ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(40.0),
-          child: Container(
-            height: 45.0,
-            width: 200.0,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white),
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          side: BorderSide.none))),
-              onPressed: () => {
-                debugPrint(_vogaisSelecionadas.toString()),
-                if (verifyAnswer())
-                  {
-                    Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => const Lesson(),
+          Padding(
+            padding: const EdgeInsets.all(40.0),
+            child: Container(
+              height: 45.0,
+              width: 200.0,
+              child: ElevatedButton(
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white),
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            side: BorderSide.none))),
+                onPressed: () => {
+                  debugPrint(_vogaisSelecionadas.toString()),
+                  if (verifyAnswer())
+                    {
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => const Lesson(),
+                        ),
+                        (route) => false,
                       ),
-                      (route) => false,
-                    ),
-                  }
-              },
-              child: const Text('Confirmar',
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w600,
-                  )),
+                    }
+                },
+                child: const Text('Confirmar',
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w600,
+                    )),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

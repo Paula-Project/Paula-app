@@ -39,7 +39,7 @@ class _AppWidgetState extends State<AppWidget> {
       initialRoute: "/",
       locale: const Locale("pt", "BR"),
       routes: {
-        "/": (context) => TaskVogalSelection(),
+        "/": (context) => WelcomePagePart1(),
         "/welcome_part2": (context) => const WelcomePagePart2(),
         "/welcome_part3": (context) => const WelcomePagePart3(),
         "/login": (context) => const LoginPage(),
