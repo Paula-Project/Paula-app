@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:paula/app/views/lessons/lesson_a.dart';
-import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 import 'package:paula/app/views/singup_page_part1.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app/views/welcome_page_part1.dart';
@@ -19,7 +17,6 @@ class AppWidget extends StatefulWidget {
 
 class _AppWidgetState extends State<AppWidget> {
   bool isAuthenticated = false;
-
   @override
   Widget build(BuildContext context) {
     @override
@@ -47,7 +44,7 @@ class _AppWidgetState extends State<AppWidget> {
         "/welcome_part3": (context) => const WelcomePagePart3(),
         "/login": (context) => const LoginPage(),
         "/singup_part1": (context) => const SingupPage(),
-        "/home": (context) => const HomePage()
+        "/home": (context) => HomePage()
       },
     );
   }

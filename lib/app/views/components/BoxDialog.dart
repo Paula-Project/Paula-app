@@ -1,13 +1,20 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/lesson_AEU_controller.dart';
+import 'package:paula/app/controllers/lesson_controller.dart';
 import 'package:paula/app/views/lessons/congratulations_page.dart';
 
 class BoxDialog extends StatefulWidget {
-  BoxDialog({Key? key, required this.feedback, required this.resposta})
+  BoxDialog(
+      {Key? key,
+      required this.feedback,
+      required this.resposta,
+      required this.controller})
       : super(key: key);
 
   final String resposta;
   final bool feedback;
+  final LessonController controller;
 
   @override
   State<BoxDialog> createState() => _BoxDialogState();
@@ -85,7 +92,7 @@ class _BoxDialogState extends State<BoxDialog> {
           onPressed: () {
             Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
-                builder: (BuildContext context) => const CongratulationsPage(),
+                builder: (BuildContext context) => widget.controller.nextTask(),
               ),
               (route) => false,
             );

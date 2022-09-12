@@ -4,8 +4,7 @@ import 'package:paula/app/views/lessons/lessons_vogais.dart';
 import 'components/module_button.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
+  HomePage({Key? key}) : super(key: key);
   final int indexPage = 0;
 
   @override
@@ -14,7 +13,7 @@ class HomePage extends StatelessWidget {
         indexPage: 0,
         bodyContent: Padding(
             padding: const EdgeInsets.fromLTRB(50, 50, 50, 50),
-            child: Column(children: const [
+            child: Column(children: [
               ModuleButton(
                   Alignment.centerLeft, "Vogais", LessonsVogais(), true),
               ModuleButton(Alignment.centerRight, "Consoantes \n Parte 1",

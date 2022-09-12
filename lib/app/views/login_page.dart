@@ -199,8 +199,7 @@ class _LoginPageState extends State<LoginPage> {
                             onLongPress: () {
                               Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const HomePage(),
+                                  builder: (BuildContext context) => HomePage(),
                                 ),
                                 (route) => false,
                               );
@@ -213,7 +212,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const HomePage(),
+                                          HomePage(),
                                     ),
                                     (route) => false,
                                   );
