@@ -100,6 +100,7 @@ flutter:
     - assets/images/words/onibus.png
     - assets/images/words/ovo.png
     - assets/images/words/padaria.png
+    - assets/images/words/seta.png
 
     - assets/images/fireworks.png
 
@@ -130,6 +131,7 @@ flutter:
 
     - assets/audios/sucess_sound.mp3
     - assets/audios/failed_sound.mp3
+    - assets/audios/marqueA.ogg
 
     - assets/alphabet/letter-a.png
     - assets/alphabet/letter-e.png
