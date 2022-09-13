@@ -7,6 +7,7 @@ class TaskVogalSelectionController {
   late TaskVogalSelectionModel task1;
   late TaskVogalSelectionModel task2;
   late TaskVogalSelectionModel task3;
+  List<String> wordsCorrect = [];
   Words words = Words();
   TaskVogalSelectionController() {
     task1 = TaskVogalSelectionModel(words: [words.words[14], words.words[13]]);
@@ -34,26 +35,26 @@ class TaskVogalSelectionController {
     vogaisSelecionadas.remove(vogal);
   }
 
-  bool verifyAnswer(task) {
+  bool verifyAnswer() {
     return vogaisSelecionadas
-            .every((element) => getVogais(task).contains(element)) &&
-        vogaisSelecionadas.isNotEmpty;
+            .every((element) => wordsCorrect.contains(element)) &&
+        vogaisSelecionadas.length == wordsCorrect.length;
   }
 
-  getVogais(task) {
-    List wordsVogais = [];
-    task.words.forEach((element) {
-      element.text.runes.forEach((letter) {
-        if (vogais
-            .contains(String.fromCharCode(letter).toUpperCase().toString())) {
-          wordsVogais.add(String.fromCharCode(letter).toUpperCase().toString());
+  void makeAnswers(TaskVogalSelectionModel task) {
+    for (int i = 0; i < task.words.length; i++) {
+      String word = task.words[i].text;
+      for (int i = 0; i < word.length; i++) {
+        String letter = word[i].toUpperCase();
+        if (vogais.contains(letter)) {
+          wordsCorrect.add(letter);
         }
-      });
-    });
-    return wordsVogais;
+      }
+    }
   }
 
   reset() {
     vogaisSelecionadas.clear();
+    wordsCorrect.clear();
   }
 }

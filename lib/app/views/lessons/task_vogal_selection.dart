@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller.dart';
 import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
 import 'package:paula/app/model/task_vogal_selection_model.dart';
-import 'package:paula/app/model/word.dart';
-import 'package:paula/app/model/words.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
 import 'package:paula/app/views/components/task_progress.dart';
 
@@ -24,6 +22,7 @@ class TaskVogalSelection extends StatefulWidget {
 
 class _TaskVogalSelectionState extends State<TaskVogalSelection> {
   bool isCorrect = false;
+
   @override
   void initState() {
     super.initState();
@@ -136,10 +135,12 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
                                     borderRadius: BorderRadius.circular(30),
                                     side: BorderSide.none))),
                         onPressed: () => {
+                          widget.taskController.makeAnswers(widget.task),
                           debugPrint(widget.taskController.vogaisSelecionadas
                               .toString()),
-                          isCorrect =
-                              widget.taskController.verifyAnswer(widget.task),
+                          debugPrint(
+                              widget.taskController.wordsCorrect.toString()),
+                          isCorrect = widget.taskController.verifyAnswer(),
                           if (isCorrect)
                             {
                               widget.lessonController
