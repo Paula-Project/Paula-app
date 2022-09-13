@@ -21,6 +21,8 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
   bool isCorrect = false;
   int count = 0;
   List<String> _words = ['BOLA', 'LATA', 'SETA'];
+  String resposta = '';
+
 
 
   Widget NoDraggableLetter(letter) =>
@@ -75,7 +77,7 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
 
           accepted = true;
           _vogaisSelecionadas[numLista] = letter;
-          print(_vogaisSelecionadas);
+
         },
         onWillAccept: (letter) {
           return true;
@@ -270,8 +272,7 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                                 )),
                             onPressed: () {
                               makeAnswers();
-                              print(_gabarito);
-                              print(_vogaisSelecionadas);
+
                               if (verifyAnswer()) {
                                 isCorrect = true;
                                 widget.lessonController
@@ -300,7 +301,7 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                                           controller:
                                           this.widget.lessonController,
                                           feedback: isCorrect,
-                                          resposta: ""),
+                                          resposta: resposta = '${_words[0]} / ${_words[1]} / ${_words[2]}'),
                                     ),
                                   );
                                 },
@@ -331,11 +332,11 @@ List<Widget> makeWord(word){
 
   List<Widget> _widgets = [];
   for (int i = 0; i < word.length; i++) {
-    String letter = word[i];
+    String letter = word[i].toUpperCase();
     if (letter == 'A' ||letter == 'E' || letter == 'O')  {
       _widgets.add(Target(count, false));
       count = count +1;
-      print(count);
+
     }else{
       _widgets.add(NoDraggableLetter(letter));
     }
@@ -350,7 +351,7 @@ List<Widget> makeWord(word){
       String word = _words[i];
 
       for (int i = 0; i < word.length; i++) {
-        String letter = word[i];
+        String letter = word[i].toUpperCase();
         if (letter == 'A' || letter == 'E' || letter == 'O') {
           _gabarito.add(letter);
         }
@@ -396,11 +397,4 @@ class LetterBox extends StatelessWidget {
       );
 }
 
-class Target extends StatelessWidget {
-  const Target({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
