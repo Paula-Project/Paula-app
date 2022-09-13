@@ -4,7 +4,6 @@ import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/components/Input.dart';
 import 'package:paula/app/views/login_page.dart';
 import 'components/paulaTitle.dart';
-import 'home_page.dart';
 import 'package:flutter/services.dart';
 
 class ChangePassword extends StatefulWidget {
@@ -43,6 +42,7 @@ class _ChangePassword extends State<ChangePassword> {
     }
   }
 
+  @override
   void initState() {
     selectedDateTxt = DateFormat('dd/MM/yyyy').format(_date);
     super.initState();
@@ -80,7 +80,7 @@ class _ChangePassword extends State<ChangePassword> {
                   child: PaulaTitleComponent(),
                 ),
                 Expanded(
-                  flex: 18,
+                  flex: 21,
                   child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -166,7 +166,7 @@ class _ChangePassword extends State<ChangePassword> {
                                             ),
                                           ),
                                           Container(
-                                            height: 5,
+                                            height: 3,
                                           ),
                                           ElevatedButton(
                                             style: ButtonStyle(
