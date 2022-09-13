@@ -51,8 +51,7 @@ class _ChangePassword extends State<ChangePassword> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
 
   final TextEditingController _senhaController = TextEditingController();
-  final TextEditingController _senhaConfirmaController =
-  TextEditingController();
+  final TextEditingController _senhaConfirmaController = TextEditingController();
   final TextEditingController _apelidoController = TextEditingController();
 
   @override
@@ -252,18 +251,37 @@ class _ChangePassword extends State<ChangePassword> {
                                             height: 45,
                                             child: ElevatedButton(
                                               onPressed: () {
-                                                if (_key.currentState!
-                                                    .validate()) {
-                                                  Navigator.of(context)
-                                                      .pushAndRemoveUntil(
-                                                    MaterialPageRoute(
-                                                      builder: (BuildContext
-                                                      context) =>
-                                                      const LoginPage(),
-                                                    ),
-                                                        (route) => false,
-                                                  );
-                                                }
+                                               {
+                                                 DateTime hoje =
+                                                 DateTime.now();
+                                                 if (_key.currentState!
+                                                     .validate()) {
+                                                   if ((hoje.difference(_date).inDays)/365 >5 ) {
+                                                     Navigator.of(context)
+                                                         .pushAndRemoveUntil(
+                                                       MaterialPageRoute(
+                                                         builder: (BuildContext
+                                                         context) =>
+                                                         const LoginPage(),
+                                                       ),
+                                                           (route) => false,
+                                                     );
+                                                   }
+                                                   ScaffoldMessenger.of(
+                                                       context)
+                                                       .showSnackBar(
+                                                     const SnackBar(
+                                                         backgroundColor:
+                                                         Color.fromARGB( 255, 41, 171, 226),
+                                                         content: Text(
+                                                           'Data de Nascimento inválida',
+                                                           style: TextStyle(
+                                                               color: Colors
+                                                                   .white),
+                                                         )),
+                                                   );
+                                                 }
+                                               }
                                               },
                                               onHover: (hover) {},
                                               style: ButtonStyle(
