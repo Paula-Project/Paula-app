@@ -16,9 +16,12 @@ class TaskCompleteWords extends StatefulWidget {
 
 class _TaskCompleteWordsState extends State<TaskCompleteWords> {
   @override
-  final List<String> _gabarito = ['O', 'A', 'A', 'A', 'E', 'A'];
+  final List<String> _gabarito = [];
   List<String> _vogaisSelecionadas = ['', '', '', '', '', ''];
   bool isCorrect = false;
+  int count = 0;
+  List<String> _words = ['BOLA', 'LATA', 'SETA'];
+
 
   Widget NoDraggableLetter(letter) =>
       Container(
@@ -45,7 +48,7 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
         ),
       );
 
-  Widget Target(int numLista, bool accepted, gab) =>
+  Widget Target(int numLista, bool accepted) =>
       DragTarget<String>(
         builder: (BuildContext context, List<Object?> candidateData,
             List<dynamic> rejectedData) {
@@ -64,14 +67,15 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 color: Color.fromRGBO(37, 85, 124, 1),
               ),
-              child: accepted == true ? NoDraggableLetter(gab) : LetterBox(''),
+              child: accepted == true ? NoDraggableLetter(_vogaisSelecionadas[numLista]) : LetterBox(''),
             ),
           );
         },
         onAccept: (letter) {
-          gab = letter;
+
           accepted = true;
           _vogaisSelecionadas[numLista] = letter;
+          print(_vogaisSelecionadas);
         },
         onWillAccept: (letter) {
           return true;
@@ -158,12 +162,8 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                               child: SizedBox(
                                 width: double.infinity,
                                 child: Row(
-                                  children: [
-                                    NoDraggableLetter('B'),
-                                    Target(0, false, _vogaisSelecionadas[0]),
-                                    NoDraggableLetter('L'),
-                                    Target(1, false, _vogaisSelecionadas[1]),
-                                  ],
+                                  children:
+                                    makeWord('BOLA'),
                                 ),
                               ),
                             ),
@@ -190,12 +190,9 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                               child: SizedBox(
                                 width: double.infinity,
                                 child: Row(
-                                  children: [
-                                    NoDraggableLetter('L'),
-                                    Target(2, false, _vogaisSelecionadas[2]),
-                                    NoDraggableLetter('T'),
-                                    Target(3, false, _vogaisSelecionadas[3]),
-                                  ],
+                                  children:
+                                  makeWord('LATA'),
+
                                 ),
                               ),
                             ),
@@ -222,12 +219,8 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                               child: SizedBox(
                                 width: double.infinity,
                                 child: Row(
-                                  children: [
-                                    NoDraggableLetter('S'),
-                                    Target(4, false, _vogaisSelecionadas[4]),
-                                    NoDraggableLetter('T'),
-                                    Target(5, false, _vogaisSelecionadas[5]),
-                                  ],
+                                  children:
+                                  makeWord('SETA'),
                                 ),
                               ),
                             ),
@@ -276,6 +269,9 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                                   fontWeight: FontWeight.w600,
                                 )),
                             onPressed: () {
+                              makeAnswers();
+                              print(_gabarito);
+                              print(_vogaisSelecionadas);
                               if (verifyAnswer()) {
                                 isCorrect = true;
                                 widget.lessonController
@@ -323,18 +319,48 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
   }
 
   bool verifyAnswer() {
-    print(_vogaisSelecionadas);
-    print(_gabarito);
-
     for (int i = 0; i < _gabarito.length; i++) {
       if (_vogaisSelecionadas[i] != _gabarito[i]) {
         return false;
       }
     }
-
     return true;
   }
+
+List<Widget> makeWord(word){
+
+  List<Widget> _widgets = [];
+  for (int i = 0; i < word.length; i++) {
+    String letter = word[i];
+    if (letter == 'A' ||letter == 'E' || letter == 'O')  {
+      _widgets.add(Target(count, false));
+      count = count +1;
+      print(count);
+    }else{
+      _widgets.add(NoDraggableLetter(letter));
+    }
+
+  }
+
+  return _widgets;
 }
+
+  void makeAnswers() {
+    for (int i = 0; i < _words.length; i++) {
+      String word = _words[i];
+
+      for (int i = 0; i < word.length; i++) {
+        String letter = word[i];
+        if (letter == 'A' || letter == 'E' || letter == 'O') {
+          _gabarito.add(letter);
+        }
+      }
+    }
+  }
+
+}
+
+
 
 class LetterBox extends StatelessWidget {
   final String letter;
