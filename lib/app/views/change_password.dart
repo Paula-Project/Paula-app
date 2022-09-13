@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/components/Input.dart';
 import 'package:paula/app/views/login_page.dart';
@@ -22,7 +23,30 @@ class _ChangePassword extends State<ChangePassword> {
             Color.fromARGB(255, 100, 171, 226),
             Color.fromARGB(255, 41, 171, 226)
           ]));
+
+  DateTime _date = DateTime.now();
+  var selectedDateTxt;
   List<bool> isSelected = List.generate(3, (int index) => false);
+
+  Future<Null> _selectDate(BuildContext context) async {
+    DateTime? _datePicker = await showDatePicker(
+        context: context,
+        initialDate: _date,
+        firstDate: DateTime(1910, 1, 1),
+        lastDate: DateTime.now());
+
+    if (_datePicker != null && _datePicker != _date) {
+      setState(() {
+        _date = _datePicker;
+        selectedDateTxt = DateFormat('dd/MM/yyyy').format(_datePicker);
+      });
+    }
+  }
+
+  void initState() {
+    selectedDateTxt = DateFormat('dd/MM/yyyy').format(_date);
+    super.initState();
+  }
 
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
 
@@ -56,7 +80,7 @@ class _ChangePassword extends State<ChangePassword> {
                   child: PaulaTitleComponent(),
                 ),
                 Expanded(
-                  flex: 12,
+                  flex: 18,
                   child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -99,7 +123,7 @@ class _ChangePassword extends State<ChangePassword> {
                                     topRight: Radius.circular(40.0),
                                   )),
                               child: Padding(
-                                padding: const EdgeInsets.only(bottom: 50),
+                                padding: const EdgeInsets.only(bottom: 30),
                                 child: Form(
                                   key: _key,
                                   child: Padding(
@@ -114,7 +138,7 @@ class _ChangePassword extends State<ChangePassword> {
                                             keyboardType: TextInputType.text,
                                             valid: (value) {
                                               if (value!.isEmpty) {
-                                                return ' Informe o nome';
+                                                return ' Informe o seu Apelido';
                                               }
                                               if (value.length < 3) {
                                                 return 'Tamanho inferior a 3';
@@ -125,6 +149,59 @@ class _ChangePassword extends State<ChangePassword> {
                                               FilteringTextInputFormatter.allow(
                                                   RegExp(r'[a-zA-Z0-9]'))
                                             ],
+                                          ),
+                                          const Padding(
+                                            padding: EdgeInsets.fromLTRB(
+                                                5, 20, 15, 0),
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                  "Data de Nascimento",
+                                                  style: TextStyle(
+                                                      color: Colors.blue,
+                                                      fontSize: 25,
+                                                      fontFamily: "Nunito",
+                                                      fontWeight:
+                                                      FontWeight.w300)),
+                                            ),
+                                          ),
+                                          Container(
+                                            height: 5,
+                                          ),
+                                          ElevatedButton(
+                                            style: ButtonStyle(
+                                              backgroundColor:
+                                              MaterialStateProperty.all<
+                                                  Color>(Colors.white),
+                                              foregroundColor:
+                                              MaterialStateProperty.all<
+                                                  Color>(Colors.blue),
+                                            ),
+                                            onPressed: () {
+                                              _selectDate(context);
+                                            },
+                                            child: Padding(
+                                              padding:
+                                              const EdgeInsets.all(8.0),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment
+                                                    .spaceBetween,
+                                                children: [
+                                                  const Icon(
+                                                    Icons.date_range,
+                                                  ),
+                                                  Text(
+                                                    selectedDateTxt,
+                                                    style: const TextStyle(
+                                                        fontSize: 25,
+                                                        fontFamily: "Nunito",
+                                                        fontWeight:
+                                                        FontWeight.w300),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
                                           ),
                                           Container(
                                             height: 20,
@@ -168,11 +245,11 @@ class _ChangePassword extends State<ChangePassword> {
                                             },
                                           ),
                                           Container(
-                                            height: 40,
+                                            height: 20,
                                           ),
                                           SizedBox(
                                             width: 160,
-                                            height: 50,
+                                            height: 45,
                                             child: ElevatedButton(
                                               onPressed: () {
                                                 if (_key.currentState!
@@ -225,3 +302,4 @@ class _ChangePassword extends State<ChangePassword> {
     );
   }
 }
+
