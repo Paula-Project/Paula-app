@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Flutter (SM A305GT)",
+      "program": "lib/main.dart",
+      "deviceId": "RQ8M702G1DB",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "Flutter (Chrome)",
+      "program": "lib/main.dart",
+      "deviceId": "chrome",
+      "request": "launch",
+      "type": "dart"
+    }
+  ]
+}

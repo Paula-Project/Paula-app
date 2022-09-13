@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:paula/app/controllers/lesson_AEU_controller.dart';
 import 'package:paula/app/views/components/lesson_button.dart';
 import 'package:paula/app/views/home_page.dart';
-import 'package:paula/app/views/lessons/lesson_introduction.dart';
 import 'package:paula/app/views/person_data_page.dart';
 
 class LessonsVogais extends StatelessWidget {
-  const LessonsVogais({Key? key}) : super(key: key);
+  LessonAEUController lessonAEUController = LessonAEUController();
+
+  LessonsVogais({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class LessonsVogais extends StatelessWidget {
               Navigator.push(
                   context,
                   PageTransition(
-                      type: PageTransitionType.fade, child: const HomePage()));
+                      type: PageTransitionType.fade, child: HomePage()));
             },
             child: const Icon(
               Icons.logout,
@@ -57,8 +59,8 @@ class LessonsVogais extends StatelessWidget {
             children: [
               LessonButton(
                 isActive: true,
-                textContent: 'A - E - O',
-                lessonPage: LessonIntroduction(),
+                textContent: 'A - E - U',
+                lessonPage: lessonAEUController.nextTask(),
               ),
               LessonButton(
                 isActive: false,
@@ -86,7 +88,7 @@ class LessonsVogais extends StatelessWidget {
               case 0:
                 Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(
-                    builder: (BuildContext context) => const HomePage(),
+                    builder: (BuildContext context) => HomePage(),
                   ),
                   (route) => false,
                 );

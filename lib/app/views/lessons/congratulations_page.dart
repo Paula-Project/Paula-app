@@ -77,7 +77,7 @@ class _CongratulationsPageState extends State<CongratulationsPage> {
             ),
             Container(
               margin: const EdgeInsets.only(top: 70.0),
-              child: const SizedBox(
+              child: SizedBox(
                   width: 350,
                   height: 50,
                   child: ButtonNext(

@@ -77,7 +77,7 @@ class Layout extends StatelessWidget {
                 case 0:
                   Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(
-                      builder: (BuildContext context) => const HomePage(),
+                      builder: (BuildContext context) => HomePage(),
                     ),
                     (route) => false,
                   );

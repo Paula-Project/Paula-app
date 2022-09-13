@@ -53,7 +53,7 @@ class WelcomePagePart3 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Image.asset(
-                        'assets/images/Avatar-Maker(2).png',
+                        'assets/images/paula/Avatar-Maker(2).png',
                         width: MediaQuery.of(context).size.width - 150,
                       ),
                       const DialogTextBox(

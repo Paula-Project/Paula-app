@@ -40,7 +40,7 @@ class _CardImageState extends State<CardImage> {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: (() {
-        _runAudio("audios/${widget.audioUrl}");
+        _runAudio("audios/words/${widget.audioUrl}");
         widget.onPress();
       }),
       child: Container(

@@ -1,11 +1,18 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/lesson_controller.dart';
 import 'package:paula/app/views/components/DIalogTextBoxDown.dart';
-import 'package:get/get.dart';
-import 'package:paula/app/views/lessons/lesson_a.dart';
 
 class LessonIntroduction extends StatefulWidget {
-  const LessonIntroduction({Key? key}) : super(key: key);
+  final String letter;
+  final String titleIntroduction;
+  final LessonController controller;
+
+  const LessonIntroduction(
+      {Key? key,
+      required this.letter,
+      required this.titleIntroduction,
+      required this.controller})
+      : super(key: key);
 
   @override
   State<LessonIntroduction> createState() => _LessonIntroductionState();
@@ -35,18 +42,16 @@ class _LessonIntroductionState extends State<LessonIntroduction> {
                     decoration: const BoxDecoration(
                         color: Color.fromRGBO(37, 85, 124, 1),
                         borderRadius: BorderRadius.all(Radius.circular(15.0))),
-                    child: const Center(
+                    child: Center(
                       child: Text(
-                        'A',
-                        style: TextStyle(fontSize: 200.0),
+                        widget.letter,
+                        style: const TextStyle(fontSize: 200.0),
                       ),
                     )),
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.7,
-                child: const DialogTextBoxDown(
-                    TextContent:
-                        "Esta é a letra “A”, ela é a primeira letra do alfabeto."),
+                child: DialogTextBoxDown(TextContent: widget.titleIntroduction),
               ),
               const SizedBox(
                 height: 10.0,
@@ -60,7 +65,7 @@ class _LessonIntroductionState extends State<LessonIntroduction> {
                       width: (MediaQuery.of(context).size.width),
                       height: 275,
                       child: Image.asset(
-                        'assets/images/Avatar-Maker(2).png',
+                        'assets/images/paula/Avatar-Maker(2).png',
                         scale: 1,
                       ),
                     ),
@@ -84,7 +89,8 @@ class _LessonIntroductionState extends State<LessonIntroduction> {
                             onPressed: () async {
                               Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
-                                  builder: (BuildContext context) => const Lesson(),
+                                  builder: (BuildContext context) =>
+                                      widget.controller.nextTask(),
                                 ),
                                 (route) => false,
                               );
