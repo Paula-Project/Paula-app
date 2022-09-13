@@ -6,6 +6,7 @@ import 'package:paula/app/views/login_page.dart';
 import 'components/paulaTitle.dart';
 import 'package:flutter/services.dart';
 
+
 class ChangePassword extends StatefulWidget {
   const ChangePassword({Key? key}) : super(key: key);
 
