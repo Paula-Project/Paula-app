@@ -3,12 +3,20 @@ import 'package:paula/app/controllers/lesson_controller.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
 import 'package:paula/app/views/components/task_progress.dart';
 
+import '../../controllers/task_complete_word_controller.dart';
+import '../../model/task_complete_word_model.dart';
 
 class TaskCompleteWords extends StatefulWidget {
   final LessonController lessonController;
+  final TaskCompleteWordModel task;
+  final TaskCompleteWordController taskController;
 
-  const TaskCompleteWords({Key? key, required this.lessonController})
-      : super(key: key);
+  TaskCompleteWords({
+    Key? key,
+    required this.lessonController,
+    required this.task,
+    required this.taskController,
+  }) : super(key: key);
 
   @override
   State<TaskCompleteWords> createState() => _TaskCompleteWordsState();
@@ -16,25 +24,12 @@ class TaskCompleteWords extends StatefulWidget {
 
 class _TaskCompleteWordsState extends State<TaskCompleteWords> {
   @override
-  final List<String> _gabarito = [];
-  List<String> _vogaisSelecionadas = ['', '', '', '', '', ''];
   bool isCorrect = false;
   int count = 0;
-  List<String> _words = ['BOLA', 'LATA', 'SETA'];
-  String resposta = '';
 
-
-
-  Widget NoDraggableLetter(letter) =>
-      Container(
-        width: MediaQuery
-            .of(context)
-            .size
-            .width * 0.14,
-        height: MediaQuery
-            .of(context)
-            .size
-            .height * 0.08,
+  Widget NoDraggableLetter(letter) => Container(
+        width: MediaQuery.of(context).size.width * 0.14,
+        height: MediaQuery.of(context).size.height * 0.08,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(15)),
           color: Color.fromRGBO(209, 220, 221, 1),
@@ -50,34 +45,30 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
         ),
       );
 
-  Widget Target(int numLista, bool accepted) =>
-      DragTarget<String>(
+  Widget Target(int numList, bool accepted) => DragTarget<String>(
         builder: (BuildContext context, List<Object?> candidateData,
             List<dynamic> rejectedData) {
           return Padding(
             padding: const EdgeInsets.only(bottom: 20.0),
             child: Container(
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width * 0.14,
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .height * 0.06,
+              width: MediaQuery.of(context).size.width * 0.14,
+              height: MediaQuery.of(context).size.height * 0.06,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 color: Color.fromRGBO(37, 85, 124, 1),
               ),
-              child: accepted == true ? NoDraggableLetter(_vogaisSelecionadas[numLista]) : LetterBox(''),
+              child: accepted == true
+                  ? NoDraggableLetter(
+                      widget.taskController.vowelsSelected[numList])
+                  : LetterBox(''),
             ),
           );
         },
         onAccept: (letter) {
-
           accepted = true;
-          _vogaisSelecionadas[numLista] = letter;
-
+          widget.taskController.addVowelSelected(numList, letter);
+          print(widget.taskController.vowelsSelected);
+          print(widget.taskController.answers);
         },
         onWillAccept: (letter) {
           return true;
@@ -90,14 +81,8 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
         decoration: const BoxDecoration(
           color: Colors.white,
         ),
-        width: MediaQuery
-            .of(context)
-            .size
-            .width,
-        height: MediaQuery
-            .of(context)
-            .size
-            .height,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 15.0),
           child: Column(
@@ -110,20 +95,17 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.1,
+                  height: MediaQuery.of(context).size.height * 0.1,
                   decoration: const BoxDecoration(
                       color: Color.fromRGBO(37, 85, 124, 1),
                       borderRadius: BorderRadius.all(Radius.circular(15))),
-                  child: const Center(
+                  child: Center(
                     child: Padding(
                       padding: EdgeInsets.all(12.0),
                       child: Text(
-                        "Complete as palavras:",
+                        widget.task.title,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.w300,
                         ),
@@ -138,111 +120,54 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                   decoration: const BoxDecoration(
                       color: Color.fromRGBO(209, 220, 221, 1),
                       borderRadius: BorderRadius.all(Radius.circular(15))),
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.5,
                   child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: SizedBox(
-                                height: 120,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(bottom: 8.0),
-                                  child: Image.asset(
-                                      'assets/images/words/bola.png'),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 8,
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: Row(
-                                  children:
-                                    makeWord('BOLA'),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: SizedBox(
-                                height: 120,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(bottom: 8.0),
-                                  child: Image.asset(
-                                      'assets/images/words/lata.png'),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 8,
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: Row(
-                                  children:
-                                  makeWord('LATA'),
+                      children: widget.task.words
+                          .map(
+                            (word) => Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    flex: 2,
+                                    child: SizedBox(
 
-                                ),
+                                      height: 120,
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 8.0),
+                                        child: Image.asset(
+
+                                            'assets/images/words/${word.imagePath}'),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+
+                                    flex: 8,
+                                    child: SizedBox(
+
+                                      width: double.infinity,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        children: makeWord(word.text),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: SizedBox(
-                                height: 120,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(bottom: 8.0),
-                                  child: Image.asset(
-                                      'assets/images/words/seta.png'),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 8,
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: Row(
-                                  children:
-                                  makeWord('SETA'),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                          )
+                          .toList()),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    LetterBox('A'),
-                    LetterBox('E'),
-                    LetterBox('O'),
-                  ],
-                ),
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: widget.task.lessonVowels
+                        .map((vowel) => LetterBox(vowel))
+                        .toList()),
               ),
               Container(
                 margin: const EdgeInsets.only(top: 30.0),
@@ -258,10 +183,10 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                           child: ElevatedButton(
                             style: ButtonStyle(
                                 foregroundColor:
-                                MaterialStateProperty.all<Color>(
-                                    Colors.white),
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.white),
                                 shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
+                                        RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(10),
                                         side: BorderSide.none))),
@@ -271,17 +196,19 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                                   fontWeight: FontWeight.w600,
                                 )),
                             onPressed: () {
-                              makeAnswers();
+                              widget.taskController.makeAnswers(widget.task);
+                              print(widget.taskController.answers);
 
-                              if (verifyAnswer()) {
+                              if (widget.taskController.verifyAnswer()) {
                                 isCorrect = true;
                                 widget.lessonController
                                     .verifyAnswerNonControlled();
                               }
+                              widget.taskController.reset();
                               showGeneralDialog(
                                 barrierColor: Colors.black.withOpacity(0.5),
                                 transitionDuration:
-                                const Duration(milliseconds: 300),
+                                    const Duration(milliseconds: 300),
                                 barrierDismissible: false,
                                 barrierLabel: '',
                                 context: context,
@@ -299,9 +226,12 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                                       opacity: a1.value,
                                       child: BoxDialog(
                                           controller:
-                                          this.widget.lessonController,
+                                              this.widget.lessonController,
                                           feedback: isCorrect,
-                                          resposta: resposta = '${_words[0]} / ${_words[1]} / ${_words[2]}'),
+                                          resposta:
+                                              '${this.widget.task.words[0].text.toUpperCase()} '
+                                              '/ ${this.widget.task.words[1].text.toUpperCase()} '
+                                              '/ ${this.widget.task.words[2].text.toUpperCase()}'),
                                     ),
                                   );
                                 },
@@ -319,49 +249,22 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
     );
   }
 
-  bool verifyAnswer() {
-    for (int i = 0; i < _gabarito.length; i++) {
-      if (_vogaisSelecionadas[i] != _gabarito[i]) {
-        return false;
+  List<Widget> makeWord(word) {
+    List<Widget> _widgets = [];
+    for (int i = 0; i < word.length; i++) {
+      String letter = word[i].toUpperCase();
+      if (widget.task.lessonVowels.contains(letter)) {
+        _widgets.add(Target(count, false));
+        count = count + 1;
+        widget.taskController.vowelsSelected.add('');
+      } else {
+        _widgets.add(NoDraggableLetter(letter));
       }
     }
-    return true;
+
+    return _widgets;
   }
-
-List<Widget> makeWord(word){
-
-  List<Widget> _widgets = [];
-  for (int i = 0; i < word.length; i++) {
-    String letter = word[i].toUpperCase();
-    if (letter == 'A' ||letter == 'E' || letter == 'O')  {
-      _widgets.add(Target(count, false));
-      count = count +1;
-
-    }else{
-      _widgets.add(NoDraggableLetter(letter));
-    }
-
-  }
-
-  return _widgets;
 }
-
-  void makeAnswers() {
-    for (int i = 0; i < _words.length; i++) {
-      String word = _words[i];
-
-      for (int i = 0; i < word.length; i++) {
-        String letter = word[i].toUpperCase();
-        if (letter == 'A' || letter == 'E' || letter == 'O') {
-          _gabarito.add(letter);
-        }
-      }
-    }
-  }
-
-}
-
-
 
 class LetterBox extends StatelessWidget {
   final String letter;
@@ -371,6 +274,7 @@ class LetterBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Draggable(
+
       data: letter,
       feedback: letterCard(context),
       child: letterCard(context),
@@ -396,5 +300,3 @@ class LetterBox extends StatelessWidget {
         ),
       );
 }
-
-

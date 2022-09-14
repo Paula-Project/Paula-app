@@ -1,4 +1,5 @@
 import 'package:paula/app/controllers/lesson_controller.dart';
+import 'package:paula/app/controllers/task_complete_word_controller.dart';
 import 'package:paula/app/controllers/task_select_image_controller.dart';
 import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
 import 'package:paula/app/views/lessons/task_complete_words.dart';
@@ -10,8 +11,8 @@ import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 
 class LessonAEUController extends LessonController {
   TaskSelectImageController selectImageController = TaskSelectImageController();
-  TaskVogalSelectionController vogalSelectionController =
-      TaskVogalSelectionController();
+  TaskVogalSelectionController vogalSelectionController = TaskVogalSelectionController();
+  TaskCompleteWordController completeWordController = TaskCompleteWordController();
   static int correctAnswers = 0;
   int tasksQuantity = 5;
 
@@ -24,6 +25,7 @@ class LessonAEUController extends LessonController {
     nextPage = -1;
     completed = false;
     correctAnswers = 0;
+
     widgetsRouters.add(LessonIntroduction(
       letter: 'A',
       titleIntroduction:
@@ -54,8 +56,12 @@ class LessonAEUController extends LessonController {
       lessonController: this,
       taskController: vogalSelectionController,
     ));
+
+
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
+      task: completeWordController.getTask1(),
+      taskController: completeWordController,
     ));
     widgetsRouters.add(const CongratulationsPage());
   }
