@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/change_password.dart';
 import 'package:paula/app/views/welcome_page_part1.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
 import 'package:paula/app/http/webclient.dart';
 import 'package:provider/provider.dart';
 import '../state/usuario_state.dart';
@@ -120,6 +119,10 @@ class _LoginPageState extends State<LoginPage> {
                                 child: TextFormField(
                                   controller: _nicknameController,
                                   keyboardType: TextInputType.text,
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.allow(
+                                        r'[a-zA-Z0-9]')
+                                  ],
                                   validator: (nickname) {
                                     if (nickname == null || nickname.isEmpty) {
                                       return 'Por favor, digite seu apelido';
