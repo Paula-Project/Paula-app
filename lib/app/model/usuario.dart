@@ -77,7 +77,8 @@ class Usuario extends ChangeNotifier{
       'gender': _gender,
       'name': _name,
       'birthdate': DateFormat('yyyy-MM-dd').format(_birthdate),
-      'age': _age
+      'age': _age,
+      'progress': 0,
     };
   }
 }
