@@ -6,7 +6,6 @@ import 'package:paula/app/views/login_page.dart';
 import 'components/paulaTitle.dart';
 import 'package:flutter/services.dart';
 
-
 class ChangePassword extends StatefulWidget {
   const ChangePassword({Key? key}) : super(key: key);
 
@@ -20,9 +19,9 @@ class _ChangePassword extends State<ChangePassword> {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Color.fromARGB(255, 100, 171, 226),
-            Color.fromARGB(255, 41, 171, 226)
-          ]));
+        Color.fromARGB(255, 100, 171, 226),
+        Color.fromARGB(255, 41, 171, 226)
+      ]));
 
   DateTime _date = DateTime.now();
   var selectedDateTxt;
@@ -52,7 +51,8 @@ class _ChangePassword extends State<ChangePassword> {
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
 
   final TextEditingController _senhaController = TextEditingController();
-  final TextEditingController _senhaConfirmaController = TextEditingController();
+  final TextEditingController _senhaConfirmaController =
+      TextEditingController();
   final TextEditingController _apelidoController = TextEditingController();
 
   @override
@@ -127,8 +127,8 @@ class _ChangePassword extends State<ChangePassword> {
                                 child: Form(
                                   key: _key,
                                   child: Padding(
-                                    padding:
-                                    const EdgeInsets.fromLTRB(30, 20, 30, 0),
+                                    padding: const EdgeInsets.fromLTRB(
+                                        30, 20, 30, 0),
                                     child: Center(
                                       child: Column(
                                         children: [
@@ -155,14 +155,13 @@ class _ChangePassword extends State<ChangePassword> {
                                                 5, 20, 15, 0),
                                             child: Align(
                                               alignment: Alignment.centerLeft,
-                                              child: Text(
-                                                  "Data de Nascimento",
+                                              child: Text("Data de Nascimento",
                                                   style: TextStyle(
                                                       color: Colors.blue,
                                                       fontSize: 25,
                                                       fontFamily: "Nunito",
                                                       fontWeight:
-                                                      FontWeight.w300)),
+                                                          FontWeight.w300)),
                                             ),
                                           ),
                                           Container(
@@ -171,22 +170,22 @@ class _ChangePassword extends State<ChangePassword> {
                                           ElevatedButton(
                                             style: ButtonStyle(
                                               backgroundColor:
-                                              MaterialStateProperty.all<
-                                                  Color>(Colors.white),
+                                                  MaterialStateProperty.all<
+                                                      Color>(Colors.white),
                                               foregroundColor:
-                                              MaterialStateProperty.all<
-                                                  Color>(Colors.blue),
+                                                  MaterialStateProperty.all<
+                                                      Color>(Colors.blue),
                                             ),
                                             onPressed: () {
                                               _selectDate(context);
                                             },
                                             child: Padding(
                                               padding:
-                                              const EdgeInsets.all(8.0),
+                                                  const EdgeInsets.all(8.0),
                                               child: Row(
                                                 mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceBetween,
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
                                                   const Icon(
                                                     Icons.date_range,
@@ -197,7 +196,7 @@ class _ChangePassword extends State<ChangePassword> {
                                                         fontSize: 25,
                                                         fontFamily: "Nunito",
                                                         fontWeight:
-                                                        FontWeight.w300),
+                                                            FontWeight.w300),
                                                   ),
                                                 ],
                                               ),
@@ -225,9 +224,11 @@ class _ChangePassword extends State<ChangePassword> {
                                             height: 20,
                                           ),
                                           Input(
-                                            labelInputTxt: "Confirmar nova senha",
+                                            labelInputTxt:
+                                                "Confirmar nova senha",
                                             obscureTxt: true,
-                                            controller: _senhaConfirmaController,
+                                            controller:
+                                                _senhaConfirmaController,
                                             keyboardType: TextInputType.text,
                                             valid: (value) {
                                               if (value!.trim().isEmpty) {
@@ -237,7 +238,7 @@ class _ChangePassword extends State<ChangePassword> {
                                                 return 'Senha muito pequena';
                                               }
                                               if (!(_senhaConfirmaController
-                                                  .value ==
+                                                      .value ==
                                                   _senhaController.value)) {
                                                 return 'Senha informada esta diferente';
                                               }
@@ -248,60 +249,71 @@ class _ChangePassword extends State<ChangePassword> {
                                             height: 20,
                                           ),
                                           SizedBox(
-                                            width: 160,
+                                            width: 220,
                                             height: 45,
                                             child: ElevatedButton(
                                               onPressed: () {
-                                               {
-                                                 DateTime hoje =
-                                                 DateTime.now();
-                                                 if (_key.currentState!
-                                                     .validate()) {
-                                                   if ((hoje.difference(_date).inDays)/365 >5 ) {
-                                                     Navigator.of(context)
-                                                         .pushAndRemoveUntil(
-                                                       MaterialPageRoute(
-                                                         builder: (BuildContext
-                                                         context) =>
-                                                         const LoginPage(),
-                                                       ),
-                                                           (route) => false,
-                                                     );
-                                                   }
-                                                   ScaffoldMessenger.of(
-                                                       context)
-                                                       .showSnackBar(
-                                                     const SnackBar(
-                                                         backgroundColor:
-                                                         Color.fromARGB( 255, 41, 171, 226),
-                                                         content: Text(
-                                                           'Data de Nascimento inválida',
-                                                           style: TextStyle(
-                                                               color: Colors
-                                                                   .white),
-                                                         )),
-                                                   );
-                                                 }
-                                               }
+                                                {
+                                                  DateTime hoje =
+                                                      DateTime.now();
+                                                  if (_key.currentState!
+                                                      .validate()) {
+                                                    if ((hoje
+                                                                .difference(
+                                                                    _date)
+                                                                .inDays) /
+                                                            365 >
+                                                        5) {
+                                                      Navigator.of(context)
+                                                          .pushAndRemoveUntil(
+                                                        MaterialPageRoute(
+                                                          builder: (BuildContext
+                                                                  context) =>
+                                                              const LoginPage(),
+                                                        ),
+                                                        (route) => false,
+                                                      );
+                                                    }
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      const SnackBar(
+                                                          backgroundColor:
+                                                              Color.fromARGB(
+                                                                  255,
+                                                                  41,
+                                                                  171,
+                                                                  226),
+                                                          content: Text(
+                                                            'Data de Nascimento inválida',
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white),
+                                                          )),
+                                                    );
+                                                  }
+                                                }
                                               },
                                               onHover: (hover) {},
                                               style: ButtonStyle(
                                                 foregroundColor:
-                                                MaterialStateProperty.all<
-                                                    Color>(Colors.white),
+                                                    MaterialStateProperty.all<
+                                                        Color>(Colors.white),
                                                 backgroundColor:
-                                                MaterialStateProperty.all<
-                                                    Color>(Colors.blue),
+                                                    MaterialStateProperty.all<
+                                                        Color>(Colors.blue),
                                                 shape: MaterialStateProperty.all<
-                                                    RoundedRectangleBorder>(
+                                                        RoundedRectangleBorder>(
                                                     RoundedRectangleBorder(
                                                         borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
+                                                            BorderRadius
+                                                                .circular(10),
                                                         side: BorderSide.none)),
                                               ),
-                                              child: const Text("Redefinir Senha",
-                                                  style: TextStyle(fontSize: 18)),
+                                              child: const Text(
+                                                  "Redefinir Senha",
+                                                  style:
+                                                      TextStyle(fontSize: 18)),
                                             ),
                                           ),
                                         ],
@@ -321,4 +333,3 @@ class _ChangePassword extends State<ChangePassword> {
     );
   }
 }
-
