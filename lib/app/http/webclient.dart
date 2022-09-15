@@ -80,12 +80,12 @@ Future<bool> resetAuthenticatePassword(String username, String date) async {
   return false;
 }
 
-Future<bool> resetPassword(String password, String username) async {
+Future<bool> resetPassword(String username,String password) async {
   final Client client =
   InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
   final String usuarioJson =
-  jsonEncode({"username": username, "passward": password});
+  jsonEncode({"username": username, "password": password});
 
   final Response response = await client.post(
       Uri.https('paula-api.herokuapp.com', '/resetpassword/reset/'),

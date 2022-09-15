@@ -3,6 +3,9 @@ import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/components/Input.dart';
 import 'package:paula/app/views/login_page.dart';
+import 'package:provider/provider.dart';
+import '../http/webclient.dart';
+import '../state/usuario_state.dart';
 import 'components/paulaTitle.dart';
 import 'package:flutter/services.dart';
 
@@ -138,7 +141,7 @@ class _ChangePassword extends State<ChangePassword> {
                                             keyboardType: TextInputType.text,
                                             valid: (value) {
                                               if (value!.isEmpty) {
-                                                return ' Informe o seu Apelido';
+                                                return 'Apelido deve possuir no minimo 3 caracteres';
                                               }
                                               if (value.length < 3) {
                                                 return 'Tamanho inferior a 3';
@@ -215,7 +218,7 @@ class _ChangePassword extends State<ChangePassword> {
                                                 return 'Informe uma Senha';
                                               }
                                               if (value.trim().length < 4) {
-                                                return 'Senha muito pequena';
+                                                return 'Senha deve possuir no minimo 4 caracteres';
                                               }
                                               return null;
                                             },
@@ -231,12 +234,6 @@ class _ChangePassword extends State<ChangePassword> {
                                                 _senhaConfirmaController,
                                             keyboardType: TextInputType.text,
                                             valid: (value) {
-                                              if (value!.trim().isEmpty) {
-                                                return 'Informe uma Senha';
-                                              }
-                                              if (value.trim().length < 4) {
-                                                return 'Senha muito pequena';
-                                              }
                                               if (!(_senhaConfirmaController
                                                       .value ==
                                                   _senhaController.value)) {
@@ -252,47 +249,33 @@ class _ChangePassword extends State<ChangePassword> {
                                             width: 220,
                                             height: 45,
                                             child: ElevatedButton(
-                                              onPressed: () {
-                                                {
-                                                  DateTime hoje =
-                                                      DateTime.now();
+                                              onPressed: () async{
                                                   if (_key.currentState!
                                                       .validate()) {
-                                                    if ((hoje
-                                                                .difference(
-                                                                    _date)
-                                                                .inDays) /
-                                                            365 >
-                                                        5) {
-                                                      Navigator.of(context)
-                                                          .pushAndRemoveUntil(
-                                                        MaterialPageRoute(
-                                                          builder: (BuildContext
-                                                                  context) =>
-                                                              const LoginPage(),
-                                                        ),
-                                                        (route) => false,
-                                                      );
+                                                    if (calcAge() > 5) {
+                                                      if ( await changePassword()){
+                                                        Navigator.of(context)
+                                                            .pushAndRemoveUntil(
+                                                          MaterialPageRoute(
+                                                            builder: (BuildContext
+                                                            context) =>
+                                                            const LoginPage(),
+                                                          ),
+                                                              (route) => false,
+                                                        );
+                                                      } else{
+                                                        ScaffoldMessenger.of(context).showSnackBar(
+                                                            const SnackBar(
+                                                                content: Text(
+                                                                    'Erro ao alterar senha \n Dados incorretos')));
+                                                      }
+                                                    } else {
+                                                      ScaffoldMessenger.of(context).showSnackBar(
+                                                          const SnackBar(
+                                                              content: Text(
+                                                                  'Você deve ter mais de 5 anos para usar a Paula')));
                                                     }
-                                                    ScaffoldMessenger.of(
-                                                            context)
-                                                        .showSnackBar(
-                                                      const SnackBar(
-                                                          backgroundColor:
-                                                              Color.fromARGB(
-                                                                  255,
-                                                                  41,
-                                                                  171,
-                                                                  226),
-                                                          content: Text(
-                                                            'Data de Nascimento inválida',
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .white),
-                                                          )),
-                                                    );
                                                   }
-                                                }
                                               },
                                               onHover: (hover) {},
                                               style: ButtonStyle(
@@ -331,5 +314,34 @@ class _ChangePassword extends State<ChangePassword> {
         ),
       ),
     );
+  }
+
+  int calcAge(){
+    DateTime hoje = DateTime.now();
+    int idade = hoje.year - _date.year;
+    if (hoje.month<_date.month) {
+      idade--;
+    } else if (hoje.month==_date.month){
+      if (hoje.day<_date.day) {
+        idade--;
+      }
+    }
+    return idade;
+  }
+
+  Future<bool> changePassword() async {
+    if( await resetAuthenticatePassword(_apelidoController.text,
+        DateFormat('yyyy-MM-dd').format(_date))){
+      debugPrint("Erro ao alterar senha2");
+      if(await resetPassword(_apelidoController.text,
+          _senhaController.text)){
+        debugPrint("Erro ao alterar senha3");
+        return true;
+      }
+      debugPrint("Erro ao alterar senha");
+      return false;
+    } else {
+      return false;
+    }
   }
 }
