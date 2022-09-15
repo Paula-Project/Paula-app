@@ -8,13 +8,15 @@ import 'package:paula/app/views/lessons/congratulations_page.dart';
 import 'package:paula/app/views/lessons/task_select_image.dart';
 import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 
+import '../views/lessons/task_mark_vowel.dart';
+
 class LessonFinalController extends LessonController {
   TaskMarkVowelController markVowelController = TaskMarkVowelController();
   TaskSelectImageController selectImageController = TaskSelectImageController();
   TaskVogalSelectionController vogalSelectionController = TaskVogalSelectionController();
   TaskCompleteWordController completeWordController = TaskCompleteWordController();
   static int correctAnswers = 0;
-  int tasksQuantity = 3;
+  int tasksQuantity = 4;
 
   static int nextPage = -1;
   static bool completed = false;
@@ -32,6 +34,11 @@ class LessonFinalController extends LessonController {
       task: vogalSelectionController.getTask3(),
       lessonController: this,
       taskController: vogalSelectionController,
+    ));
+    widgetsRouters.add(TaskMarkVowel(
+      lessonController: this,
+      taskController: markVowelController,
+      task: markVowelController.getTask2(),
     ));
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,

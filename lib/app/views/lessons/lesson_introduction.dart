@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller.dart';
 import 'package:paula/app/views/components/DIalogTextBoxDown.dart';
@@ -6,12 +7,14 @@ class LessonIntroduction extends StatefulWidget {
   final String letter;
   final String titleIntroduction;
   final LessonController controller;
+  final String audioUrl;
 
   const LessonIntroduction(
       {Key? key,
       required this.letter,
       required this.titleIntroduction,
-      required this.controller})
+      required this.controller,
+      required this.audioUrl})
       : super(key: key);
 
   @override
@@ -20,6 +23,22 @@ class LessonIntroduction extends StatefulWidget {
 
 class _LessonIntroductionState extends State<LessonIntroduction> {
   //final _timer =   Timer(const Duration(seconds: 5), () => {Get.to(const Lesson())});
+  AudioPlayer? audioPlayer;
+
+  _runAudio(String path) async {
+    try {
+      await audioPlayer?.play(AssetSource(path));
+    } catch (error) {
+      print(error.toString());
+    }
+  }
+
+  @override
+  void initState() {
+    audioPlayer = AudioPlayer();
+    _runAudio("audios/paula/${widget.audioUrl}");
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

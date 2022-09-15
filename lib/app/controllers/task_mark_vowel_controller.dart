@@ -20,7 +20,7 @@ class TaskMarkVowelController{
         letters.letters[8], // I
       ],
     answer: 1);
-    task2 = TaskMarkVowelModel(audio: 'audios/marqueA.ogg', // E
+    task2 = TaskMarkVowelModel(audio: 'audios/marqueE.ogg', // E
         vowels: [
           letters.letters[20], // U
           letters.letters[14], // O
@@ -28,7 +28,7 @@ class TaskMarkVowelController{
           letters.letters[8], // I
         ],
         answer: 3);
-    task3 = TaskMarkVowelModel(audio: 'audios/marqueA.ogg', // U
+    task3 = TaskMarkVowelModel(audio: 'audios/marqueU.ogg', // U
         vowels: [
           letters.letters[8], // I
           letters.letters[20], // U
@@ -36,7 +36,7 @@ class TaskMarkVowelController{
           letters.letters[0], // A
         ],
         answer: 2);
-    task4 = TaskMarkVowelModel(audio: 'audios/marqueA.ogg', // I
+    task4 = TaskMarkVowelModel(audio: 'audios/marqueI.ogg', // I
         vowels: [
           letters.letters[0], // A
           letters.letters[4], // E
@@ -44,7 +44,7 @@ class TaskMarkVowelController{
           letters.letters[8], // I
         ],
         answer: 4);
-    task5 = TaskMarkVowelModel(audio: 'audios/marqueA.ogg', // O
+    task5 = TaskMarkVowelModel(audio: 'audios/marqueO.ogg', // O
         vowels: [
           letters.letters[14], // O
           letters.letters[8], // I
