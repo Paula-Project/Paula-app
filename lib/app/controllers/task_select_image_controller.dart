@@ -87,6 +87,9 @@ class TaskSelectImageController {
   void reset() {
     vogaisA.isCorrect = false;
     vogaisE.isCorrect = false;
+    vogaisU.isCorrect = false;
+    vogaisI.isCorrect = false;
+    vogaisO.isCorrect = false;
     cardSelected = "";
   }
 }

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import '../lessons/lesson_introduction.dart';
+import '../../controllers/lesson_controller.dart';
 
 class LessonButton extends StatelessWidget {
   final String textContent;
   final bool isActive;
-  final Widget lessonPage;
+  final LessonController lessonController;
 
   LessonButton({
     Key? key,
     required this.textContent,
     required this.isActive,
-    required this.lessonPage,
+    required this.lessonController,
   }) : super(key: key);
 
   @override
@@ -27,7 +27,7 @@ class LessonButton extends StatelessWidget {
               Navigator.push(
                   context,
                   PageTransition(
-                      type: PageTransitionType.fade, child: lessonPage));
+                      type: PageTransitionType.fade, child: lessonController.nextTask()));
             }
           },
           style: ButtonStyle(

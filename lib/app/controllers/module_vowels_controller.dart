@@ -38,4 +38,10 @@ class ModuleVowelsController {
     }
     return isCompleted;
   }
+
+  void verfifyLessonsCompleted(){
+    lessonAEUController.onCompleted();
+    lessonIOController.onCompleted();
+    lessonFinalController.onCompleted();
+  }
 }

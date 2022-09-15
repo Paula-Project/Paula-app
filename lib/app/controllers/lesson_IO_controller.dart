@@ -28,6 +28,8 @@ class LessonIOController extends LessonController {
   List widgetsRouters = [];
 
   LessonIOController({required this.moduleVowelsController}) {
+    nextPage = -1;
+
     verifyisCompleted();
 
     widgetsRouters.add(LessonIntroduction(
@@ -87,11 +89,12 @@ class LessonIOController extends LessonController {
   nextTask() {
     if (nextPage < widgetsRouters.length - 1) {
       nextPage++;
-    } else {
       onCompleted();
+    } else {
       nextPage = 0;
       correctAnswers = 0;
     }
+    print("nextpage: ${nextPage}");
     return widgetsRouters[nextPage];
   }
 
