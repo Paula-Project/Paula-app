@@ -10,7 +10,8 @@ import '../../controllers/module_vowels_controller.dart';
 class LessonsVogais extends StatelessWidget {
   final ModuleVowelsController moduleVowelsController;
 
-  LessonsVogais({Key? key, required this.moduleVowelsController}) : super(key: key);
+  const LessonsVogais({Key? key, required this.moduleVowelsController})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,17 +63,22 @@ class LessonsVogais extends StatelessWidget {
               LessonButton(
                 isActive: true,
                 textContent: 'A - E - U',
-                lessonPage: moduleVowelsController.lessonAEUController.nextTask(),
+                lessonPage:
+                    moduleVowelsController.lessonAEUController.nextTask(),
               ),
               LessonButton(
-                isActive: moduleVowelsController.lessonAEUController.getCompleted(),
+                isActive:
+                    moduleVowelsController.lessonAEUController.getCompleted(),
                 textContent: 'I - U',
-                lessonPage: moduleVowelsController.lessonIOController.nextTask(),
+                lessonPage:
+                    moduleVowelsController.lessonIOController.nextTask(),
               ),
               LessonButton(
-                isActive: moduleVowelsController.lessonIOController.getCompleted(),
+                isActive:
+                    moduleVowelsController.lessonIOController.getCompleted(),
                 textContent: 'LIÇÃO FINAL',
-                lessonPage: moduleVowelsController.lessonFinalController.nextTask(),
+                lessonPage:
+                    moduleVowelsController.lessonFinalController.nextTask(),
               ),
             ],
           ),

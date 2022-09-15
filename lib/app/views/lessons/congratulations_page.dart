@@ -1,11 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../components/ButtonNext.dart';
-import '../home_page.dart';
+import 'package:paula/app/controllers/module_vowels_controller.dart';
+import 'package:paula/app/views/lessons/lessons_vogais.dart';
+import 'package:paula/app/views//components/ButtonNext.dart';
 
 class CongratulationsPage extends StatefulWidget {
-  const CongratulationsPage({Key? key}) : super(key: key);
+  final ModuleVowelsController moduleVowelsController;
+  const CongratulationsPage({Key? key, required this.moduleVowelsController})
+      : super(key: key);
 
   @override
   State<CongratulationsPage> createState() => _CongratulationsPageState();
@@ -81,7 +82,10 @@ class _CongratulationsPageState extends State<CongratulationsPage> {
                   width: 350,
                   height: 50,
                   child: ButtonNext(
-                    pageWidget: HomePage(),
+                    onPressed: () {},
+                    pageWidget: LessonsVogais(
+                      moduleVowelsController: widget.moduleVowelsController,
+                    ),
                     allowedReturn: false,
                   )),
             ),

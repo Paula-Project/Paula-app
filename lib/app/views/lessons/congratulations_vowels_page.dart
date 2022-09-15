@@ -1,14 +1,20 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:paula/app/controllers/module_vowels_controller.dart';
+import 'package:paula/app/model/usuarioAPI.dart';
+import 'package:paula/app/state/usuario_state.dart';
+import 'package:provider/provider.dart';
 import '../components/ButtonNext.dart';
 import '../home_page.dart';
 
 class CongratulationsVowelsPage extends StatefulWidget {
-  const CongratulationsVowelsPage({Key? key}) : super(key: key);
+  final ModuleVowelsController moduleVowelsController;
+  const CongratulationsVowelsPage(
+      {Key? key, required this.moduleVowelsController})
+      : super(key: key);
 
   @override
-  State<CongratulationsVowelsPage> createState() => _CongratulationsVowelsPageState();
+  State<CongratulationsVowelsPage> createState() =>
+      _CongratulationsVowelsPageState();
 }
 
 class _CongratulationsVowelsPageState extends State<CongratulationsVowelsPage> {
@@ -82,23 +88,28 @@ class _CongratulationsVowelsPageState extends State<CongratulationsVowelsPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 30),
-                      child: Image.asset('images/selos/Selo_vogais.png',
+                      child: Image.asset('assets/images/selos/Selo_vogais.png',
                           scale: 3.5),
                     ),
                   ],
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(top: 70.0),
-              child: SizedBox(
-                  width: 350,
-                  height: 50,
-                  child: ButtonNext(
-                    pageWidget: HomePage(),
-                    allowedReturn: false,
-                  )),
-            ),
+            Consumer<UsuarioState>(builder: (context, usuarioState, child) {
+              UsuarioAPI? usuarioLogado = usuarioState.getUsuario();
+              return Container(
+                margin: const EdgeInsets.only(top: 70.0),
+                child: SizedBox(
+                    width: 350,
+                    height: 50,
+                    child: ButtonNext(
+                      onPressed: () => widget.moduleVowelsController
+                          .setModuleVowelsCompleted(usuarioLogado!, context),
+                      pageWidget: HomePage(),
+                      allowedReturn: false,
+                    )),
+              );
+            }),
           ],
         ),
       ),

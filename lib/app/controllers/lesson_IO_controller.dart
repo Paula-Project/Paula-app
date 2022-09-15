@@ -1,4 +1,5 @@
 import 'package:paula/app/controllers/lesson_controller.dart';
+import 'package:paula/app/controllers/module_vowels_controller.dart';
 import 'package:paula/app/controllers/task_complete_word_controller.dart';
 import 'package:paula/app/controllers/task_mark_vowel_controller.dart';
 import 'package:paula/app/controllers/task_select_image_controller.dart';
@@ -13,8 +14,11 @@ import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 class LessonIOController extends LessonController {
   TaskMarkVowelController markVowelController = TaskMarkVowelController();
   TaskSelectImageController selectImageController = TaskSelectImageController();
-  TaskVogalSelectionController vogalSelectionController = TaskVogalSelectionController();
-  TaskCompleteWordController completeWordController = TaskCompleteWordController();
+  TaskVogalSelectionController vogalSelectionController =
+      TaskVogalSelectionController();
+  TaskCompleteWordController completeWordController =
+      TaskCompleteWordController();
+  final ModuleVowelsController moduleVowelsController;
   static int correctAnswers = 0;
   int tasksQuantity = 6;
 
@@ -23,13 +27,13 @@ class LessonIOController extends LessonController {
 
   List widgetsRouters = [];
 
-  LessonIOController() {
+  LessonIOController({required this.moduleVowelsController}) {
     verifyisCompleted();
 
     widgetsRouters.add(LessonIntroduction(
       letter: 'I',
       titleIntroduction:
-      "Esta é a letra “I”, ela é a terceira vogal do alfabeto.",
+          "Esta é a letra “I”, ela é a terceira vogal do alfabeto.",
       controller: this,
       audioUrl: 'introductionI.mp4',
     ));
@@ -46,7 +50,7 @@ class LessonIOController extends LessonController {
     widgetsRouters.add(LessonIntroduction(
       letter: 'O',
       titleIntroduction:
-      "Esta é a letra “O”, ela é a quarta vogal do alfabeto.",
+          "Esta é a letra “O”, ela é a quarta vogal do alfabeto.",
       controller: this,
       audioUrl: 'introductionO.mp4',
     ));
@@ -70,7 +74,13 @@ class LessonIOController extends LessonController {
       task: completeWordController.getTask2(),
       taskController: completeWordController,
     ));
-    widgetsRouters.add(const CongratulationsPage());
+    widgetsRouters.add(CongratulationsPage(
+      moduleVowelsController: moduleVowelsController,
+    ));
+  }
+
+  set isCompleted(bool isCompleted) {
+    completed = isCompleted;
   }
 
   @override

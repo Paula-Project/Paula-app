@@ -32,8 +32,9 @@ Future<UsuarioAPI?> loginUsuario(String username, String password) async {
 
   if (response.statusCode == 200) {
     Map<String, dynamic> json = jsonDecode(response.body);
+    print(json);
     return UsuarioAPI(json['name'], json['username'], json['gender'],
-        json['age'], json['birthdate'],0,
+        json['age'], json['birthdate'], json['progress'],
         id: json['id'], token: json['token']);
   }
 
@@ -55,7 +56,7 @@ Future<UsuarioAPI?> cadastroUsuario(Usuario usuario) async {
 
   if (response.statusCode == 201) {
     return UsuarioAPI(json['name'], json['username'], json['gender'],
-        json['age'], json['birthdate'],0);
+        json['age'], json['birthdate'], 0);
   }
 
   return null;
@@ -63,10 +64,10 @@ Future<UsuarioAPI?> cadastroUsuario(Usuario usuario) async {
 
 Future<bool> resetAuthenticatePassword(String username, String date) async {
   final Client client =
-  InterceptedClient.build(interceptors: [LoggingInterceptor()]);
+      InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
   final String usuarioJson =
-  jsonEncode({"username": username, "birthdate": date});
+      jsonEncode({"username": username, "birthdate": date});
 
   final Response response = await client.post(
       Uri.https('paula-api.herokuapp.com', '/resetpassword/authenticate/'),
@@ -80,12 +81,12 @@ Future<bool> resetAuthenticatePassword(String username, String date) async {
   return false;
 }
 
-Future<bool> resetPassword(String username,String password) async {
+Future<bool> resetPassword(String username, String password) async {
   final Client client =
-  InterceptedClient.build(interceptors: [LoggingInterceptor()]);
+      InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
   final String usuarioJson =
-  jsonEncode({"username": username, "password": password});
+      jsonEncode({"username": username, "password": password});
 
   final Response response = await client.put(
       Uri.https('paula-api.herokuapp.com', '/resetpassword/reset/'),
@@ -99,3 +100,27 @@ Future<bool> resetPassword(String username,String password) async {
   return false;
 }
 
+Future<bool> addProgress(String username) async {
+  final Client client =
+      InterceptedClient.build(interceptors: [LoggingInterceptor()]);
+
+  final String usuarioJson = jsonEncode({
+    "username": username,
+  });
+
+  final Response response = await client.post(
+      Uri.https('paula-api.herokuapp.com', '/progress/'),
+      headers: {'Content-type': 'application/json'},
+      body: usuarioJson);
+
+  if (response.statusCode == 200) {
+    Map<String, dynamic> json = jsonDecode(response.body);
+    print(json);
+    return true;
+  } else {
+    print(response.statusCode);
+    print(response.body);
+  }
+
+  return false;
+}

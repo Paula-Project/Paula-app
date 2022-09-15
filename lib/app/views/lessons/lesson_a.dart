@@ -72,7 +72,10 @@ class _LessonState extends State<Lesson> {
                   child: SizedBox(
                     width: 180,
                     height: 50,
-                    child: ButtonNext(pageWidget: HomePage()),
+                    child: ButtonNext(
+                      pageWidget: HomePage(),
+                      onPressed: () {},
+                    ),
                   ),
                 ),
               ],

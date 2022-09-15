@@ -100,7 +100,7 @@ class _SingupPageState2 extends State<SingupPage2> {
                               key: _key,
                               child: Padding(
                                 padding:
-                                    const EdgeInsets.fromLTRB(30, 20, 30, 0),
+                                    const EdgeInsets.fromLTRB(30, 20, 30, 30),
                                 child: Center(
                                   child: Column(
                                     children: [

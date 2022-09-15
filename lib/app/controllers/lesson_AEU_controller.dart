@@ -1,4 +1,5 @@
 import 'package:paula/app/controllers/lesson_controller.dart';
+import 'package:paula/app/controllers/module_vowels_controller.dart';
 import 'package:paula/app/controllers/task_complete_word_controller.dart';
 import 'package:paula/app/controllers/task_mark_vowel_controller.dart';
 import 'package:paula/app/controllers/task_select_image_controller.dart';
@@ -13,8 +14,11 @@ import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 class LessonAEUController extends LessonController {
   TaskMarkVowelController markVowelController = TaskMarkVowelController();
   TaskSelectImageController selectImageController = TaskSelectImageController();
-  TaskVogalSelectionController vogalSelectionController = TaskVogalSelectionController();
-  TaskCompleteWordController completeWordController = TaskCompleteWordController();
+  TaskVogalSelectionController vogalSelectionController =
+      TaskVogalSelectionController();
+  TaskCompleteWordController completeWordController =
+      TaskCompleteWordController();
+  final ModuleVowelsController moduleVowelsController;
   static int correctAnswers = 0;
   int tasksQuantity = 8;
 
@@ -23,7 +27,7 @@ class LessonAEUController extends LessonController {
 
   List widgetsRouters = [];
 
-  LessonAEUController() {
+  LessonAEUController({required this.moduleVowelsController}) {
     verifyisCompleted();
 
     widgetsRouters.add(LessonIntroduction(
@@ -63,7 +67,7 @@ class LessonAEUController extends LessonController {
     widgetsRouters.add(LessonIntroduction(
       letter: 'U',
       titleIntroduction:
-      "Esta é a letra “U”, ela é a quinta vogal do alfabeto.",
+          "Esta é a letra “U”, ela é a quinta vogal do alfabeto.",
       controller: this,
       audioUrl: 'introductionU.mp4',
     ));
@@ -83,13 +87,18 @@ class LessonAEUController extends LessonController {
       taskController: vogalSelectionController,
     ));
 
-
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
       task: completeWordController.getTask1(),
       taskController: completeWordController,
     ));
-    widgetsRouters.add(const CongratulationsPage());
+    widgetsRouters.add(CongratulationsPage(
+      moduleVowelsController: moduleVowelsController,
+    ));
+  }
+
+  set isCompleted(bool isCompleted) {
+    completed = isCompleted;
   }
 
   @override

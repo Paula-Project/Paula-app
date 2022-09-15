@@ -41,15 +41,14 @@ class _TryAgainPageState extends State<TryAgainPage> {
                 ),
                 child: Column(
                   children: [
-
-                     Padding(
+                    Padding(
                       padding: EdgeInsets.fromLTRB(8, 10, 8, 0),
                       child: Column(
                         children: [
                           Padding(
-                            padding:  const EdgeInsets.only( bottom : 20),
-                            child: Image.asset('images/sorvete.png',
-                                scale: 6.0),
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child:
+                                Image.asset('images/sorvete.png', scale: 6.0),
                           ),
                           const Text(
                             "TENTE NOVAMENTE!",
@@ -61,10 +60,10 @@ class _TryAgainPageState extends State<TryAgainPage> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-
                           const Padding(
                             padding: EdgeInsets.only(top: 8.0),
-                            child: Text("REFAÇA AS ATIVIDADES PARA CONSEGUIR MAIS ACERTOS",
+                            child: Text(
+                              "REFAÇA AS ATIVIDADES PARA CONSEGUIR MAIS ACERTOS",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontFamily: 'Poppins',
@@ -75,16 +74,13 @@ class _TryAgainPageState extends State<TryAgainPage> {
                             ),
                           ),
                           Padding(
-                            padding:  const EdgeInsets.only( top : 30),
-                            child: Image.asset('images/patience.png',
-                                scale: 6.0),
+                            padding: const EdgeInsets.only(top: 30),
+                            child:
+                                Image.asset('images/patience.png', scale: 6.0),
                           ),
-
-
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
@@ -97,6 +93,7 @@ class _TryAgainPageState extends State<TryAgainPage> {
                   child: ButtonNext(
                     pageWidget: HomePage(),
                     allowedReturn: false,
+                    onPressed: () {},
                   )),
             ),
           ],

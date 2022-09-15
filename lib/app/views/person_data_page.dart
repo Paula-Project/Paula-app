@@ -36,6 +36,7 @@ class PersonData extends StatelessWidget {
           var dateTxt = DateFormat('dd/MM/yyyy')
               .format(DateTime.parse(usuarioLogado.birthdate));
           var gender = ' ';
+
           switch (usuarioLogado.gender) {
             case 'male':
               gender = 'Masculino';

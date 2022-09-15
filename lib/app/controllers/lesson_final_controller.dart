@@ -1,8 +1,10 @@
 import 'package:paula/app/controllers/lesson_controller.dart';
+import 'package:paula/app/controllers/module_vowels_controller.dart';
 import 'package:paula/app/controllers/task_complete_word_controller.dart';
 import 'package:paula/app/controllers/task_mark_vowel_controller.dart';
 import 'package:paula/app/controllers/task_select_image_controller.dart';
 import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
+import 'package:paula/app/views/lessons/congratulations_vowels_page.dart';
 import 'package:paula/app/views/lessons/task_complete_words.dart';
 import 'package:paula/app/views/lessons/congratulations_page.dart';
 import 'package:paula/app/views/lessons/task_select_image.dart';
@@ -13,8 +15,11 @@ import '../views/lessons/task_mark_vowel.dart';
 class LessonFinalController extends LessonController {
   TaskMarkVowelController markVowelController = TaskMarkVowelController();
   TaskSelectImageController selectImageController = TaskSelectImageController();
-  TaskVogalSelectionController vogalSelectionController = TaskVogalSelectionController();
-  TaskCompleteWordController completeWordController = TaskCompleteWordController();
+  TaskVogalSelectionController vogalSelectionController =
+      TaskVogalSelectionController();
+  TaskCompleteWordController completeWordController =
+      TaskCompleteWordController();
+  final ModuleVowelsController moduleVowelsController;
   static int correctAnswers = 0;
   int tasksQuantity = 4;
 
@@ -23,8 +28,7 @@ class LessonFinalController extends LessonController {
 
   List widgetsRouters = [];
 
-  LessonFinalController() {
-
+  LessonFinalController({required this.moduleVowelsController}) {
     widgetsRouters.add(TaskSelectImage(
       task: selectImageController.getVogaisI(),
       taskController: selectImageController,
@@ -45,7 +49,13 @@ class LessonFinalController extends LessonController {
       task: completeWordController.getTask3(),
       taskController: completeWordController,
     ));
-    widgetsRouters.add(const CongratulationsPage());
+    widgetsRouters.add(CongratulationsVowelsPage(
+      moduleVowelsController: moduleVowelsController,
+    ));
+  }
+
+  set isCompleted(bool isCompleted) {
+    completed = isCompleted;
   }
 
   @override
