@@ -47,7 +47,7 @@ class PersonData extends StatelessWidget {
               gender = 'Outro';
               break;
           }
-
+          print(usuarioLogado.progress);
           return Container(
             margin: const EdgeInsetsDirectional.all(30),
             child: Column(
@@ -154,7 +154,7 @@ class PersonData extends StatelessWidget {
                             runSpacing: 30,
                             crossAxisAlignment: WrapCrossAlignment.end,
                             alignment: WrapAlignment.center,
-                            children: usuarioLogado.progress < 10
+                            children: usuarioLogado.progress >= 10
                                 ? selosOn
                                     .map((e) => Image.asset(
                                           e,
