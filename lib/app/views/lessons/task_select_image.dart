@@ -78,8 +78,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                       ),
                     ),
                     Wrap(
-                      spacing: 0,
-                      runSpacing: 100,
+                      runSpacing: 50,
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: widget.task.words
                           .map(

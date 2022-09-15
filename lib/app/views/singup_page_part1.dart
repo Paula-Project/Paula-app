@@ -348,7 +348,7 @@ class _SingupPageState extends State<SingupPage> {
                                                           Color.fromARGB(255,
                                                               41, 171, 226),
                                                           content: Text(
-                                                            'Data de Nascimento inválida'
+                                                            'Data de Nascimento inválida (aluno deve possuir no minimo 5 anos)'
                                                                 ' e/ou genêro não selecionado',
                                                             style: TextStyle(
                                                                 color:

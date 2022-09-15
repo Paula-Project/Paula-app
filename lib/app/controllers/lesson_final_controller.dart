@@ -4,86 +4,38 @@ import 'package:paula/app/controllers/task_mark_vowel_controller.dart';
 import 'package:paula/app/controllers/task_select_image_controller.dart';
 import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
 import 'package:paula/app/views/lessons/task_complete_words.dart';
-import 'package:paula/app/views/lessons/task_mark_vowel.dart';
 import 'package:paula/app/views/lessons/congratulations_page.dart';
-import 'package:paula/app/views/lessons/lesson_introduction.dart';
 import 'package:paula/app/views/lessons/task_select_image.dart';
 import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 
-class LessonAEUController extends LessonController {
+class LessonFinalController extends LessonController {
   TaskMarkVowelController markVowelController = TaskMarkVowelController();
   TaskSelectImageController selectImageController = TaskSelectImageController();
   TaskVogalSelectionController vogalSelectionController = TaskVogalSelectionController();
   TaskCompleteWordController completeWordController = TaskCompleteWordController();
   static int correctAnswers = 0;
-  int tasksQuantity = 2;
+  int tasksQuantity = 3;
 
   static int nextPage = -1;
-  static bool completed = true;
+  static bool completed = false;
 
   List widgetsRouters = [];
 
-  LessonAEUController() {
-    verifyisCompleted();
+  LessonFinalController() {
 
-    widgetsRouters.add(LessonIntroduction(
-      letter: 'A',
-      titleIntroduction:
-          "Esta é a letra “A”, ela é a primeira letra do alfabeto.",
-      controller: this,
-    ));
-    widgetsRouters.add(TaskMarkVowel(
-      lessonController: this,
-      taskController: markVowelController,
-      task: markVowelController.getTask1(),
-    ));
     widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisA(),
+      task: selectImageController.getVogaisI(),
       taskController: selectImageController,
       lessonController: this,
-    ));
-    widgetsRouters.add(LessonIntroduction(
-      letter: 'E',
-      titleIntroduction:
-          "Esta é a letra “E”, ela é a primeira letra do alfabeto.",
-      controller: this,
-    ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisE(),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
-    widgetsRouters.add(TaskMarkVowel(
-      lessonController: this,
-      taskController: markVowelController,
-      task: markVowelController.getTask2(),
-    ));
-    widgetsRouters.add(LessonIntroduction(
-      letter: 'U',
-      titleIntroduction:
-      "Esta é a letra “U”, ela é a primeira letra do alfabeto.",
-      controller: this,
-    ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisU(),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
-    widgetsRouters.add(TaskMarkVowel(
-      lessonController: this,
-      taskController: markVowelController,
-      task: markVowelController.getTask3(),
     ));
     widgetsRouters.add(TaskVogalSelection(
-      task: vogalSelectionController.getTask1(),
+      task: vogalSelectionController.getTask3(),
       lessonController: this,
       taskController: vogalSelectionController,
     ));
-
-
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
-      task: completeWordController.getTask1(),
+      task: completeWordController.getTask3(),
       taskController: completeWordController,
     ));
     widgetsRouters.add(const CongratulationsPage());
@@ -98,7 +50,6 @@ class LessonAEUController extends LessonController {
       nextPage = 0;
       correctAnswers = 0;
     }
-    print("nextpage: ${nextPage}");
     return widgetsRouters[nextPage];
   }
 
@@ -108,6 +59,12 @@ class LessonAEUController extends LessonController {
       correctAnswers++;
     }
     if (selectImageController.getVogaisE().isCorrect) {
+      correctAnswers++;
+    }
+    if (selectImageController.getVogaisI().isCorrect) {
+      correctAnswers++;
+    }
+    if (selectImageController.getVogaisO().isCorrect) {
       correctAnswers++;
     }
     if (selectImageController.getVogaisU().isCorrect) {
