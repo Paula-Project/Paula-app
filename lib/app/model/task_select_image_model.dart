@@ -5,7 +5,7 @@ class TaskSelectImageModel {
     required this.title,
     required this.answer,
     required this.words,
-    required this.isCorrect,
+    this.isCorrect = false,
   });
   final String title;
   final List<Word> words;
