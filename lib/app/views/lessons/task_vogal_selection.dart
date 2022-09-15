@@ -168,7 +168,9 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
                                   child: BoxDialog(
                                       controller: this.widget.lessonController,
                                       feedback: isCorrect,
-                                      resposta: ""),
+                                      resposta:
+                                          '${this.widget.task.words[0].text.toUpperCase()} '
+                                          '/ ${this.widget.task.words[1].text.toUpperCase()} '),
                                 ),
                               );
                             },
