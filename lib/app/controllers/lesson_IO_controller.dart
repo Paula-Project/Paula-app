@@ -10,7 +10,7 @@ import 'package:paula/app/views/lessons/lesson_introduction.dart';
 import 'package:paula/app/views/lessons/task_select_image.dart';
 import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 
-class LessonAEUController extends LessonController {
+class LessonIOController extends LessonController {
   TaskMarkVowelController markVowelController = TaskMarkVowelController();
   TaskSelectImageController selectImageController = TaskSelectImageController();
   TaskVogalSelectionController vogalSelectionController = TaskVogalSelectionController();
@@ -23,7 +23,7 @@ class LessonAEUController extends LessonController {
 
   List widgetsRouters = [];
 
-  LessonAEUController() {
+  LessonIOController() {
     nextPage = -1;
     completed = false;
     correctAnswers = 0;
@@ -31,7 +31,7 @@ class LessonAEUController extends LessonController {
     widgetsRouters.add(LessonIntroduction(
       letter: 'A',
       titleIntroduction:
-          "Esta é a letra “A”, ela é a primeira letra do alfabeto.",
+      "Esta é a letra “A”, ela é a primeira letra do alfabeto.",
       controller: this,
     ));
     widgetsRouters.add(TaskMarkVowel(
@@ -47,7 +47,7 @@ class LessonAEUController extends LessonController {
     widgetsRouters.add(LessonIntroduction(
       letter: 'E',
       titleIntroduction:
-          "Esta é a letra “E”, ela é a primeira letra do alfabeto.",
+      "Esta é a letra “E”, ela é a primeira letra do alfabeto.",
       controller: this,
     ));
     widgetsRouters.add(TaskSelectImage(
@@ -78,7 +78,6 @@ class LessonAEUController extends LessonController {
       nextPage = 0;
       correctAnswers = 0;
     }
-    print("nextpage: ${nextPage}");
     return widgetsRouters[nextPage];
   }
 

@@ -3,11 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller.dart';
 import 'package:paula/app/views/components/CardImage.dart';
 import 'package:paula/app/views/components/task_progress.dart';
+import '../../controllers/task_mark_vowel_controller.dart';
+import '../../model/task_mark_vowel_model.dart';
 import '../components/BoxDialog.dart';
 
 class TaskMarkVowel extends StatefulWidget {
   final LessonController lessonController;
-  const TaskMarkVowel({Key? key, required this.lessonController})
+  final TaskMarkVowelModel task;
+  final TaskMarkVowelController taskController;
+
+  const TaskMarkVowel(
+      {Key? key,
+      required this.lessonController,
+      required this.task,
+      required this.taskController})
       : super(key: key);
 
   @override
@@ -18,6 +27,7 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
   AudioPlayer? audioPlayer;
   var cardSelected = 0;
   bool isCorrect = false;
+
   _runAudio(String path) async {
     try {
       await audioPlayer?.play(AssetSource(path));
@@ -57,7 +67,7 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
                   children: [
                     MaterialButton(
                       onPressed: () {
-                        _runAudio("audios/marqueA.ogg");
+                        _runAudio(widget.task.audio);
                       },
                       child: Container(
                         height: (MediaQuery.of(context).size.height) * 0.17,
@@ -72,76 +82,96 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
                         ),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Wrap(
+                      runSpacing: 50,
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
-                        Column(
-                          children: <Widget>[
-                            CardImage(
-                              imageUrl: 'assets/alphabet/letter-a.png',
-                              scale: 5.0,
-                              audioUrl: '',
-                              isSelected: cardSelected == 1 ? true : false,
-                              onPress: () {
-                                setState(() {
-                                  cardSelected = 1;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: <Widget>[
-                            CardImage(
-                              imageUrl: 'assets/alphabet/letter-e.png',
-                              audioUrl: '',
-                              scale: 5.0,
-                              isSelected: cardSelected == 2 ? true : false,
-                              onPress: () {
-                                setState(() {
-                                  cardSelected = 2;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
+                        for (int i = 0; i < widget.task.vowels.length; i++)
+                          CardImage(
+                            imageUrl:
+                                'assets/alphabet/${widget.task.vowels[i].imagePath}',
+                            scale: 5.0,
+                            audioUrl: widget.task.vowels[i].soundPath,
+                            isSelected: cardSelected == i + 1 ? true : false,
+                            onPress: () {
+                              setState(() {
+                                cardSelected = i + 1;
+                                widget.taskController.markVowel(cardSelected);
+                              });
+                            },
+                          ),
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            CardImage(
-                              imageUrl: 'assets/alphabet/letter-i.png',
-                              audioUrl: '',
-                              scale: 5.0,
-                              isSelected: cardSelected == 3 ? true : false,
-                              onPress: () {
-                                setState(() {
-                                  cardSelected = 3;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: <Widget>[
-                            CardImage(
-                              imageUrl: 'assets/alphabet/letter-o.png',
-                              scale: 5.0,
-                              audioUrl: '',
-                              isSelected: cardSelected == 4 ? true : false,
-                              onPress: () {
-                                setState(() {
-                                  cardSelected = 4;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Column(
+                    //       children: <Widget>[
+                    //         CardImage(
+                    //           imageUrl: 'assets/alphabet/${widget.task.title}',
+                    //           scale: 5.0,
+                    //           audioUrl: '',
+                    //           isSelected: cardSelected == 1 ? true : false,
+                    //           onPress: () {
+                    //             setState(() {
+                    //               cardSelected = 1;
+                    //             });
+                    //           },
+                    //         ),
+                    //       ],
+                    //     ),
+                    //     Column(
+                    //       children: <Widget>[
+                    //         CardImage(
+                    //           imageUrl: 'assets/alphabet/letter-e.png',
+                    //           audioUrl: '',
+                    //           scale: 5.0,
+                    //           isSelected: cardSelected == 2 ? true : false,
+                    //           onPress: () {
+                    //             setState(() {
+                    //               cardSelected = 2;
+                    //             });
+                    //           },
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ],
+                    // ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Column(
+                    //       children: [
+                    //         CardImage(
+                    //           imageUrl: 'assets/alphabet/letter-i.png',
+                    //           audioUrl: '',
+                    //           scale: 5.0,
+                    //           isSelected: cardSelected == 3 ? true : false,
+                    //           onPress: () {
+                    //             setState(() {
+                    //               cardSelected = 3;
+                    //             });
+                    //           },
+                    //         ),
+                    //       ],
+                    //     ),
+                    //     Column(
+                    //       children: <Widget>[
+                    //         CardImage(
+                    //           imageUrl: 'assets/alphabet/letter-o.png',
+                    //           scale: 5.0,
+                    //           audioUrl: '',
+                    //           isSelected: cardSelected == 4 ? true : false,
+                    //           onPress: () {
+                    //             setState(() {
+                    //               cardSelected = 4;
+                    //             });
+                    //           },
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ],
+                    // ),
                     Container(
                       margin: const EdgeInsets.only(top: 30.0),
                       child: Container(
@@ -176,11 +206,13 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
                                       )),
                                   onPressed: () {
                                     if (cardSelected != 0) {
-                                      if (cardSelected == 1) {
+                                      if (widget.taskController
+                                          .verifyAnswer(widget.task)) {
                                         isCorrect = true;
                                         widget.lessonController
                                             .verifyAnswerNonControlled();
                                       }
+                                      widget.taskController.reset();
                                       showGeneralDialog(
                                         barrierColor:
                                             Colors.black.withOpacity(0.5),
@@ -196,8 +228,7 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
                                         transitionBuilder:
                                             (context, a1, a2, widget) {
                                           final curvedValue = Curves.easeInOut
-                                                  .transform(a1.value) -
-                                              1;
+                                                  .transform(a1.value) - 1;
 
                                           return Transform(
                                             transform:

@@ -33,7 +33,7 @@ Future<UsuarioAPI?> loginUsuario(String username, String password) async {
   if (response.statusCode == 200) {
     Map<String, dynamic> json = jsonDecode(response.body);
     return UsuarioAPI(json['name'], json['username'], json['gender'],
-        json['age'], json['birthdate'],json['progress'],
+        json['age'], json['birthdate'],0,
         id: json['id'], token: json['token']);
   }
 

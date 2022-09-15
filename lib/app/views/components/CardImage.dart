@@ -45,7 +45,7 @@ class _CardImageState extends State<CardImage> {
       }),
       child: Container(
           height: (MediaQuery.of(context).size.height) * 0.17,
-          width: (MediaQuery.of(context).size.width) * 0.38,
+          width: (MediaQuery.of(context).size.width) * 0.35,
           decoration: BoxDecoration(
               color: widget.isSelected
                   ? Colors.blue
