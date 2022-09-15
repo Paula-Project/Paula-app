@@ -29,8 +29,9 @@ class LessonIOController extends LessonController {
     widgetsRouters.add(LessonIntroduction(
       letter: 'I',
       titleIntroduction:
-      "Esta é a letra “I”, ela é a primeira letra do alfabeto.",
+      "Esta é a letra “I”, ela é a terceira vogal do alfabeto.",
       controller: this,
+      audioUrl: 'introductionI.mp4',
     ));
     widgetsRouters.add(TaskMarkVowel(
       lessonController: this,
@@ -45,8 +46,9 @@ class LessonIOController extends LessonController {
     widgetsRouters.add(LessonIntroduction(
       letter: 'O',
       titleIntroduction:
-      "Esta é a letra “O”, ela é a primeira letra do alfabeto.",
+      "Esta é a letra “O”, ela é a quarta vogal do alfabeto.",
       controller: this,
+      audioUrl: 'introductionO.mp4',
     ));
     widgetsRouters.add(TaskSelectImage(
       task: selectImageController.getVogaisO(),

@@ -102,76 +102,6 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
                           ),
                       ],
                     ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //   children: [
-                    //     Column(
-                    //       children: <Widget>[
-                    //         CardImage(
-                    //           imageUrl: 'assets/alphabet/${widget.task.title}',
-                    //           scale: 5.0,
-                    //           audioUrl: '',
-                    //           isSelected: cardSelected == 1 ? true : false,
-                    //           onPress: () {
-                    //             setState(() {
-                    //               cardSelected = 1;
-                    //             });
-                    //           },
-                    //         ),
-                    //       ],
-                    //     ),
-                    //     Column(
-                    //       children: <Widget>[
-                    //         CardImage(
-                    //           imageUrl: 'assets/alphabet/letter-e.png',
-                    //           audioUrl: '',
-                    //           scale: 5.0,
-                    //           isSelected: cardSelected == 2 ? true : false,
-                    //           onPress: () {
-                    //             setState(() {
-                    //               cardSelected = 2;
-                    //             });
-                    //           },
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ],
-                    // ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //   children: [
-                    //     Column(
-                    //       children: [
-                    //         CardImage(
-                    //           imageUrl: 'assets/alphabet/letter-i.png',
-                    //           audioUrl: '',
-                    //           scale: 5.0,
-                    //           isSelected: cardSelected == 3 ? true : false,
-                    //           onPress: () {
-                    //             setState(() {
-                    //               cardSelected = 3;
-                    //             });
-                    //           },
-                    //         ),
-                    //       ],
-                    //     ),
-                    //     Column(
-                    //       children: <Widget>[
-                    //         CardImage(
-                    //           imageUrl: 'assets/alphabet/letter-o.png',
-                    //           scale: 5.0,
-                    //           audioUrl: '',
-                    //           isSelected: cardSelected == 4 ? true : false,
-                    //           onPress: () {
-                    //             setState(() {
-                    //               cardSelected = 4;
-                    //             });
-                    //           },
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ],
-                    // ),
                     Container(
                       margin: const EdgeInsets.only(top: 30.0),
                       child: Container(
@@ -241,7 +171,7 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
                                                       .widget
                                                       .lessonController,
                                                   feedback: isCorrect,
-                                                  resposta: ""),
+                                                  resposta: this.widget.task.vowels[this.widget.task.answer-1].text),
                                             ),
                                           );
                                         },

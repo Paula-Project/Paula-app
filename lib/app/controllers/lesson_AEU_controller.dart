@@ -16,10 +16,10 @@ class LessonAEUController extends LessonController {
   TaskVogalSelectionController vogalSelectionController = TaskVogalSelectionController();
   TaskCompleteWordController completeWordController = TaskCompleteWordController();
   static int correctAnswers = 0;
-  int tasksQuantity = 2;
+  int tasksQuantity = 8;
 
   static int nextPage = -1;
-  static bool completed = true;
+  static bool completed = false;
 
   List widgetsRouters = [];
 
@@ -31,6 +31,7 @@ class LessonAEUController extends LessonController {
       titleIntroduction:
           "Esta é a letra “A”, ela é a primeira letra do alfabeto.",
       controller: this,
+      audioUrl: 'introductionA.mp4',
     ));
     widgetsRouters.add(TaskMarkVowel(
       lessonController: this,
@@ -45,8 +46,9 @@ class LessonAEUController extends LessonController {
     widgetsRouters.add(LessonIntroduction(
       letter: 'E',
       titleIntroduction:
-          "Esta é a letra “E”, ela é a primeira letra do alfabeto.",
+          "Esta é a letra “E”, ela é a segunda vogal do alfabeto.",
       controller: this,
+      audioUrl: 'introductionE.mp4',
     ));
     widgetsRouters.add(TaskSelectImage(
       task: selectImageController.getVogaisE(),
@@ -61,8 +63,9 @@ class LessonAEUController extends LessonController {
     widgetsRouters.add(LessonIntroduction(
       letter: 'U',
       titleIntroduction:
-      "Esta é a letra “U”, ela é a primeira letra do alfabeto.",
+      "Esta é a letra “U”, ela é a quinta vogal do alfabeto.",
       controller: this,
+      audioUrl: 'introductionU.mp4',
     ));
     widgetsRouters.add(TaskSelectImage(
       task: selectImageController.getVogaisU(),
