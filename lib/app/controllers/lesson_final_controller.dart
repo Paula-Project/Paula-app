@@ -62,11 +62,12 @@ class LessonFinalController extends LessonController {
   nextTask() {
     if (nextPage < widgetsRouters.length - 1) {
       nextPage++;
-    } else {
       onCompleted();
+    } else {
       nextPage = 0;
       correctAnswers = 0;
     }
+    print("nextpage: ${nextPage}");
     return widgetsRouters[nextPage];
   }
 
