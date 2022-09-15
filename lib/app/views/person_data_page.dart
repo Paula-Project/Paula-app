@@ -6,8 +6,21 @@ import 'package:paula/app/views/layout/layout.dart';
 import 'package:provider/provider.dart';
 
 class PersonData extends StatelessWidget {
-  const PersonData({Key? key}) : super(key: key);
-
+  PersonData({Key? key}) : super(key: key);
+  final List selosOn = [
+    "assets/images/selos/Selo_vogais.png",
+    "assets/images/selos/Selo_diario_off.png",
+    "assets/images/selos/Selo_mensal_off.png",
+    "assets/images/selos/Selo_palavras_off.png",
+    "assets/images/selos/Selo_silabas_off.png",
+  ];
+  final List selosOff = [
+    "assets/images/selos/Selo_vogais_off.png",
+    "assets/images/selos/Selo_diario_off.png",
+    "assets/images/selos/Selo_mensal_off.png",
+    "assets/images/selos/Selo_palavras_off.png",
+    "assets/images/selos/Selo_silabas_off.png",
+  ];
   @override
   Widget build(BuildContext context) {
     return Layout(
@@ -87,11 +100,14 @@ class PersonData extends StatelessWidget {
                       const Text(
                         "Dados Pessoais",
                         softWrap: true,
-                        style: TextStyle(color: Colors.black, fontSize: 25),
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
                       ),
                       const SizedBox(
-                        height: 30,
+                        height: 10,
                       ),
                       Text("Idade: ${usuarioLogado.age}",
                           style: const TextStyle(
@@ -116,16 +132,48 @@ class PersonData extends StatelessWidget {
                   decoration: const BoxDecoration(
                       color: Color.fromARGB(100, 207, 218, 216),
                       borderRadius: BorderRadius.all(Radius.circular(20))),
-                  height: MediaQuery.of(context).size.height / 4.2,
                   width: MediaQuery.of(context).size.width,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const <Widget>[
-                      Text(
+                    children: [
+                      const Text(
                         "Conquistas",
-                        style: TextStyle(color: Colors.black, fontSize: 25),
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
-                      )
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        child: Wrap(
+                            spacing: MediaQuery.of(context).size.width / 14,
+                            runSpacing: 30,
+                            crossAxisAlignment: WrapCrossAlignment.end,
+                            alignment: WrapAlignment.center,
+                            children: usuarioLogado.progress < 10
+                                ? selosOn
+                                    .map((e) => Image.asset(
+                                          e,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              5,
+                                        ))
+                                    .toList()
+                                : selosOff
+                                    .map((e) => Image.asset(
+                                          e,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              5,
+                                        ))
+                                    .toList()),
+                      ),
                     ],
                   ),
                 ),

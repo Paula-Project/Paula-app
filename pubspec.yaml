@@ -102,6 +102,13 @@ flutter:
     - assets/images/words/padaria.png
     - assets/images/words/seta.png
 
+    - assets/images/selos/Selo_diario_off.png
+    - assets/images/selos/Selo_mensal_off.png
+    - assets/images/selos/Selo_palavras_off.png
+    - assets/images/selos/Selo_silabas_off.png
+    - assets/images/selos/Selo_vogais_off.png
+    - assets/images/selos/Selo_vogais.png
+
     - assets/images/fireworks.png
 
     - assets/audios/paula/paula01.mp3
