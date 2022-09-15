@@ -35,7 +35,7 @@ class TaskSelectImageController {
           words.words[13], //bola
           words.words[7], //uva
           words.words[24], //onibus
-          words.words[9], //abacaxi
+          words.words[5], //escada
         ]);
     vogaisI = TaskSelectImageModel(
         title: "Qual imagem começa com a letra “I”:",
