@@ -19,10 +19,12 @@ class ModuleVowelsController {
     lessonIOController = LessonIOController(moduleVowelsController: this);
   }
   setModuleVowelsCompleted(UsuarioAPI user, context) async {
+    print("setCompleted");
     try {
-      await addProgress(user.username);
+      user.progress = 10;
       var atualUser = Provider.of<UsuarioState>(context, listen: false);
-      atualUser.progressUpdate(user, 10);
+      var progress = await addProgress(user.username);
+      atualUser.progressUpdate(user, progress);
     } catch (error) {
       print(error);
     }
@@ -35,11 +37,13 @@ class ModuleVowelsController {
       lessonAEUController.isCompleted = true;
       lessonIOController.isCompleted = true;
       lessonFinalController.isCompleted = true;
+      return true;
+    } else {
+      return false;
     }
-    return isCompleted;
   }
 
-  void verfifyLessonsCompleted(){
+  void verfifyLessonsCompleted() {
     lessonAEUController.onCompleted();
     lessonIOController.onCompleted();
     lessonFinalController.onCompleted();

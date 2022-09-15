@@ -100,7 +100,7 @@ Future<bool> resetPassword(String username, String password) async {
   return false;
 }
 
-Future<bool> addProgress(String username) async {
+Future addProgress(String username) async {
   final Client client =
       InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
@@ -113,14 +113,12 @@ Future<bool> addProgress(String username) async {
       headers: {'Content-type': 'application/json'},
       body: usuarioJson);
 
+  Map<String, dynamic> json = jsonDecode(response.body);
+  print(json);
   if (response.statusCode == 200) {
     Map<String, dynamic> json = jsonDecode(response.body);
-    print(json);
-    return true;
-  } else {
-    print(response.statusCode);
-    print(response.body);
-  }
+    return json['Progress'];
+  } else {}
 
   return false;
 }

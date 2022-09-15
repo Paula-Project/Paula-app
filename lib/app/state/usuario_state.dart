@@ -16,4 +16,9 @@ class UsuarioState extends ChangeNotifier {
     usuarioLogado.progress = progress;
     notifyListeners();
   }
+
+  void resetUSER() {
+    _usuario = null;
+    notifyListeners();
+  }
 }

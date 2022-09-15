@@ -14,46 +14,23 @@ class Layout extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-          backgroundColor: Colors.white70,
-          elevation: 0,
-          title: OutlinedButton(
-            onPressed: () {
-              Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(
-                  builder: (BuildContext context) => const LoginPage(),
-                ),
-                (route) => false,
-              );
-            },
-            child: const Icon(
-              Icons.logout,
-              color: Colors.grey,
-            ),
-          ),
-          actions: [
-            Container(
-              margin: const EdgeInsets.only(right: 20),
-              child: SizedBox(
-                width: 150,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text("57% Completo",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 17,
-                            fontWeight: FontWeight.normal)),
-                    LinearProgressIndicator(
-                      value: 0.57,
-                      backgroundColor: Colors.grey,
-                      color: Color.fromARGB(255, 89, 233, 95),
-                      semanticsLabel: 'Linear progress indicator',
-                    ),
-                  ],
-                ),
+        backgroundColor: Colors.white70,
+        elevation: 0,
+        title: OutlinedButton(
+          onPressed: () {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                builder: (BuildContext context) => const LoginPage(),
               ),
-            ),
-          ]),
+              (route) => false,
+            );
+          },
+          child: const Icon(
+            Icons.logout,
+            color: Colors.grey,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: bodyContent,
       ),
