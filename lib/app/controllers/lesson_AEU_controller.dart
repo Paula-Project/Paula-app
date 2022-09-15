@@ -9,6 +9,8 @@ import 'package:paula/app/views/lessons/lesson_introduction.dart';
 import 'package:paula/app/views/lessons/task_select_image.dart';
 import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 
+import '../views/lessons/congratulations_vowels_page.dart';
+
 class LessonAEUController extends LessonController {
   TaskSelectImageController selectImageController = TaskSelectImageController();
   TaskVogalSelectionController vogalSelectionController = TaskVogalSelectionController();
@@ -26,44 +28,44 @@ class LessonAEUController extends LessonController {
     completed = false;
     correctAnswers = 0;
 
-    widgetsRouters.add(LessonIntroduction(
-      letter: 'A',
-      titleIntroduction:
-          "Esta é a letra “A”, ela é a primeira letra do alfabeto.",
-      controller: this,
-    ));
-    widgetsRouters.add(TaskMarkVowel(
-      lessonController: this,
-    ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisA(),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
-    widgetsRouters.add(LessonIntroduction(
-      letter: 'E',
-      titleIntroduction:
-          "Esta é a letra “E”, ela é a primeira letra do alfabeto.",
-      controller: this,
-    ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisE(),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
-    widgetsRouters.add(TaskVogalSelection(
-      task: vogalSelectionController.getTask1(),
-      lessonController: this,
-      taskController: vogalSelectionController,
-    ));
-
-
-    widgetsRouters.add(TaskCompleteWords(
-      lessonController: this,
-      task: completeWordController.getTask1(),
-      taskController: completeWordController,
-    ));
-    widgetsRouters.add(const CongratulationsPage());
+    // widgetsRouters.add(LessonIntroduction(
+    //   letter: 'A',
+    //   titleIntroduction:
+    //       "Esta é a letra “A”, ela é a primeira letra do alfabeto.",
+    //   controller: this,
+    // ));
+    // widgetsRouters.add(TaskMarkVowel(
+    //   lessonController: this,
+    // ));
+    // widgetsRouters.add(TaskSelectImage(
+    //   task: selectImageController.getVogaisA(),
+    //   taskController: selectImageController,
+    //   lessonController: this,
+    // ));
+    // widgetsRouters.add(LessonIntroduction(
+    //   letter: 'E',
+    //   titleIntroduction:
+    //       "Esta é a letra “E”, ela é a primeira letra do alfabeto.",
+    //   controller: this,
+    // ));
+    // widgetsRouters.add(TaskSelectImage(
+    //   task: selectImageController.getVogaisE(),
+    //   taskController: selectImageController,
+    //   lessonController: this,
+    // ));
+    // widgetsRouters.add(TaskVogalSelection(
+    //   task: vogalSelectionController.getTask1(),
+    //   lessonController: this,
+    //   taskController: vogalSelectionController,
+    // ));
+    //
+    //
+    // widgetsRouters.add(TaskCompleteWords(
+    //   lessonController: this,
+    //   task: completeWordController.getTask1(),
+    //   taskController: completeWordController,
+    // ));
+    widgetsRouters.add(const CongratulationsVowelsPage());
   }
 
   @override
