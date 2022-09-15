@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
+import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/layout/layout.dart';
 import 'package:provider/provider.dart';
 
-import '../state/usuario_state.dart';
-import 'home_page.dart';
-
 class PersonData extends StatelessWidget {
-  const PersonData({Key? key}) : super(key: key);
-
+  PersonData({Key? key}) : super(key: key);
+  final List selosOn = [
+    "assets/images/selos/Selo_vogais.png",
+    "assets/images/selos/Selo_diario_off.png",
+    "assets/images/selos/Selo_mensal_off.png",
+    "assets/images/selos/Selo_palavras_off.png",
+    "assets/images/selos/Selo_silabas_off.png",
+  ];
+  final List selosOff = [
+    "assets/images/selos/Selo_vogais_off.png",
+    "assets/images/selos/Selo_diario_off.png",
+    "assets/images/selos/Selo_mensal_off.png",
+    "assets/images/selos/Selo_palavras_off.png",
+    "assets/images/selos/Selo_silabas_off.png",
+  ];
   @override
   Widget build(BuildContext context) {
     return Layout(
@@ -17,9 +28,13 @@ class PersonData extends StatelessWidget {
       bodyContent: Consumer<UsuarioState>(
         builder: (context, usuarioState, child) {
           UsuarioAPI? usuarioLogado = usuarioState.getUsuario();
+          List<String> nameList = usuarioLogado!.name.split(' ');
+          String name = nameList.length > 1
+              ? nameList.getRange(0, 2).join(" ")
+              : nameList[0];
 
           var dateTxt = DateFormat('dd/MM/yyyy')
-              .format(DateTime.parse(usuarioLogado!.birthdate));
+              .format(DateTime.parse(usuarioLogado.birthdate));
           var gender = ' ';
           switch (usuarioLogado.gender) {
             case 'male':
@@ -32,7 +47,7 @@ class PersonData extends StatelessWidget {
               gender = 'Outro';
               break;
           }
-
+          print(usuarioLogado.progress);
           return Container(
             margin: const EdgeInsetsDirectional.all(30),
             child: Column(
@@ -52,16 +67,18 @@ class PersonData extends StatelessWidget {
                       }),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(left: 30),
+                      margin: const EdgeInsets.only(left: 10),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Apelido : ${usuarioLogado.username}',
+                            name,
                             style: const TextStyle(
                                 color: Colors.black, fontSize: 22),
                           ),
                           Text(
-                            'Nome: ${usuarioLogado.name}',
+                            '@${usuarioLogado.username}',
                             style: const TextStyle(
                                 color: Colors.black, fontSize: 22),
                           )
@@ -76,18 +93,21 @@ class PersonData extends StatelessWidget {
                       color: Color.fromARGB(100, 207, 218, 216),
                       borderRadius: BorderRadius.all(Radius.circular(20))),
                   margin: const EdgeInsetsDirectional.only(top: 30, bottom: 30),
-                  height: MediaQuery.of(context).size.height / 4.5,
                   width: MediaQuery.of(context).size.width,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       const Text(
                         "Dados Pessoais",
-                        style: TextStyle(color: Colors.black, fontSize: 25),
+                        softWrap: true,
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
                       ),
                       const SizedBox(
-                        height: 30,
+                        height: 10,
                       ),
                       Text("Idade: ${usuarioLogado.age}",
                           style: const TextStyle(
@@ -112,16 +132,48 @@ class PersonData extends StatelessWidget {
                   decoration: const BoxDecoration(
                       color: Color.fromARGB(100, 207, 218, 216),
                       borderRadius: BorderRadius.all(Radius.circular(20))),
-                  height: MediaQuery.of(context).size.height / 4.2,
                   width: MediaQuery.of(context).size.width,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const <Widget>[
-                      Text(
+                    children: [
+                      const Text(
                         "Conquistas",
-                        style: TextStyle(color: Colors.black, fontSize: 25),
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left,
-                      )
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        child: Wrap(
+                            spacing: MediaQuery.of(context).size.width / 14,
+                            runSpacing: 30,
+                            crossAxisAlignment: WrapCrossAlignment.end,
+                            alignment: WrapAlignment.center,
+                            children: usuarioLogado.progress >= 10
+                                ? selosOn
+                                    .map((e) => Image.asset(
+                                          e,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              5,
+                                        ))
+                                    .toList()
+                                : selosOff
+                                    .map((e) => Image.asset(
+                                          e,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              5,
+                                        ))
+                                    .toList()),
+                      ),
                     ],
                   ),
                 ),

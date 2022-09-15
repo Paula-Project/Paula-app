@@ -22,13 +22,13 @@ Future<UsuarioAPI?> loginUsuario(String username, String password) async {
   final Client client =
       InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
-  final String clienteJson =
+  final String usuarioJson =
       jsonEncode({"username": username, "password": password});
 
   final Response response = await client.post(
       Uri.https('paula-api.herokuapp.com', '/login/'),
       headers: {'Content-type': 'application/json'},
-      body: clienteJson);
+      body: usuarioJson);
 
   if (response.statusCode == 200) {
     Map<String, dynamic> json = jsonDecode(response.body);
@@ -44,12 +44,12 @@ Future<UsuarioAPI?> cadastroUsuario(Usuario usuario) async {
   final Client client =
       InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
-  final String clienteJson = jsonEncode(usuario.mapJson());
+  final String usuarioJson = jsonEncode(usuario.mapJson());
 
   final Response response = await client.post(
       Uri.https('paula-api.herokuapp.com', '/cadastro/'),
       headers: {'Content-type': 'application/json'},
-      body: clienteJson);
+      body: usuarioJson);
 
   Map<String, dynamic> json = jsonDecode(response.body);
 
@@ -60,3 +60,42 @@ Future<UsuarioAPI?> cadastroUsuario(Usuario usuario) async {
 
   return null;
 }
+
+Future<bool> resetAuthenticatePassword(String username, String date) async {
+  final Client client =
+  InterceptedClient.build(interceptors: [LoggingInterceptor()]);
+
+  final String usuarioJson =
+  jsonEncode({"username": username, "birthdate": date});
+
+  final Response response = await client.post(
+      Uri.https('paula-api.herokuapp.com', '/resetpassword/authenticate/'),
+      headers: {'Content-type': 'application/json'},
+      body: usuarioJson);
+
+  if (response.statusCode == 200) {
+    return true;
+  }
+
+  return false;
+}
+
+Future<bool> resetPassword(String password, String username) async {
+  final Client client =
+  InterceptedClient.build(interceptors: [LoggingInterceptor()]);
+
+  final String usuarioJson =
+  jsonEncode({"username": username, "passward": password});
+
+  final Response response = await client.post(
+      Uri.https('paula-api.herokuapp.com', '/resetpassword/reset/'),
+      headers: {'Content-type': 'application/json'},
+      body: usuarioJson);
+
+  if (response.statusCode == 200) {
+    return true;
+  }
+
+  return false;
+}
+

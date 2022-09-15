@@ -98,7 +98,7 @@ class LessonsVogais extends StatelessWidget {
               case 1:
                 Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(
-                    builder: (BuildContext context) => const PersonData(),
+                    builder: (BuildContext context) => PersonData(),
                   ),
                   (route) => false,
                 );

@@ -79,6 +79,8 @@ class LessonAEUController extends LessonController {
       lessonController: this,
       taskController: vogalSelectionController,
     ));
+
+
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
       task: completeWordController.getTask1(),
