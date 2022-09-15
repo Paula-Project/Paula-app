@@ -53,7 +53,7 @@ class _BoxDialogState extends State<BoxDialog> {
 
     if (!widget.feedback) {
       message = 'Incorreto \n Resposta: ${widget.resposta}';
-      messageButton = 'TENTAR DE NOVO';
+      messageButton = 'CONTINUAR';
       color = Colors.red;
       padding = 0;
     }
