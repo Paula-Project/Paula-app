@@ -87,7 +87,7 @@ Future<bool> resetPassword(String username,String password) async {
   final String usuarioJson =
   jsonEncode({"username": username, "password": password});
 
-  final Response response = await client.post(
+  final Response response = await client.put(
       Uri.https('paula-api.herokuapp.com', '/resetpassword/reset/'),
       headers: {'Content-type': 'application/json'},
       body: usuarioJson);
