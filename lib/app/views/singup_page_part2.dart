@@ -110,10 +110,10 @@ class _SingupPageState2 extends State<SingupPage2> {
                                         keyboardType: TextInputType.text,
                                         valid: (value) {
                                           if (value!.isEmpty) {
-                                            return ' Informe o nome';
+                                            return ' Informe o apelido';
                                           }
                                           if (value.length < 3) {
-                                            return 'Tamanho inferior a 3';
+                                            return 'Apelido deve possuir no minimo 3 caracteres';
                                           }
                                           return null;
                                         },
@@ -135,7 +135,7 @@ class _SingupPageState2 extends State<SingupPage2> {
                                             return 'Informe uma Senha';
                                           }
                                           if (value.trim().length < 4) {
-                                            return 'Senha muito pequena';
+                                            return 'Senha deve possuir no minimo 4 caracteres';
                                           }
                                           return null;
                                         },
@@ -149,12 +149,6 @@ class _SingupPageState2 extends State<SingupPage2> {
                                         controller: _senhaConfirmaController,
                                         keyboardType: TextInputType.text,
                                         valid: (value) {
-                                          if (value!.trim().isEmpty) {
-                                            return 'Informe uma Senha';
-                                          }
-                                          if (value.trim().length < 4) {
-                                            return 'Senha muito pequena';
-                                          }
                                           if (!(_senhaConfirmaController
                                                   .value ==
                                               _senhaController.value)) {
