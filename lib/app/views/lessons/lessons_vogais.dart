@@ -5,10 +5,12 @@ import 'package:paula/app/views/components/lesson_button.dart';
 import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/person_data_page.dart';
 
-class LessonsVogais extends StatelessWidget {
-  LessonAEUController lessonAEUController = LessonAEUController();
+import '../../controllers/module_vowels_controller.dart';
 
-  LessonsVogais({Key? key}) : super(key: key);
+class LessonsVogais extends StatelessWidget {
+  final ModuleVowelsController moduleVowelsController;
+
+  LessonsVogais({Key? key, required this.moduleVowelsController}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,17 +62,17 @@ class LessonsVogais extends StatelessWidget {
               LessonButton(
                 isActive: true,
                 textContent: 'A - E - U',
-                lessonPage: lessonAEUController.nextTask(),
+                lessonPage: moduleVowelsController.lessonAEUController.nextTask(),
               ),
               LessonButton(
-                isActive: false,
+                isActive: moduleVowelsController.lessonAEUController.getCompleted(),
                 textContent: 'I - U',
-                lessonPage: HomePage(),
+                lessonPage: moduleVowelsController.lessonIOController.nextTask(),
               ),
               LessonButton(
-                isActive: false,
+                isActive: moduleVowelsController.lessonIOController.getCompleted(),
                 textContent: 'LIÇÃO FINAL',
-                lessonPage: HomePage(),
+                lessonPage: moduleVowelsController.lessonFinalController.nextTask(),
               ),
             ],
           ),

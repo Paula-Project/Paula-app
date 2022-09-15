@@ -9,9 +9,9 @@ class TaskVogalSelectionController {
   late TaskVogalSelectionModel task3;
   Words words = Words();
   TaskVogalSelectionController() {
-    task1 = TaskVogalSelectionModel(words: [words.words[14], words.words[13]]);
-    task2 = TaskVogalSelectionModel(words: [words.words[5], words.words[6]]);
-    task3 = TaskVogalSelectionModel(words: [words.words[10], words.words[15]]);
+    task1 = TaskVogalSelectionModel(words: [words.words[14], words.words[7]]);
+    task2 = TaskVogalSelectionModel(words: [words.words[22], words.words[2]]);
+    task3 = TaskVogalSelectionModel(words: [words.words[4], words.words[19]]);
   }
 
   TaskVogalSelectionModel getTask1() {

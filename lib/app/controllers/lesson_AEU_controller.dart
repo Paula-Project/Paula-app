@@ -16,17 +16,15 @@ class LessonAEUController extends LessonController {
   TaskVogalSelectionController vogalSelectionController = TaskVogalSelectionController();
   TaskCompleteWordController completeWordController = TaskCompleteWordController();
   static int correctAnswers = 0;
-  int tasksQuantity = 5;
+  int tasksQuantity = 2;
 
   static int nextPage = -1;
-  static bool completed = false;
+  static bool completed = true;
 
   List widgetsRouters = [];
 
   LessonAEUController() {
-    nextPage = -1;
-    completed = false;
-    correctAnswers = 0;
+    verifyisCompleted();
 
     widgetsRouters.add(LessonIntroduction(
       letter: 'A',
@@ -55,13 +53,32 @@ class LessonAEUController extends LessonController {
       taskController: selectImageController,
       lessonController: this,
     ));
+    widgetsRouters.add(TaskMarkVowel(
+      lessonController: this,
+      taskController: markVowelController,
+      task: markVowelController.getTask2(),
+    ));
+    widgetsRouters.add(LessonIntroduction(
+      letter: 'U',
+      titleIntroduction:
+      "Esta é a letra “U”, ela é a primeira letra do alfabeto.",
+      controller: this,
+    ));
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getVogaisU(),
+      taskController: selectImageController,
+      lessonController: this,
+    ));
+    widgetsRouters.add(TaskMarkVowel(
+      lessonController: this,
+      taskController: markVowelController,
+      task: markVowelController.getTask3(),
+    ));
     widgetsRouters.add(TaskVogalSelection(
       task: vogalSelectionController.getTask1(),
       lessonController: this,
       taskController: vogalSelectionController,
     ));
-
-
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
       task: completeWordController.getTask1(),
@@ -75,6 +92,7 @@ class LessonAEUController extends LessonController {
     if (nextPage < widgetsRouters.length - 1) {
       nextPage++;
     } else {
+      onCompleted();
       nextPage = 0;
       correctAnswers = 0;
     }
@@ -90,6 +108,9 @@ class LessonAEUController extends LessonController {
     if (selectImageController.getVogaisE().isCorrect) {
       correctAnswers++;
     }
+    if (selectImageController.getVogaisU().isCorrect) {
+      correctAnswers++;
+    }
   }
 
   @override
@@ -97,7 +118,17 @@ class LessonAEUController extends LessonController {
     correctAnswers++;
   }
 
-  verifyisCompleted() {
+  void onCompleted() {
+    if (correctAnswers >= tasksQuantity - 1) {
+      completed = true;
+    }
+  }
+
+  bool getCompleted() {
+    return completed;
+  }
+
+  void verifyisCompleted() {
     if (correctAnswers >= tasksQuantity - 1) {
       completed = true;
     }
