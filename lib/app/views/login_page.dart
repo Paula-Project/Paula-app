@@ -121,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                                   keyboardType: TextInputType.text,
                                   inputFormatters: [
                                     FilteringTextInputFormatter.allow(
-                                        r'[a-zA-Z0-9]')
+                                        RegExp(r'[a-zA-Z0-9]'))
                                   ],
                                   validator: (nickname) {
                                     if (nickname == null || nickname.isEmpty) {
