@@ -49,7 +49,7 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
         builder: (BuildContext context, List<Object?> candidateData,
             List<dynamic> rejectedData) {
           return Padding(
-            padding: const EdgeInsets.only(bottom: 20.0),
+            padding: const EdgeInsets.only(bottom: 10.0),
             child: Container(
               width: MediaQuery.of(context).size.width * 0.14,
               height: MediaQuery.of(context).size.height * 0.06,
@@ -73,6 +73,7 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
         },
       );
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -117,50 +118,42 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  decoration: const BoxDecoration(
-                      color: Color.fromRGBO(209, 220, 221, 1),
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: widget.task.words
-                          .map(
-                            (word) => Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Expanded(
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      flex: 2,
-                                      child: SizedBox(
-                                        height: MediaQuery.of(context).size.height*0.1,
-                                        child: Padding(
-                                          padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height*0.02),
-                                          child: Image.asset(
-                                              'assets/images/words/${word.imagePath}'),
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 8,
-                                      child: SizedBox(
-                                        width: double.infinity,
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                          children: makeWord(word.text),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+              Container(
+                decoration: const BoxDecoration(
+                    color: Color.fromRGBO(209, 220, 221, 1),
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                height: MediaQuery.of(context).size.height * 0.5,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: widget.task.words
+                        .map(
+                          (word) => Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 2,
+                                  child: SizedBox(
+                                    height: MediaQuery.of(context).size.height*0.1,
+                                    child: Image.asset(
+                                        'assets/images/words/${word.imagePath}'),
+                                  ),
                                 ),
-                              ),
+                                Expanded(
+                                  flex: 8,
+                                  child: SizedBox(
+                                    width: double.infinity,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: makeWord(word.text),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          )
-                          .toList()),
-                ),
+                          ),
+                        )
+                        .toList()),
               ),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -279,6 +272,7 @@ class LetterBox extends StatelessWidget {
   }
 
   Widget letterCard(context) => Container(
+      margin: const EdgeInsets.only(top: 5),
         width: MediaQuery.of(context).size.width * 0.14,
         height: MediaQuery.of(context).size.height * 0.06,
         decoration: const BoxDecoration(
