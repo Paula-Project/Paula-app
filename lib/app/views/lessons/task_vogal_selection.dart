@@ -39,37 +39,40 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
         height: MediaQuery.of(context).size.height,
         child: Padding(
           padding: const EdgeInsets.only(
-              top: 50.0, bottom: 50.0, left: 15.0, right: 15.0),
+              top: 10.0, bottom: 50.0, left: 15.0, right: 15.0),
           child: Column(
             children: [
               TaskProgress(
                 tasksNumber: widget.lessonController.getTaskQuantity(),
                 correctAnswer: widget.lessonController.getTaskCorrectAnswers(),
               ),
-              const SizedBox(height: 20.0),
+              SizedBox(height: MediaQuery.of(context).size.height*0.05),
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 20.0),
+                      padding: const EdgeInsets.only(bottom: 15.0),
                       child: Container(
-                        height: 100.0,
+                        height: MediaQuery.of(context).size.height*0.13,
                         decoration: const BoxDecoration(
                             color: Color.fromRGBO(37, 85, 124, 1),
                             borderRadius:
                                 BorderRadius.all(Radius.circular(15))),
                         child: const Center(
                           child: Padding(
-                            padding: EdgeInsets.all(28.0),
-                            child: Text(
-                              "SELECIONE AS VOGAIS ",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w300,
-                                decoration: TextDecoration.none,
+                            padding: EdgeInsets.all(8.0),
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(
+                                "SELECIONE AS VOGAIS ",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w300,
+                                  decoration: TextDecoration.none,
+                                ),
                               ),
                             ),
                           ),
@@ -80,9 +83,9 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
                         children: widget.task.words
                             .map(
                               (word) => Padding(
-                                padding: const EdgeInsets.all(20.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: Container(
-                                  height: 200.0,
+                                  height: MediaQuery.of(context).size.height*0.25,
                                   decoration: const BoxDecoration(
                                       color: Color.fromARGB(255, 194, 197, 199),
                                       borderRadius: BorderRadius.all(
@@ -91,10 +94,10 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.only(
-                                            bottom: 30.0, top: 12.0),
+                                        padding:  EdgeInsets.only(
+                                            bottom: MediaQuery.of(context).size.height*0.02, top: 12.0),
                                         child: Container(
-                                            height: 87.0,
+                                            height: MediaQuery.of(context).size.height*0.1,
                                             child: Image.asset(
                                                 'assets/images/words/${word.imagePath}')),
                                       ),
@@ -121,7 +124,7 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
                             )
                             .toList()),
                     SizedBox(
-                      height: 45.0,
+                      height: MediaQuery.of(context).size.height*0.06,
                       width: 200.0,
                       child: ElevatedButton(
                         style: ButtonStyle(
@@ -176,11 +179,14 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
                             },
                           )
                         },
-                        child: const Text('Confirmar',
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w600,
-                            )),
+                        child: const FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text('Confirmar',
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.w600,
+                          )),
+                        ),
                       ),
                     ),
                   ],
@@ -216,8 +222,7 @@ class _SelectLetterButtonState extends State<SelectLetterButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
-      width: 40,
+      constraints: const BoxConstraints(maxWidth: 40, minHeight: 15),
       margin: const EdgeInsets.all(5),
       child: TextButton(
         onPressed: () => {
@@ -230,9 +235,13 @@ class _SelectLetterButtonState extends State<SelectLetterButton> {
         style: TextButton.styleFrom(
           backgroundColor: isSelected ? Colors.blue : Colors.white70,
           primary: Colors.black,
-          textStyle: const TextStyle(fontSize: 35, fontWeight: FontWeight.w700),
+          textStyle: const TextStyle(fontWeight: FontWeight.w700),
         ),
-        child: Text(widget.letter),
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(widget.letter,
+          style: const TextStyle(fontSize: 35),),
+        ),
       ),
     );
   }
