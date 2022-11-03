@@ -30,62 +30,62 @@ class LessonAEUController extends LessonController {
   LessonAEUController({required this.moduleVowelsController}) {
     verifyisCompleted();
 
-    // widgetsRouters.add(LessonIntroduction(
-    //   letter: 'A',
-    //   titleIntroduction:
-    //       "Esta é a letra “A”, ela é a primeira letra do alfabeto.",
-    //   controller: this,
-    //   audioUrl: 'introductionA.mp4',
-    // ));
-    // widgetsRouters.add(TaskMarkVowel(
-    //   lessonController: this,
-    //   taskController: markVowelController,
-    //   task: markVowelController.getTask1(),
-    // ));
-    // widgetsRouters.add(TaskSelectImage(
-    //   task: selectImageController.getVogaisA(),
-    //   taskController: selectImageController,
-    //   lessonController: this,
-    // ));
-    // widgetsRouters.add(LessonIntroduction(
-    //   letter: 'E',
-    //   titleIntroduction:
-    //       "Esta é a letra “E”, ela é a segunda vogal do alfabeto.",
-    //   controller: this,
-    //   audioUrl: 'introductionE.mp4',
-    // ));
-    // widgetsRouters.add(TaskSelectImage(
-    //   task: selectImageController.getVogaisE(),
-    //   taskController: selectImageController,
-    //   lessonController: this,
-    // ));
-    // widgetsRouters.add(TaskMarkVowel(
-    //   lessonController: this,
-    //   taskController: markVowelController,
-    //   task: markVowelController.getTask2(),
-    // ));
-    // widgetsRouters.add(LessonIntroduction(
-    //   letter: 'U',
-    //   titleIntroduction:
-    //       "Esta é a letra “U”, ela é a quinta vogal do alfabeto.",
-    //   controller: this,
-    //   audioUrl: 'introductionU.mp4',
-    // ));
-    // widgetsRouters.add(TaskSelectImage(
-    //   task: selectImageController.getVogaisU(),
-    //   taskController: selectImageController,
-    //   lessonController: this,
-    // ));
-    // widgetsRouters.add(TaskMarkVowel(
-    //   lessonController: this,
-    //   taskController: markVowelController,
-    //   task: markVowelController.getTask3(),
-    // ));
-    // widgetsRouters.add(TaskVogalSelection(
-    //   task: vogalSelectionController.getTask1(),
-    //   lessonController: this,
-    //   taskController: vogalSelectionController,
-    // ));
+    widgetsRouters.add(LessonIntroduction(
+      letter: 'A',
+      titleIntroduction:
+          "Esta é a letra “A”, ela é a primeira letra do alfabeto.",
+      controller: this,
+      audioUrl: 'introductionA.mp4',
+    ));
+    widgetsRouters.add(TaskMarkVowel(
+      lessonController: this,
+      taskController: markVowelController,
+      task: markVowelController.getTask1(),
+    ));
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getVogaisA(),
+      taskController: selectImageController,
+      lessonController: this,
+    ));
+    widgetsRouters.add(LessonIntroduction(
+      letter: 'E',
+      titleIntroduction:
+          "Esta é a letra “E”, ela é a segunda vogal do alfabeto.",
+      controller: this,
+      audioUrl: 'introductionE.mp4',
+    ));
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getVogaisE(),
+      taskController: selectImageController,
+      lessonController: this,
+    ));
+    widgetsRouters.add(TaskMarkVowel(
+      lessonController: this,
+      taskController: markVowelController,
+      task: markVowelController.getTask2(),
+    ));
+    widgetsRouters.add(LessonIntroduction(
+      letter: 'U',
+      titleIntroduction:
+          "Esta é a letra “U”, ela é a quinta vogal do alfabeto.",
+      controller: this,
+      audioUrl: 'introductionU.mp4',
+    ));
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getVogaisU(),
+      taskController: selectImageController,
+      lessonController: this,
+    ));
+    widgetsRouters.add(TaskMarkVowel(
+      lessonController: this,
+      taskController: markVowelController,
+      task: markVowelController.getTask3(),
+    ));
+    widgetsRouters.add(TaskVogalSelection(
+      task: vogalSelectionController.getTask1(),
+      lessonController: this,
+      taskController: vogalSelectionController,
+    ));
 
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
