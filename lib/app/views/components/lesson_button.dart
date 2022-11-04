@@ -27,7 +27,8 @@ class LessonButton extends StatelessWidget {
               Navigator.push(
                   context,
                   PageTransition(
-                      type: PageTransitionType.fade, child: lessonController.nextTask()));
+                      type: PageTransitionType.rightToLeft, 
+                      child: lessonController.nextTask()));
             }
           },
           style: ButtonStyle(
