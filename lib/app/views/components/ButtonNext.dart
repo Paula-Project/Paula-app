@@ -35,12 +35,11 @@ class ButtonNext extends StatelessWidget {
                 )),
             onPressed: () {
               onPressed();
-              Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(
-                  builder: (BuildContext context) => pageWidget,
-                ),
-                (route) => allowedReturn,
-              );
+                Navigator.of(context).pushAndRemoveUntil(
+                  PageTransition(
+                    type: PageTransitionType.rightToLeft, 
+                    child: pageWidget),
+                    (route) => false);
             },
           ),
         ),

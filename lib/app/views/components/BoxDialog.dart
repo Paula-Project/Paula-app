@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/controllers/lesson_AEU_controller.dart';
 import 'package:paula/app/controllers/lesson_controller.dart';
 import 'package:paula/app/views/lessons/congratulations_page.dart';
@@ -91,11 +92,10 @@ class _BoxDialogState extends State<BoxDialog> {
         ElevatedButton(
           onPressed: () {
             Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                builder: (BuildContext context) => widget.controller.nextTask(),
-              ),
-              (route) => false,
-            );
+                  PageTransition(
+                    type: PageTransitionType.rightToLeft, 
+                    child: widget.controller.nextTask()),
+                    (route) => false);
           },
           style: ButtonStyle(
             padding: MaterialStateProperty.resolveWith(
