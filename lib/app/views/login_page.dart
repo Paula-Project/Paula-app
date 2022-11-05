@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/change_password.dart';
 import 'package:paula/app/views/welcome_page_part1.dart';
 import 'package:paula/app/http/webclient.dart';
 import 'package:provider/provider.dart';
 import '../state/usuario_state.dart';
+import 'components/Loading.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -32,10 +32,13 @@ class _LoginPageState extends State<LoginPage> {
   String nickname = '';
   String password = '';
 
+  bool isLoading = false;
+
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
+  Widget build(BuildContext context) => isLoading 
+    ? const LoadingPage()
+    : Scaffold(
+      body: Container(
       decoration: backgroundBlueGradiend,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
@@ -202,27 +205,18 @@ class _LoginPageState extends State<LoginPage> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
                               )),
-                          onLongPress: () {
-                            Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(
-                                builder: (BuildContext context) => HomePage(),
-                              ),
-                              (route) => false,
-                            );
-                          },
                           onPressed: () async {
+                            setState(() => isLoading = true); //////////////////////
                             FocusScopeNode currentFocus =
                                 FocusScope.of(context);
                             if (_formkey.currentState!.validate()) {
+                              bool log = false;
                               if (await login()) {
-                                Navigator.of(context).pushAndRemoveUntil(
-                                  MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        HomePage(),
-                                  ),
-                                  (route) => false,
-                                );
+                                setState(() => isLoading = false); ////////////////////
+                                FocusScope.of(context).unfocus();
+                                log = true;
                               } else {
+                                setState(() => isLoading = false);
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                       backgroundColor: Colors.white,
@@ -234,6 +228,17 @@ class _LoginPageState extends State<LoginPage> {
                                             fontSize: 20),
                                       )),
                                 );
+                              }
+                              if (log){
+                                Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        HomePage(),
+                                  ),
+                                  (route) => false,
+                                );
+                              } else {
+                                
                               }
                             }
                           },
@@ -267,7 +272,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     ));
-  }
+
 
   Future<bool> login() async {
     var usuarioLogado =
