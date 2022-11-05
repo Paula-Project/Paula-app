@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paula/app/views/singup_page_part1.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'app/views/welcome_page_part1.dart';
 import 'app/views/welcome_page_part2.dart';
 import 'app/views/welcome_page_part3.dart';
@@ -29,8 +30,9 @@ class _AppWidgetState extends State<AppWidget> {
       });
     }
 
-    return GetMaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         brightness: Brightness.dark,
@@ -38,6 +40,9 @@ class _AppWidgetState extends State<AppWidget> {
       ),
       initialRoute: "/",
       locale: const Locale("pt", "BR"),
+      supportedLocales: const [
+        Locale("pt", "BR"),
+      ],
       routes: {
         "/": (context) => const WelcomePagePart1(),
         "/welcome_part2": (context) => const WelcomePagePart2(),

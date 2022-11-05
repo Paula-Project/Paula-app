@@ -39,6 +39,7 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
   @override
   void initState() {
     audioPlayer = AudioPlayer();
+    _runAudio(widget.task.audio);
     super.initState();
   }
 
@@ -158,7 +159,8 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
                                         transitionBuilder:
                                             (context, a1, a2, widget) {
                                           final curvedValue = Curves.easeInOut
-                                                  .transform(a1.value) - 1;
+                                                  .transform(a1.value) -
+                                              1;
 
                                           return Transform(
                                             transform:
@@ -171,7 +173,15 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
                                                       .widget
                                                       .lessonController,
                                                   feedback: isCorrect,
-                                                  resposta: this.widget.task.vowels[this.widget.task.answer-1].text),
+                                                  resposta: this
+                                                      .widget
+                                                      .task
+                                                      .vowels[this
+                                                              .widget
+                                                              .task
+                                                              .answer -
+                                                          1]
+                                                      .text),
                                             ),
                                           );
                                         },

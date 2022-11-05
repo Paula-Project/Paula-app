@@ -33,7 +33,6 @@ class _ModuleButtonState extends State<ModuleButton> {
         style: ElevatedButton.styleFrom(
           minimumSize: Size(120.0, 120.0),
           shape: CircleBorder(),
-
           primary: (widget._isActive)
               ? Colors.blue
               : Colors.grey, // <-- Button color

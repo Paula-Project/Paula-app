@@ -43,195 +43,277 @@ class _SingupPageState2 extends State<SingupPage2> {
   bool isLoading = false;
 
   @override
-  Widget build(BuildContext context) => isLoading 
-    ? const LoadingPage()
-    : Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          decoration: backgroundBlueGradiend,
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            children: [
-              const Expanded(
-                flex: 4,
-                child: PaulaTitleComponent(),
-              ),
-              Expanded(
-                flex: 12,
-                child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Center(
-                            child: Column(
-                              children: const [
-                                Text("Informações de Acesso",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 30,
-                                        fontFamily: "Nunito",
-                                        fontWeight: FontWeight.w500)),
-                                Text(
-                                    "Você usará essas informações para acessar a Paula Novamente",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      height: 1.5,
-                                      fontWeight: FontWeight.w300,
-                                    )),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: double.infinity,
-                        color: Colors.transparent,
-                        child: Container(
-                            decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(40.0),
-                                  topRight: Radius.circular(40.0),
-                                )),
-                            child: Form(
-                              key: _key,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(30, 20, 30, 30),
-                                child: Center(
-                                  child: Column(
-                                    children: [
-                                      Input(
-                                        labelInputTxt: 'Apelido',
-                                        controller: _apelidoController,
-                                        keyboardType: TextInputType.text,
-                                        valid: (value) {
-                                          if (value!.isEmpty) {
-                                            return ' Informe o apelido';
-                                          }
-                                          if (value.length < 3) {
-                                            return 'Apelido deve possuir no minimo 3 caracteres';
-                                          }
-                                          return null;
-                                        },
-                                        formatters: [
-                                          FilteringTextInputFormatter.allow(
-                                              RegExp(r'[a-zA-Z0-9]'))
-                                        ],
-                                      ),
-                                      Container(
-                                        height: 20,
-                                      ),
-                                      Input(
-                                        labelInputTxt: "Senha",
-                                        obscureTxt: true,
-                                        controller: _senhaController,
-                                        keyboardType: TextInputType.text,
-                                        valid: (value) {
-                                          if (value!.trim().isEmpty) {
-                                            return 'Informe uma Senha';
-                                          }
-                                          if (value.trim().length < 4) {
-                                            return 'Senha deve possuir no minimo 4 caracteres';
-                                          }
-                                          return null;
-                                        },
-                                      ),
-                                      Container(
-                                        height: 20,
-                                      ),
-                                      Input(
-                                        labelInputTxt: "Confirmar senha",
-                                        obscureTxt: true,
-                                        controller: _senhaConfirmaController,
-                                        keyboardType: TextInputType.text,
-                                        valid: (value) {
-                                          if (!(_senhaConfirmaController
-                                                  .value ==
-                                              _senhaController.value)) {
-                                            return 'Senha informada esta diferente';
-                                          }
-                                          return null;
-                                        },
-                                      ),
-                                      Container(
-                                        height: 40,
-                                      ),
-                                      SizedBox(
-                                        width: 160,
-                                        height: 50,
-                                        child: ElevatedButton(
-                                          onPressed: () async {
-                                            setState(() => isLoading = true); //////////////////////
-                                            if (_key.currentState!.validate()) {
-                                              if (await cadastro()) {
-                                                setState(() => isLoading = true); //////////////////////
-                                                Navigator.of(context)
-                                                    .pushAndRemoveUntil(
-                                                  MaterialPageRoute(
-                                                    builder:
-                                                        (BuildContextcontext) =>
-                                                            HomePage(),
-                                                  ),
-                                                  (route) => false,
-                                                );
-                                              } else {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  const SnackBar(
-                                                      backgroundColor:
-                                                          Color.fromARGB(255,
-                                                              41, 171, 226),
-                                                      content: Text(
-                                                        'Apelido ja cadastrado',
-                                                        style: TextStyle(
-                                                            color: Colors.white,
-                                                            fontSize: 30),
-                                                      )),
-                                                );
-                                              }
-                                            }
-                                          },
-                                          onHover: (hover) {},
-                                          style: ButtonStyle(
-                                            foregroundColor:
-                                                MaterialStateProperty.all<
-                                                    Color>(Colors.white),
-                                            backgroundColor:
-                                                MaterialStateProperty.all<
-                                                    Color>(Colors.blue),
-                                            shape: MaterialStateProperty.all<
-                                                    RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
-                                                    side: BorderSide.none)),
-                                          ),
-                                          child: const Text("Cadastrar",
-                                              style: TextStyle(fontSize: 25)),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+  Widget build(BuildContext context) => isLoading
+      ? const LoadingPage()
+      : Scaffold(
+          body: SingleChildScrollView(
+            child: Container(
+              decoration: backgroundBlueGradiend,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: Column(
+                children: [
+                  Expanded(
+                    flex: MediaQuery.of(context).size.height > 700 ? 4 : 2,
+                    child: const PaulaTitleComponent(),
+                  ),
+                  Expanded(
+                    flex: MediaQuery.of(context).size.height > 700 ? 12 : 10,
+                    child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15),
+                              child: Center(
+                                child: Column(
+                                  children: [
+                                    FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Text("Informações de Acesso",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: MediaQuery.of(context)
+                                                          .size
+                                                          .height >
+                                                      550
+                                                  ? 30
+                                                  : 20,
+                                              fontFamily: "Nunito",
+                                              fontWeight: FontWeight.w500)),
+                                    ),
+                                    Text(
+                                        "Você usará essas informações para acessar a Paula novamente",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height >
+                                                  550
+                                              ? 20
+                                              : MediaQuery.of(context)
+                                                          .size
+                                                          .height >
+                                                      400
+                                                  ? 15
+                                                  : 13,
+                                          fontWeight: FontWeight.w300,
+                                        )),
+                                  ],
                                 ),
                               ),
-                            )),
-                      )
-                    ]),
+                            ),
+                          ),
+                          Expanded(
+                              flex: 4,
+                              child: Container(
+                                width: double.infinity,
+                                color: Colors.transparent,
+                                child: Container(
+                                    decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(40.0),
+                                          topRight: Radius.circular(40.0),
+                                        )),
+                                    child: Form(
+                                      key: _key,
+                                      child: Padding(
+                                        padding: EdgeInsets.fromLTRB(
+                                            MediaQuery.of(context).size.width >
+                                                    330
+                                                ? 30
+                                                : 10,
+                                            20,
+                                            MediaQuery.of(context).size.width >
+                                                    330
+                                                ? 30
+                                                : 10,
+                                            0),
+                                        child: Center(
+                                          child: Column(
+                                            children: [
+                                              Input(
+                                                labelInputTxt: 'Apelido',
+                                                controller: _apelidoController,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                valid: (value) {
+                                                  if (value!.isEmpty) {
+                                                    return ' Informe o apelido';
+                                                  }
+                                                  if (value.length < 3) {
+                                                    return 'Apelido deve possuir no minimo 3 caracteres';
+                                                  }
+                                                  return null;
+                                                },
+                                                formatters: [
+                                                  FilteringTextInputFormatter
+                                                      .allow(RegExp(
+                                                          r'[a-zA-Z0-9]'))
+                                                ],
+                                              ),
+                                              Container(
+                                                height: MediaQuery.of(context)
+                                                            .size
+                                                            .height >
+                                                        550
+                                                    ? 20
+                                                    : 5,
+                                              ),
+                                              Input(
+                                                labelInputTxt: "Senha",
+                                                obscureTxt: true,
+                                                controller: _senhaController,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                valid: (value) {
+                                                  if (value!.trim().isEmpty) {
+                                                    return 'Informe uma Senha';
+                                                  }
+                                                  if (value.trim().length < 4) {
+                                                    return 'Senha deve possuir no minimo 4 caracteres';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                              Container(
+                                                height: MediaQuery.of(context)
+                                                            .size
+                                                            .height >
+                                                        550
+                                                    ? 20
+                                                    : 5,
+                                              ),
+                                              Input(
+                                                labelInputTxt:
+                                                    "Confirmar senha",
+                                                obscureTxt: true,
+                                                controller:
+                                                    _senhaConfirmaController,
+                                                keyboardType:
+                                                    TextInputType.text,
+                                                valid: (value) {
+                                                  if (!(_senhaConfirmaController
+                                                          .value ==
+                                                      _senhaController.value)) {
+                                                    return 'Senha informada esta diferente';
+                                                  }
+                                                  return null;
+                                                },
+                                              ),
+                                              Container(
+                                                height: MediaQuery.of(context)
+                                                            .size
+                                                            .height >
+                                                        550
+                                                    ? 50
+                                                    : MediaQuery.of(context)
+                                                                .size
+                                                                .height >
+                                                            450
+                                                        ? 25
+                                                        : 15,
+                                              ),
+                                              SizedBox(
+                                                width: MediaQuery.of(context)
+                                                            .size
+                                                            .height >
+                                                        550
+                                                    ? 160
+                                                    : 140,
+                                                height: MediaQuery.of(context)
+                                                            .size
+                                                            .height >
+                                                        550
+                                                    ? 50
+                                                    : 30,
+                                                child: ElevatedButton(
+                                                  onPressed: () async {
+                                                    setState(() => isLoading =
+                                                        true); //////////////////////
+                                                    if (_key.currentState!
+                                                        .validate()) {
+                                                      if (await cadastro()) {
+                                                        setState(() => isLoading =
+                                                            true); //////////////////////
+                                                        Navigator.of(context)
+                                                            .pushAndRemoveUntil(
+                                                          MaterialPageRoute(
+                                                            builder:
+                                                                (BuildContextcontext) =>
+                                                                    HomePage(),
+                                                          ),
+                                                          (route) => false,
+                                                        );
+                                                      } else {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          const SnackBar(
+                                                              backgroundColor:
+                                                                  Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          41,
+                                                                          171,
+                                                                          226),
+                                                              content: Text(
+                                                                'Apelido ja cadastrado',
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        30),
+                                                              )),
+                                                        );
+                                                      }
+                                                    }
+                                                  },
+                                                  onHover: (hover) {},
+                                                  style: ButtonStyle(
+                                                    foregroundColor:
+                                                        MaterialStateProperty
+                                                            .all<Color>(
+                                                                Colors.white),
+                                                    backgroundColor:
+                                                        MaterialStateProperty
+                                                            .all<Color>(
+                                                                Colors.blue),
+                                                    shape: MaterialStateProperty.all<
+                                                            RoundedRectangleBorder>(
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
+                                                            side: BorderSide
+                                                                .none)),
+                                                  ),
+                                                  child: const Text("Cadastrar",
+                                                      style: TextStyle(
+                                                          fontSize: 25)),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    )),
+                              ))
+                        ]),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
-    );
+        );
 
   Future<bool> cadastro() async {
     var usuarioLogado = await cadastroUsuario(Usuario(

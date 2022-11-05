@@ -1,35 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:paula/app/views/components/DIalogTextBox.dart';
 import 'package:paula/app/views/singup_page_part1.dart';
-import 'package:paula/app/views/welcome_page_part4.dart';
-import 'welcome_page_part2.dart';
+import 'package:paula/app/views/welcome_page_part1.dart';
+import 'components/DIalogTextBox.dart';
+import 'welcome_page_part3.dart';
+import 'welcome_page_part1.dart';
 
 import 'components/paulaTitle.dart';
 
-class WelcomePagePart3 extends StatelessWidget {
-  const WelcomePagePart3({Key? key}) : super(key: key);
+class WelcomePagePart4 extends StatelessWidget {
+  const WelcomePagePart4({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onPanUpdate: (details) {
-        if (details.delta.dx < 0) {
-          Navigator.push(
-              context,
-              PageTransition(
-                  type: PageTransitionType.rightToLeft,
-                  child: const SingupPage()));
-        }
-        if (details.delta.dx > 0) {
-          Navigator.push(
-              context,
-              PageTransition(
-                  type: PageTransitionType.leftToRight,
-                  child: const WelcomePagePart2()));
-        }
-      },
-      child: Material(
+    return Material(
+      child: GestureDetector(
+        onPanUpdate: (details) {
+          if (details.delta.dx < 0) {
+            Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.rightToLeft,
+                    child: const WelcomePagePart3()));
+          }
+          if (details.delta.dx > 0) {
+            Navigator.push(
+                context,
+                PageTransition(
+                    type: PageTransitionType.leftToRight,
+                    child: const WelcomePagePart1()));
+          }
+        },
         child: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -44,7 +45,7 @@ class WelcomePagePart3 extends StatelessWidget {
           child: Column(children: [
             Expanded(
               flex: MediaQuery.of(context).size.height > 500 ? 3 : 2,
-              child: const PaulaTitleComponent(),
+              child: PaulaTitleComponent(),
             ),
             Expanded(
                 flex: MediaQuery.of(context).size.height > 500 ? 8 : 7,
@@ -61,8 +62,8 @@ class WelcomePagePart3 extends StatelessWidget {
                               Image.asset('assets/images/paula/paula01.png')),
                       const DialogTextBox(
                         TextContent:
-                            "Eu nasci de um projeto do Polo Paranoá da UnB, e eu vou acompanhar o seu aprendizado de perto!",
-                        audioUrl: 'paula02.ogg',
+                            "Para começar vamos precisar de algumas informações suas, tudo bem? Nessa etapa talvez você precise de alguém para te ajudar, ok?",
+                        audioUrl: "paula01.mp3",
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height > 550
@@ -77,7 +78,7 @@ class WelcomePagePart3 extends StatelessWidget {
                                 context,
                                 PageTransition(
                                     type: PageTransitionType.fade,
-                                    child: const WelcomePagePart4()));
+                                    child: const SingupPage()));
                           },
                           onHover: (hover) {},
                           style: ButtonStyle(
@@ -91,7 +92,7 @@ class WelcomePagePart3 extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10),
                                     side: BorderSide.none)),
                           ),
-                          child: const Text("Vamos lá!",
+                          child: const Text("Próximo",
                               style: TextStyle(fontSize: 20)),
                         ),
                       ),

@@ -28,9 +28,10 @@ class Input extends StatelessWidget {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(labelInputTxt,
-                style: const TextStyle(
+                style: TextStyle(
                     color: Colors.blue,
-                    fontSize: 25,
+                    fontSize:
+                        MediaQuery.of(context).size.height > 600 ? 25 : 18,
                     fontFamily: "Nunito",
                     fontWeight: FontWeight.w300)),
           ),
@@ -46,8 +47,10 @@ class Input extends StatelessWidget {
           child: TextFormField(
             controller: controller,
             autofocus: false,
-            decoration: const InputDecoration(
-              contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 4),
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.symmetric(
+                  vertical: MediaQuery.of(context).size.height > 550 ? 15 : 8,
+                  horizontal: 4),
               isDense: true,
               fillColor: Colors.white,
               filled: true,

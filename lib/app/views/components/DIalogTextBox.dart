@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class DialogTextBox extends StatefulWidget {
@@ -63,17 +64,20 @@ class _DialogTextBoxState extends State<DialogTextBox> {
             ],
           ),
           Container(
+            height: MediaQuery.of(context).size.height > 600 ? 100 : 70,
             decoration: BoxDecoration(
                 color: const Color.fromARGB(199, 37, 85, 124),
                 borderRadius: BorderRadius.circular(15)),
             child: Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Text(
+              padding: EdgeInsets.all(
+                  MediaQuery.of(context).size.height > 510 ? 10.0 : 5),
+              child: AutoSizeText(
                 widget.TextContent,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w300,
                     color: Colors.white),
+                minFontSize: 10,
               ),
             ),
           ),

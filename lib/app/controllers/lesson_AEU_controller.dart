@@ -92,6 +92,7 @@ class LessonAEUController extends LessonController {
       task: completeWordController.getTask1(),
       taskController: completeWordController,
     ));
+
     widgetsRouters.add(CongratulationsPage(
       moduleVowelsController: moduleVowelsController,
     ));
