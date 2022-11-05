@@ -3,6 +3,7 @@ import 'package:paula/app/http/webclient.dart';
 import 'package:paula/app/model/usuario.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/components/Input.dart';
+import 'package:paula/app/views/components/Loading.dart';
 import 'package:provider/provider.dart';
 import 'components/paulaTitle.dart';
 import 'home_page.dart';
@@ -39,9 +40,12 @@ class _SingupPageState2 extends State<SingupPage2> {
       TextEditingController();
   final TextEditingController _apelidoController = TextEditingController();
 
+  bool isLoading = false;
+
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+  Widget build(BuildContext context) => isLoading 
+    ? const LoadingPage()
+    : Scaffold(
       body: SingleChildScrollView(
         child: Container(
           decoration: backgroundBlueGradiend,
@@ -165,8 +169,10 @@ class _SingupPageState2 extends State<SingupPage2> {
                                         height: 50,
                                         child: ElevatedButton(
                                           onPressed: () async {
+                                            setState(() => isLoading = true); //////////////////////
                                             if (_key.currentState!.validate()) {
                                               if (await cadastro()) {
+                                                setState(() => isLoading = true); //////////////////////
                                                 Navigator.of(context)
                                                     .pushAndRemoveUntil(
                                                   MaterialPageRoute(
@@ -226,7 +232,6 @@ class _SingupPageState2 extends State<SingupPage2> {
         ),
       ),
     );
-  }
 
   Future<bool> cadastro() async {
     var usuarioLogado = await cadastroUsuario(Usuario(
