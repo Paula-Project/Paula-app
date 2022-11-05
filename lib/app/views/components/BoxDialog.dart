@@ -53,7 +53,7 @@ class _BoxDialogState extends State<BoxDialog> {
     double padding = 15.0;
 
     if (!widget.feedback) {
-      message = 'Incorreto \n Resposta: ${widget.resposta}';
+      message = 'Resposta: ${widget.resposta}\n';
       messageButton = 'CONTINUAR';
       color = Colors.red;
       padding = 0;
@@ -72,7 +72,6 @@ class _BoxDialogState extends State<BoxDialog> {
       semanticLabel: "dialogg",
       content: Builder(
         builder: (context) {
-          // Get available height and width of the build area of this widget. Make a choice depending on the size.
           var height = MediaQuery.of(context).size.height;
           var width = MediaQuery.of(context).size.width;
 

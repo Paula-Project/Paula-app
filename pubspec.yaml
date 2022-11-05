@@ -31,7 +31,8 @@ dependencies:
   gender_picker: ^1.1.0
   flutter:
     sdk: flutter
-
+  flutter_localizations:
+    sdk: flutter
   http: ^0.13.4
   http_interceptor: ^1.0.2
   shared_preferences: "^2.0.6"
@@ -45,6 +46,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get:
   intl: ^0.17.0
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +77,7 @@ flutter:
     - assets/images/paula/Avatar-Maker(1).png
     - assets/images/paula/Avatar-Maker(2).png
     - assets/images/paula/Avatar-Maker(4).png
+    - assets/images/paula/paula01.png
 
     - assets/images/words/arvore.png
     - assets/images/words/oculos.png

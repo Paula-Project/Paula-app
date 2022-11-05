@@ -8,7 +8,7 @@ class Words {
     'Antena', // 1
     'Apito', // 2
     'Arroz', // 3
-    'Árvore', // 4
+    'Arvore', // 4
     'Escada', // 5
     'Oculos', // 6
     'Uva', // 7

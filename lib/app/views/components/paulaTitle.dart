@@ -8,14 +8,18 @@ class PaulaTitleComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("PAULA",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 60,
-            fontFamily: "Nunito",
-            fontWeight: FontWeight.normal,
-            letterSpacing: 20,
-          )),
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        alignment: Alignment.center,
+        child: Text("PAULA",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 60,
+              fontFamily: "Nunito",
+              fontWeight: FontWeight.normal,
+              letterSpacing: 10,
+            )),
+      ),
     );
   }
 }

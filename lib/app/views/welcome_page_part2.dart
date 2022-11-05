@@ -42,27 +42,32 @@ class WelcomePagePart2 extends StatelessWidget {
             ),
           ),
           child: Column(children: [
-            const Expanded(
-              flex: 3,
+            Expanded(
+              flex: MediaQuery.of(context).size.height > 500 ? 3 : 2,
               child: PaulaTitleComponent(),
             ),
             Expanded(
-                flex: 8,
+                flex: MediaQuery.of(context).size.height > 500 ? 8 : 7,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  padding: EdgeInsets.symmetric(
+                      horizontal:
+                          MediaQuery.of(context).size.height > 600 ? 40 : 0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Image.asset(
-                        'assets/images/paula/Avatar-Maker(2).png',
-                        width: MediaQuery.of(context).size.width - 150,
-                      ),
+                      SizedBox(
+                          height: (MediaQuery.of(context).size.height * 0.4),
+                          child:
+                              Image.asset('assets/images/paula/paula01.png')),
                       const DialogTextBox(
                         TextContent:
-                            "Oi, eu me chamo Paula, e eu vou acompanhar o seu aprendizado de perto!",
+                            "Oi, eu me chamo Paula, Seja muito bem-vindo(a) ao meu aplicativo!",
                         audioUrl: "paula01.mp3",
                       ),
-                      const SizedBox(height: 30),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height > 550
+                              ? 30
+                              : 10),
                       SizedBox(
                         width: 140,
                         height: 40,
@@ -71,7 +76,7 @@ class WelcomePagePart2 extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 PageTransition(
-                                    type: PageTransitionType.rightToLeft,
+                                    type: PageTransitionType.fade,
                                     child: const WelcomePagePart3()));
                           },
                           onHover: (hover) {},
