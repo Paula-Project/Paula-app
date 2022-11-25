@@ -118,17 +118,30 @@ flutter:
     - assets/images/sorvete.png
 
     - assets/audios/paula/paula01.mp3
-    - assets/audios/paula/paula02.ogg
-    - assets/audios/paula/completeAsPalavras.mp4
-    - assets/audios/paula/exemplosA.mp4
-    - assets/audios/paula/introductionA.mp4
-    - assets/audios/paula/introductionE.mp4
-    - assets/audios/paula/introductionI.mp4
-    - assets/audios/paula/introductionO.mp4
-    - assets/audios/paula/introductionU.mp4
-    - assets/audios/paula/selecioneA.mp4
+    - assets/audios/paula/paula02.mp3
+    - assets/audios/paula/paula03.mp3
+
     - assets/audios/paula/selecioneAsVogais.mp4
-    - assets/audios/paula/voceEstaIndoBem.mp4
+
+    - assets/audios/paula/paula_completeWords.mp3
+
+    - assets/audios/paula/paula_introduction_A.mp3
+    - assets/audios/paula/paula_introduction_E.mp3
+    - assets/audios/paula/paula_introduction_I.mp3
+    - assets/audios/paula/paula_introduction_O.mp3
+    - assets/audios/paula/paula_introduction_U.mp3
+
+    - assets/audios/paula/paula_selection_A.mp3
+    - assets/audios/paula/paula_selection_E.mp3
+    - assets/audios/paula/paula_selection_I.mp3
+    - assets/audios/paula/paula_selection_O.mp3
+    - assets/audios/paula/paula_selection_U.mp3
+
+    - assets/audios/paula/paula_selectionImage_A.mp3
+    - assets/audios/paula/paula_selectionImage_E.mp3
+    - assets/audios/paula/paula_selectionImage_I.mp3
+    - assets/audios/paula/paula_selectionImage_O.mp3
+    - assets/audios/paula/paula_selectionImage_U.mp3
 
     - assets/audios/words/aviao.mp3
     - assets/audios/words/abacaxi.mp3

@@ -32,10 +32,9 @@ class LessonAEUController extends LessonController {
 
     widgetsRouters.add(LessonIntroduction(
       letter: 'A',
-      titleIntroduction:
-          "Esta é a letra “A”, ela é a primeira letra do alfabeto.",
+      titleIntroduction: "Esta é a letra ‘A’, repita comigo LETRA A.",
       controller: this,
-      audioUrl: 'introductionA.mp4',
+      audioUrl: 'paula_introduction_A.mp3',
     ));
     widgetsRouters.add(TaskMarkVowel(
       lessonController: this,
@@ -49,10 +48,9 @@ class LessonAEUController extends LessonController {
     ));
     widgetsRouters.add(LessonIntroduction(
       letter: 'E',
-      titleIntroduction:
-          "Esta é a letra “E”, ela é a segunda vogal do alfabeto.",
+      titleIntroduction: "Esta é a letra ‘E’, repita comigo LETRA E.",
       controller: this,
-      audioUrl: 'introductionE.mp4',
+      audioUrl: 'paula_introduction_E.mp3',
     ));
     widgetsRouters.add(TaskSelectImage(
       task: selectImageController.getVogaisE(),
@@ -66,10 +64,9 @@ class LessonAEUController extends LessonController {
     ));
     widgetsRouters.add(LessonIntroduction(
       letter: 'U',
-      titleIntroduction:
-          "Esta é a letra “U”, ela é a quinta vogal do alfabeto.",
+      titleIntroduction: "Esta é a letra ‘U’, repita comigo LETRA U.",
       controller: this,
-      audioUrl: 'introductionU.mp4',
+      audioUrl: 'paula_introduction_U.mp3',
     ));
     widgetsRouters.add(TaskSelectImage(
       task: selectImageController.getVogaisU(),
@@ -111,7 +108,6 @@ class LessonAEUController extends LessonController {
       nextPage = 0;
       correctAnswers = 0;
     }
-    print("nextpage: ${nextPage}");
     return widgetsRouters[nextPage];
   }
 

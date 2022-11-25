@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller.dart';
 import 'package:paula/app/controllers/task_select_image_controller.dart';
@@ -23,9 +24,19 @@ class TaskSelectImage extends StatefulWidget {
 }
 
 class _TaskSelectImageState extends State<TaskSelectImage> {
+  AudioPlayer? audioPlayer;
+  _runAudio(String path) async {
+    try {
+      await audioPlayer?.play(AssetSource(path));
+    } catch (error) {
+      print(error.toString());
+    }
+  }
+
   @override
   void initState() {
-    widget.taskController.reset();
+    audioPlayer = AudioPlayer();
+    _runAudio("audios/paula/${widget.task.audio}");
     super.initState();
   }
 
@@ -58,20 +69,26 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      height: 100.0,
-                      decoration: const BoxDecoration(
-                          color: Color.fromRGBO(37, 85, 124, 1),
-                          borderRadius: BorderRadius.all(Radius.circular(15))),
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Text(
-                            widget.task.title,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w300,
+                    MaterialButton(
+                      onPressed: () {
+                        _runAudio("audios/paula/${widget.task.audio}");
+                      },
+                      child: Container(
+                        height: 100.0,
+                        decoration: const BoxDecoration(
+                            color: Color.fromRGBO(37, 85, 124, 1),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15))),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Text(
+                              widget.task.title,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w300,
+                              ),
                             ),
                           ),
                         ),

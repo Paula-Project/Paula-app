@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller.dart';
 import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
@@ -22,9 +23,19 @@ class TaskVogalSelection extends StatefulWidget {
 
 class _TaskVogalSelectionState extends State<TaskVogalSelection> {
   bool isCorrect = false;
+  AudioPlayer? audioPlayer;
+  _runAudio(String path) async {
+    try {
+      await audioPlayer?.play(AssetSource(path));
+    } catch (error) {
+      print(error.toString());
+    }
+  }
 
   @override
   void initState() {
+    audioPlayer = AudioPlayer();
+    _runAudio("audios/paula/selecionaAsVogais.mp4");
     super.initState();
   }
 
@@ -53,23 +64,28 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20.0),
-                      child: Container(
-                        height: 100.0,
-                        decoration: const BoxDecoration(
-                            color: Color.fromRGBO(37, 85, 124, 1),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15))),
-                        child: const Center(
-                          child: Padding(
-                            padding: EdgeInsets.all(28.0),
-                            child: Text(
-                              "SELECIONE AS VOGAIS",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w300,
-                                decoration: TextDecoration.none,
+                      child: MaterialButton(
+                        onPressed: () {
+                          _runAudio("audios/paula/selecionaAsVogais.mp4");
+                        },
+                        child: Container(
+                          height: 100.0,
+                          decoration: const BoxDecoration(
+                              color: Color.fromRGBO(37, 85, 124, 1),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15))),
+                          child: const Center(
+                            child: Padding(
+                              padding: EdgeInsets.all(28.0),
+                              child: Text(
+                                "SELECIONE AS VOGAIS",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w300,
+                                  decoration: TextDecoration.none,
+                                ),
                               ),
                             ),
                           ),

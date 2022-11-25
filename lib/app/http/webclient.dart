@@ -4,6 +4,7 @@ import 'package:http/http.dart';
 import 'package:http_interceptor/http_interceptor.dart';
 
 import 'package:paula/app/model/usuario.dart';
+import 'package:paula/app/service/prefs_service.dart';
 import '../model/usuarioAPI.dart';
 
 class LoggingInterceptor implements InterceptorContract {
@@ -32,7 +33,7 @@ Future<UsuarioAPI?> loginUsuario(String username, String password) async {
 
   if (response.statusCode == 200) {
     Map<String, dynamic> json = jsonDecode(response.body);
-    print(json);
+    await PrefsService.saveUser(json);
     return UsuarioAPI(json['name'], json['username'], json['gender'],
         json['age'], json['birthdate'], json['progress'],
         id: json['id'], token: json['token']);

@@ -11,8 +11,9 @@ class TaskSelectImageController {
   String cardSelected = "";
   TaskSelectImageController() {
     vogaisA = TaskSelectImageModel(
-        title: "Qual imagem começa com a letra “A”:",
+        title: "Selecione a imagem que começa com a letra “A”:",
         answer: words.words[4].text, // arvore
+        audio: "paula_selectionImage_A.mp3",
         words: [
           words.words[5], //escada
           words.words[6], //oculos
@@ -20,8 +21,9 @@ class TaskSelectImageController {
           words.words[7], //uva
         ]);
     vogaisE = TaskSelectImageModel(
-        title: "Qual imagem começa com a letra “E”:",
+        title: "Selecione a imagem que começa com a letra “E”:",
         answer: words.words[5].text, //escada
+        audio: "paula_selectionImage_E.mp3",
         words: [
           words.words[5], //escada
           words.words[14], //ceneta
@@ -29,8 +31,9 @@ class TaskSelectImageController {
           words.words[23], //padaria
         ]);
     vogaisU = TaskSelectImageModel(
-        title: "Qual imagem começa com a letra “U”:",
+        title: "Selecione a imagem que começa com a letra “U”:",
         answer: words.words[7].text, //uva
+        audio: "paula_selectionImage_I.mp3",
         words: [
           words.words[13], //bola
           words.words[7], //uva
@@ -38,8 +41,9 @@ class TaskSelectImageController {
           words.words[5], //escada
         ]);
     vogaisI = TaskSelectImageModel(
-        title: "Qual imagem começa com a letra “I”:",
+        title: "Selecione a imagem que começa com a letra “I”:",
         answer: words.words[20].text, //escada
+        audio: "paula_selectionImage_O.mp3",
         words: [
           words.words[21], //meia
           words.words[14], //caneta
@@ -47,29 +51,33 @@ class TaskSelectImageController {
           words.words[20], //ioio
         ]);
     vogaisO = TaskSelectImageModel(
-        title: "Qual imagem começa com a letra “O”:",
+        title: "Selecione a imagem que começa com a letra “O”:",
         answer: words.words[22].text, //escada
+        audio: "paula_selectionImage_U.mp3",
         words: [
           words.words[5], //escada
           words.words[14], //ceneta
           words.words[22], //ovo
           words.words[17], //dado
         ]);
-
   }
 
   TaskSelectImageModel getVogaisA() {
     return vogaisA;
   }
+
   TaskSelectImageModel getVogaisE() {
     return vogaisE;
   }
+
   TaskSelectImageModel getVogaisU() {
     return vogaisU;
   }
+
   TaskSelectImageModel getVogaisI() {
     return vogaisI;
   }
+
   TaskSelectImageModel getVogaisO() {
     return vogaisO;
   }

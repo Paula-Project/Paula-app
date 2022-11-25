@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/service/prefs_service.dart';
+import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/login_page.dart';
 import 'package:paula/app/views/person_data_page.dart';
+import 'package:provider/provider.dart';
 
 class Layout extends StatelessWidget {
   final int indexPage;
@@ -11,6 +14,14 @@ class Layout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    logout() {
+      Future.delayed(const Duration(seconds: 2), () {
+        var user = Provider.of<UsuarioState>(context, listen: false);
+        user.resetUSER();
+        PrefsService.removeUser();
+      });
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -24,6 +35,7 @@ class Layout extends StatelessWidget {
               ),
               (route) => false,
             );
+            logout();
           },
           child: const Icon(
             Icons.logout,

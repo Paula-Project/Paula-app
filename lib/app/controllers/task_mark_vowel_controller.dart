@@ -1,7 +1,7 @@
 import 'package:paula/app/model/letters.dart';
 import '../model/task_mark_vowel_model.dart';
 
-class TaskMarkVowelController{
+class TaskMarkVowelController {
   int vowelSelected = 0;
   late TaskMarkVowelModel task1;
   late TaskMarkVowelModel task2;
@@ -10,17 +10,18 @@ class TaskMarkVowelController{
   late TaskMarkVowelModel task5;
   Letters letters = Letters();
 
-
-  TaskMarkVowelController(){
-    task1 = TaskMarkVowelModel(audio: 'audios/marqueA.ogg', //A
-      vowels: [
-        letters.letters[0], // A
-        letters.letters[4], // E
-        letters.letters[20], // U
-        letters.letters[8], // I
-      ],
-    answer: 1);
-    task2 = TaskMarkVowelModel(audio: 'audios/marqueE.ogg', // E
+  TaskMarkVowelController() {
+    task1 = TaskMarkVowelModel(
+        audio: 'audios/paula/paula_selection_A.mp3', //A
+        vowels: [
+          letters.letters[0], // A
+          letters.letters[4], // E
+          letters.letters[20], // U
+          letters.letters[8], // I
+        ],
+        answer: 1);
+    task2 = TaskMarkVowelModel(
+        audio: 'audios/paula/paula_selection_E.mp3', // E
         vowels: [
           letters.letters[20], // U
           letters.letters[14], // O
@@ -28,7 +29,8 @@ class TaskMarkVowelController{
           letters.letters[8], // I
         ],
         answer: 3);
-    task3 = TaskMarkVowelModel(audio: 'audios/marqueU.ogg', // U
+    task3 = TaskMarkVowelModel(
+        audio: 'audios/paula/paula_selection_U.mp3', // U
         vowels: [
           letters.letters[8], // I
           letters.letters[20], // U
@@ -36,7 +38,8 @@ class TaskMarkVowelController{
           letters.letters[0], // A
         ],
         answer: 2);
-    task4 = TaskMarkVowelModel(audio: 'audios/marqueI.ogg', // I
+    task4 = TaskMarkVowelModel(
+        audio: 'audios/paula/paula_selection_I.mp3', // I
         vowels: [
           letters.letters[0], // A
           letters.letters[4], // E
@@ -44,7 +47,8 @@ class TaskMarkVowelController{
           letters.letters[8], // I
         ],
         answer: 4);
-    task5 = TaskMarkVowelModel(audio: 'audios/marqueO.ogg', // O
+    task5 = TaskMarkVowelModel(
+        audio: 'audios/paula/paula_selection_O.mp3', // O
         vowels: [
           letters.letters[14], // O
           letters.letters[8], // I
@@ -54,33 +58,36 @@ class TaskMarkVowelController{
         answer: 1);
   }
 
-  TaskMarkVowelModel getTask1(){
+  TaskMarkVowelModel getTask1() {
     return task1;
   }
-  TaskMarkVowelModel getTask2(){
+
+  TaskMarkVowelModel getTask2() {
     return task2;
   }
-  TaskMarkVowelModel getTask3(){
+
+  TaskMarkVowelModel getTask3() {
     return task3;
   }
-  TaskMarkVowelModel getTask4(){
+
+  TaskMarkVowelModel getTask4() {
     return task4;
   }
-  TaskMarkVowelModel getTask5(){
+
+  TaskMarkVowelModel getTask5() {
     return task5;
   }
 
-  void markVowel(int cardSelected){
+  void markVowel(int cardSelected) {
     vowelSelected = cardSelected;
   }
 
-
-  bool verifyAnswer(TaskMarkVowelModel task){
-    if(task.answer == vowelSelected) return true;
+  bool verifyAnswer(TaskMarkVowelModel task) {
+    if (task.answer == vowelSelected) return true;
     return false;
   }
 
-  void reset(){
+  void reset() {
     vowelSelected = 0;
   }
 }
