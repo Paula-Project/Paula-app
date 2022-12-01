@@ -215,32 +215,45 @@ class _LoginPageState extends State<LoginPage> {
                                       fontWeight: FontWeight.w600,
                                     )),
                                 onPressed: () async {
-                                  setState(() =>
-                                      isLoading = true); //////////////////////
-                                  FocusScopeNode currentFocus =
-                                      FocusScope.of(context);
+                                  FocusScopeNode currentFocus = FocusScope.of(context);
                                   if (_formkey.currentState!.validate()) {
                                     bool log = false;
-                                    if (await login()) {
-                                      setState(() => isLoading =
-                                          false); ////////////////////
-                                      FocusScope.of(context).unfocus();
-                                      log = true;
-                                    } else {
+                                    setState(() => isLoading = true);
+                                    try{
+                                      if (await login()) {
+                                        setState(() => isLoading = false);
+                                        FocusScope.of(context).unfocus();
+                                        log = true;
+                                      } else {
+                                        setState(() => isLoading = false);
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                              backgroundColor: Colors.white,
+                                              content: Text(
+                                                'Usuário ou senha inválidos',
+                                                style: TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 41, 171, 226),
+                                                    fontSize: 20),
+                                              )),
+                                        );
+                                      }
+                                    } catch (e){
                                       setState(() => isLoading = false);
                                       ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        const SnackBar(
-                                            backgroundColor: Colors.white,
-                                            content: Text(
-                                              'Usuário ou senha inválidos',
-                                              style: TextStyle(
-                                                  color: Color.fromARGB(
-                                                      255, 41, 171, 226),
-                                                  fontSize: 20),
-                                            )),
-                                      );
-                                    }
+                                            .showSnackBar(
+                                          const SnackBar(
+                                              backgroundColor: Colors.white,
+                                              content: Text(
+                                                'Não foi possível se conectar com o servidor',
+                                                style: TextStyle(
+                                                    color: Color.fromARGB(
+                                                        255, 41, 171, 226),
+                                                    fontSize: 20),
+                                              )),
+                                        );
+                                    }  
                                     if (log) {
                                       Navigator.of(context).pushAndRemoveUntil(
                                         MaterialPageRoute(
