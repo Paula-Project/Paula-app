@@ -46,7 +46,7 @@ class LessonsVogais extends StatelessWidget {
               LessonButton(
                 isActive:
                     moduleVowelsController.lessonAEUController.getCompleted(),
-                textContent: 'I - U',
+                textContent: 'I - O',
                 lessonController: moduleVowelsController.lessonIOController,
               ),
               LessonButton(
