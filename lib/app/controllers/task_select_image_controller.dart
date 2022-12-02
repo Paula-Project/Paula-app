@@ -33,7 +33,7 @@ class TaskSelectImageController {
     vogaisU = TaskSelectImageModel(
         title: "Selecione a imagem que começa com a letra “U”:",
         answer: words.words[7].text, //uva
-        audio: "paula_selectionImage_I.mp3",
+        audio: "paula_selectionImage_U.mp3",
         words: [
           words.words[13], //bola
           words.words[7], //uva
@@ -43,7 +43,7 @@ class TaskSelectImageController {
     vogaisI = TaskSelectImageModel(
         title: "Selecione a imagem que começa com a letra “I”:",
         answer: words.words[20].text, //escada
-        audio: "paula_selectionImage_O.mp3",
+        audio: "paula_selectionImage_I.mp3",
         words: [
           words.words[21], //meia
           words.words[14], //caneta
@@ -53,7 +53,7 @@ class TaskSelectImageController {
     vogaisO = TaskSelectImageModel(
         title: "Selecione a imagem que começa com a letra “O”:",
         answer: words.words[22].text, //escada
-        audio: "paula_selectionImage_U.mp3",
+        audio: "paula_selectionImage_O.mp3",
         words: [
           words.words[5], //escada
           words.words[14], //ceneta
