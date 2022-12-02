@@ -22,9 +22,11 @@ class PrefsService {
         }));
   }
 
-  static removeUser() async {
+  static Future<bool> removeUser() async {
     var prefs = await SharedPreferences.getInstance();
-    prefs.remove(_key);
+    await prefs.remove(_key);
+    await prefs.clear();
+    return true;
   }
 
   static Future<String> isAuth() async {

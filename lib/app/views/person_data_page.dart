@@ -27,8 +27,8 @@ class PersonData extends StatelessWidget {
       indexPage: 1,
       bodyContent: Consumer<UsuarioState>(
         builder: (context, usuarioState, child) {
-          UsuarioAPI? usuarioLogado = usuarioState.getUsuario();
-          List<String> nameList = usuarioLogado!.name.split(' ');
+          UsuarioAPI usuarioLogado = usuarioState.getUsuario();
+          List<String> nameList = usuarioLogado.name.split(' ');
           String name = nameList.length > 1
               ? nameList.getRange(0, 2).join(" ")
               : nameList[0];
@@ -36,7 +36,6 @@ class PersonData extends StatelessWidget {
           var dateTxt = DateFormat('dd/MM/yyyy')
               .format(DateTime.parse(usuarioLogado.birthdate));
           var gender = ' ';
-
           switch (usuarioLogado.gender) {
             case 'male':
               gender = 'Masculino';
@@ -48,7 +47,6 @@ class PersonData extends StatelessWidget {
               gender = 'Outro';
               break;
           }
-          print(usuarioLogado.progress);
           return Container(
             margin: const EdgeInsetsDirectional.all(30),
             child: Column(
