@@ -3,7 +3,6 @@ import 'package:paula/app/controllers/module_vowels_controller.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:provider/provider.dart';
-import '../components/ButtonNext.dart';
 import '../home_page.dart';
 
 class CongratulationsVowelsPage extends StatefulWidget {
@@ -96,7 +95,7 @@ class _CongratulationsVowelsPageState extends State<CongratulationsVowelsPage> {
               ),
             ),
             Consumer<UsuarioState>(builder: (context, usuarioState, child) {
-              UsuarioAPI? usuarioLogado = usuarioState.getUsuario();
+              UsuarioAPI usuarioLogado = usuarioState.getUsuario();
               return Container(
                 margin: const EdgeInsets.only(top: 70.0),
                 child: SizedBox(
@@ -123,7 +122,7 @@ class _CongratulationsVowelsPageState extends State<CongratulationsVowelsPage> {
                           )),
                       onPressed: () {
                         widget.moduleVowelsController
-                            .setModuleVowelsCompleted(usuarioLogado!, context);
+                            .setModuleVowelsCompleted(usuarioLogado, context);
                         Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(
                             builder: (BuildContext context) => HomePage(),

@@ -15,10 +15,17 @@ class Layout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     logout() {
-      Future.delayed(const Duration(seconds: 2), () {
+      Future.delayed(const Duration(seconds: 0), () async {
         var user = Provider.of<UsuarioState>(context, listen: false);
-        user.resetUSER();
-        PrefsService.removeUser();
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (BuildContext context) => const LoginPage(),
+          ),
+          (route) => false,
+        );
+        await PrefsService.removeUser().then((e) {
+          user.resetUSER();
+        });
       });
     }
 
@@ -29,12 +36,6 @@ class Layout extends StatelessWidget {
         elevation: 0,
         title: OutlinedButton(
           onPressed: () {
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                builder: (BuildContext context) => const LoginPage(),
-              ),
-              (route) => false,
-            );
             logout();
           },
           child: const Icon(

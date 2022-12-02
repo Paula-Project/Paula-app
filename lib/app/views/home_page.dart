@@ -19,7 +19,8 @@ class HomePage extends StatelessWidget {
         indexPage: 0,
         bodyContent:
             Consumer<UsuarioState>(builder: (context, usuarioState, child) {
-          UsuarioAPI? usuarioLogado = usuarioState.getUsuario();
+          UsuarioAPI usuarioLogado = usuarioState.getUsuario();
+
           return Padding(
               padding: const EdgeInsets.fromLTRB(50, 50, 50, 50),
               child: Column(children: [
@@ -34,7 +35,7 @@ class HomePage extends StatelessWidget {
                     Alignment.centerRight,
                     "Consoantes \n Parte 1",
                     HomePage(),
-                    moduleVowelsController.getCompleted(usuarioLogado!)),
+                    moduleVowelsController.getCompleted(usuarioLogado)),
                 ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 2",
                     HomePage(), false),
                 ModuleButton(Alignment.centerRight, "Primeiras \n sílabas",

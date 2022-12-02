@@ -31,8 +31,8 @@ class ModuleVowelsController {
     isCompleted = true;
   }
 
-  bool getCompleted(UsuarioAPI user) {
-    if (user.progress >= 10) {
+  bool getCompleted(UsuarioAPI? user) {
+    if (user!.progress >= 10) {
       isCompleted = true;
       lessonAEUController.isCompleted = true;
       lessonIOController.isCompleted = true;
