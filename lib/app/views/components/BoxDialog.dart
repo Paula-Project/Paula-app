@@ -6,16 +6,16 @@ import 'package:paula/app/controllers/lesson_controller.dart';
 import 'package:paula/app/views/lessons/congratulations_page.dart';
 
 class BoxDialog extends StatefulWidget {
-  BoxDialog(
+  final String resposta;
+  final bool feedback;
+  final LessonController controller;
+
+  const BoxDialog(
       {Key? key,
       required this.feedback,
       required this.resposta,
       required this.controller})
       : super(key: key);
-
-  final String resposta;
-  final bool feedback;
-  final LessonController controller;
 
   @override
   State<BoxDialog> createState() => _BoxDialogState();
@@ -91,10 +91,10 @@ class _BoxDialogState extends State<BoxDialog> {
         ElevatedButton(
           onPressed: () {
             Navigator.of(context).pushAndRemoveUntil(
-                  PageTransition(
-                    type: PageTransitionType.rightToLeft, 
+                PageTransition(
+                    type: PageTransitionType.rightToLeft,
                     child: widget.controller.nextTask()),
-                    (route) => false);
+                (route) => false);
           },
           style: ButtonStyle(
             padding: MaterialStateProperty.resolveWith(

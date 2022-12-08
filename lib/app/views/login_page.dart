@@ -214,6 +214,15 @@ class _LoginPageState extends State<LoginPage> {
                                       fontSize: 18,
                                       fontWeight: FontWeight.w600,
                                     )),
+                                onLongPress: () {
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          HomePage(),
+                                    ),
+                                    (route) => false,
+                                  );
+                                },
                                 onPressed: () async {
                                   FocusScopeNode currentFocus =
                                       FocusScope.of(context);
