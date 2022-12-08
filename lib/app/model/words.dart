@@ -15,21 +15,21 @@ class Words {
     'Avião', // 8
     'Abacaxi', // 9
     'Lata', // 10
-    'bebida', // 11
-    'bóia', // 12
-    'bola', // 13
-    'caneta', // 14
-    'capa', // 15
-    'cavalo', // 16
-    'dado', // 17
-    'envelope', // 18
-    'iguana', // 19
-    'ioio', // 20
-    'meia', // 21
-    'ovo', // 22
-    'padaria', // 23
-    'onibus', // 24
-    'seta', // 25
+    'Bebida', // 11
+    'Bóia', // 12
+    'Bola', // 13
+    'Caneta', // 14
+    'Capa', // 15
+    'Cavalo', // 16
+    'Dado', // 17
+    'Envelope', // 18
+    'Iguana', // 19
+    'Ioio', // 20
+    'Meia', // 21
+    'Ovo', // 22
+    'Padaria', // 23
+    'Onibus', // 24
+    'Seta', // 25
   ];
   List<String> soundsList = [
     'abajur.mp3',
