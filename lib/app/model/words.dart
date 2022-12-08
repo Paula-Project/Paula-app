@@ -30,6 +30,15 @@ class Words {
     'Padaria', // 23
     'Onibus', // 24
     'Seta', // 25
+    'Escova', // 26
+    'Esponja', // 27
+    'Elefante', // 28
+    'Estrela', // 29
+    'Igreja', // 30
+    'Iogurte', // 31
+    'Urso', // 32
+    'Unha', // 33
+    'Um', // 34
   ];
   List<String> soundsList = [
     'abajur.mp3',
@@ -58,6 +67,15 @@ class Words {
     'padaria.mp3',
     'onibus.mp3',
     'seta.mp3',
+    'escova.mp3',
+    'esponja.mp3',
+    'elefante.mp3',
+    'estrela.mp3',
+    'igreja.mp3',
+    'iogurte.mp3',
+    'urso.mp3',
+    'unha.mp3',
+    'um.mp3',
   ];
   List<String> imagesList = [
     'abajur.png',
@@ -86,7 +104,17 @@ class Words {
     'padaria.png',
     'onibus.png',
     'seta.png',
+    'escova.png',
+    'esponja.png',
+    'elefante.png',
+    'estrela.png',
+    'igreja.png',
+    'iogurte.png',
+    'urso.png',
+    'unha.png',
+    'um.png',
   ];
+
   void populate() {
     for (int i = 0; i < wordsList.length; i++) {
       words.add(Word(
