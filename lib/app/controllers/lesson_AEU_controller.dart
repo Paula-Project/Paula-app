@@ -22,6 +22,7 @@ class LessonAEUController extends LessonController {
       TaskCompleteWordController();
   TaskWordsExempleController wordsExempleController =
       TaskWordsExempleController();
+
   final ModuleVowelsController moduleVowelsController;
   static int correctAnswers = 0;
   int tasksQuantity = 8;
@@ -41,7 +42,7 @@ class LessonAEUController extends LessonController {
       audioUrl: 'paula_introduction_A.mp3',
     ));
     widgetsRouters.add(TaskWordsExemple(
-      task: wordsExempleController.getTask1(),
+      task: wordsExempleController.getTaskA(),
       lessonController: this,
     ));
     widgetsRouters.add(TaskMarkVowel(
@@ -60,6 +61,10 @@ class LessonAEUController extends LessonController {
       controller: this,
       audioUrl: 'paula_introduction_E.mp3',
     ));
+    widgetsRouters.add(TaskWordsExemple(
+      task: wordsExempleController.getTaskE(),
+      lessonController: this,
+    ));
     widgetsRouters.add(TaskSelectImage(
       task: selectImageController.getVogaisE(),
       taskController: selectImageController,
@@ -76,6 +81,10 @@ class LessonAEUController extends LessonController {
       controller: this,
       audioUrl: 'paula_introduction_U.mp3',
     ));
+    widgetsRouters.add(TaskWordsExemple(
+      task: wordsExempleController.getTaskU(),
+      lessonController: this,
+    ));
     widgetsRouters.add(TaskSelectImage(
       task: selectImageController.getVogaisU(),
       taskController: selectImageController,
@@ -91,13 +100,11 @@ class LessonAEUController extends LessonController {
       lessonController: this,
       taskController: vogalSelectionController,
     ));
-
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
       task: completeWordController.getTask1(),
       taskController: completeWordController,
     ));
-
     widgetsRouters.add(CongratulationsPage(
       moduleVowelsController: moduleVowelsController,
     ));
@@ -123,12 +130,15 @@ class LessonAEUController extends LessonController {
   verifyAnswer() {
     if (selectImageController.getVogaisA().isCorrect) {
       correctAnswers++;
+      selectImageController.getVogaisA().isCorrect = false;
     }
     if (selectImageController.getVogaisE().isCorrect) {
       correctAnswers++;
+      selectImageController.getVogaisE().isCorrect = false;
     }
     if (selectImageController.getVogaisU().isCorrect) {
       correctAnswers++;
+      selectImageController.getVogaisU().isCorrect = false;
     }
   }
 

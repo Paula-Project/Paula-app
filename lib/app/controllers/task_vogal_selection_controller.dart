@@ -7,12 +7,33 @@ class TaskVogalSelectionController {
   late TaskVogalSelectionModel task1;
   late TaskVogalSelectionModel task2;
   late TaskVogalSelectionModel task3;
+  late TaskVogalSelectionModel task4;
+  late TaskVogalSelectionModel task5;
   List<String> wordsCorrect = [];
   Words words = Words();
   TaskVogalSelectionController() {
-    task1 = TaskVogalSelectionModel(words: [words.words[14], words.words[7]]);
-    task2 = TaskVogalSelectionModel(words: [words.words[22], words.words[2]]);
-    task3 = TaskVogalSelectionModel(words: [words.words[4], words.words[19]]);
+    task1 = TaskVogalSelectionModel(words: [
+      words.words[14], //caneta
+      words.words[7] //uva
+    ]);
+    task2 = TaskVogalSelectionModel(words: [
+      words.words[22], //ovo
+      words.words[2] //apito
+    ]);
+    task3 = TaskVogalSelectionModel(words: [
+      words.words[4], //arvore
+      words.words[19] //iguana
+    ]);
+
+    task4 = TaskVogalSelectionModel(words: [
+      words.words[32], //urso
+      words.words[30] //igreja
+    ]);
+
+    task5 = TaskVogalSelectionModel(words: [
+      words.words[37], //olho
+      words.words[39] //isca
+    ]);
   }
 
   TaskVogalSelectionModel getTask1() {
@@ -25,6 +46,14 @@ class TaskVogalSelectionController {
 
   TaskVogalSelectionModel getTask3() {
     return task3;
+  }
+
+  TaskVogalSelectionModel getTask4() {
+    return task4;
+  }
+
+  TaskVogalSelectionModel getTask5() {
+    return task5;
   }
 
   void addVogal(String vogal) {

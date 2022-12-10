@@ -5,12 +5,14 @@ class CardExemple extends StatefulWidget {
   final String imageUrl;
   final String nameTxt;
   final String audioUrl;
+  final List<String> letters;
 
   const CardExemple({
     Key? key,
     required this.imageUrl,
     required this.nameTxt,
     required this.audioUrl,
+    required this.letters,
   }) : super(key: key);
 
   @override
@@ -73,27 +75,18 @@ class _CardExempleState extends State<CardExemple> {
                                 style: TextStyle(
                                     fontSize: 30.0,
                                     fontWeight: FontWeight.w900,
-                                    color: String.fromCharCode(rune)
-                                                    .toUpperCase() ==
-                                                'A' ||
+                                    color: widget.letters.any((element) =>
                                             String.fromCharCode(rune)
-                                                    .toUpperCase() ==
-                                                "Á" ||
-                                            String.fromCharCode(rune)
-                                                    .toUpperCase() ==
-                                                "Ã"
-                                        ? Color.fromARGB(255, 76, 163, 175)
+                                                .toUpperCase() ==
+                                            element)
+                                        ? const Color.fromARGB(
+                                            255, 76, 163, 175)
                                         : Colors.white,
                                     letterSpacing: 5.0,
-                                    decoration: String.fromCharCode(rune)
-                                                    .toUpperCase() ==
-                                                'A' ||
+                                    decoration: widget.letters.any((element) =>
                                             String.fromCharCode(rune)
-                                                    .toUpperCase() ==
-                                                "Á" ||
-                                            String.fromCharCode(rune)
-                                                    .toUpperCase() ==
-                                                "Ã"
+                                                .toUpperCase() ==
+                                            element)
                                         ? TextDecoration.underline
                                         : TextDecoration.none),
                               ),

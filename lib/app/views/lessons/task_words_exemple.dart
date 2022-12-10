@@ -38,12 +38,12 @@ class _TaskWordsExempleState extends State<TaskWordsExemple> {
                   decoration: const BoxDecoration(
                       color: Color.fromRGBO(37, 85, 124, 1),
                       borderRadius: BorderRadius.all(Radius.circular(15.0))),
-                  child: const Center(
+                  child: Center(
                     child: Padding(
-                      padding: EdgeInsets.all(12.0),
+                      padding: const EdgeInsets.all(12.0),
                       child: Text(
-                        "Aqui estão alguns exemplos de objetos com “A”:",
-                        style: TextStyle(
+                        widget.task.title,
+                        style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w300),
                       ),
                     ),
@@ -54,10 +54,10 @@ class _TaskWordsExempleState extends State<TaskWordsExemple> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: widget.task.words
                         .map((word) => CardExemple(
-                              imageUrl: "assets/images/words/${word.imagePath}",
-                              nameTxt: word.text,
-                              audioUrl: word.soundPath,
-                            ))
+                            imageUrl: "assets/images/words/${word.imagePath}",
+                            nameTxt: word.text,
+                            audioUrl: word.soundPath,
+                            letters: widget.task.letter))
                         .toList(),
                   ),
                 ),

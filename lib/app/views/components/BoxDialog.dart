@@ -1,9 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:paula/app/controllers/lesson_AEU_controller.dart';
 import 'package:paula/app/controllers/lesson_controller.dart';
-import 'package:paula/app/views/lessons/congratulations_page.dart';
 
 class BoxDialog extends StatefulWidget {
   final String resposta;

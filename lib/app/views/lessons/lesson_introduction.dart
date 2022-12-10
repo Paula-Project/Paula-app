@@ -85,7 +85,7 @@ class _LessonIntroductionState extends State<LessonIntroduction> {
                       width: (MediaQuery.of(context).size.width),
                       height: 275,
                       child: Image.asset(
-                        'assets/images/paula/Avatar-Maker(2).png',
+                        'assets/images/paula/paula03.png',
                         scale: 1,
                       ),
                     ),
@@ -108,10 +108,10 @@ class _LessonIntroductionState extends State<LessonIntroduction> {
                             ),
                             onPressed: () async {
                               Navigator.of(context).pushAndRemoveUntil(
-                              PageTransition(
-                                type: PageTransitionType.rightToLeft, 
-                                child: widget.controller.nextTask()),
-                                (route) => false);
+                                  PageTransition(
+                                      type: PageTransitionType.rightToLeft,
+                                      child: widget.controller.nextTask()),
+                                  (route) => false);
                             },
                           ),
                         ),
