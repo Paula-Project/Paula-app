@@ -107,6 +107,7 @@ class _LessonIntroductionState extends State<LessonIntroduction> {
                               Icons.arrow_forward_outlined,
                             ),
                             onPressed: () async {
+                              audioPlayer?.stop();
                               Navigator.of(context).pushAndRemoveUntil(
                                   PageTransition(
                                       type: PageTransitionType.rightToLeft,

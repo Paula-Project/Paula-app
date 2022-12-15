@@ -137,6 +137,7 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
                                       )),
                                   onPressed: () {
                                     if (cardSelected != 0) {
+                                      audioPlayer?.stop();
                                       if (widget.taskController
                                           .verifyAnswer(widget.task)) {
                                         isCorrect = true;
