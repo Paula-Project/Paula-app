@@ -1,6 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/lesson_controller.dart';
+import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/CardImage.dart';
 import 'package:paula/app/views/components/task_progress.dart';
 import '../../controllers/task_mark_vowel_controller.dart';
@@ -8,7 +8,7 @@ import '../../model/task_mark_vowel_model.dart';
 import '../components/BoxDialog.dart';
 
 class TaskMarkVowel extends StatefulWidget {
-  final LessonController lessonController;
+  final LessonControllerInterface lessonController;
   final TaskMarkVowelModel task;
   final TaskMarkVowelController taskController;
 

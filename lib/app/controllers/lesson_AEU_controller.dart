@@ -1,10 +1,12 @@
-import 'package:paula/app/controllers/lesson_controller.dart';
+import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/controllers/module_vowels_controller.dart';
 import 'package:paula/app/controllers/task_complete_word_controller.dart';
+import 'package:paula/app/controllers/task_controller.dart';
 import 'package:paula/app/controllers/task_mark_vowel_controller.dart';
 import 'package:paula/app/controllers/task_select_image_controller.dart';
 import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
 import 'package:paula/app/controllers/task_words_exemple_controller.dart';
+import 'package:paula/app/model/task_model.dart';
 import 'package:paula/app/views/lessons/task_complete_words.dart';
 import 'package:paula/app/views/lessons/task_mark_vowel.dart';
 import 'package:paula/app/views/lessons/congratulations_page.dart';
@@ -13,7 +15,7 @@ import 'package:paula/app/views/lessons/task_select_image.dart';
 import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 import 'package:paula/app/views/lessons/task_words_exemple.dart';
 
-class LessonAEUController extends LessonController {
+class LessonAEUController implements LessonControllerInterface {
   TaskMarkVowelController markVowelController = TaskMarkVowelController();
   TaskSelectImageController selectImageController = TaskSelectImageController();
   TaskVogalSelectionController vogalSelectionController =
@@ -127,18 +129,9 @@ class LessonAEUController extends LessonController {
   }
 
   @override
-  verifyAnswer() {
-    if (selectImageController.getVogaisA().isCorrect) {
+  verifyAnswer(TaskModel task, TaskController taskController) {
+    if (taskController.verify(task)) {
       correctAnswers++;
-      selectImageController.getVogaisA().isCorrect = false;
-    }
-    if (selectImageController.getVogaisE().isCorrect) {
-      correctAnswers++;
-      selectImageController.getVogaisE().isCorrect = false;
-    }
-    if (selectImageController.getVogaisU().isCorrect) {
-      correctAnswers++;
-      selectImageController.getVogaisU().isCorrect = false;
     }
   }
 

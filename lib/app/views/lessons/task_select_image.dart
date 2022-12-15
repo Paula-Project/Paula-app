@@ -1,6 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/lesson_controller.dart';
+import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/controllers/task_select_image_controller.dart';
 import 'package:paula/app/model/task_select_image_model.dart';
 import 'package:paula/app/views/components/CardImage.dart';
@@ -9,7 +9,7 @@ import 'package:paula/app/views/components/task_progress.dart';
 
 class TaskSelectImage extends StatefulWidget {
   final TaskSelectImageModel task;
-  final LessonController lessonController;
+  final LessonControllerInterface lessonController;
   final TaskSelectImageController taskController;
 
   const TaskSelectImage({
@@ -119,7 +119,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 30.0),
-                      child: Container(
+                      child: SizedBox(
                           width: 200,
                           height: 40,
                           child: Row(
@@ -153,8 +153,8 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                                   onPressed: () {
                                     if (widget.taskController.cardSelected !=
                                         "") {
-                                      widget.taskController.verify(widget.task);
-                                      widget.lessonController.verifyAnswer();
+                                      widget.lessonController.verifyAnswer(
+                                          widget.task, widget.taskController);
                                       showGeneralDialog(
                                         barrierColor:
                                             Colors.black.withOpacity(0.5),

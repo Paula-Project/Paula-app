@@ -1,7 +1,8 @@
+import 'package:paula/app/controllers/task_controller.dart';
 import 'package:paula/app/model/task_select_image_model.dart';
 import 'package:paula/app/model/words.dart';
 
-class TaskSelectImageController {
+class TaskSelectImageController extends TaskController {
   late TaskSelectImageModel vogaisA;
   late TaskSelectImageModel vogaisE;
   late TaskSelectImageModel vogaisU;
@@ -11,6 +12,7 @@ class TaskSelectImageController {
   late TaskSelectImageModel vogaisO2;
   Words words = Words();
   String cardSelected = "";
+
   TaskSelectImageController() {
     vogaisA = TaskSelectImageModel(
         title: "Selecione a imagem que começa com a letra “A”:",
@@ -44,6 +46,7 @@ class TaskSelectImageController {
           words.words[6], //oculos
           words.words[20], //ioio
         ]);
+
     vogaisI2 = TaskSelectImageModel(
         title: "Selecione a imagem que começa com a letra “I”:",
         answer: words.words[19].text, //iguana
@@ -54,6 +57,7 @@ class TaskSelectImageController {
           words.words[38], //sorvete
           words.words[28], //elefante
         ]);
+
     vogaisO = TaskSelectImageModel(
         title: "Selecione a imagem que começa com a letra “O”:",
         answer: words.words[22].text, //OVO
@@ -75,6 +79,7 @@ class TaskSelectImageController {
           words.words[37], //olho
           words.words[16], //cavalo
         ]);
+
     vogaisU = TaskSelectImageModel(
         title: "Selecione a imagem que começa com a letra “U”:",
         answer: words.words[7].text, //uva
@@ -115,7 +120,8 @@ class TaskSelectImageController {
     return vogaisO2;
   }
 
-  bool verify(TaskSelectImageModel task) {
+  @override
+  bool verify(covariant TaskSelectImageModel task) {
     if (cardSelected == task.answer) {
       task.isCorrect = true;
       return true;

@@ -1,6 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/lesson_controller.dart';
+import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
 import 'package:paula/app/model/task_vogal_selection_model.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
@@ -8,7 +8,7 @@ import 'package:paula/app/views/components/task_progress.dart';
 
 class TaskVogalSelection extends StatefulWidget {
   final TaskVogalSelectionModel task;
-  final LessonController lessonController;
+  final LessonControllerInterface lessonController;
   final TaskVogalSelectionController taskController;
   const TaskVogalSelection(
       {Key? key,
