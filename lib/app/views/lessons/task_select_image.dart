@@ -151,6 +151,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                                       )),
                                   onPressed: () {
                                     if (widget.task.cardSelected != "") {
+                                      audioPlayer?.stop();
                                       widget.lessonController.verifyAnswer(
                                           widget.task, widget.taskController);
                                       showGeneralDialog(

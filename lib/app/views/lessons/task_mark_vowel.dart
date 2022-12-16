@@ -142,7 +142,6 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
                                     if (widget.task.cardSelected != "") {
                                       widget.lessonController.verifyAnswer(
                                           widget.task, widget.taskController);
-                                      widget.taskController.reset();
                                       showGeneralDialog(
                                         barrierColor:
                                             Colors.black.withOpacity(0.5),
