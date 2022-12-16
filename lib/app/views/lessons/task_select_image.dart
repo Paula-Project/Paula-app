@@ -47,7 +47,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.taskController.cardSelected);
+    print(widget.task.cardSelected);
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -103,14 +103,12 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                               imageUrl: "assets/images/words/${word.imagePath}",
                               scale: 5.0,
                               audioUrl: word.soundPath,
-                              isSelected: widget.taskController.cardSelected ==
-                                      word.text
+                              isSelected: widget.task.cardSelected == word.text
                                   ? true
                                   : false,
                               onPress: () {
                                 setState(() {
-                                  widget.taskController.cardSelected =
-                                      word.text;
+                                  widget.task.cardSelected = word.text;
                                 });
                               },
                             ),
@@ -133,12 +131,13 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                                       foregroundColor:
                                           MaterialStateProperty.all<Color>(
                                               Colors.white),
-                                      backgroundColor:
-                                          widget.taskController.cardSelected != ""
-                                              ? MaterialStateProperty.all<Color>(
-                                                  Colors.blue)
-                                              : MaterialStateProperty.all<
-                                                  Color>(Colors.grey),
+                                      backgroundColor: widget
+                                                  .task.cardSelected !=
+                                              ""
+                                          ? MaterialStateProperty.all<Color>(
+                                              Colors.blue)
+                                          : MaterialStateProperty.all<Color>(
+                                              Colors.grey),
                                       shape: MaterialStateProperty.all<
                                               RoundedRectangleBorder>(
                                           RoundedRectangleBorder(
@@ -151,8 +150,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                                         fontWeight: FontWeight.w600,
                                       )),
                                   onPressed: () {
-                                    if (widget.taskController.cardSelected !=
-                                        "") {
+                                    if (widget.task.cardSelected != "") {
                                       widget.lessonController.verifyAnswer(
                                           widget.task, widget.taskController);
                                       showGeneralDialog(

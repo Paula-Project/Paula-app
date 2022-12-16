@@ -11,7 +11,6 @@ class TaskSelectImageController extends TaskController {
   late TaskSelectImageModel vogaisO;
   late TaskSelectImageModel vogaisO2;
   Words words = Words();
-  String cardSelected = "";
 
   TaskSelectImageController() {
     vogaisA = TaskSelectImageModel(
@@ -122,7 +121,7 @@ class TaskSelectImageController extends TaskController {
 
   @override
   bool verify(covariant TaskSelectImageModel task) {
-    if (cardSelected == task.answer) {
+    if (task.cardSelected == task.answer) {
       task.isCorrect = true;
       return true;
     } else {
@@ -132,11 +131,12 @@ class TaskSelectImageController extends TaskController {
   }
 
   void reset() {
-    vogaisA.isCorrect = false;
-    vogaisE.isCorrect = false;
-    vogaisU.isCorrect = false;
-    vogaisI.isCorrect = false;
-    vogaisO.isCorrect = false;
-    cardSelected = "";
+    vogaisA.reset();
+    vogaisE.reset();
+    vogaisU.reset();
+    vogaisI.reset();
+    vogaisO.reset();
+    vogaisI2.reset();
+    vogaisO2.reset();
   }
 }

@@ -25,8 +25,6 @@ class TaskMarkVowel extends StatefulWidget {
 
 class _TaskMarkVowelState extends State<TaskMarkVowel> {
   AudioPlayer? audioPlayer;
-  var cardSelected = 0;
-  bool isCorrect = false;
 
   _runAudio(String path) async {
     try {
@@ -86,22 +84,25 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
                     Wrap(
                       runSpacing: 50,
                       crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        for (int i = 0; i < widget.task.vowels.length; i++)
-                          CardImage(
-                            imageUrl:
-                                'assets/alphabet/${widget.task.vowels[i].imagePath}',
-                            scale: 5.0,
-                            audioUrl: widget.task.vowels[i].soundPath,
-                            isSelected: cardSelected == i + 1 ? true : false,
-                            onPress: () {
-                              setState(() {
-                                cardSelected = i + 1;
-                                widget.taskController.markVowel(cardSelected);
-                              });
-                            },
-                          ),
-                      ],
+                      children: widget.task.vowels
+                          .map(
+                            (letter) => CardImage(
+                              imageUrl: 'assets/alphabet/${letter.imagePath}',
+                              scale: 5.0,
+                              audioUrl: letter.soundPath,
+                              isSelected:
+                                  widget.task.cardSelected == letter.text
+                                      ? true
+                                      : false,
+                              onPress: () {
+                                setState(() {
+                                  widget.taskController
+                                      .selectCard(widget.task, letter.text);
+                                });
+                              },
+                            ),
+                          )
+                          .toList(),
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 30.0),
@@ -119,7 +120,9 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
                                       foregroundColor:
                                           MaterialStateProperty.all<Color>(
                                               Colors.white),
-                                      backgroundColor: cardSelected != 0
+                                      backgroundColor: widget
+                                                  .task.cardSelected !=
+                                              ""
                                           ? MaterialStateProperty.all<Color>(
                                               Colors.blue)
                                           : MaterialStateProperty.all<Color>(
@@ -136,13 +139,9 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
                                         fontWeight: FontWeight.w600,
                                       )),
                                   onPressed: () {
-                                    if (cardSelected != 0) {
-                                      if (widget.taskController
-                                          .verifyAnswer(widget.task)) {
-                                        isCorrect = true;
-                                        widget.lessonController
-                                            .verifyAnswerNonControlled();
-                                      }
+                                    if (widget.task.cardSelected != "") {
+                                      widget.lessonController.verifyAnswer(
+                                          widget.task, widget.taskController);
                                       widget.taskController.reset();
                                       showGeneralDialog(
                                         barrierColor:
@@ -172,16 +171,12 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
                                                   controller: this
                                                       .widget
                                                       .lessonController,
-                                                  feedback: isCorrect,
-                                                  resposta: this
+                                                  feedback: this
                                                       .widget
                                                       .task
-                                                      .vowels[this
-                                                              .widget
-                                                              .task
-                                                              .answer -
-                                                          1]
-                                                      .text),
+                                                      .isCorrect,
+                                                  resposta:
+                                                      this.widget.task.answer),
                                             ),
                                           );
                                         },

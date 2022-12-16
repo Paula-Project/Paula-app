@@ -4,12 +4,19 @@ import 'package:paula/app/model/word.dart';
 class TaskSelectImageModel extends TaskModel {
   final List<Word> words;
   final String audio;
+  String cardSelected;
 
   TaskSelectImageModel(
-      {required this.words,
+      {required String title,
+      required String answer,
+      required this.words,
       required this.audio,
       bool isCorrect = false,
-      required String title,
-      required String answer})
-      : super(answer: answer, title: title, isCorrect: isCorrect);
+      this.cardSelected = ""})
+      : super(title: title, isCorrect: isCorrect, answer: answer);
+
+  reset() {
+    cardSelected = "";
+    super.isCorrect = false;
+  }
 }

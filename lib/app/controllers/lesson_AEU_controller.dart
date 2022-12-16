@@ -67,15 +67,15 @@ class LessonAEUController implements LessonControllerInterface {
       task: wordsExempleController.getTaskE(),
       lessonController: this,
     ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisE(),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
     widgetsRouters.add(TaskMarkVowel(
       lessonController: this,
       taskController: markVowelController,
       task: markVowelController.getTask2(),
+    ));
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getVogaisE(),
+      taskController: selectImageController,
+      lessonController: this,
     ));
     widgetsRouters.add(LessonIntroduction(
       letter: 'U',
@@ -87,15 +87,15 @@ class LessonAEUController implements LessonControllerInterface {
       task: wordsExempleController.getTaskU(),
       lessonController: this,
     ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisU(),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
     widgetsRouters.add(TaskMarkVowel(
       lessonController: this,
       taskController: markVowelController,
       task: markVowelController.getTask3(),
+    ));
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getVogaisU(),
+      taskController: selectImageController,
+      lessonController: this,
     ));
     widgetsRouters.add(TaskVogalSelection(
       task: vogalSelectionController.getTask1(),

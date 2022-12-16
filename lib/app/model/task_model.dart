@@ -1,6 +1,6 @@
 abstract class TaskModel {
-  final String title;
+  String title;
   bool isCorrect;
-  late String answer;
-  TaskModel({String answer = "", required this.isCorrect, required this.title});
+  String answer;
+  TaskModel({this.answer = "", required this.isCorrect, this.title = ""});
 }
