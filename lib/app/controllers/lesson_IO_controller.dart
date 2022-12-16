@@ -127,28 +127,13 @@ class LessonIOController implements LessonControllerInterface {
       nextPage = 0;
       correctAnswers = 0;
     }
-    print("nextpage: ${nextPage}");
     return widgetsRouters[nextPage];
   }
 
   @override
   verifyAnswer(TaskModel task, TaskController taskController) {
-    if (selectImageController.getVogaisI().isCorrect) {
+    if (taskController.verify(task)) {
       correctAnswers++;
-      selectImageController.getVogaisI().isCorrect = false;
-    }
-    if (selectImageController.getVogaisI2().isCorrect) {
-      correctAnswers++;
-      selectImageController.getVogaisI2().isCorrect = false;
-    }
-    if (selectImageController.getVogaisO().isCorrect) {
-      correctAnswers++;
-      selectImageController.getVogaisO().isCorrect = false;
-    }
-
-    if (selectImageController.getVogaisO2().isCorrect) {
-      correctAnswers++;
-      selectImageController.getVogaisO2().isCorrect = false;
     }
   }
 

@@ -68,31 +68,15 @@ class LessonFinalController implements LessonControllerInterface {
       nextPage = 0;
       correctAnswers = 0;
     }
-    print("nextpage: ${nextPage}");
     return widgetsRouters[nextPage];
   }
 
   @override
-  verifyAnswer(TaskModel task, TaskController taskController) {}
-  /*
-  @override
-  verifyAnswer() {
-    if (selectImageController.getVogaisA().isCorrect) {
+  verifyAnswer(TaskModel task, TaskController taskController) {
+    if (taskController.verify(task)) {
       correctAnswers++;
     }
-    if (selectImageController.getVogaisE().isCorrect) {
-      correctAnswers++;
-    }
-    if (selectImageController.getVogaisI().isCorrect) {
-      correctAnswers++;
-    }
-    if (selectImageController.getVogaisO().isCorrect) {
-      correctAnswers++;
-    }
-    if (selectImageController.getVogaisU().isCorrect) {
-      correctAnswers++;
-    }
-  }*/
+  }
 
   @override
   verifyAnswerNonControlled() {
