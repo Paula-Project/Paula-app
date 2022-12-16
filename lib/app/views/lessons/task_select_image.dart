@@ -1,6 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/lesson_controller.dart';
+import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/controllers/task_select_image_controller.dart';
 import 'package:paula/app/model/task_select_image_model.dart';
 import 'package:paula/app/views/components/CardImage.dart';
@@ -9,7 +9,7 @@ import 'package:paula/app/views/components/task_progress.dart';
 
 class TaskSelectImage extends StatefulWidget {
   final TaskSelectImageModel task;
-  final LessonController lessonController;
+  final LessonControllerInterface lessonController;
   final TaskSelectImageController taskController;
 
   const TaskSelectImage({
@@ -47,7 +47,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.taskController.cardSelected);
+    print(widget.task.cardSelected);
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -103,14 +103,12 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                               imageUrl: "assets/images/words/${word.imagePath}",
                               scale: 5.0,
                               audioUrl: word.soundPath,
-                              isSelected: widget.taskController.cardSelected ==
-                                      word.text
+                              isSelected: widget.task.cardSelected == word.text
                                   ? true
                                   : false,
                               onPress: () {
                                 setState(() {
-                                  widget.taskController.cardSelected =
-                                      word.text;
+                                  widget.task.cardSelected = word.text;
                                 });
                               },
                             ),
@@ -119,7 +117,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 30.0),
-                      child: Container(
+                      child: SizedBox(
                           width: 200,
                           height: 40,
                           child: Row(
@@ -133,12 +131,13 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                                       foregroundColor:
                                           MaterialStateProperty.all<Color>(
                                               Colors.white),
-                                      backgroundColor:
-                                          widget.taskController.cardSelected != ""
-                                              ? MaterialStateProperty.all<Color>(
-                                                  Colors.blue)
-                                              : MaterialStateProperty.all<
-                                                  Color>(Colors.grey),
+                                      backgroundColor: widget
+                                                  .task.cardSelected !=
+                                              ""
+                                          ? MaterialStateProperty.all<Color>(
+                                              Colors.blue)
+                                          : MaterialStateProperty.all<Color>(
+                                              Colors.grey),
                                       shape: MaterialStateProperty.all<
                                               RoundedRectangleBorder>(
                                           RoundedRectangleBorder(
@@ -151,10 +150,10 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                                         fontWeight: FontWeight.w600,
                                       )),
                                   onPressed: () {
-                                    if (widget.taskController.cardSelected !=
-                                        "") {
-                                      widget.taskController.verify(widget.task);
-                                      widget.lessonController.verifyAnswer();
+                                    if (widget.task.cardSelected != "") {
+                                      audioPlayer?.stop();
+                                      widget.lessonController.verifyAnswer(
+                                          widget.task, widget.taskController);
                                       showGeneralDialog(
                                         barrierColor:
                                             Colors.black.withOpacity(0.5),

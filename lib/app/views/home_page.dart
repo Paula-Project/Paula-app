@@ -31,19 +31,16 @@ class HomePage extends StatelessWidget {
                       moduleVowelsController: moduleVowelsController,
                     ),
                     true),
-                ModuleButton(
-                    Alignment.centerRight,
-                    "Consoantes \n Parte 1",
-                    HomePage(),
+                ModuleButton(Alignment.centerRight, "Módulo \n 2", HomePage(),
                     moduleVowelsController.getCompleted(usuarioLogado)),
-                ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 2",
-                    HomePage(), false),
-                ModuleButton(Alignment.centerRight, "Primeiras \n sílabas",
-                    HomePage(), false),
-                ModuleButton(Alignment.centerLeft, "Consoantes \n Parte 3",
-                    HomePage(), false),
                 ModuleButton(
-                    Alignment.centerRight, "Palavras 1", HomePage(), false)
+                    Alignment.centerLeft, "Módulo \n 3", HomePage(), false),
+                ModuleButton(
+                    Alignment.centerRight, "Módulo \n 4", HomePage(), false),
+                ModuleButton(
+                    Alignment.centerLeft, "Módulo \n 5", HomePage(), false),
+                ModuleButton(
+                    Alignment.centerRight, "Módulo \n 6", HomePage(), false)
               ]));
         }));
   }

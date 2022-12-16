@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/lesson_controller.dart';
+import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/model/task_words_paranoa_model.dart';
 import 'package:paula/app/views/components/ButtonNext.dart';
 import 'package:paula/app/views/components/CardParanoa.dart';
 
 class TaskWordsParanoa extends StatefulWidget {
   final TaskWordsParanoaModel task;
-  final LessonController lessonController;
+  final LessonControllerInterface lessonController;
   const TaskWordsParanoa({
     Key? key,
     required this.task,
