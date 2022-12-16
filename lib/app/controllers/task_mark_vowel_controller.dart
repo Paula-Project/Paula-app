@@ -20,7 +20,7 @@ class TaskMarkVowelController extends TaskController {
           letters.letters[20], // U
           letters.letters[8], // I
         ],
-        answer: "A");
+        answer: 'A');
     task2 = TaskMarkVowelModel(
         audio: 'audios/paula/paula_selection_E.mp3', // E
         vowels: [
@@ -29,7 +29,7 @@ class TaskMarkVowelController extends TaskController {
           letters.letters[4], // E
           letters.letters[8], // I
         ],
-        answer: "E");
+        answer: 'E');
     task3 = TaskMarkVowelModel(
         audio: 'audios/paula/paula_selection_U.mp3', // U
         vowels: [
@@ -38,7 +38,7 @@ class TaskMarkVowelController extends TaskController {
           letters.letters[14], // O
           letters.letters[0], // A
         ],
-        answer: "U");
+        answer: 'U');
     task4 = TaskMarkVowelModel(
         audio: 'audios/paula/paula_selection_I.mp3', // I
         vowels: [
@@ -47,7 +47,7 @@ class TaskMarkVowelController extends TaskController {
           letters.letters[20], // U
           letters.letters[8], // I
         ],
-        answer: "I");
+        answer: 'I');
     task5 = TaskMarkVowelModel(
         audio: 'audios/paula/paula_selection_O.mp3', // O
         vowels: [
@@ -56,7 +56,7 @@ class TaskMarkVowelController extends TaskController {
           letters.letters[20], // U
           letters.letters[4], // E
         ],
-        answer: "O");
+        answer: 'O');
   }
 
   TaskMarkVowelModel getTask1() {
@@ -94,12 +94,11 @@ class TaskMarkVowelController extends TaskController {
     }
   }
 
-  bool verifyAnswer(TaskMarkVowelModel task) {
-    if (task.answer == vowelSelected) return true;
-    return false;
-  }
-
   void reset() {
-    vowelSelected = 0;
+    task1.reset();
+    task2.reset();
+    task3.reset();
+    task4.reset();
+    task5.reset();
   }
 }

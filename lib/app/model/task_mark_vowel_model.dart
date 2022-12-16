@@ -14,4 +14,9 @@ class TaskMarkVowelModel extends TaskModel {
       bool isCorrect = false,
       this.cardSelected = ""})
       : super(isCorrect: isCorrect, answer: answer);
+
+  reset() {
+    cardSelected = "";
+    super.isCorrect = false;
+  }
 }

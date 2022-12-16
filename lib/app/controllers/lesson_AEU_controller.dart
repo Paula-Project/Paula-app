@@ -122,6 +122,8 @@ class LessonAEUController implements LessonControllerInterface {
       nextPage++;
       onCompleted();
     } else {
+      selectImageController.reset();
+      markVowelController.reset();
       nextPage = 0;
       correctAnswers = 0;
     }
