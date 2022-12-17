@@ -114,7 +114,11 @@ flutter:
     - assets/images/words/olho.png
     - assets/images/words/padaria.png
     - assets/images/words/paranoa.png
-    - assets/images/words/paranoa2.jpg
+    - assets/images/words/paranoa_carnes.jpg
+    - assets/images/words/paranoa_letreiro.jpg
+    - assets/images/words/paranoa_panificadora.jpg
+    - assets/images/words/paranoa_tintas.jpg
+    - assets/images/words/paranoa_upa.jpg
     - assets/images/words/seta.png
     - assets/images/words/sorvete.png
     - assets/images/words/um.png

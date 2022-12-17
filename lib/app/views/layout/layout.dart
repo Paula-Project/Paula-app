@@ -34,15 +34,25 @@ class Layout extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white70,
         elevation: 0,
-        title: OutlinedButton(
-          onPressed: () {
-            logout();
-          },
-          child: const Icon(
-            Icons.logout,
-            color: Colors.grey,
+        title:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          OutlinedButton(
+            onPressed: () {
+              logout();
+            },
+            child: const Icon(
+              Icons.logout,
+              color: Colors.grey,
+            ),
           ),
-        ),
+          TextButton(
+            onPressed: () {},
+            child: const Text(
+              "Créditos",
+              style: TextStyle(color: Colors.black45, fontSize: 15.0),
+            ),
+          ),
+        ]),
       ),
       body: SingleChildScrollView(
         child: bodyContent,

@@ -43,7 +43,11 @@ class Words {
     'Paranoá', // 36
     'Olho', // 37
     'Sorvete', // 38
-    'Isca' // 39
+    'Isca', // 39
+    'Paranoá Carnes', // 40
+    'Paranoá Panificadora', // 41
+    'Paranoá Tintas', // 42
+    'Paranoá Upa' // 43
   ];
   List<String> soundsList = [
     'abajur.mp3',
@@ -85,7 +89,11 @@ class Words {
     'paranoá.mp3',
     'olho.mp3',
     'sorvete.mp3',
-    'isca.mp3'
+    'isca.mp3',
+    'paranoá_carnes.mp3',
+    'paranoá_panificadora.mp3',
+    'paranoá_tintas.mp3',
+    'paranoá_upa.mp3',
   ];
   List<String> imagesList = [
     'abajur.png',
@@ -124,10 +132,14 @@ class Words {
     'unha.png',
     'um.png',
     'paranoa.png',
-    'paranoa2.jpg',
+    'paranoa_letreiro.jpg',
     'olho.png',
     'sorvete.png',
-    'isca.png'
+    'isca.png',
+    'paranoa_carnes.jpg',
+    'paranoa_panificadora.jpg',
+    'paranoa_tintas.jpg',
+    'paranoa_upa.jpg',
   ];
 
   void populate() {

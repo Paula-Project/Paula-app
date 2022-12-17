@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:paula/app/controllers/lesson_AEU_controller.dart';
 import 'package:paula/app/views/components/lesson_button.dart';
 import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/login_page.dart';

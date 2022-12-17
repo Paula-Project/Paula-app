@@ -4,12 +4,12 @@ import 'package:page_transition/page_transition.dart';
 class ButtonNext extends StatelessWidget {
   final Widget pageWidget;
   final bool allowedReturn;
-  Function? onPressed;
+  Function onPressed;
   ButtonNext({
     this.allowedReturn = true,
     Key? key,
     required this.pageWidget,
-    Function()? onPressed,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -34,7 +34,7 @@ class ButtonNext extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 )),
             onPressed: () {
-              onPressed!();
+              onPressed();
               Navigator.of(context).pushAndRemoveUntil(
                   PageTransition(
                       type: PageTransitionType.rightToLeft, child: pageWidget),

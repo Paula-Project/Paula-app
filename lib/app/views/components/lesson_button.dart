@@ -7,7 +7,7 @@ class LessonButton extends StatelessWidget {
   final bool isActive;
   final LessonControllerInterface lessonController;
 
-  LessonButton({
+  const LessonButton({
     Key? key,
     required this.textContent,
     required this.isActive,
