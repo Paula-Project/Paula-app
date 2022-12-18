@@ -99,59 +99,66 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
                     ),
                     Column(
                         children: widget.task.words
-                            .map(
-                              (word) => Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.27,
-                                margin: const EdgeInsets.only(bottom: 20.0),
-                                decoration: const BoxDecoration(
-                                    color: Color.fromARGB(255, 194, 197, 199),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(15))),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          bottom: 30.0, top: 12.0),
-                                      child: Container(
-                                          height: 87.0,
-                                          child: Image.asset(
-                                              'assets/images/words/${word.imagePath}')),
-                                    ),
-                                    Row(
+                            .map((word) => MaterialButton(
+                                  onPressed: (() {
+                                    _runAudio("audios/words/${word.soundPath}");
+                                  }),
+                                  child: Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.27,
+                                    margin: const EdgeInsets.only(bottom: 20.0),
+                                    decoration: const BoxDecoration(
+                                        color:
+                                            Color.fromARGB(255, 194, 197, 199),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(15))),
+                                    child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
-                                      children: word.text.runes
-                                          .map((letter) => SelectLetterButton(
-                                                statusResolved: statusResolved,
-                                                task: widget.task,
-                                                letter:
-                                                    String.fromCharCode(letter)
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 30.0, top: 12.0),
+                                          child: Container(
+                                              height: 87.0,
+                                              child: Image.asset(
+                                                  'assets/images/words/${word.imagePath}')),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: word.text.runes
+                                              .map((letter) =>
+                                                  SelectLetterButton(
+                                                    statusResolved:
+                                                        statusResolved,
+                                                    task: widget.task,
+                                                    letter: String.fromCharCode(
+                                                            letter)
                                                         .toUpperCase(),
-                                                addVogal: () => {
-                                                  setState(() {
-                                                    widget.task.addVogal(
-                                                        String.fromCharCode(
-                                                                letter)
-                                                            .toUpperCase());
-                                                  })
-                                                },
-                                                removeVogal: () => {
-                                                  setState(() {
-                                                    widget.task.removeVogal(
-                                                        String.fromCharCode(
-                                                                letter)
-                                                            .toUpperCase());
-                                                  })
-                                                },
-                                              ))
-                                          .toList(),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
+                                                    addVogal: () => {
+                                                      setState(() {
+                                                        widget.task.addVogal(
+                                                            String.fromCharCode(
+                                                                    letter)
+                                                                .toUpperCase());
+                                                      })
+                                                    },
+                                                    removeVogal: () => {
+                                                      setState(() {
+                                                        widget.task.removeVogal(
+                                                            String.fromCharCode(
+                                                                    letter)
+                                                                .toUpperCase());
+                                                      })
+                                                    },
+                                                  ))
+                                              .toList(),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ))
                             .toList()),
                     SizedBox(
                       height: 50.0,
