@@ -51,20 +51,24 @@ class _BoxDialogState extends State<BoxDialog> {
     double padding = 15.0;
 
     if (!widget.feedback) {
-      message = 'Resposta: ${widget.resposta}\n';
+      message = widget.resposta == '' ? "" : 'Resposta: ${widget.resposta}\n';
       messageButton = 'CONTINUAR';
       color = Colors.red;
       padding = 0;
     }
-
+    print("feedback box: ${widget.feedback}");
     return AlertDialog(
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(40), topRight: Radius.circular(40))),
       insetPadding: EdgeInsets.zero,
-      buttonPadding: const EdgeInsets.all(25.0),
-      contentPadding: const EdgeInsets.only(top: 25.0),
-      backgroundColor: Colors.white,
+      buttonPadding: const EdgeInsets.all(20.0),
+      contentPadding: widget.resposta == ''
+          ? const EdgeInsets.only(top: 0.0)
+          : const EdgeInsets.only(top: 25.0),
+      backgroundColor: widget.resposta == ''
+          ? const Color.fromRGBO(255, 255, 255, 0.8)
+          : Colors.white,
       alignment: Alignment.bottomCenter,
       actionsAlignment: MainAxisAlignment.center,
       semanticLabel: "dialogg",
@@ -74,8 +78,10 @@ class _BoxDialogState extends State<BoxDialog> {
           var width = MediaQuery.of(context).size.width;
 
           return Container(
-            padding: EdgeInsets.only(top: padding),
+            padding: EdgeInsets.only(top: 0),
+            height: double.minPositive,
             width: width,
+            color: Colors.transparent,
             child: Text(
               message,
               textAlign: TextAlign.center,

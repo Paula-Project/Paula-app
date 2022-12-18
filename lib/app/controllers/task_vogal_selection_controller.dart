@@ -1,15 +1,14 @@
+import 'package:paula/app/controllers/task_controller.dart';
+import 'package:paula/app/model/task_model.dart';
 import 'package:paula/app/model/task_vogal_selection_model.dart';
 import 'package:paula/app/model/words.dart';
 
-class TaskVogalSelectionController {
-  final List<String> vogaisSelecionadas = [];
-  final List<String> vogais = ['A', 'E', 'I', 'O', 'U'];
+class TaskVogalSelectionController implements TaskController {
   late TaskVogalSelectionModel task1;
   late TaskVogalSelectionModel task2;
   late TaskVogalSelectionModel task3;
   late TaskVogalSelectionModel task4;
   late TaskVogalSelectionModel task5;
-  List<String> wordsCorrect = [];
   Words words = Words();
   TaskVogalSelectionController() {
     task1 = TaskVogalSelectionModel(words: [
@@ -56,34 +55,19 @@ class TaskVogalSelectionController {
     return task5;
   }
 
-  void addVogal(String vogal) {
-    vogaisSelecionadas.add(vogal);
-  }
-
-  void removeVogal(String vogal) {
-    vogaisSelecionadas.remove(vogal);
-  }
-
-  bool verifyAnswer() {
-    return vogaisSelecionadas
-            .every((element) => wordsCorrect.contains(element)) &&
-        vogaisSelecionadas.length == wordsCorrect.length;
-  }
-
-  void makeAnswers(TaskVogalSelectionModel task) {
-    for (int i = 0; i < task.words.length; i++) {
-      String word = task.words[i].text;
-      for (int i = 0; i < word.length; i++) {
-        String letter = word[i].toUpperCase();
-        if (vogais.contains(letter)) {
-          wordsCorrect.add(letter);
-        }
-      }
-    }
+  @override
+  bool verify(covariant TaskVogalSelectionModel task) {
+    task.isCorrect = task.vogaisSelecionadas
+            .every((element) => task.lettersCorrect.contains(element)) &&
+        task.vogaisSelecionadas.length == task.lettersCorrect.length;
+    return task.isCorrect;
   }
 
   reset() {
-    vogaisSelecionadas.clear();
-    wordsCorrect.clear();
+    task1.clear();
+    task2.clear();
+    task3.clear();
+    task4.clear();
+    task5.clear();
   }
 }

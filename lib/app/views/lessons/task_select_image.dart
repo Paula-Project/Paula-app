@@ -132,8 +132,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                                           MaterialStateProperty.all<Color>(
                                               Colors.white),
                                       backgroundColor: widget
-                                                  .task.cardSelected !=
-                                              ""
+                                              .task.cardSelected.isNotEmpty
                                           ? MaterialStateProperty.all<Color>(
                                               Colors.blue)
                                           : MaterialStateProperty.all<Color>(
@@ -150,7 +149,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
                                         fontWeight: FontWeight.w600,
                                       )),
                                   onPressed: () {
-                                    if (widget.task.cardSelected != "") {
+                                    if (widget.task.cardSelected.isNotEmpty) {
                                       audioPlayer?.stop();
                                       widget.lessonController.verifyAnswer(
                                           widget.task, widget.taskController);
