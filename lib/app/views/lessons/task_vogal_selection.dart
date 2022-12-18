@@ -4,6 +4,7 @@ import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
 import 'package:paula/app/model/task_vogal_selection_model.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
+import 'package:paula/app/views/components/SelectLetterButton.dart';
 import 'package:paula/app/views/components/task_progress.dart';
 
 class TaskVogalSelection extends StatefulWidget {
@@ -23,6 +24,8 @@ class TaskVogalSelection extends StatefulWidget {
 
 class _TaskVogalSelectionState extends State<TaskVogalSelection> {
   bool isCorrect = false;
+  bool statusResolved = false;
+
   AudioPlayer? audioPlayer;
   _runAudio(String path) async {
     try {
@@ -41,6 +44,8 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
 
   @override
   Widget build(BuildContext context) {
+    changeStatus(String status) {}
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -119,13 +124,27 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
                                           MainAxisAlignment.center,
                                       children: word.text.runes
                                           .map((letter) => SelectLetterButton(
+                                                statusResolved: statusResolved,
+                                                task: widget.task,
                                                 letter:
                                                     String.fromCharCode(letter)
                                                         .toUpperCase(),
-                                                onSelected: widget
-                                                    .taskController.addVogal,
-                                                onUnselected: widget
-                                                    .taskController.removeVogal,
+                                                addVogal: () => {
+                                                  setState(() {
+                                                    widget.task.addVogal(
+                                                        String.fromCharCode(
+                                                                letter)
+                                                            .toUpperCase());
+                                                  })
+                                                },
+                                                removeVogal: () => {
+                                                  setState(() {
+                                                    widget.task.removeVogal(
+                                                        String.fromCharCode(
+                                                                letter)
+                                                            .toUpperCase());
+                                                  })
+                                                },
                                               ))
                                           .toList(),
                                     )
@@ -135,66 +154,64 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
                             )
                             .toList()),
                     SizedBox(
-                      height: 45.0,
-                      width: 200.0,
+                      height: 50.0,
+                      width: 150.0,
                       child: ElevatedButton(
                         style: ButtonStyle(
                             foregroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white),
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.blue),
+                            backgroundColor: widget
+                                    .task.vogaisSelecionadas.isEmpty
+                                ? MaterialStateProperty.all<Color>(Colors.grey)
+                                : MaterialStateProperty.all<Color>(Colors.blue),
                             shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
+                                    borderRadius: BorderRadius.circular(10),
                                     side: BorderSide.none))),
-                        onPressed: () => {
-                          widget.taskController.makeAnswers(widget.task),
-                          debugPrint(widget.taskController.vogaisSelecionadas
-                              .toString()),
-                          debugPrint(
-                              widget.taskController.wordsCorrect.toString()),
-                          isCorrect = widget.taskController.verifyAnswer(),
-                          if (isCorrect)
-                            {
-                              widget.lessonController
-                                  .verifyAnswerNonControlled()
-                            },
-                          showGeneralDialog(
-                            barrierColor: Colors.black.withOpacity(0.5),
-                            transitionDuration:
-                                const Duration(milliseconds: 300),
-                            barrierDismissible: false,
-                            barrierLabel: '',
-                            context: context,
-                            pageBuilder: (context, animation1, animation2) {
-                              return widget;
-                            },
-                            transitionBuilder: (context, a1, a2, widget) {
-                              final curvedValue =
-                                  Curves.easeInOut.transform(a1.value) - 1;
-
-                              return Transform(
-                                transform: Matrix4.translationValues(
-                                    0.0, (curvedValue * -300), 0.0),
-                                child: Opacity(
-                                  opacity: a1.value,
-                                  child: BoxDialog(
-                                      controller: this.widget.lessonController,
-                                      feedback: isCorrect,
-                                      resposta:
-                                          '${this.widget.task.words[0].text.toUpperCase()} '
-                                          '/ ${this.widget.task.words[1].text.toUpperCase()} '),
-                                ),
-                              );
-                            },
-                          )
-                        },
-                        child: const Text('Confirmar',
+                        child: const Text('VERIFICAR',
                             style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 18,
                               fontWeight: FontWeight.w600,
                             )),
+                        onPressed: () => {
+                          if (widget.task.vogaisSelecionadas.isNotEmpty)
+                            {
+                              widget.lessonController.verifyAnswer(
+                                  widget.task, widget.taskController),
+                              setState(() {
+                                statusResolved = true;
+                              }),
+                              showGeneralDialog(
+                                barrierColor: Colors.black.withOpacity(0.5),
+                                transitionDuration:
+                                    const Duration(milliseconds: 300),
+                                barrierDismissible: false,
+                                barrierLabel: '',
+                                context: context,
+                                pageBuilder: (context, animation1, animation2) {
+                                  return widget;
+                                },
+                                transitionBuilder: (context, a1, a2, widget) {
+                                  final curvedValue =
+                                      Curves.easeInOut.transform(a1.value) - 1;
+
+                                  return Transform(
+                                    transform: Matrix4.translationValues(
+                                        0.0, (curvedValue * -300), 0.0),
+                                    child: Opacity(
+                                      opacity: a1.value,
+                                      child: BoxDialog(
+                                          controller:
+                                              this.widget.lessonController,
+                                          feedback: this.widget.task.isCorrect,
+                                          resposta: ''),
+                                    ),
+                                  );
+                                },
+                              )
+                            }
+                        },
                       ),
                     ),
                   ],
@@ -203,50 +220,6 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class SelectLetterButton extends StatefulWidget {
-  final String letter;
-  final Function(String) onSelected;
-  final Function(String) onUnselected;
-
-  const SelectLetterButton({
-    Key? key,
-    required this.letter,
-    required this.onSelected,
-    required this.onUnselected,
-  }) : super(key: key);
-
-  @override
-  State<SelectLetterButton> createState() => _SelectLetterButtonState();
-}
-
-class _SelectLetterButtonState extends State<SelectLetterButton> {
-  bool isSelected = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 60,
-      width: 40,
-      margin: const EdgeInsets.all(5),
-      child: TextButton(
-        onPressed: () => {
-          setState(() => {
-                isSelected = !isSelected,
-                if (isSelected) {widget.onSelected(widget.letter)},
-                if (!isSelected) {widget.onUnselected(widget.letter)},
-              }),
-        },
-        style: TextButton.styleFrom(
-          backgroundColor: isSelected ? Colors.blue : Colors.white70,
-          primary: Colors.black,
-          textStyle: const TextStyle(fontSize: 35, fontWeight: FontWeight.w700),
-        ),
-        child: Text(widget.letter),
       ),
     );
   }

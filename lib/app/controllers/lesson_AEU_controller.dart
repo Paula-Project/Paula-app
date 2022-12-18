@@ -37,6 +37,18 @@ class LessonAEUController implements LessonControllerInterface {
   LessonAEUController({required this.moduleVowelsController}) {
     verifyisCompleted();
 
+    widgetsRouters.add(TaskVogalSelection(
+      task: vogalSelectionController.getTask1(),
+      lessonController: this,
+      taskController: vogalSelectionController,
+    ));
+
+    widgetsRouters.add(TaskVogalSelection(
+      task: vogalSelectionController.getTask2(),
+      lessonController: this,
+      taskController: vogalSelectionController,
+    ));
+
     widgetsRouters.add(LessonIntroduction(
       letter: 'A',
       titleIntroduction: "Esta é a letra ‘A’, repita comigo LETRA A.",
@@ -96,12 +108,13 @@ class LessonAEUController implements LessonControllerInterface {
       task: selectImageController.getVogaisU(),
       taskController: selectImageController,
       lessonController: this,
-    ));
+    )); /*
     widgetsRouters.add(TaskVogalSelection(
       task: vogalSelectionController.getTask1(),
       lessonController: this,
       taskController: vogalSelectionController,
     ));
+    */
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
       task: completeWordController.getTask1(),
