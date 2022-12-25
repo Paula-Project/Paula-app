@@ -58,7 +58,7 @@ class WelcomePagePart2 extends StatelessWidget {
                       SizedBox(
                           height: (MediaQuery.of(context).size.height * 0.4),
                           child:
-                              Image.asset('assets/images/paula/paula01.png')),
+                              Image.asset('assets/images/paula/paula02.png')),
                       const DialogTextBox(
                         TextContent:
                             "Oi, eu me chamo Paula, Seja muito bem-vindo(a) ao meu aplicativo!",

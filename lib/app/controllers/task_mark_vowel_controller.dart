@@ -1,7 +1,8 @@
+import 'package:paula/app/controllers/task_controller.dart';
 import 'package:paula/app/model/letters.dart';
 import '../model/task_mark_vowel_model.dart';
 
-class TaskMarkVowelController {
+class TaskMarkVowelController extends TaskController {
   int vowelSelected = 0;
   late TaskMarkVowelModel task1;
   late TaskMarkVowelModel task2;
@@ -19,7 +20,7 @@ class TaskMarkVowelController {
           letters.letters[20], // U
           letters.letters[8], // I
         ],
-        answer: 1);
+        answer: 'A');
     task2 = TaskMarkVowelModel(
         audio: 'audios/paula/paula_selection_E.mp3', // E
         vowels: [
@@ -28,7 +29,7 @@ class TaskMarkVowelController {
           letters.letters[4], // E
           letters.letters[8], // I
         ],
-        answer: 3);
+        answer: 'E');
     task3 = TaskMarkVowelModel(
         audio: 'audios/paula/paula_selection_U.mp3', // U
         vowels: [
@@ -37,7 +38,7 @@ class TaskMarkVowelController {
           letters.letters[14], // O
           letters.letters[0], // A
         ],
-        answer: 2);
+        answer: 'U');
     task4 = TaskMarkVowelModel(
         audio: 'audios/paula/paula_selection_I.mp3', // I
         vowels: [
@@ -46,7 +47,7 @@ class TaskMarkVowelController {
           letters.letters[20], // U
           letters.letters[8], // I
         ],
-        answer: 4);
+        answer: 'I');
     task5 = TaskMarkVowelModel(
         audio: 'audios/paula/paula_selection_O.mp3', // O
         vowels: [
@@ -55,7 +56,7 @@ class TaskMarkVowelController {
           letters.letters[20], // U
           letters.letters[4], // E
         ],
-        answer: 1);
+        answer: 'O');
   }
 
   TaskMarkVowelModel getTask1() {
@@ -78,16 +79,26 @@ class TaskMarkVowelController {
     return task5;
   }
 
-  void markVowel(int cardSelected) {
-    vowelSelected = cardSelected;
+  void selectCard(TaskMarkVowelModel task, String cardSelected) {
+    task.cardSelected = cardSelected;
   }
 
-  bool verifyAnswer(TaskMarkVowelModel task) {
-    if (task.answer == vowelSelected) return true;
-    return false;
+  @override
+  bool verify(covariant TaskMarkVowelModel task) {
+    if (task.cardSelected == task.answer) {
+      task.isCorrect = true;
+      return true;
+    } else {
+      task.isCorrect = false;
+      return false;
+    }
   }
 
   void reset() {
-    vowelSelected = 0;
+    task1.reset();
+    task2.reset();
+    task3.reset();
+    task4.reset();
+    task5.reset();
   }
 }

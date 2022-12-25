@@ -1,22 +1,22 @@
+import 'package:paula/app/model/task_model.dart';
+
 import 'letter.dart';
 
-class TaskMarkVowelModel {
-
-  final String title;
+class TaskMarkVowelModel extends TaskModel {
   final List<Letter> vowels;
   final String audio;
-  final int answer;
-  bool isCorrect;
+  String cardSelected;
 
+  TaskMarkVowelModel(
+      {required String answer,
+      required this.vowels,
+      required this.audio,
+      bool isCorrect = false,
+      this.cardSelected = ""})
+      : super(isCorrect: isCorrect, answer: answer);
 
-  TaskMarkVowelModel({
-    this.title = "COMPLETE AS PALAVRAS",
-    this.isCorrect = false,
-    required this.vowels,
-    required this.audio,
-    required this.answer,
-  });
-
-
-
+  reset() {
+    cardSelected = "";
+    super.isCorrect = false;
+  }
 }

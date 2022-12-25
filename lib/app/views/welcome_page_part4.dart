@@ -59,7 +59,7 @@ class WelcomePagePart4 extends StatelessWidget {
                       SizedBox(
                           height: (MediaQuery.of(context).size.height * 0.4),
                           child:
-                              Image.asset('assets/images/paula/paula01.png')),
+                              Image.asset('assets/images/paula/paula02.png')),
                       const DialogTextBox(
                         TextContent:
                             "Para começar vamos precisar de algumas informações suas, tudo bem? Nessa etapa talvez você precise de alguém para te ajudar, ok?",

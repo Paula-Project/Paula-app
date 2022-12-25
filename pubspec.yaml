@@ -64,7 +64,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: assets/images/Avatar-Maker(2).png
+  image_path: assets/images/paula01.png
 # The following section is specific to Flutter packages.
 flutter:
   # The following line ensures that the Material Icons font is
@@ -103,6 +103,7 @@ flutter:
     - assets/images/words/estrela.png
     - assets/images/words/igreja.png
     - assets/images/words/iguana.png
+    - assets/images/words/iogurte.png
     - assets/images/words/ioio.png
     - assets/images/words/isca.png
     - assets/images/words/lata.png
@@ -113,7 +114,11 @@ flutter:
     - assets/images/words/olho.png
     - assets/images/words/padaria.png
     - assets/images/words/paranoa.png
-    - assets/images/words/paranoa2.jpg
+    - assets/images/words/paranoa_carnes.jpg
+    - assets/images/words/paranoa_letreiro.jpg
+    - assets/images/words/paranoa_panificadora.jpg
+    - assets/images/words/paranoa_tintas.jpg
+    - assets/images/words/paranoa_upa.jpg
     - assets/images/words/seta.png
     - assets/images/words/sorvete.png
     - assets/images/words/um.png

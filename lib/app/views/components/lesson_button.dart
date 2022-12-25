@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import '../../controllers/lesson_controller.dart';
+import 'package:paula/app/controllers/lesson_controller_interface.dart';
 
 class LessonButton extends StatelessWidget {
   final String textContent;
   final bool isActive;
-  final LessonController lessonController;
+  final LessonControllerInterface lessonController;
 
-  LessonButton({
+  const LessonButton({
     Key? key,
     required this.textContent,
     required this.isActive,
@@ -27,7 +27,7 @@ class LessonButton extends StatelessWidget {
               Navigator.push(
                   context,
                   PageTransition(
-                      type: PageTransitionType.rightToLeft, 
+                      type: PageTransitionType.rightToLeft,
                       child: lessonController.nextTask()));
             }
           },

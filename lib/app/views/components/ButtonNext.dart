@@ -4,7 +4,7 @@ import 'package:page_transition/page_transition.dart';
 class ButtonNext extends StatelessWidget {
   final Widget pageWidget;
   final bool allowedReturn;
-  final Function onPressed;
+  Function onPressed;
   ButtonNext({
     this.allowedReturn = true,
     Key? key,

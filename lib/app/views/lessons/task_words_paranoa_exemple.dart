@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
-import 'package:paula/app/model/task_words_exemple_model.dart';
+import 'package:paula/app/model/task_words_paranoa_model.dart';
 import 'package:paula/app/views/components/ButtonNext.dart';
-import 'package:paula/app/views/components/CardExemple.dart';
+import 'package:paula/app/views/components/CardParanoa.dart';
+import 'package:paula/app/views/home_page.dart';
 
-class TaskWordsExemple extends StatefulWidget {
-  final TaskWordsExempleModel task;
+class TaskWordsParanoaExemple extends StatefulWidget {
+  final TaskWordsParanoaModel task;
   final LessonControllerInterface lessonController;
-  const TaskWordsExemple({
-    Key? key,
-    required this.task,
-    required this.lessonController,
-  }) : super(key: key);
+
+  const TaskWordsParanoaExemple(
+      {super.key, required this.task, required this.lessonController});
 
   @override
-  State<TaskWordsExemple> createState() => _TaskWordsExempleState();
+  State<TaskWordsParanoaExemple> createState() =>
+      _TaskWordsParanoaExempleState();
 }
 
-class _TaskWordsExempleState extends State<TaskWordsExemple> {
+class _TaskWordsParanoaExempleState extends State<TaskWordsParanoaExemple> {
   @override
   Widget build(BuildContext context) {
     return Material(
       child: Container(
         decoration: const BoxDecoration(
-          color: Colors.white,
+          color: Color.fromARGB(255, 240, 240, 240),
         ),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -38,12 +38,12 @@ class _TaskWordsExempleState extends State<TaskWordsExemple> {
                   decoration: const BoxDecoration(
                       color: Color.fromRGBO(37, 85, 124, 1),
                       borderRadius: BorderRadius.all(Radius.circular(15.0))),
-                  child: Center(
+                  child: const Center(
                     child: Padding(
-                      padding: const EdgeInsets.all(12.0),
+                      padding: EdgeInsets.all(12.0),
                       child: Text(
-                        widget.task.title,
-                        style: const TextStyle(
+                        "Vocẽ sabia que Paranoá também possui a letra “A”?",
+                        style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w300),
                       ),
                     ),
@@ -53,11 +53,11 @@ class _TaskWordsExempleState extends State<TaskWordsExemple> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: widget.task.words
-                        .map((word) => CardExemple(
-                            imageUrl: "assets/images/words/${word.imagePath}",
-                            nameTxt: word.text,
-                            audioUrl: word.soundPath,
-                            letters: widget.task.letter))
+                        .map((word) => CardParanoa(
+                              imageUrl: "assets/images/words/${word.imagePath}",
+                              nameTxt: word.text,
+                              audioUrl: word.soundPath,
+                            ))
                         .toList(),
                   ),
                 ),
@@ -66,7 +66,7 @@ class _TaskWordsExempleState extends State<TaskWordsExemple> {
                     width: 180,
                     height: 50,
                     child: ButtonNext(
-                      pageWidget: widget.lessonController.nextTask(),
+                      pageWidget: Container(),
                       onPressed: () {},
                     ),
                   ),
