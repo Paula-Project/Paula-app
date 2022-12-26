@@ -114,11 +114,6 @@ flutter:
     - assets/images/words/olho.png
     - assets/images/words/padaria.png
     - assets/images/words/paranoa.png
-    - assets/images/words/paranoa_carnes.jpg
-    - assets/images/words/paranoa_letreiro.jpg
-    - assets/images/words/paranoa_panificadora.jpg
-    - assets/images/words/paranoa_tintas.jpg
-    - assets/images/words/paranoa_upa.jpg
     - assets/images/words/seta.png
     - assets/images/words/sorvete.png
     - assets/images/words/um.png
@@ -161,13 +156,13 @@ flutter:
     - assets/audios/paula/paula_selectionImage_O.mp3
     - assets/audios/paula/paula_selectionImage_U.mp3
 
-    - assets/audios/words/aviao.mp3
     - assets/audios/words/abacaxi.mp3
-    - assets/audios/words/lata.mp3
-    - assets/audios/words/uva.mp3
+    - assets/audios/words/abajur.mp3
+    - assets/audios/words/antena.mp3
+    - assets/audios/words/apito.mp3
+    - assets/audios/words/arroz.mp3
     - assets/audios/words/arvore.mp3
-    - assets/audios/words/escada.mp3
-    - assets/audios/words/oculos.mp3
+    - assets/audios/words/aviao.mp3
     - assets/audios/words/bebida.mp3
     - assets/audios/words/boia.mp3
     - assets/audios/words/bola.mp3
@@ -175,13 +170,31 @@ flutter:
     - assets/audios/words/capa.mp3
     - assets/audios/words/cavalo.mp3
     - assets/audios/words/dado.mp3
+    - assets/audios/words/elefante.mp3
     - assets/audios/words/envelope.mp3
+    - assets/audios/words/escada.mp3
+    - assets/audios/words/escova.mp3
+    - assets/audios/words/esponja.mp3
+    - assets/audios/words/estrela.mp3
+    - assets/audios/words/igreja.mp3
     - assets/audios/words/iguana.mp3
+    - assets/audios/words/iogurte.mp3
     - assets/audios/words/ioio.mp3
+    - assets/audios/words/isca.mp3
+    - assets/audios/words/lata.mp3
     - assets/audios/words/meia.mp3
+    - assets/audios/words/oculos.mp3
+    - assets/audios/words/olho.mp3
+    - assets/audios/words/onibus.mp3
     - assets/audios/words/ovo.mp3
     - assets/audios/words/padaria.mp3
-    - assets/audios/words/onibus.mp3
+    - assets/audios/words/paranoa.mp3
+    - assets/audios/words/seta.mp3
+    - assets/audios/words/sorvete.mp3
+    - assets/audios/words/um.mp3
+    - assets/audios/words/unha.mp3
+    - assets/audios/words/urso.mp3
+    - assets/audios/words/uva.mp3
 
     - assets/audios/sucess_sound.mp3
     - assets/audios/failed_sound.mp3
