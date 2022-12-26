@@ -249,33 +249,37 @@ class _ChangePassword extends State<ChangePassword> {
                                             width: 220,
                                             height: 45,
                                             child: ElevatedButton(
-                                              onPressed: () async{
-                                                  if (_key.currentState!
-                                                      .validate()) {
-                                                    if (calcAge() > 5) {
-                                                      if ( await changePassword()){
-                                                        Navigator.of(context)
-                                                            .pushAndRemoveUntil(
-                                                          MaterialPageRoute(
-                                                            builder: (BuildContext
-                                                            context) =>
-                                                            const LoginPage(),
-                                                          ),
-                                                              (route) => false,
-                                                        );
-                                                      } else{
-                                                        ScaffoldMessenger.of(context).showSnackBar(
+                                              onPressed: () async {
+                                                if (_key.currentState!
+                                                    .validate()) {
+                                                  if (calcAge() > 5) {
+                                                    if (await changePassword()) {
+                                                      Navigator.of(context)
+                                                          .pushAndRemoveUntil(
+                                                        MaterialPageRoute(
+                                                          builder: (BuildContext
+                                                                  context) =>
+                                                              const LoginPage(),
+                                                        ),
+                                                        (route) => false,
+                                                      );
+                                                    } else {
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                              const SnackBar(
+                                                                  content: Text(
+                                                                      'Erro ao alterar senha \n Dados incorretos')));
+                                                    }
+                                                  } else {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
                                                             const SnackBar(
                                                                 content: Text(
-                                                                    'Erro ao alterar senha \n Dados incorretos')));
-                                                      }
-                                                    } else {
-                                                      ScaffoldMessenger.of(context).showSnackBar(
-                                                          const SnackBar(
-                                                              content: Text(
-                                                                  'Você deve ter mais de 5 anos para usar a Paula')));
-                                                    }
+                                                                    'Você deve ter mais de 5 anos para usar a Paula')));
                                                   }
+                                                }
                                               },
                                               onHover: (hover) {},
                                               style: ButtonStyle(
@@ -316,13 +320,13 @@ class _ChangePassword extends State<ChangePassword> {
     );
   }
 
-  int calcAge(){
+  int calcAge() {
     DateTime hoje = DateTime.now();
     int idade = hoje.year - _date.year;
-    if (hoje.month<_date.month) {
+    if (hoje.month < _date.month) {
       idade--;
-    } else if (hoje.month==_date.month){
-      if (hoje.day<_date.day) {
+    } else if (hoje.month == _date.month) {
+      if (hoje.day < _date.day) {
         idade--;
       }
     }
@@ -330,11 +334,10 @@ class _ChangePassword extends State<ChangePassword> {
   }
 
   Future<bool> changePassword() async {
-    if( await resetAuthenticatePassword(_apelidoController.text,
-        DateFormat('yyyy-MM-dd').format(_date))){
+    if (await resetAuthenticatePassword(
+        _apelidoController.text, DateFormat('yyyy-MM-dd').format(_date))) {
       debugPrint("Erro ao alterar senha2");
-      if(await resetPassword(_apelidoController.text,
-          _senhaController.text)){
+      if (await resetPassword(_apelidoController.text, _senhaController.text)) {
         debugPrint("Erro ao alterar senha3");
         return true;
       }

@@ -42,12 +42,14 @@ class _CardExempleState extends State<CardExemple> {
       onPressed: () async {
         _runAudio("audios/words/${widget.audioUrl}");
       },
-      focusColor: Color.fromARGB(255, 104, 106, 106),
+      highlightColor: Color.fromARGB(55, 3, 168, 244),
+      color: const Color.fromRGBO(209, 220, 221, 1),
+      disabledElevation: 0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       child: Container(
           height: 100.0,
           width: double.infinity,
           decoration: const BoxDecoration(
-              color: Color.fromRGBO(209, 220, 221, 1),
               borderRadius: BorderRadius.all(Radius.circular(15.0))),
           child: Padding(
             padding:

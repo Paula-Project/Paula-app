@@ -39,10 +39,15 @@ class LessonParanoaController implements LessonControllerInterface {
       nextPage++;
       onCompleted();
     } else {
-      nextPage = 0;
-      correctAnswers = 0;
+      reset();
     }
     return widgetsRouters[nextPage];
+  }
+
+  @override
+  reset() {
+    nextPage = -1;
+    correctAnswers = 0;
   }
 
   @override

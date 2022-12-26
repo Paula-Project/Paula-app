@@ -7,4 +7,5 @@ abstract class LessonControllerInterface {
   getTaskQuantity();
   getTaskCorrectAnswers();
   verifyAnswerNonControlled();
+  reset();
 }

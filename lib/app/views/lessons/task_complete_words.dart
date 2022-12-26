@@ -2,6 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
+import 'package:paula/app/views/components/exitDialog.dart';
 import 'package:paula/app/views/components/task_progress.dart';
 
 import '../../controllers/task_complete_word_controller.dart';
@@ -110,176 +111,184 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-        ),
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 15.0),
-          child: Column(
-            children: [
-              TaskProgress(
-                tasksNumber: widget.lessonController.getTaskQuantity(),
-                correctAnswer: widget.lessonController.getTaskCorrectAnswers(),
-              ),
-              const SizedBox(height: 10.0),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                  decoration: const BoxDecoration(
-                      color: Color.fromRGBO(37, 85, 124, 1),
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Text(
-                        widget.task.title,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.w300,
+    return WillPopScope(
+      onWillPop: (() => exitDialog(context)),
+      child: Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+          ),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 40.0, horizontal: 15.0),
+            child: Column(
+              children: [
+                TaskProgress(
+                  tasksNumber: widget.lessonController.getTaskQuantity(),
+                  correctAnswer:
+                      widget.lessonController.getTaskCorrectAnswers(),
+                ),
+                const SizedBox(height: 10.0),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    decoration: const BoxDecoration(
+                        color: Color.fromRGBO(37, 85, 124, 1),
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(
+                          widget.task.title,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.w300,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Container(
-                  decoration: const BoxDecoration(
-                      color: Color.fromRGBO(209, 220, 221, 1),
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
-                  child: Column(
-                      children: widget.task.words
-                          .map(
-                            (word) => MaterialButton(
-                              onPressed: (() {
-                                _runAudio("audios/words/${word.soundPath}");
-                              }),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      flex: 2,
-                                      child: SizedBox(
-                                        height: 120,
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              bottom: 8.0),
-                                          child: Image.asset(
-                                              'assets/images/words/${word.imagePath}'),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        color: Color.fromRGBO(209, 220, 221, 1),
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    child: Column(
+                        children: widget.task.words
+                            .map(
+                              (word) => MaterialButton(
+                                onPressed: (() {
+                                  _runAudio("audios/words/${word.soundPath}");
+                                }),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 2,
+                                        child: SizedBox(
+                                          height: 120,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                bottom: 8.0),
+                                            child: Image.asset(
+                                                'assets/images/words/${word.imagePath}'),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Expanded(
-                                      flex: 8,
-                                      child: SizedBox(
-                                        width: double.infinity,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: makeWord(word.text),
+                                      Expanded(
+                                        flex: 8,
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: makeWord(word.text),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          )
-                          .toList()),
+                            )
+                            .toList()),
+                  ),
                 ),
-              ),
-              FittedBox(
-                fit: BoxFit.fitWidth,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: widget.task.lessonVowels
-                          .map((vowel) => LetterBox(vowel))
-                          .toList()),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 15.0),
-                child: SizedBox(
-                    width: 200,
-                    height: 40,
+                FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 50.0,
-                          width: 150.0,
-                          child: ElevatedButton(
-                            style: ButtonStyle(
-                                foregroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        Colors.white),
-                                shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        side: BorderSide.none))),
-                            child: const Text('VERIFICAR',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                )),
-                            onPressed: () {
-                              widget.taskController.makeAnswers(widget.task);
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: widget.task.lessonVowels
+                            .map((vowel) => LetterBox(vowel))
+                            .toList()),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 15.0),
+                  child: SizedBox(
+                      width: 200,
+                      height: 40,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 50.0,
+                            width: 150.0,
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                  foregroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.white),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          side: BorderSide.none))),
+                              child: const Text('VERIFICAR',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                  )),
+                              onPressed: () {
+                                widget.taskController.makeAnswers(widget.task);
 
-                              if (widget.taskController.verifyAnswer()) {
-                                isCorrect = true;
-                                widget.lessonController
-                                    .verifyAnswerNonControlled();
-                              }
-                              widget.taskController.reset();
-                              showGeneralDialog(
-                                barrierColor: Colors.black.withOpacity(0.5),
-                                transitionDuration:
-                                    const Duration(milliseconds: 300),
-                                barrierDismissible: false,
-                                barrierLabel: '',
-                                context: context,
-                                pageBuilder: (context, animation1, animation2) {
-                                  return widget;
-                                },
-                                transitionBuilder: (context, a1, a2, widget) {
-                                  final curvedValue =
-                                      Curves.easeInOut.transform(a1.value) - 1;
+                                if (widget.taskController.verifyAnswer()) {
+                                  isCorrect = true;
+                                  widget.lessonController
+                                      .verifyAnswerNonControlled();
+                                }
+                                widget.taskController.reset();
+                                showGeneralDialog(
+                                  barrierColor: Colors.black.withOpacity(0.5),
+                                  transitionDuration:
+                                      const Duration(milliseconds: 300),
+                                  barrierDismissible: false,
+                                  barrierLabel: '',
+                                  context: context,
+                                  pageBuilder:
+                                      (context, animation1, animation2) {
+                                    return widget;
+                                  },
+                                  transitionBuilder: (context, a1, a2, widget) {
+                                    final curvedValue =
+                                        Curves.easeInOut.transform(a1.value) -
+                                            1;
 
-                                  return Transform(
-                                    transform: Matrix4.translationValues(
-                                        0.0, (curvedValue * -300), 0.0),
-                                    child: Opacity(
-                                      opacity: a1.value,
-                                      child: BoxDialog(
-                                          controller:
-                                              this.widget.lessonController,
-                                          feedback: isCorrect,
-                                          resposta:
-                                              '${this.widget.task.words[0].text.toUpperCase()} '
-                                              '/ ${this.widget.task.words[1].text.toUpperCase()} '
-                                              '/ ${this.widget.task.words[2].text.toUpperCase()}'),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
+                                    return Transform(
+                                      transform: Matrix4.translationValues(
+                                          0.0, (curvedValue * -300), 0.0),
+                                      child: Opacity(
+                                        opacity: a1.value,
+                                        child: BoxDialog(
+                                            controller:
+                                                this.widget.lessonController,
+                                            feedback: isCorrect,
+                                            resposta:
+                                                '${this.widget.task.words[0].text.toUpperCase()} '
+                                                '/ ${this.widget.task.words[1].text.toUpperCase()} '
+                                                '/ ${this.widget.task.words[2].text.toUpperCase()}'),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
                           ),
-                        ),
-                      ],
-                    )),
-              ),
-            ],
+                        ],
+                      )),
+                ),
+              ],
+            ),
           ),
         ),
       ),

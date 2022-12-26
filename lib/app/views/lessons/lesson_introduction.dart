@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/DIalogTextBoxDown.dart';
+import 'package:paula/app/views/components/exitDialog.dart';
 
 class LessonIntroduction extends StatefulWidget {
   final String letter;
@@ -43,86 +44,91 @@ class _LessonIntroductionState extends State<LessonIntroduction> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-          ),
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(40.0),
-                child: Container(
-                    alignment: Alignment.topCenter,
-                    height: MediaQuery.of(context).size.height * 0.45,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(
-                        color: Color.fromRGBO(37, 85, 124, 1),
-                        borderRadius: BorderRadius.all(Radius.circular(15.0))),
-                    child: Center(
-                      child: Text(
-                        widget.letter,
-                        style: const TextStyle(fontSize: 200.0),
-                      ),
-                    )),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.7,
-                child: DialogTextBoxDown(TextContent: widget.titleIntroduction),
-              ),
-              const SizedBox(
-                height: 10.0,
-              ),
-              Expanded(
-                child: Stack(
-                  alignment: Alignment.bottomRight,
-                  children: [
-                    Container(
-                      alignment: Alignment.bottomCenter,
-                      width: (MediaQuery.of(context).size.width),
-                      height: 275,
-                      child: Image.asset(
-                        'assets/images/paula/paula03.png',
-                        scale: 1,
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 30,
-                      right: 30,
-                      child: Container(
-                        height: 60,
-                        width: 60,
-                        decoration: const BoxDecoration(
-                          color: Colors.lightBlue,
-                          borderRadius: BorderRadius.all(Radius.circular(50)),
+    return WillPopScope(
+      onWillPop: (() => exitDialog(context)),
+      child: Material(
+        child: Container(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+            ),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(40.0),
+                  child: Container(
+                      alignment: Alignment.topCenter,
+                      height: MediaQuery.of(context).size.height * 0.45,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: const BoxDecoration(
+                          color: Color.fromRGBO(37, 85, 124, 1),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(15.0))),
+                      child: Center(
+                        child: Text(
+                          widget.letter,
+                          style: const TextStyle(fontSize: 200.0),
                         ),
-                        child: Center(
-                          child: IconButton(
-                            color: Colors.white,
-                            iconSize: 40,
-                            icon: const Icon(
-                              Icons.arrow_forward_outlined,
+                      )),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  child:
+                      DialogTextBoxDown(TextContent: widget.titleIntroduction),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Expanded(
+                  child: Stack(
+                    alignment: Alignment.bottomRight,
+                    children: [
+                      Container(
+                        alignment: Alignment.bottomCenter,
+                        width: (MediaQuery.of(context).size.width),
+                        height: 275,
+                        child: Image.asset(
+                          'assets/images/paula/paula03.png',
+                          scale: 1,
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 30,
+                        right: 30,
+                        child: Container(
+                          height: 60,
+                          width: 60,
+                          decoration: const BoxDecoration(
+                            color: Colors.lightBlue,
+                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                          ),
+                          child: Center(
+                            child: IconButton(
+                              color: Colors.white,
+                              iconSize: 40,
+                              icon: const Icon(
+                                Icons.arrow_forward_outlined,
+                              ),
+                              onPressed: () async {
+                                audioPlayer?.stop();
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    PageTransition(
+                                        type: PageTransitionType.rightToLeft,
+                                        child: widget.controller.nextTask()),
+                                    (route) => false);
+                              },
                             ),
-                            onPressed: () async {
-                              audioPlayer?.stop();
-                              Navigator.of(context).pushAndRemoveUntil(
-                                  PageTransition(
-                                      type: PageTransitionType.rightToLeft,
-                                      child: widget.controller.nextTask()),
-                                  (route) => false);
-                            },
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          )),
+              ],
+            )),
+      ),
     );
   }
 }
