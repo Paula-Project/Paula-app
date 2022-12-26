@@ -51,35 +51,30 @@ class _BoxDialogState extends State<BoxDialog> {
     double padding = 15.0;
 
     if (!widget.feedback) {
-      message = widget.resposta == '' ? "" : 'Resposta: ${widget.resposta}\n';
+      message = widget.resposta == '' ? "" : 'Resposta: ${widget.resposta}';
       messageButton = 'CONTINUAR';
       color = Colors.red;
       padding = 0;
     }
-    print("feedback box: ${widget.feedback}");
     return AlertDialog(
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(40), topRight: Radius.circular(40))),
       insetPadding: EdgeInsets.zero,
-      buttonPadding: const EdgeInsets.all(20.0),
-      contentPadding: widget.resposta == ''
+      contentPadding: widget.resposta == '' && !widget.feedback
           ? const EdgeInsets.only(top: 0.0)
           : const EdgeInsets.only(top: 25.0),
-      backgroundColor: widget.resposta == ''
-          ? const Color.fromRGBO(255, 255, 255, 0.8)
+      backgroundColor: widget.resposta == '' && !widget.feedback
+          ? const Color.fromRGBO(255, 255, 255, 0.75)
           : Colors.white,
       alignment: Alignment.bottomCenter,
       actionsAlignment: MainAxisAlignment.center,
-      semanticLabel: "dialogg",
+      semanticLabel: "dialog",
       content: Builder(
         builder: (context) {
-          var height = MediaQuery.of(context).size.height;
           var width = MediaQuery.of(context).size.width;
 
           return Container(
-            padding: EdgeInsets.only(top: 0),
-            height: double.minPositive,
             width: width,
             color: Colors.transparent,
             child: Text(
@@ -91,6 +86,9 @@ class _BoxDialogState extends State<BoxDialog> {
           );
         },
       ),
+      actionsPadding: widget.resposta == '' && !widget.feedback
+          ? const EdgeInsets.only(bottom: 20)
+          : const EdgeInsets.all(20),
       actions: <Widget>[
         ElevatedButton(
           onPressed: () {
@@ -102,7 +100,7 @@ class _BoxDialogState extends State<BoxDialog> {
           },
           style: ButtonStyle(
             padding: MaterialStateProperty.resolveWith(
-                (states) => EdgeInsets.fromLTRB(50, 20, 50, 20)),
+                (states) => const EdgeInsets.fromLTRB(50, 20, 50, 20)),
             backgroundColor: MaterialStateColor.resolveWith((states) => color),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
@@ -111,7 +109,7 @@ class _BoxDialogState extends State<BoxDialog> {
           ),
           child: Text(
             messageButton,
-            style: TextStyle(fontSize: 25),
+            style: const TextStyle(fontSize: 25),
           ),
         ),
       ],
