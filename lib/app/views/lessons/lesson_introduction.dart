@@ -23,7 +23,7 @@ class LessonIntroduction extends StatefulWidget {
   State<LessonIntroduction> createState() => _LessonIntroductionState();
 }
 
-class _LessonIntroductionState extends State<LessonIntroduction> {
+class _LessonIntroductionState extends State<LessonIntroduction> with WidgetsBindingObserver {
   //final _timer =   Timer(const Duration(seconds: 5), () => {Get.to(const Lesson())});
   AudioPlayer? audioPlayer;
 
@@ -37,9 +37,30 @@ class _LessonIntroductionState extends State<LessonIntroduction> {
 
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
     audioPlayer = AudioPlayer();
     _runAudio("audios/paula/${widget.audioUrl}");
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+
+    if (state == AppLifecycleState.inactive ||
+        state == AppLifecycleState.paused ||
+        state == AppLifecycleState.detached) {
+      audioPlayer?.pause();      
+      return;
+    } else if (state == AppLifecycleState.resumed) {
+      audioPlayer?.resume();
+    }
   }
 
   @override

@@ -24,7 +24,7 @@ class TaskSelectImage extends StatefulWidget {
   State<TaskSelectImage> createState() => _TaskSelectImageState();
 }
 
-class _TaskSelectImageState extends State<TaskSelectImage> {
+class _TaskSelectImageState extends State<TaskSelectImage> with WidgetsBindingObserver {
   AudioPlayer? audioPlayer;
   _runAudio(String path) async {
     try {
@@ -36,6 +36,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
 
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
     audioPlayer = AudioPlayer();
     _runAudio("audios/paula/${widget.task.audio}");
     super.initState();
@@ -43,7 +44,22 @@ class _TaskSelectImageState extends State<TaskSelectImage> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+
+    if (state == AppLifecycleState.inactive ||
+        state == AppLifecycleState.paused ||
+        state == AppLifecycleState.detached) {
+      audioPlayer?.pause();      
+      return;
+    } else if (state == AppLifecycleState.resumed) {
+      audioPlayer?.resume();
+    }
   }
 
   @override
