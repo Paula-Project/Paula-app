@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/CardImage.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
+import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/task_progress.dart';
 import '../../controllers/task_mark_vowel_controller.dart';
 import '../../model/task_mark_vowel_model.dart';
@@ -26,42 +27,26 @@ class TaskMarkVowel extends StatefulWidget {
 
 class _TaskMarkVowelState extends State<TaskMarkVowel>
     with WidgetsBindingObserver {
-  AudioPlayer? audioPlayer;
-
-  _runAudio(String path) async {
-    try {
-      await audioPlayer?.play(AssetSource(path));
-    } catch (error) {
-      print(error.toString());
-    }
-  }
+  AudioManager audioManager = AudioManager();
 
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    audioPlayer = AudioPlayer();
-    _runAudio(widget.task.audio);
+    audioManager.runAudio(widget.task.audio);
     super.initState();
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    audioManager.stopAudio();
     super.dispose();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-
-    if (state == AppLifecycleState.inactive ||
-        state == AppLifecycleState.paused ||
-        state == AppLifecycleState.detached) {
-      audioPlayer?.pause();
-      return;
-    } else if (state == AppLifecycleState.resumed) {
-      audioPlayer?.resume();
-    }
+    audioManager.didLifecycleChange(state);
   }
 
   @override
@@ -92,7 +77,7 @@ class _TaskMarkVowelState extends State<TaskMarkVowel>
                     children: [
                       MaterialButton(
                         onPressed: () {
-                          _runAudio(widget.task.audio);
+                          audioManager.runAudio(widget.task.audio);
                         },
                         child: Container(
                           height: (MediaQuery.of(context).size.height) * 0.17,
@@ -116,6 +101,7 @@ class _TaskMarkVowelState extends State<TaskMarkVowel>
                                 imageUrl: 'assets/alphabet/${letter.imagePath}',
                                 scale: 5.0,
                                 audioUrl: letter.soundPath,
+                                audioManager: audioManager,
                                 isSelected:
                                     widget.task.cardSelected == letter.text
                                         ? true

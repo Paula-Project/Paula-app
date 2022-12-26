@@ -1,5 +1,5 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:paula/app/views/components/audioManager.dart';
 
 class CardImage extends StatefulWidget {
   const CardImage({
@@ -9,30 +9,21 @@ class CardImage extends StatefulWidget {
     required this.isSelected,
     required this.audioUrl,
     required this.onPress,
+    required this.audioManager,
   }) : super(key: key);
   final String audioUrl;
   final String imageUrl;
   final double scale;
   final bool isSelected;
   final VoidCallback onPress;
+  final AudioManager audioManager;
   @override
   State<CardImage> createState() => _CardImageState();
 }
 
 class _CardImageState extends State<CardImage> {
-  AudioPlayer? audioPlayer;
-
-  _runAudio(String path) async {
-    try {
-      await audioPlayer?.play(AssetSource(path));
-    } catch (error) {
-      print(error.toString());
-    }
-  }
-
   @override
   void initState() {
-    audioPlayer = AudioPlayer();
     super.initState();
   }
 
@@ -40,7 +31,7 @@ class _CardImageState extends State<CardImage> {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: (() {
-        _runAudio("audios/words/${widget.audioUrl}");
+        widget.audioManager.runAudio("audios/words/${widget.audioUrl}");
         widget.onPress();
       }),
       child: Container(

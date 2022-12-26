@@ -6,6 +6,7 @@ import 'package:paula/app/model/task_vogal_selection_model.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
 import 'package:paula/app/views/components/SelectLetterButton.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
+import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/task_progress.dart';
 
 class TaskVogalSelection extends StatefulWidget {
@@ -23,24 +24,30 @@ class TaskVogalSelection extends StatefulWidget {
   State<TaskVogalSelection> createState() => _TaskVogalSelectionState();
 }
 
-class _TaskVogalSelectionState extends State<TaskVogalSelection> {
+class _TaskVogalSelectionState extends State<TaskVogalSelection>
+    with WidgetsBindingObserver {
   bool isCorrect = false;
   bool statusResolved = false;
-
-  AudioPlayer? audioPlayer;
-  _runAudio(String path) async {
-    try {
-      await audioPlayer?.play(AssetSource(path));
-    } catch (error) {
-      print(error.toString());
-    }
-  }
+  AudioManager audioManager = AudioManager();
 
   @override
   void initState() {
-    audioPlayer = AudioPlayer();
-    _runAudio("audios/paula/selecionaAsVogais.mp4");
+    WidgetsBinding.instance.addObserver(this);
+    audioManager.runAudio("audios/paula/${widget.task.audio}");
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    audioManager.stopAudio();
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    audioManager.didLifecycleChange(state);
   }
 
   @override
@@ -75,7 +82,8 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
                         padding: const EdgeInsets.only(bottom: 20.0),
                         child: MaterialButton(
                           onPressed: () {
-                            _runAudio("audios/paula/selecionaAsVogais.mp4");
+                            audioManager
+                                .runAudio("audios/paula/selecionaAsVogais.mp4");
                           },
                           child: Container(
                             height: 100.0,
@@ -105,7 +113,7 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection> {
                           children: widget.task.words
                               .map((word) => MaterialButton(
                                     onPressed: (() {
-                                      _runAudio(
+                                      audioManager.runAudio(
                                           "audios/words/${word.soundPath}");
                                     }),
                                     child: Container(

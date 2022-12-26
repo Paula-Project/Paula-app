@@ -5,6 +5,7 @@ class TaskVogalSelectionModel extends TaskModel {
   TaskVogalSelectionModel({
     String title = "SELECIONE AS VOGAIS",
     bool isCorrect = false,
+    required this.audio,
     required this.words,
   }) : super(title: title, isCorrect: isCorrect) {
     makeAnswers();
@@ -37,4 +38,6 @@ class TaskVogalSelectionModel extends TaskModel {
   clear() {
     vogaisSelecionadas.clear();
   }
+
+  final String audio;
 }
