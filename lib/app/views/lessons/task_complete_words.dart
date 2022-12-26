@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
@@ -26,6 +27,22 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
   @override
   bool isCorrect = false;
   int count = 0;
+
+  AudioPlayer? audioPlayer;
+  _runAudio(String path) async {
+    try {
+      await audioPlayer?.play(AssetSource(path));
+    } catch (error) {
+      print(error.toString());
+    }
+  }
+
+  @override
+  void initState() {
+    audioPlayer = AudioPlayer();
+    //_runAudio("audios/paula/complete_words.mp4");
+    super.initState();
+  }
 
   Widget NoDraggableLetter(letter) => Container(
         width: MediaQuery.of(context).size.width * 0.14,
@@ -67,14 +84,31 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
         onAccept: (letter) {
           accepted = true;
           widget.taskController.addVowelSelected(numList, letter);
-          print(widget.taskController.vowelsSelected);
-          print(widget.taskController.answers);
+          print("vowelSelected: ${widget.taskController.vowelsSelected}");
+          print("answer: ${widget.taskController.answers}");
         },
         onWillAccept: (letter) {
           return true;
         },
       );
 
+  List<Widget> makeWord(word) {
+    List<Widget> _widgets = [];
+    for (int i = 0; i < word.length; i++) {
+      String letter = word[i].toUpperCase();
+      if (widget.task.lessonVowels.contains(letter)) {
+        _widgets.add(Target(count, false));
+        count = count + 1;
+        widget.taskController.vowelsSelected.add('');
+      } else {
+        _widgets.add(NoDraggableLetter(letter));
+      }
+    }
+    print("makeword: $_widgets");
+    return _widgets;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -101,7 +135,7 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                       borderRadius: BorderRadius.all(Radius.circular(15))),
                   child: Center(
                     child: Padding(
-                      padding: EdgeInsets.all(12.0),
+                      padding: const EdgeInsets.all(12.0),
                       child: Text(
                         widget.task.title,
                         textAlign: TextAlign.center,
@@ -123,34 +157,39 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                   child: Column(
                       children: widget.task.words
                           .map(
-                            (word) => Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    flex: 2,
-                                    child: SizedBox(
-                                      height: 120,
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 8.0),
-                                        child: Image.asset(
-                                            'assets/images/words/${word.imagePath}'),
+                            (word) => MaterialButton(
+                              onPressed: (() {
+                                _runAudio("audios/words/${word.soundPath}");
+                              }),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 2,
+                                      child: SizedBox(
+                                        height: 120,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 8.0),
+                                          child: Image.asset(
+                                              'assets/images/words/${word.imagePath}'),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Expanded(
-                                    flex: 8,
-                                    child: SizedBox(
-                                      width: double.infinity,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: makeWord(word.text),
+                                    Expanded(
+                                      flex: 8,
+                                      child: SizedBox(
+                                        width: double.infinity,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: makeWord(word.text),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           )
@@ -170,7 +209,7 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
               ),
               Container(
                 margin: const EdgeInsets.only(top: 15.0),
-                child: Container(
+                child: SizedBox(
                     width: 200,
                     height: 40,
                     child: Row(
@@ -245,22 +284,6 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
         ),
       ),
     );
-  }
-
-  List<Widget> makeWord(word) {
-    List<Widget> _widgets = [];
-    for (int i = 0; i < word.length; i++) {
-      String letter = word[i].toUpperCase();
-      if (widget.task.lessonVowels.contains(letter)) {
-        _widgets.add(Target(count, false));
-        count = count + 1;
-        widget.taskController.vowelsSelected.add('');
-      } else {
-        _widgets.add(NoDraggableLetter(letter));
-      }
-    }
-
-    return _widgets;
   }
 }
 
