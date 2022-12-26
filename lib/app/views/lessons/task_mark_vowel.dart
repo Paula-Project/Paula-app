@@ -24,7 +24,8 @@ class TaskMarkVowel extends StatefulWidget {
   State<TaskMarkVowel> createState() => _TaskMarkVowelState();
 }
 
-class _TaskMarkVowelState extends State<TaskMarkVowel> {
+class _TaskMarkVowelState extends State<TaskMarkVowel>
+    with WidgetsBindingObserver {
   AudioPlayer? audioPlayer;
 
   _runAudio(String path) async {
@@ -37,9 +38,30 @@ class _TaskMarkVowelState extends State<TaskMarkVowel> {
 
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
     audioPlayer = AudioPlayer();
     _runAudio(widget.task.audio);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+
+    if (state == AppLifecycleState.inactive ||
+        state == AppLifecycleState.paused ||
+        state == AppLifecycleState.detached) {
+      audioPlayer?.pause();
+      return;
+    } else if (state == AppLifecycleState.resumed) {
+      audioPlayer?.resume();
+    }
   }
 
   @override
