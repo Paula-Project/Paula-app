@@ -24,6 +24,7 @@ class LessonButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {
             if (isActive) {
+              lessonController.reset();
               Navigator.push(
                   context,
                   PageTransition(

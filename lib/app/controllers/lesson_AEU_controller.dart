@@ -122,12 +122,19 @@ class LessonAEUController implements LessonControllerInterface {
       nextPage++;
       onCompleted();
     } else {
-      selectImageController.reset();
-      markVowelController.reset();
-      nextPage = 0;
-      correctAnswers = 0;
+      reset();
     }
     return widgetsRouters[nextPage];
+  }
+
+  @override
+  reset() {
+    nextPage = -1;
+    correctAnswers = 0;
+    selectImageController.reset();
+    markVowelController.reset();
+    completeWordController.reset();
+    vogalSelectionController.reset();
   }
 
   @override
