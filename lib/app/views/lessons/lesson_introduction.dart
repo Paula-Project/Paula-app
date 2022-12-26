@@ -1,9 +1,9 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/DIalogTextBoxDown.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
+import 'package:paula/app/views/components/audioManager.dart';
 
 class LessonIntroduction extends StatefulWidget {
   final String letter;
@@ -23,44 +23,28 @@ class LessonIntroduction extends StatefulWidget {
   State<LessonIntroduction> createState() => _LessonIntroductionState();
 }
 
-class _LessonIntroductionState extends State<LessonIntroduction> with WidgetsBindingObserver {
-  //final _timer =   Timer(const Duration(seconds: 5), () => {Get.to(const Lesson())});
-  AudioPlayer? audioPlayer;
-
-  _runAudio(String path) async {
-    try {
-      await audioPlayer?.play(AssetSource(path));
-    } catch (error) {
-      print(error.toString());
-    }
-  }
+class _LessonIntroductionState extends State<LessonIntroduction>
+    with WidgetsBindingObserver {
+  AudioManager audioManager = AudioManager();
 
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    audioPlayer = AudioPlayer();
-    _runAudio("audios/paula/${widget.audioUrl}");
+    audioManager.runAudio("audios/paula/${widget.audioUrl}");
     super.initState();
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    audioManager.stopAudio();
     super.dispose();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-
-    if (state == AppLifecycleState.inactive ||
-        state == AppLifecycleState.paused ||
-        state == AppLifecycleState.detached) {
-      audioPlayer?.pause();      
-      return;
-    } else if (state == AppLifecycleState.resumed) {
-      audioPlayer?.resume();
-    }
+    audioManager.didLifecycleChange(state);
   }
 
   @override
@@ -133,7 +117,6 @@ class _LessonIntroductionState extends State<LessonIntroduction> with WidgetsBin
                                 Icons.arrow_forward_outlined,
                               ),
                               onPressed: () async {
-                                audioPlayer?.stop();
                                 Navigator.of(context).pushAndRemoveUntil(
                                     PageTransition(
                                         type: PageTransitionType.rightToLeft,

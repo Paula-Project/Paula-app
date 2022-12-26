@@ -5,6 +5,7 @@ import 'package:paula/app/controllers/task_select_image_controller.dart';
 import 'package:paula/app/model/task_select_image_model.dart';
 import 'package:paula/app/views/components/CardImage.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
+import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/task_progress.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
 
@@ -24,42 +25,28 @@ class TaskSelectImage extends StatefulWidget {
   State<TaskSelectImage> createState() => _TaskSelectImageState();
 }
 
-class _TaskSelectImageState extends State<TaskSelectImage> with WidgetsBindingObserver {
-  AudioPlayer? audioPlayer;
-  _runAudio(String path) async {
-    try {
-      await audioPlayer?.play(AssetSource(path));
-    } catch (error) {
-      print(error.toString());
-    }
-  }
+class _TaskSelectImageState extends State<TaskSelectImage>
+    with WidgetsBindingObserver {
+  AudioManager audioManager = AudioManager();
 
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    audioPlayer = AudioPlayer();
-    _runAudio("audios/paula/${widget.task.audio}");
+    audioManager.runAudio("audios/paula/${widget.task.audio}");
     super.initState();
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    audioManager.stopAudio();
     super.dispose();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-
-    if (state == AppLifecycleState.inactive ||
-        state == AppLifecycleState.paused ||
-        state == AppLifecycleState.detached) {
-      audioPlayer?.pause();      
-      return;
-    } else if (state == AppLifecycleState.resumed) {
-      audioPlayer?.resume();
-    }
+    audioManager.didLifecycleChange(state);
   }
 
   @override
@@ -90,7 +77,8 @@ class _TaskSelectImageState extends State<TaskSelectImage> with WidgetsBindingOb
                     children: [
                       MaterialButton(
                         onPressed: () {
-                          _runAudio("audios/paula/${widget.task.audio}");
+                          audioManager
+                              .runAudio("audios/paula/${widget.task.audio}");
                         },
                         child: Container(
                           height: 100.0,
@@ -123,6 +111,7 @@ class _TaskSelectImageState extends State<TaskSelectImage> with WidgetsBindingOb
                                     "assets/images/words/${word.imagePath}",
                                 scale: 5.0,
                                 audioUrl: word.soundPath,
+                                audioManager: audioManager,
                                 isSelected:
                                     widget.task.cardSelected == word.text
                                         ? true
@@ -171,7 +160,6 @@ class _TaskSelectImageState extends State<TaskSelectImage> with WidgetsBindingOb
                                         )),
                                     onPressed: () {
                                       if (widget.task.cardSelected.isNotEmpty) {
-                                        audioPlayer?.stop();
                                         widget.lessonController.verifyAnswer(
                                             widget.task, widget.taskController);
                                         showGeneralDialog(
