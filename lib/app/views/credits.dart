@@ -22,10 +22,13 @@ class _CreditsPage extends State<CreditsPage> {
         elevation: 0,
         title: OutlinedButton(
           onPressed: () {
-            Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade, child: HomePage()));
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      HomePage(),
+                ),
+              (route) => false,
+            );
           },
           child: const Icon(
             Icons.arrow_back_sharp,
