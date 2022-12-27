@@ -63,24 +63,34 @@ class _DialogTextBoxState extends State<DialogTextBox> {
               ),
             ],
           ),
-          Container(
-            height: MediaQuery.of(context).size.height > 600 ? 100 : 70,
-            decoration: BoxDecoration(
-                color: const Color.fromARGB(199, 37, 85, 124),
-                borderRadius: BorderRadius.circular(15)),
-            child: Padding(
-              padding: EdgeInsets.all(
-                  MediaQuery.of(context).size.height > 510 ? 10.0 : 5),
-              child: AutoSizeText(
-                widget.TextContent,
-                style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w300,
-                    color: Colors.white),
-                minFontSize: 10,
+          Stack(children: [
+            Container(
+              height: MediaQuery.of(context).size.height > 600 ? 100 : 70,
+              decoration: BoxDecoration(
+                  color: const Color.fromARGB(199, 37, 85, 124),
+                  borderRadius: BorderRadius.circular(15)),
+              child: Padding(
+                padding: EdgeInsets.all(
+                    MediaQuery.of(context).size.height > 510 ? 10.0 : 5),
+                child: AutoSizeText(
+                  widget.TextContent,
+                  style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white),
+                  minFontSize: 10,
+                ),
               ),
             ),
-          ),
+            const Positioned(
+              right: 10,
+              bottom: 10,
+              child: Icon(
+                Icons.spatial_audio_off_sharp,
+                color: Colors.white,
+              ),
+            )
+          ]),
         ],
       ),
     );

@@ -36,22 +36,33 @@ class _TaskWordsExempleState extends State<TaskWordsExemple> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    height: 100.0,
-                    decoration: const BoxDecoration(
-                        color: Color.fromRGBO(37, 85, 124, 1),
-                        borderRadius: BorderRadius.all(Radius.circular(15.0))),
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Text(
-                          widget.task.title,
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w300),
+                  Stack(children: [
+                    Container(
+                      height: 100.0,
+                      decoration: const BoxDecoration(
+                          color: Color.fromRGBO(37, 85, 124, 1),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(15.0))),
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Text(
+                            widget.task.title,
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w300),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                    const Positioned(
+                      right: 10,
+                      bottom: 10,
+                      child: Icon(
+                        Icons.spatial_audio_off_sharp,
+                        color: Colors.white,
+                      ),
+                    )
+                  ]),
                   Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
