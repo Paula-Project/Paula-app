@@ -85,28 +85,38 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
                             audioManager
                                 .runAudio("audios/paula/selecionaAsVogais.mp4");
                           },
-                          child: Container(
-                            height: 100.0,
-                            decoration: const BoxDecoration(
-                                color: Color.fromRGBO(37, 85, 124, 1),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15))),
-                            child: const Center(
-                              child: Padding(
-                                padding: EdgeInsets.all(28.0),
-                                child: Text(
-                                  "SELECIONE AS VOGAIS",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.w300,
-                                    decoration: TextDecoration.none,
+                          child: Stack(children: [
+                            Container(
+                              height: 100.0,
+                              decoration: const BoxDecoration(
+                                  color: Color.fromRGBO(37, 85, 124, 1),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(15))),
+                              child: const Center(
+                                child: Padding(
+                                  padding: EdgeInsets.all(28.0),
+                                  child: Text(
+                                    "SELECIONE AS VOGAIS",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w300,
+                                      decoration: TextDecoration.none,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
+                            const Positioned(
+                              right: 10,
+                              bottom: 10,
+                              child: Icon(
+                                Icons.spatial_audio_off_sharp,
+                                color: Colors.white,
+                              ),
+                            )
+                          ]),
                         ),
                       ),
                       Column(
