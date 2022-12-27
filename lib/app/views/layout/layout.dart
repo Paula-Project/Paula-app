@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/service/prefs_service.dart';
 import 'package:paula/app/state/usuario_state.dart';
+import 'package:paula/app/views/credits.dart';
 import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/login_page.dart';
 import 'package:paula/app/views/person_data_page.dart';
@@ -46,7 +47,14 @@ class Layout extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => CreditsPage(),
+                ),
+                (route) => false,
+              );
+            },
             child: const Text(
               "Créditos",
               style: TextStyle(color: Colors.black45, fontSize: 15.0),
