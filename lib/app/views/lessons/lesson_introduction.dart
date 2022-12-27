@@ -81,7 +81,7 @@ class _LessonIntroductionState extends State<LessonIntroduction>
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.7,
                   child:
-                      DialogTextBoxDown(TextContent: widget.titleIntroduction),
+                      DialogTextBoxDown(textContent: widget.titleIntroduction),
                 ),
                 const SizedBox(
                   height: 10.0,
