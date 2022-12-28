@@ -77,13 +77,14 @@ flutter:
   assets:
     - assets/images/fireworks.json
 
-    - assets/images/paula/Avatar-Maker(1).png
-    - assets/images/paula/Avatar-Maker(2).png
-    - assets/images/paula/Avatar-Maker(4).png
     - assets/images/paula/paula01.png
     - assets/images/paula/paula02.png
     - assets/images/paula/paula03.png
     - assets/images/paula/paula04.png
+    - assets/images/paula/paula05.png
+    - assets/images/paula/paula06.png
+    - assets/images/paula/paula07.png
+    - assets/images/paula/paula08.png
 
     - assets/images/words/abacaxi.png
     - assets/images/words/abajur.png
