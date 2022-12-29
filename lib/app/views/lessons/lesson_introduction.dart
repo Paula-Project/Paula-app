@@ -62,24 +62,65 @@ class _LessonIntroductionState extends State<LessonIntroduction>
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(40.0),
+                  padding: const EdgeInsets.all(30.0),
                   child: Container(
                       alignment: Alignment.topCenter,
-                      height: MediaQuery.of(context).size.height * 0.45,
-                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      width: double.infinity,
                       decoration: const BoxDecoration(
                           color: Color.fromRGBO(37, 85, 124, 1),
                           borderRadius:
                               BorderRadius.all(Radius.circular(15.0))),
-                      child: Center(
-                        child: Text(
-                          widget.letter,
-                          style: const TextStyle(fontSize: 200.0),
-                        ),
-                      )),
+                      child: Wrap(children: [
+                        Container(
+                            decoration:
+                                const BoxDecoration(color: Colors.black26),
+                            width: (MediaQuery.of(context).size.width - 60) / 2,
+                            height: MediaQuery.of(context).size.height * 0.20,
+                            child: Center(
+                              child: Text(
+                                widget.letter.toUpperCase(),
+                                style: const TextStyle(
+                                  fontSize: 120,
+                                ),
+                              ),
+                            )),
+                        SizedBox(
+                            width: (MediaQuery.of(context).size.width - 60) / 2,
+                            height: MediaQuery.of(context).size.height * 0.20,
+                            child: Center(
+                              child: Text(
+                                widget.letter.toLowerCase(),
+                                style: const TextStyle(fontSize: 120),
+                              ),
+                            )),
+                        SizedBox(
+                            width: (MediaQuery.of(context).size.width - 60) / 2,
+                            height: MediaQuery.of(context).size.height * 0.20,
+                            child: Center(
+                              child: Text(
+                                widget.letter.toUpperCase(),
+                                style: const TextStyle(
+                                    fontSize: 120, fontFamily: 'Norican'),
+                              ),
+                            )),
+                        Container(
+                            decoration:
+                                const BoxDecoration(color: Colors.black26),
+                            width: (MediaQuery.of(context).size.width - 60) / 2,
+                            height: MediaQuery.of(context).size.height * 0.20,
+                            child: Center(
+                              child: Text(
+                                textAlign: TextAlign.center,
+                                widget.letter.toLowerCase(),
+                                style: const TextStyle(
+                                    fontSize: 120, fontFamily: 'Norican'),
+                              ),
+                            )),
+                      ])),
                 ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.7,
+                Padding(
+                  padding: const EdgeInsets.all(30.0),
                   child:
                       DialogTextBoxDown(textContent: widget.titleIntroduction),
                 ),

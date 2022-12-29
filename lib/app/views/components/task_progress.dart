@@ -16,23 +16,21 @@ class TaskProgress extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          height: 30,
-          width: 30,
           child: IconButton(
             color: Colors.black54,
             onPressed: () {
               exitDialog(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.close,
-              size: ((width - 150) / tasksNumber),
+              size: 40,
             ),
             padding: EdgeInsets.zero,
           ),
         ),
         for (int i = 0; i < tasksNumber; i++)
           Container(
-              margin: EdgeInsets.only(left: ((width / 6) / tasksNumber)),
+              margin: EdgeInsets.only(left: ((width / 6) / (tasksNumber + 1))),
               decoration: BoxDecoration(
                 color: i < correctAnswer ? Colors.green : Colors.black26,
                 borderRadius: const BorderRadius.all(Radius.circular(5)),

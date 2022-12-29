@@ -42,7 +42,7 @@ class _CardExempleState extends State<CardExemple> {
       onPressed: () async {
         _runAudio("audios/words/${widget.audioUrl}");
       },
-      highlightColor: Color.fromARGB(55, 3, 168, 244),
+      highlightColor: Color.fromARGB(167, 3, 168, 244),
       color: const Color.fromRGBO(209, 220, 221, 1),
       disabledElevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),

@@ -242,6 +242,10 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
   fonts:
+    - family: Norican
+      fonts:
+        - asset: assets/fonts/Norican-Regular.ttf
+
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Light.ttf
