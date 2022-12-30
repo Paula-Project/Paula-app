@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_paranoa_controller.dart';
-import 'package:paula/app/controllers/task_words_paranoa_controller.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
 
 class TaskWordsParanoaIntroduction extends StatefulWidget {
