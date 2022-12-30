@@ -40,7 +40,7 @@ class _CreditsPage extends State<CreditsPage> {
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: (MediaQuery.of(context).size.height * 0.04)),
+              SizedBox(height: (MediaQuery.of(context).size.height * 0.03)),
               const Text(
               "Créditos",
               style: TextStyle(
@@ -49,16 +49,15 @@ class _CreditsPage extends State<CreditsPage> {
                 fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: (MediaQuery.of(context).size.height * 0.035)),
-              /////////////////////////////////////////////////////////////// Images
+              SizedBox(height: (MediaQuery.of(context).size.height * 0.025)),
               const Text(
-              "Este é um aplicativo desenvolvido pela \n Universidade de Brasília",
+              "Este é um aplicativo desenvolvido pela \n Universidade de Brasília\nDecanato de Extensão Decanato de Extensão REPE - Pólo Paranoá",
               style: TextStyle(color: Colors.black, 
-              fontSize: 17.0, 
+              fontSize: 16.5, 
               fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
               ),
-              SizedBox(height: (MediaQuery.of(context).size.height * 0.018)),
+              /////////////////////////////////////////////////////////////// Images
               SizedBox(
                 height: (MediaQuery.of(context).size.height * 0.15),
                 child: Row(
@@ -70,7 +69,6 @@ class _CreditsPage extends State<CreditsPage> {
                   ],
                 )
                 ),
-              SizedBox(height: (MediaQuery.of(context).size.height * 0.02)),
               /////////////////////////////////////////////////////////////// Responsáveis
               const Text(
               "Responsáveis",
@@ -87,7 +85,7 @@ class _CreditsPage extends State<CreditsPage> {
               fontWeight: FontWeight.normal),
               textAlign: TextAlign.center,
               ),
-              SizedBox(height: (MediaQuery.of(context).size.height * 0.05)),
+              SizedBox(height: (MediaQuery.of(context).size.height * 0.045)),
               /////////////////////////////////////////////////////////////// Participação
               const Text(
               "Participação",
@@ -98,13 +96,35 @@ class _CreditsPage extends State<CreditsPage> {
               ),
               SizedBox(height: (MediaQuery.of(context).size.height * 0.02)),
               const Text(
-              "Fernanda Marcílio (Ilustradora)\nNOSSA PAULA (Dubladora)",
+              "Fernanda Marcílio (Ilustradora)",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 16.0, 
+              fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "fernandas.marcilio@gmail.com",
               style: TextStyle(color: Colors.black, 
               fontSize: 16.0, 
               fontWeight: FontWeight.normal),
               textAlign: TextAlign.center,
               ),
-              SizedBox(height: (MediaQuery.of(context).size.height * 0.085)),
+              SizedBox(height: (MediaQuery.of(context).size.height * 0.01)),
+              const Text(
+              "Ana Karolliny Dias (Dubladora)",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 16.0, 
+              fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "sand36serg37@gmail.com",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 16.0, 
+              fontWeight: FontWeight.normal),
+              textAlign: TextAlign.center,
+              ),
+              SizedBox(height: (MediaQuery.of(context).size.height * 0.04)),
               /////////////////////////////////////////////////////////////// Contato
               const Text(
               "Contato",
