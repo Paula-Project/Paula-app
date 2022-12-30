@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/lesson_paranoa_controller.dart';
 import 'package:paula/app/controllers/task_words_paranoa_controller.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
@@ -11,7 +12,7 @@ import 'components/module_button.dart';
 
 class HomePage extends StatelessWidget {
   ModuleVowelsController moduleVowelsController = ModuleVowelsController();
-  TaskWordsParanoaController fodac = TaskWordsParanoaController();
+  LessonParanoaController lessonParanoaController = LessonParanoaController();
 
   HomePage({Key? key}) : super(key: key);
   final int indexPage = 0;
@@ -34,10 +35,14 @@ class HomePage extends StatelessWidget {
                       moduleVowelsController: moduleVowelsController,
                     ),
                     true),
-                ModuleButton(Alignment.centerRight, "Módulo \n 2", TaskWordsParanoaIntroduction(lessonController: fodac),
-                    moduleVowelsController.getCompleted(usuarioLogado)),
                 ModuleButton(
-                    Alignment.centerLeft, "Módulo \n 3", HomePage(), false),
+                    Alignment.centerRight,
+                    "Paranoá",
+                    TaskWordsParanoaIntroduction(
+                        lessonController: lessonParanoaController),
+                    true),
+                ModuleButton(Alignment.centerLeft, "Módulo \n 3", HomePage(),
+                    moduleVowelsController.getCompleted(usuarioLogado)),
                 ModuleButton(
                     Alignment.centerRight, "Módulo \n 4", HomePage(), false),
                 ModuleButton(
