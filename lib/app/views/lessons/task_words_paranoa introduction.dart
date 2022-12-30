@@ -84,30 +84,30 @@ class _TaskWordsParanoaIntroductionState extends State<TaskWordsParanoaIntroduct
                           ),
                     ),
                   ),
-                   SizedBox(
-                                  height: 50.0,
-                                  width: 150.0,
-                                  child: ElevatedButton(
-                                    style: ButtonStyle(
-                                        foregroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                Colors.white),
-                                        backgroundColor:
-                                           MaterialStateProperty.all<Color>(
-                                                Colors.blue)
-                                            ,
-                                        shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                side: BorderSide.none))),
-                                    child: const Text('CONTINUAR',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600,
-                                        )),
-                                        onPressed: (){},),)
+                   SizedBox(  
+                      height: 50.0,
+                      width: 150.0,
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                            foregroundColor:
+                                MaterialStateProperty.all<Color>(
+                                    Colors.white),
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(
+                                    Colors.blue)
+                                ,
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.circular(10),
+                                    side: BorderSide.none))),
+                        child: const Text('CONTINUAR',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            )),
+                            onPressed: (){},),)
                 ],
               )),
         ),
