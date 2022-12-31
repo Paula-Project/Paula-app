@@ -8,6 +8,7 @@ import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
 import 'package:paula/app/model/task_model.dart';
 import 'package:paula/app/views/lessons/congratulations_vowels_page.dart';
 import 'package:paula/app/views/lessons/task_complete_words.dart';
+import 'package:paula/app/views/lessons/task_diphthong.dart';
 import 'package:paula/app/views/lessons/task_select_image.dart';
 import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 
@@ -30,6 +31,9 @@ class LessonFinalController implements LessonControllerInterface {
   List widgetsRouters = [];
 
   LessonFinalController({required this.moduleVowelsController}) {
+    widgetsRouters.add(TaskDiphthong(
+      lessonController: this,
+    ));
     widgetsRouters.add(TaskSelectImage(
       task: selectImageController.getVogaisI(),
       taskController: selectImageController,
