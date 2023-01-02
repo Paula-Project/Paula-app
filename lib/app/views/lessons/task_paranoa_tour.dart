@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/model/task_paranoa_tour_model.dart';
-import 'package:paula/app/views/components/ButtonNext.dart';
 import 'package:paula/app/views/components/CardParanoaTour.dart';
 import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/buttonContinue.dart';
@@ -27,7 +26,7 @@ class _TaskParanoaTourState extends State<TaskParanoaTour>
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    audioManager.runAudio("audios/paula/paula_completeWords.mp3");
+    audioManager.runAudio("audios/paula/${widget.task.audioPath}");
     super.initState();
   }
 
@@ -68,8 +67,8 @@ class _TaskParanoaTourState extends State<TaskParanoaTour>
                       ),
                       MaterialButton(
                         onPressed: () {
-                          audioManager
-                              .runAudio("audios/paula/paula_completeWords.mp3");
+                          audioManager.runAudio(
+                              "audios/paula/${widget.task.audioPath}");
                         },
                         padding: EdgeInsets.zero,
                         child: Row(

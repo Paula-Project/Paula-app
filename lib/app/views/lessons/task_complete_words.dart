@@ -2,6 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
+import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
 import 'package:paula/app/views/components/task_progress.dart';
 
@@ -24,25 +25,31 @@ class TaskCompleteWords extends StatefulWidget {
   State<TaskCompleteWords> createState() => _TaskCompleteWordsState();
 }
 
-class _TaskCompleteWordsState extends State<TaskCompleteWords> {
-  @override
+class _TaskCompleteWordsState extends State<TaskCompleteWords>
+    with WidgetsBindingObserver {
   bool isCorrect = false;
   int count = 0;
 
-  AudioPlayer? audioPlayer;
-  _runAudio(String path) async {
-    try {
-      await audioPlayer?.play(AssetSource(path));
-    } catch (error) {
-      print(error.toString());
-    }
-  }
+  AudioManager audioManager = AudioManager();
 
   @override
   void initState() {
-    audioPlayer = AudioPlayer();
-    //_runAudio("audios/paula/complete_words.mp4");
+    WidgetsBinding.instance.addObserver(this);
+    audioManager.runAudio("audios/paula/${widget.task.audio}");
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    audioManager.stopAudio();
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    audioManager.didLifecycleChange(state);
   }
 
   Widget NoDraggableLetter(letter) => Container(
@@ -133,35 +140,42 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                 const SizedBox(height: 10.0),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Stack(children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.1,
-                      decoration: const BoxDecoration(
-                          color: Color.fromRGBO(37, 85, 124, 1),
-                          borderRadius: BorderRadius.all(Radius.circular(15))),
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Text(
-                            widget.task.title,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w300,
+                  child: MaterialButton(
+                    onPressed: () {
+                      audioManager
+                          .runAudio("audios/paula/${widget.task.audio}");
+                    },
+                    child: Stack(children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.1,
+                        decoration: const BoxDecoration(
+                            color: Color.fromRGBO(37, 85, 124, 1),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15))),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Text(
+                              widget.task.title,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.w300,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    const Positioned(
-                      right: 10,
-                      bottom: 10,
-                      child: Icon(
-                        Icons.spatial_audio_off_sharp,
-                        color: Colors.white,
-                      ),
-                    )
-                  ]),
+                      const Positioned(
+                        right: 10,
+                        bottom: 10,
+                        child: Icon(
+                          Icons.spatial_audio_off_sharp,
+                          color: Colors.white,
+                        ),
+                      )
+                    ]),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -174,7 +188,8 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords> {
                             .map(
                               (word) => MaterialButton(
                                 onPressed: (() {
-                                  _runAudio("audios/words/${word.soundPath}");
+                                  audioManager.runAudio(
+                                      "audios/words/${word.soundPath}");
                                 }),
                                 child: Padding(
                                   padding: const EdgeInsets.all(10.0),

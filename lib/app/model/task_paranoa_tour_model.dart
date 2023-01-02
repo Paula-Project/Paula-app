@@ -3,10 +3,10 @@ import 'package:paula/app/model/word.dart';
 
 class TaskParanoaTourModel extends TaskModel {
   final List<Word> words;
-  final String titleAudioPath;
+  final String audioPath;
   TaskParanoaTourModel({
     required this.words,
     required String title,
-    required this.titleAudioPath,
+    required this.audioPath,
   }) : super(title: title);
 }

@@ -4,12 +4,12 @@ import 'package:paula/app/views/components/audioManager.dart';
 class CardImage extends StatefulWidget {
   const CardImage({
     Key? key,
-    required this.imageUrl,
     required this.scale,
     required this.isSelected,
-    required this.audioUrl,
+    this.audioUrl = "",
     required this.onPress,
     required this.audioManager,
+    required this.imageUrl,
   }) : super(key: key);
   final String audioUrl;
   final String imageUrl;
@@ -31,8 +31,9 @@ class _CardImageState extends State<CardImage> {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: (() {
-        widget.audioManager.runAudio("audios/words/${widget.audioUrl}");
         widget.onPress();
+        if (widget.audioUrl == "") return;
+        widget.audioManager.runAudio("audios/words/${widget.audioUrl}");
       }),
       child: Container(
           height: (MediaQuery.of(context).size.height) * 0.17,

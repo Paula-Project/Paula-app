@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
@@ -83,7 +84,7 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
                         child: MaterialButton(
                           onPressed: () {
                             audioManager
-                                .runAudio("audios/paula/selecionaAsVogais.mp4");
+                                .runAudio("audios/paula/${widget.task.audio}");
                           },
                           child: Stack(children: [
                             Container(
@@ -95,8 +96,8 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
                               child: const Center(
                                 child: Padding(
                                   padding: EdgeInsets.all(28.0),
-                                  child: Text(
-                                    "SELECIONE AS VOGAIS",
+                                  child: AutoSizeText(
+                                    "SELECIONE APENAS AS VOGAIS",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Colors.white,
@@ -104,6 +105,7 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
                                       fontWeight: FontWeight.w300,
                                       decoration: TextDecoration.none,
                                     ),
+                                    minFontSize: 10,
                                   ),
                                 ),
                               ),

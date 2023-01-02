@@ -14,25 +14,25 @@ class TaskVogalSelectionController implements TaskController {
     task1 = TaskVogalSelectionModel(words: [
       words.words[14], //caneta
       words.words[7] //uva
-    ], audio: "");
+    ], audio: "paula_vowelSelection.mp3");
     task2 = TaskVogalSelectionModel(words: [
       words.words[22], //ovo
       words.words[2] //apito
-    ], audio: "");
+    ], audio: "paula_vowelSelection.mp3");
     task3 = TaskVogalSelectionModel(words: [
       words.words[4], //arvore
       words.words[19] //iguana
-    ], audio: "");
+    ], audio: "paula_vowelSelection.mp3");
 
     task4 = TaskVogalSelectionModel(words: [
       words.words[32], //urso
       words.words[30] //igreja
-    ], audio: "");
+    ], audio: "paula_vowelSelection.mp3");
 
     task5 = TaskVogalSelectionModel(words: [
       words.words[37], //olho
       words.words[39] //isca
-    ], audio: "");
+    ], audio: "paula_vowelSelection.mp3");
   }
 
   TaskVogalSelectionModel getTask1() {

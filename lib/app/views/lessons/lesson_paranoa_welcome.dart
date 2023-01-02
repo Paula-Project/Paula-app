@@ -1,22 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_paranoa_controller.dart';
+import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/buttonContinue.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
 
-class TaskWordsParanoaIntroduction extends StatefulWidget {
+class LessonParanoaWelcome extends StatefulWidget {
   final LessonParanoaController lessonController;
-  const TaskWordsParanoaIntroduction({
+  const LessonParanoaWelcome({
     Key? key,
     required this.lessonController,
   }) : super(key: key);
 
   @override
-  State<TaskWordsParanoaIntroduction> createState() =>
-      _TaskWordsParanoaIntroductionState();
+  State<LessonParanoaWelcome> createState() => _LessonParanoaWelcomeState();
 }
 
-class _TaskWordsParanoaIntroductionState
-    extends State<TaskWordsParanoaIntroduction> {
+class _LessonParanoaWelcomeState extends State<LessonParanoaWelcome>
+    with WidgetsBindingObserver {
+  AudioManager audioManager = AudioManager();
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    audioManager.runAudio("audios/paula/paula_paranoaWelcome.mp3");
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    audioManager.stopAudio();
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    audioManager.didLifecycleChange(state);
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -50,29 +72,35 @@ class _TaskWordsParanoaIntroductionState
                       ),
                     ),
                   ),
-                  Stack(children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.18,
-                      width: (MediaQuery.of(context).size.width * 0.8),
-                      decoration: const BoxDecoration(
-                        color: Color.fromRGBO(37, 85, 124, 1),
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                  MaterialButton(
+                    onPressed: () {
+                      audioManager
+                          .runAudio("audios/paula/paula_paranoaWelcome.mp3");
+                    },
+                    child: Stack(children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.18,
+                        width: (MediaQuery.of(context).size.width * 0.8),
+                        decoration: const BoxDecoration(
+                          color: Color.fromRGBO(37, 85, 124, 1),
+                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                        ),
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: const Text(
+                            "Bem-vindo ao Paranoá. Agora vamos conhecer a minha cidade.",
+                            style: TextStyle(fontSize: 22)),
                       ),
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: const Text(
-                          "Bem-vindo ao Paranoá. Agora vamos conhecer a minha cidade.",
-                          style: TextStyle(fontSize: 22)),
-                    ),
-                    const Positioned(
-                      right: 10,
-                      top: 10,
-                      child: Icon(
-                        Icons.spatial_audio_off_sharp,
-                        color: Colors.white,
+                      const Positioned(
+                        right: 10,
+                        top: 10,
+                        child: Icon(
+                          Icons.spatial_audio_off_sharp,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                  ]),
+                    ]),
+                  ),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.4,
                     width: (MediaQuery.of(context).size.width * 0.8),

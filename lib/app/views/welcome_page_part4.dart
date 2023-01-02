@@ -63,7 +63,7 @@ class WelcomePagePart4 extends StatelessWidget {
                       const DialogTextBox(
                         TextContent:
                             "Para começar vamos precisar de algumas informações suas, tudo bem? Nessa etapa talvez você precise de alguém para te ajudar, ok?",
-                        audioUrl: "paula03.mp3",
+                        audioUrl: "paula_welcome_3.mp3",
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height > 550

@@ -62,7 +62,7 @@ class WelcomePagePart3 extends StatelessWidget {
                       const DialogTextBox(
                         TextContent:
                             "Eu nasci de um projeto do Polo Paranoá da UnB, e eu vou acompanhar o seu aprendizado de perto!",
-                        audioUrl: 'paula02.mp3',
+                        audioUrl: 'paula_welcome_2.mp3',
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height > 550

@@ -77,6 +77,7 @@ flutter:
   assets:
     - assets/images/fireworks.json
 
+    #Figuras da paula
     - assets/images/paula/paula01.png
     - assets/images/paula/paula02.png
     - assets/images/paula/paula03.png
@@ -87,6 +88,7 @@ flutter:
     - assets/images/paula/paula08.png
     - assets/images/paula/paula09.png
 
+    #Figuras das palavras
     - assets/images/words/abacaxi.png
     - assets/images/words/abajur.png
     - assets/images/words/antena.png
@@ -132,6 +134,7 @@ flutter:
     - assets/images/words/urso.png
     - assets/images/words/uva.png
 
+    #Figuras dos selos
     - assets/images/selos/Selo_diario_off.png
     - assets/images/selos/Selo_mensal_off.png
     - assets/images/selos/Selo_palavras_off.png
@@ -139,35 +142,80 @@ flutter:
     - assets/images/selos/Selo_vogais_off.png
     - assets/images/selos/Selo_vogais.png
 
-    - assets/images/fireworks.png
-    - assets/images/patience.png
+    #Logo unb
     - assets/images/UnB_logo.png
-    - assets/audios/paula/paula01.mp3
-    - assets/audios/paula/paula02.mp3
-    - assets/audios/paula/paula03.mp3
 
-    - assets/audios/paula/selecioneAsVogais.mp4
+    ##Audios Paula
 
-    - assets/audios/paula/paula_completeWords.mp3
+    #Audios paula de bem vindo
+    - assets/audios/paula/paula_welcome_1.mp3
+    - assets/audios/paula/paula_welcome_2.mp3
+    - assets/audios/paula/paula_welcome_3.mp3
 
+    #Audios paula de parabéns
+    - assets/audios/paula/paula_parabens_1.mp3
+    - assets/audios/paula/paula_parabens_2.mp3
+    - assets/audios/paula/paula_parabens_3.mp3
+
+    #Audios lesson_introduction
     - assets/audios/paula/paula_introduction_A.mp3
     - assets/audios/paula/paula_introduction_E.mp3
     - assets/audios/paula/paula_introduction_I.mp3
     - assets/audios/paula/paula_introduction_O.mp3
     - assets/audios/paula/paula_introduction_U.mp3
 
+    #Audios task_mark_vowel
     - assets/audios/paula/paula_selection_A.mp3
     - assets/audios/paula/paula_selection_E.mp3
     - assets/audios/paula/paula_selection_I.mp3
     - assets/audios/paula/paula_selection_O.mp3
     - assets/audios/paula/paula_selection_U.mp3
 
+    #Audios task_select_image
     - assets/audios/paula/paula_selectionImage_A.mp3
     - assets/audios/paula/paula_selectionImage_E.mp3
     - assets/audios/paula/paula_selectionImage_I.mp3
     - assets/audios/paula/paula_selectionImage_O.mp3
     - assets/audios/paula/paula_selectionImage_U.mp3
 
+    #Audios Paula ditongos
+    - assets/audios/paula/paula_ditongos.mp3
+    - assets/audios/paula/paula_ai.mp3
+    - assets/audios/paula/paula_ei.mp3
+    - assets/audios/paula/paula_oi.mp3
+    - assets/audios/paula/paula_ou.mp3
+    - assets/audios/paula/paula_ui.mp3
+
+    #Audios Paula task_words_exemple
+    - assets/audios/paula/paula_lessonExample_A.mp3
+    - assets/audios/paula/paula_lessonExample_E.mp3
+    - assets/audios/paula/paula_lessonExample_I.mp3
+    - assets/audios/paula/paula_lessonExample_O.mp3
+    - assets/audios/paula/paula_lessonExample_U.mp3
+
+    #Audios Paula lesson_vogais
+    - assets/audios/paula/paula_lessonVogais.mp3
+
+    #Audios Paula task_vogal_selection
+    - assets/audios/paula/paula_vowelSelection.mp3
+
+    #Audios Paula Paranoa
+    - assets/audios/paula/paula_palavraWrite.mp3
+    - assets/audios/paula/paula_paranoaWrite.mp3
+    - assets/audios/paula/paula_paranoaColorido.mp3
+    - assets/audios/paula/paula_paranoaDistribuidoras.mp3
+    - assets/audios/paula/paula_paranoaDomingo.mp3
+    - assets/audios/paula/paula_paranoaFome.mp3
+    - assets/audios/paula/paula_paranoaLago.mp3
+    - assets/audios/paula/paula_paranoaWelcome.mp3
+
+    #Audios Paula tente Novamente
+    - assets/audios/paula/paula_tryAgain_1.mp3
+    - assets/audios/paula/paula_tryAgain_2.mp3
+
+    - assets/audios/paula/paula_completeWords.mp3
+
+    ##Audios palavras geradas por computador
     - assets/audios/words/abacaxi.mp3
     - assets/audios/words/abajur.mp3
     - assets/audios/words/antena.mp3
