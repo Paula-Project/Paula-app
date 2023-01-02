@@ -5,7 +5,7 @@ import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/layout/layout.dart';
 import 'package:paula/app/views/lessons/lessons_vogais.dart';
-import 'package:paula/app/views/lessons/task_words_paranoa%20introduction.dart';
+import 'package:paula/app/views/lessons/lesson_paranoa_welcome.dart';
 import 'package:provider/provider.dart';
 import '../controllers/module_vowels_controller.dart';
 import 'components/module_button.dart';
@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
                 ModuleButton(
                     Alignment.centerRight,
                     "Paranoá",
-                    TaskWordsParanoaIntroduction(
+                    LessonParanoaWelcome(
                         lessonController: lessonParanoaController),
                     true),
                 ModuleButton(Alignment.centerLeft, "Módulo \n 3", HomePage(),

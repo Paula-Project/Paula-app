@@ -1,9 +1,11 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/DIalogTextBoxDown.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
 import 'package:paula/app/views/components/audioManager.dart';
+import 'package:paula/app/views/layout/task_layout.dart';
 
 class LessonIntroduction extends StatefulWidget {
   final String letter;
@@ -49,9 +51,9 @@ class _LessonIntroductionState extends State<LessonIntroduction>
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: (() => exitDialog(context)),
-      child: Material(
+    return TaskLayout(
+      shouldPop: true,
+      body: Material(
         child: Container(
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -78,7 +80,8 @@ class _LessonIntroductionState extends State<LessonIntroduction>
                             width: (MediaQuery.of(context).size.width - 60) / 2,
                             height: MediaQuery.of(context).size.height * 0.20,
                             child: Center(
-                              child: Text(
+                              child: AutoSizeText(
+                                minFontSize: 80,
                                 widget.letter.toUpperCase(),
                                 style: const TextStyle(
                                   fontSize: 120,
@@ -89,7 +92,8 @@ class _LessonIntroductionState extends State<LessonIntroduction>
                             width: (MediaQuery.of(context).size.width - 60) / 2,
                             height: MediaQuery.of(context).size.height * 0.20,
                             child: Center(
-                              child: Text(
+                              child: AutoSizeText(
+                                minFontSize: 80,
                                 widget.letter.toLowerCase(),
                                 style: const TextStyle(fontSize: 120),
                               ),
@@ -98,7 +102,8 @@ class _LessonIntroductionState extends State<LessonIntroduction>
                             width: (MediaQuery.of(context).size.width - 60) / 2,
                             height: MediaQuery.of(context).size.height * 0.20,
                             child: Center(
-                              child: Text(
+                              child: AutoSizeText(
+                                minFontSize: 80,
                                 widget.letter.toUpperCase(),
                                 style: const TextStyle(
                                     fontSize: 120, fontFamily: 'Norican'),
@@ -110,7 +115,8 @@ class _LessonIntroductionState extends State<LessonIntroduction>
                             width: (MediaQuery.of(context).size.width - 60) / 2,
                             height: MediaQuery.of(context).size.height * 0.20,
                             child: Center(
-                              child: Text(
+                              child: AutoSizeText(
+                                minFontSize: 80,
                                 textAlign: TextAlign.center,
                                 widget.letter.toLowerCase(),
                                 style: const TextStyle(
@@ -121,8 +127,13 @@ class _LessonIntroductionState extends State<LessonIntroduction>
                 ),
                 Padding(
                   padding: const EdgeInsets.all(30.0),
-                  child:
-                      DialogTextBoxDown(textContent: widget.titleIntroduction),
+                  child: MaterialButton(
+                      onPressed: () {
+                        audioManager
+                            .runAudio("audios/paula/${widget.audioUrl}");
+                      },
+                      child: DialogTextBoxDown(
+                          textContent: widget.titleIntroduction)),
                 ),
                 const SizedBox(
                   height: 10.0,

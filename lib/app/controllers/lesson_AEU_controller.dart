@@ -39,7 +39,7 @@ class LessonAEUController implements LessonControllerInterface {
 
     widgetsRouters.add(LessonIntroduction(
       letter: 'A',
-      titleIntroduction: "Esta é a letra ‘A’, repita comigo LETRA A.",
+      titleIntroduction: "Esta é a letra A, repita comigo LETRA A.",
       controller: this,
       audioUrl: 'paula_introduction_A.mp3',
     ));
@@ -59,7 +59,7 @@ class LessonAEUController implements LessonControllerInterface {
     ));
     widgetsRouters.add(LessonIntroduction(
       letter: 'E',
-      titleIntroduction: "Esta é a letra ‘E’, repita comigo LETRA E.",
+      titleIntroduction: "Esta é a letra E, repita comigo LETRA E.",
       controller: this,
       audioUrl: 'paula_introduction_E.mp3',
     ));
@@ -79,7 +79,7 @@ class LessonAEUController implements LessonControllerInterface {
     ));
     widgetsRouters.add(LessonIntroduction(
       letter: 'U',
-      titleIntroduction: "Esta é a letra ‘U’, repita comigo LETRA U.",
+      titleIntroduction: "Esta é a letra U, repita comigo LETRA U.",
       controller: this,
       audioUrl: 'paula_introduction_U.mp3',
     ));

@@ -14,7 +14,7 @@ class TaskSelectImageController extends TaskController {
 
   TaskSelectImageController() {
     vogaisA = TaskSelectImageModel(
-        title: "Selecione a imagem que começa com a letra “A”:",
+        title: "Selecione a imagem que começa com a som “A”:",
         answer: words.words[4].text, // arvore
         audio: "paula_selectionImage_A.mp3",
         words: [
@@ -25,7 +25,7 @@ class TaskSelectImageController extends TaskController {
         ]);
 
     vogaisE = TaskSelectImageModel(
-        title: "Selecione a imagem que começa com a letra “E”:",
+        title: "Selecione a imagem que começa com a som “E”:",
         answer: words.words[5].text, //escada
         audio: "paula_selectionImage_E.mp3",
         words: [
@@ -36,7 +36,7 @@ class TaskSelectImageController extends TaskController {
         ]);
 
     vogaisI = TaskSelectImageModel(
-        title: "Selecione a imagem que começa com a letra “I”:",
+        title: "Selecione a imagem que começa com a som “I”:",
         answer: words.words[20].text, //IOIO
         audio: "paula_selectionImage_I.mp3",
         words: [
@@ -47,7 +47,7 @@ class TaskSelectImageController extends TaskController {
         ]);
 
     vogaisI2 = TaskSelectImageModel(
-        title: "Selecione a imagem que começa com a letra “I”:",
+        title: "Selecione a imagem que começa com a som “I”:",
         answer: words.words[19].text, //iguana
         audio: "paula_selectionImage_I.mp3",
         words: [
@@ -58,7 +58,7 @@ class TaskSelectImageController extends TaskController {
         ]);
 
     vogaisO = TaskSelectImageModel(
-        title: "Selecione a imagem que começa com a letra “O”:",
+        title: "Selecione a imagem que começa com a som “O”:",
         answer: words.words[22].text, //OVO
         audio: "paula_selectionImage_O.mp3",
         words: [
@@ -69,7 +69,7 @@ class TaskSelectImageController extends TaskController {
         ]);
 
     vogaisO2 = TaskSelectImageModel(
-        title: "Selecione a imagem que começa com a letra “O”:",
+        title: "Selecione a imagem que começa com a som “O”:",
         answer: words.words[37].text, //olho
         audio: "paula_selectionImage_O.mp3",
         words: [
@@ -80,7 +80,7 @@ class TaskSelectImageController extends TaskController {
         ]);
 
     vogaisU = TaskSelectImageModel(
-        title: "Selecione a imagem que começa com a letra “U”:",
+        title: "Selecione a imagem que começa com a som “U”:",
         answer: words.words[7].text, //uva
         audio: "paula_selectionImage_U.mp3",
         words: [

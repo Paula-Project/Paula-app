@@ -1,13 +1,17 @@
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/controllers/task_controller.dart';
+import 'package:paula/app/controllers/task_paranoa_tour_controller.dart';
 import 'package:paula/app/controllers/task_words_paranoa_controller.dart';
 import 'package:paula/app/model/task_model.dart';
-import 'package:paula/app/views/home_page.dart';
+import 'package:paula/app/views/lessons/task_paranoa_tour.dart';
 import 'package:paula/app/views/lessons/task_words_paranoa.dart';
+import 'package:paula/app/views/lessons/try_again_page.dart';
 
 class LessonParanoaController implements LessonControllerInterface {
   TaskWordsParanoaController taskWordsParanoaController =
       TaskWordsParanoaController();
+  TaskParanoaTourController taskParanoaTourController =
+      TaskParanoaTourController();
   List widgetsRouters = [];
   static int correctAnswers = 0;
   int tasksQuantity = 2;
@@ -16,11 +20,20 @@ class LessonParanoaController implements LessonControllerInterface {
   static bool completed = false;
 
   LessonParanoaController() {
-    widgetsRouters.add(TaskWordsParanoa(
-        task: taskWordsParanoaController.getTask1, lessonController: this));
-
-    widgetsRouters.add(TaskWordsParanoa(
-        task: taskWordsParanoaController.getTask2, lessonController: this));
+    widgetsRouters.add(TaskParanoaTour(
+        lessonController: this, task: taskParanoaTourController.getTaskFood()));
+    widgetsRouters.add(TaskParanoaTour(
+        lessonController: this,
+        task: taskParanoaTourController.getTaskColors()));
+    widgetsRouters.add(TaskParanoaTour(
+        lessonController: this,
+        task: taskParanoaTourController.getTaskDurst()));
+    widgetsRouters.add(TaskParanoaTour(
+        lessonController: this, task: taskParanoaTourController.getTaskLake()));
+    widgetsRouters.add(TaskParanoaTour(
+        lessonController: this,
+        task: taskParanoaTourController.getTaskSunday()));
+    widgetsRouters.add(TryAgainPage());
   }
 
   @override

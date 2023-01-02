@@ -18,7 +18,7 @@ class _TaskDiphthongState extends State<TaskDiphthong>
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    audioManager.runAudio("audios/paula/paula_completeWords.mp3");
+    audioManager.runAudio("audios/paula/paula_ditongos.mp3");
     super.initState();
   }
 
@@ -54,8 +54,7 @@ class _TaskDiphthongState extends State<TaskDiphthong>
               children: [
                 MaterialButton(
                   onPressed: () {
-                    audioManager
-                        .runAudio("audios/paula/paula_completeWords.mp3");
+                    audioManager.runAudio("audios/paula/paula_ditongos.mp3");
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -111,27 +110,27 @@ class _TaskDiphthongState extends State<TaskDiphthong>
                 DiphthongWidget(
                   letters: const ['o', 'i'],
                   audioManager: audioManager,
-                  audioPath: 'assets/audios/paula/oi.mp3',
+                  audioPath: 'audios/paula/paula_oi.mp3',
                 ),
                 DiphthongWidget(
                   letters: const ['a', 'i'],
                   audioManager: audioManager,
-                  audioPath: 'assets/audios/paula/ai.mp3',
+                  audioPath: 'audios/paula/paula_ai.mp3',
                 ),
                 DiphthongWidget(
                   letters: const ['e', 'i'],
                   audioManager: audioManager,
-                  audioPath: 'assets/audios/paula/ei.mp3',
+                  audioPath: 'audios/paula/paula_ei.mp3',
                 ),
                 DiphthongWidget(
                   letters: const ['u', 'i'],
                   audioManager: audioManager,
-                  audioPath: 'assets/audios/paula/ui.mp3',
+                  audioPath: 'audios/paula/paula_ui.mp3',
                 ),
                 DiphthongWidget(
                   letters: const ['o', 'u'],
                   audioManager: audioManager,
-                  audioPath: 'assets/audios/paula/ou.mp3',
+                  audioPath: 'audios/paula/paula_ou.mp3',
                 ),
                 SizedBox(
                     height: 40.0,
@@ -204,7 +203,7 @@ class DiphthongWidget extends StatelessWidget {
               style: TextStyle(fontSize: 35, color: Colors.black)),
           MaterialButton(
             onPressed: () {
-              audioManager.runAudio("audios/paula/paula_completeWords.mp3");
+              audioManager.runAudio(audioPath);
             },
             height: 60,
             shape:

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/module_vowels_controller.dart';
 import 'package:paula/app/views/lessons/lessons_vogais.dart';
-import 'package:paula/app/views//components/ButtonNext.dart';
 import 'package:lottie/lottie.dart';
 
 class CongratulationsPage extends StatefulWidget {

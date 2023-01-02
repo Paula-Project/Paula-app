@@ -12,7 +12,7 @@ class TaskWordsExempleController {
 
   TaskWordsExempleController() {
     taskA = TaskWordsExempleModel(
-        title: "Aqui estão alguns exemplos de objetos com “A”:",
+        title: "Você encontra a letra “A” em muitas palavras, como:",
         letter: ["A", "Á", "À", "Â", "Ã"],
         words: [
           words.words[8], // AVIÃO
@@ -20,9 +20,9 @@ class TaskWordsExempleController {
           words.words[3], // ARROZ
           words.words[4], // ARVORE
         ],
-        audio: "");
+        audio: "paula_lessonExample_A.mp3");
     taskE = TaskWordsExempleModel(
-        title: "Aqui estão alguns exemplos de objetos com “E”:",
+        title: "Você encontra a letra “E” em muitas palavras, como:",
         letter: ["E", "É", "Ê", 'Ẽ'],
         words: [
           words.words[26], // ESCOVA
@@ -30,9 +30,9 @@ class TaskWordsExempleController {
           words.words[28], // ELEFANTE
           words.words[29], // ESTRELA
         ],
-        audio: "");
+        audio: "paula_lessonExample_E.mp3");
     taskI = TaskWordsExempleModel(
-        title: "Aqui estão alguns exemplos de objetos com “I”:",
+        title: "Você encontra a letra “I” em muitas palavras, como:",
         letter: [
           "I",
           "Í",
@@ -44,9 +44,9 @@ class TaskWordsExempleController {
           words.words[30], // IGREJA
           words.words[31], // IOGURTE
         ],
-        audio: "");
+        audio: "paula_lessonExample_I.mp3");
     taskO = TaskWordsExempleModel(
-        title: "Aqui estão alguns exemplos de objetos com “O”:",
+        title: "Você encontra a letra “O” em muitas palavras, como:",
         letter: [
           "O",
           "Õ",
@@ -58,9 +58,9 @@ class TaskWordsExempleController {
           words.words[24], // ONIBUS
           words.words[37], // OLHO
         ],
-        audio: "");
+        audio: "paula_lessonExample_O.mp3");
     taskU = TaskWordsExempleModel(
-        title: "Aqui estão alguns exemplos de objetos com “U”:",
+        title: "Você encontra a letra “U” em muitas palavras, como:",
         letter: [
           "U",
         ],
@@ -70,7 +70,7 @@ class TaskWordsExempleController {
           words.words[34], // UM
           words.words[7], // UVA
         ],
-        audio: "");
+        audio: "paula_lessonExample_U.mp3");
   }
   TaskWordsExempleModel getTaskA() {
     return taskA;

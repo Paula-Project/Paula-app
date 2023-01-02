@@ -27,7 +27,7 @@ class LessonIOController implements LessonControllerInterface {
 
   final ModuleVowelsController moduleVowelsController;
   static int correctAnswers = 0;
-  int tasksQuantity = 6;
+  int tasksQuantity = 8;
 
   static int nextPage = -1;
   static bool completed = false;
@@ -41,7 +41,7 @@ class LessonIOController implements LessonControllerInterface {
 
     widgetsRouters.add(LessonIntroduction(
       letter: 'I',
-      titleIntroduction: "Esta é a letra ‘I’, repita comigo LETRA I",
+      titleIntroduction: "Esta é a letra I, repita comigo LETRA I",
       controller: this,
       audioUrl: 'paula_introduction_I.mp3',
     ));
@@ -61,7 +61,7 @@ class LessonIOController implements LessonControllerInterface {
     ));
     widgetsRouters.add(LessonIntroduction(
       letter: 'O',
-      titleIntroduction: "Esta é a letra ‘O’, repita comigo LETRA O",
+      titleIntroduction: "Esta é a letra O, repita comigo LETRA O",
       controller: this,
       audioUrl: 'paula_introduction_O.mp3',
     ));
