@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/model/task_words_paranoa_model.dart';
-import 'package:paula/app/views/components/ButtonNext.dart';
 import 'package:paula/app/views/components/CardParanoa.dart';
+import 'package:paula/app/views/components/buttonContinue.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
 
 class TaskWordsParanoa extends StatefulWidget {
@@ -69,9 +69,8 @@ class _TaskWordsParanoaState extends State<TaskWordsParanoa> {
                     child: SizedBox(
                       width: 180,
                       height: 50,
-                      child: ButtonNext(
-                        pageWidget: widget.lessonController.nextTask(),
-                        onPressed: () {},
+                      child: ButtonContinue(
+                        lessonController: widget.lessonController,
                       ),
                     ),
                   ),
