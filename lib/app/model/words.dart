@@ -44,10 +44,10 @@ class Words {
     'Olho', // 37
     'Sorvete', // 38
     'Isca', // 39
-    'Paranoá Carnes', // 40
-    'Paranoá Panificadora', // 41
-    'Paranoá Tintas', // 42
-    'Paranoá Upa' // 43
+    'Paranoá\nCarnes', // 40
+    'Paranoá\nPanificadora', // 41
+    'Paranoá\nTintas', // 42
+    'Paranoá\nUpa' // 43
   ];
   List<String> soundsList = [
     'abajur.mp3',

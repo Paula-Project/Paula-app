@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_paranoa_controller.dart';
+import 'package:paula/app/views/components/buttonContinue.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
 
 class TaskWordsParanoaIntroduction extends StatefulWidget {
@@ -84,36 +85,7 @@ class _TaskWordsParanoaIntroductionState
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 50.0,
-                    width: 150.0,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                          foregroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white),
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.blue),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      side: BorderSide.none))),
-                      child: const Text('CONTINUAR',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          )),
-                      onPressed: () {
-                        Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                widget.lessonController.nextTask(),
-                          ),
-                          (route) => false,
-                        );
-                      },
-                    ),
-                  )
+                  ButtonContinue(lessonController: widget.lessonController)
                 ],
               )),
         ),
