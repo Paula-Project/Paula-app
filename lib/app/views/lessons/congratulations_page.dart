@@ -1,5 +1,7 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/module_vowels_controller.dart';
+import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/lessons/lessons_vogais.dart';
 import 'package:lottie/lottie.dart';
 
@@ -12,9 +14,47 @@ class CongratulationsPage extends StatefulWidget {
   State<CongratulationsPage> createState() => _CongratulationsPageState();
 }
 
-class _CongratulationsPageState extends State<CongratulationsPage> {
+class _CongratulationsPageState extends State<CongratulationsPage>
+    with WidgetsBindingObserver {
+  AudioManager audioManager = AudioManager();
+  AudioManager audioManager2 = AudioManager();
+  List<String> speech = [
+    "Parabéns, \nvocê está indo muito bem",
+    "Muito bem, \né isso aí, Você é 10",
+    "Nossa, estou chocada, \nvocê é demais"
+  ];
+  List<String> audios = [
+    "audios/paula/paula_parabens_1.mp3",
+    "audios/paula/paula_parabens_2.mp3",
+    "audios/paula/paula_parabens_3.mp3"
+  ];
+  int randomNum = Random().nextInt(3);
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    audioManager2.runAudio("audios/congrats_1.mp3");
+    Future.delayed(const Duration(seconds: 1), () {
+      audioManager.runAudio(audios[randomNum]);
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    audioManager.stopAudio();
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    audioManager.didLifecycleChange(state);
+  }
+
   @override
   Widget build(BuildContext context) {
+    print("$randomNum");
     Future<bool> _onwillpop() async {
       return false;
     }
@@ -42,12 +82,12 @@ class _CongratulationsPageState extends State<CongratulationsPage> {
                 child: Column(
                   children: [
                     Stack(children: [
-                      const Padding(
-                        padding: EdgeInsets.fromLTRB(8, 00, 8, 0),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 00, 8, 0),
                         child: Text(
-                          "VOCÊ É INCRÍVEL!",
+                          speech[randomNum],
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: 'Poppins',
                             color: Colors.white,
                             fontSize: 40,

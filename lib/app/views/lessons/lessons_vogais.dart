@@ -71,6 +71,7 @@ class _LessonsVogaisState extends State<LessonsVogais>
               LessonButton(
                 isActive: true,
                 textContent: 'A - E - U',
+                audioManager: audioManager,
                 lessonController:
                     widget.moduleVowelsController.lessonAEUController,
               ),
@@ -78,6 +79,7 @@ class _LessonsVogaisState extends State<LessonsVogais>
                 isActive: widget.moduleVowelsController.lessonAEUController
                     .getCompleted(),
                 textContent: 'I - O',
+                audioManager: audioManager,
                 lessonController:
                     widget.moduleVowelsController.lessonIOController,
               ),
@@ -85,6 +87,7 @@ class _LessonsVogaisState extends State<LessonsVogais>
                 isActive: widget.moduleVowelsController.lessonIOController
                     .getCompleted(),
                 textContent: 'LIÇÃO FINAL',
+                audioManager: audioManager,
                 lessonController:
                     widget.moduleVowelsController.lessonFinalController,
               ),
