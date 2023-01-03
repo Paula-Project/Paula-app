@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
+import 'package:paula/app/views/components/audioManager.dart';
 
 class LessonButton extends StatelessWidget {
   final String textContent;
   final bool isActive;
   final LessonControllerInterface lessonController;
-
+  final AudioManager audioManager;
   const LessonButton({
     Key? key,
     required this.textContent,
     required this.isActive,
     required this.lessonController,
+    required this.audioManager,
   }) : super(key: key);
 
   @override
@@ -25,11 +26,13 @@ class LessonButton extends StatelessWidget {
           onPressed: () {
             if (isActive) {
               lessonController.reset();
-              Navigator.push(
-                  context,
-                  PageTransition(
-                      type: PageTransitionType.rightToLeft,
-                      child: lessonController.nextTask()));
+              audioManager.stopAudio();
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        lessonController.nextTask()),
+                (route) => false,
+              );
             }
           },
           style: ButtonStyle(

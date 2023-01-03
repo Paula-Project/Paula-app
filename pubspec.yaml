@@ -258,11 +258,7 @@ flutter:
 
     - assets/audios/sucess_sound.mp3
     - assets/audios/failed_sound.mp3
-    - assets/audios/marqueA.ogg
-    - assets/audios/marqueE.ogg
-    - assets/audios/marqueI.ogg
-    - assets/audios/marqueO.ogg
-    - assets/audios/marqueU.ogg
+    - assets/audios/congrats_1.mp3
 
     - assets/alphabet/letter-a.png
     - assets/alphabet/letter-e.png
