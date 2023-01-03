@@ -42,7 +42,7 @@ class LessonAEUController implements LessonControllerInterface {
       titleIntroduction: "Esta é a letra A, repita comigo LETRA A.",
       controller: this,
       audioUrl: 'paula_introduction_A.mp3',
-    )); /*
+    ));
     widgetsRouters.add(TaskWordsExemple(
       task: wordsExempleController.getTaskA(),
       lessonController: this,
@@ -106,7 +106,7 @@ class LessonAEUController implements LessonControllerInterface {
       lessonController: this,
       task: completeWordController.getTask1(),
       taskController: completeWordController,
-    ));*/
+    ));
     widgetsRouters.add(CongratulationsPage(
       moduleVowelsController: moduleVowelsController,
     ));
