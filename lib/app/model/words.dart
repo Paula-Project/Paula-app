@@ -47,7 +47,15 @@ class Words {
     'Paranoá\nCarnes', // 40
     'Paranoá\nPanificadora', // 41
     'Paranoá\nTintas', // 42
-    'Paranoá\nUpa' // 43
+    'Paranoá\nUpa', // 43
+    'Casa\nNordestina', // 44
+    'Paraíba\nDistribuidora', // 45
+    'Lago Paranoá', // 46
+    'Lago Paranoá', // 47
+    'Paroquia', // 48
+    'Pé na Jaca', // 49
+    'Tintas', // 50
+    'Universal', // 51
   ];
   List<String> soundsList = [
     'abajur.mp3',
@@ -94,6 +102,14 @@ class Words {
     'paranoá_panificadora.mp3',
     'paranoá_tintas.mp3',
     'paranoá_upa.mp3',
+    'paranoa_casaNordestina.mp3',
+    'paranoa_Distribuidora.mp3',
+    'paranoa_lago1.mp3',
+    'paranoa_lago2.mp3',
+    'paranoa_paroquia.mp3',
+    'paranoa_penaJaca.mp3',
+    'paranoa_tintas1.mp3',
+    'paranoa_Universal.mp3',
   ];
   List<String> imagesList = [
     'abajur.png',
@@ -140,6 +156,14 @@ class Words {
     'paranoa_panificadora.jpg',
     'paranoa_tintas.jpg',
     'paranoa_upa.jpg',
+    'paranoa_casaNordestina.png',
+    'paranoa_Distribuidora.png',
+    'paranoa_lago1.png',
+    'paranoa_lago2.png',
+    'paranoa_paroquia.png',
+    'paranoa_penaJaca.png',
+    'paranoa_tintas1.png',
+    'paranoa_Universal.png',
   ];
 
   void populate() {
