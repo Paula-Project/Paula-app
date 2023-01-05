@@ -264,6 +264,17 @@ flutter:
     - assets/audios/words/unha.mp3
     - assets/audios/words/urso.mp3
     - assets/audios/words/uva.mp3
+    - assets/audios/words/paranoa_carnes.mp3
+    - assets/audios/words/paranoa_casaNordestina.mp3
+    - assets/audios/words/paranoa_distribuidora.mp3
+    - assets/audios/words/paranoa_lago.mp3
+    - assets/audios/words/paranoa_panificadora.mp3
+    - assets/audios/words/paranoa_paroquia.mp3
+    - assets/audios/words/paranoa_penaJaca.mp3
+    - assets/audios/words/paranoa_tintas.mp3
+    - assets/audios/words/paranoa_tintas1.mp3
+    - assets/audios/words/paranoa_universal.mp3
+    - assets/audios/words/paranoa_upa.mp3
 
     - assets/audios/sucess_sound.mp3
     - assets/audios/failed_sound.mp3

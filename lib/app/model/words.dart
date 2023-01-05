@@ -52,7 +52,7 @@ class Words {
     'Paraíba\nDistribuidora', // 45
     'Lago Paranoá', // 46
     'Lago Paranoá', // 47
-    'Paroquia', // 48
+    'Paróquia', // 48
     'Pé na Jaca', // 49
     'Tintas', // 50
     'Universal', // 51
@@ -98,18 +98,18 @@ class Words {
     'olho.mp3',
     'sorvete.mp3',
     'isca.mp3',
-    'paranoá_carnes.mp3',
-    'paranoá_panificadora.mp3',
-    'paranoá_tintas.mp3',
-    'paranoá_upa.mp3',
+    'paranoa_carnes.mp3',
+    'paranoa_panificadora.mp3',
+    'paranoa_tintas.mp3',
+    'paranoa_upa.mp3',
     'paranoa_casaNordestina.mp3',
-    'paranoa_Distribuidora.mp3',
-    'paranoa_lago1.mp3',
-    'paranoa_lago2.mp3',
+    'paranoa_distribuidora.mp3',
+    'paranoa_lago.mp3',
+    'paranoa_lago.mp3',
     'paranoa_paroquia.mp3',
     'paranoa_penaJaca.mp3',
     'paranoa_tintas1.mp3',
-    'paranoa_Universal.mp3',
+    'paranoa_universal.mp3',
   ];
   List<String> imagesList = [
     'abajur.png',
