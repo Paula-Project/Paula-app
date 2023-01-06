@@ -8,6 +8,8 @@ class SelectLetterButton extends StatefulWidget {
   final Function addVogal;
   final Function removeVogal;
 
+  final String word;
+
   SelectLetterButton({
     Key? key,
     required this.letter,
@@ -15,6 +17,7 @@ class SelectLetterButton extends StatefulWidget {
     required this.task,
     required this.addVogal,
     required this.removeVogal,
+    required this.word,
   }) : super(key: key);
 
   @override
@@ -62,7 +65,7 @@ class _SelectLetterButtonState extends State<SelectLetterButton> {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      width: 40,
+      width: widget.word.length > 5 ? 35 : 40,
       margin: const EdgeInsets.all(5),
       child: TextButton(
         onPressed: () => {
@@ -72,8 +75,9 @@ class _SelectLetterButtonState extends State<SelectLetterButton> {
         },
         style: TextButton.styleFrom(
           backgroundColor: colorBgStatus(),
-          textStyle: const TextStyle(
-            fontSize: 35,
+          alignment: Alignment.center,
+          textStyle: TextStyle(
+            fontSize: widget.word.length > 5 ? 25 : 30,
             fontWeight: FontWeight.w700,
           ),
         ),

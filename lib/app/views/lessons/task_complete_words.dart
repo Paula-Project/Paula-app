@@ -1,13 +1,11 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
 import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
 import 'package:paula/app/views/components/task_progress.dart';
-
-import '../../controllers/task_complete_word_controller.dart';
-import '../../model/task_complete_word_model.dart';
+import 'package:paula/app/controllers/task_complete_word_controller.dart';
+import 'package:paula/app/model/task_complete_word_model.dart';
 
 class TaskCompleteWords extends StatefulWidget {
   final LessonControllerInterface lessonController;
@@ -53,19 +51,21 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords>
   }
 
   Widget NoDraggableLetter(letter) => Container(
-        width: MediaQuery.of(context).size.width * 0.14,
+        width: 35,
         height: MediaQuery.of(context).size.height * 0.08,
         decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(15)),
+          borderRadius: BorderRadius.all(Radius.circular(5)),
           color: Color.fromRGBO(209, 220, 221, 1),
         ),
-        child: Text(
-          letter,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 40,
-            fontWeight: FontWeight.bold,
+        child: Center(
+          child: Text(
+            letter,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.grey,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       );
@@ -73,27 +73,24 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords>
   Widget Target(int numList, bool accepted) => DragTarget<String>(
         builder: (BuildContext context, List<Object?> candidateData,
             List<dynamic> rejectedData) {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 20.0),
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.14,
-              height: MediaQuery.of(context).size.height * 0.06,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: Color.fromRGBO(37, 85, 124, 1),
-              ),
-              child: accepted == true
-                  ? NoDraggableLetter(
-                      widget.taskController.vowelsSelected[numList])
-                  : LetterBox(''),
+          return Container(
+            width: 35,
+            height: MediaQuery.of(context).size.height * 0.08,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+              color: Color.fromRGBO(37, 85, 124, 1),
             ),
+            child: accepted == true
+                ? NoDraggableLetter(
+                    widget.taskController.vowelsSelected[numList])
+                : LetterBox(''),
           );
         },
         onAccept: (letter) {
           accepted = true;
           widget.taskController.addVowelSelected(numList, letter);
-          print("vowelSelected: ${widget.taskController.vowelsSelected}");
           print("answer: ${widget.taskController.answers}");
+          print("vowelSelected: ${widget.taskController.vowelsSelected}");
         },
         onWillAccept: (letter) {
           return true;
@@ -336,19 +333,21 @@ class LetterBox extends StatelessWidget {
   }
 
   Widget letterCard(context) => Container(
-        width: MediaQuery.of(context).size.width * 0.14,
-        height: MediaQuery.of(context).size.height * 0.06,
+        width: 35,
+        height: MediaQuery.of(context).size.height * 0.08,
         decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderRadius: BorderRadius.all(Radius.circular(5)),
           color: Color.fromRGBO(37, 85, 124, 1),
         ),
+        alignment: Alignment.center,
+        margin: const EdgeInsets.all(5),
         child: Text(
           letter,
           textAlign: TextAlign.center,
           style: const TextStyle(
             color: Colors.white,
             decoration: TextDecoration.none,
-            fontSize: 40,
+            fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
         ),

@@ -51,8 +51,7 @@ class _TryAgainPageState extends State<TryAgainPage> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(bottom: 20),
-                              child:
-                                  Image.asset('images/sorvete.png', scale: 6.0),
+                              child: Image.asset('assets/images/UnB_logo.png'),
                             ),
                             const Text(
                               "TENTE NOVAMENTE!",
@@ -79,8 +78,7 @@ class _TryAgainPageState extends State<TryAgainPage> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 30),
-                              child: Image.asset('images/patience.png',
-                                  scale: 6.0),
+                              child: Image.asset('assets/images/UnB_logo.png'),
                             ),
                           ],
                         ),

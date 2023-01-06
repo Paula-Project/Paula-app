@@ -21,6 +21,7 @@ class _LessonParanoaWelcomeState extends State<LessonParanoaWelcome>
 
   @override
   void initState() {
+    widget.lessonController.reset();
     WidgetsBinding.instance.addObserver(this);
     audioManager.runAudio("audios/paula/paula_paranoaWelcome.mp3");
     super.initState();
