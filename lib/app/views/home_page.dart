@@ -40,15 +40,7 @@ class HomePage extends StatelessWidget {
                     "Paranoá",
                     LessonParanoaWelcome(
                         lessonController: lessonParanoaController),
-                    true),
-                ModuleButton(Alignment.centerLeft, "Módulo \n 3", HomePage(),
                     moduleVowelsController.getCompleted(usuarioLogado)),
-                ModuleButton(
-                    Alignment.centerRight, "Módulo \n 4", HomePage(), false),
-                ModuleButton(
-                    Alignment.centerLeft, "Módulo \n 5", HomePage(), false),
-                ModuleButton(
-                    Alignment.centerRight, "Módulo \n 6", HomePage(), false)
               ]));
         }));
   }
