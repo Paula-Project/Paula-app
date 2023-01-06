@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/login_page.dart';
-import 'package:paula/app/views/person_data_page.dart';
+import 'package:paula/app/views/person_data_page.dart'; 
 
 class CreditsPage extends StatefulWidget {
   const CreditsPage({Key? key})
@@ -40,7 +40,7 @@ class _CreditsPage extends State<CreditsPage> {
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: (MediaQuery.of(context).size.height * 0.03)),
+              SizedBox(height: (MediaQuery.of(context).size.height * 0.02)),
               const Text(
               "Créditos",
               style: TextStyle(
@@ -49,7 +49,7 @@ class _CreditsPage extends State<CreditsPage> {
                 fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: (MediaQuery.of(context).size.height * 0.025)),
+              SizedBox(height: (MediaQuery.of(context).size.height * 0.015)),
               const Text(
               "Este é um aplicativo desenvolvido pela \n Universidade de Brasília\nDecanato de Extensão Decanato de Extensão REPE - Pólo Paranoá",
               style: TextStyle(color: Colors.black, 
@@ -59,7 +59,7 @@ class _CreditsPage extends State<CreditsPage> {
               ),
               /////////////////////////////////////////////////////////////// Images
               SizedBox(
-                height: (MediaQuery.of(context).size.height * 0.15),
+                height: (MediaQuery.of(context).size.height * 0.13),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -79,13 +79,65 @@ class _CreditsPage extends State<CreditsPage> {
               ),
               SizedBox(height: (MediaQuery.of(context).size.height * 0.02)),
               const Text(
-              "Luiza Yoko (Orientadora)\nEmerson Teles (Desenvolvedor)\nThalis Ianzer (Desenvolvedor)",
+              "Luiza Yoko (Orientadora)",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 16.0, 
+              fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "luizayoko@gmail.com",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 14.0, 
+              fontWeight: FontWeight.normal),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "Emerson Teles (Desenvolvedor)",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 16.0, 
+              fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "emersonlteles21@gmail.com",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 14.0, 
+              fontWeight: FontWeight.normal),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "Thalis Ianzer (Desenvolverdor)",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 16.0, 
+              fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "thaliscezar@gmail.com",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 14.0, 
+              fontWeight: FontWeight.normal),
+              textAlign: TextAlign.center,
+              ),
+              SizedBox(height: (MediaQuery.of(context).size.height * 0.025)),
+              /////////////////////////////////////////////////////////////// Contato
+              const Text(
+              "Contato",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 20.0, 
+              fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+              ),
+              SizedBox(height: (MediaQuery.of(context).size.height * 0.01)),
+              const Text(
+              "aplicativopaulaunb@gmail.com",
               style: TextStyle(color: Colors.black, 
               fontSize: 16.0, 
               fontWeight: FontWeight.normal),
               textAlign: TextAlign.center,
               ),
-              SizedBox(height: (MediaQuery.of(context).size.height * 0.045)),
+              SizedBox(height: (MediaQuery.of(context).size.height * 0.03)),
               /////////////////////////////////////////////////////////////// Participação
               const Text(
               "Participação",
@@ -105,11 +157,10 @@ class _CreditsPage extends State<CreditsPage> {
               const Text(
               "fernandas.marcilio@gmail.com",
               style: TextStyle(color: Colors.black, 
-              fontSize: 16.0, 
+              fontSize: 14.0, 
               fontWeight: FontWeight.normal),
               textAlign: TextAlign.center,
               ),
-              SizedBox(height: (MediaQuery.of(context).size.height * 0.01)),
               const Text(
               "Ana Karolliny Dias (Dubladora)",
               style: TextStyle(color: Colors.black, 
@@ -120,27 +171,81 @@ class _CreditsPage extends State<CreditsPage> {
               const Text(
               "sand36serg37@gmail.com",
               style: TextStyle(color: Colors.black, 
-              fontSize: 16.0, 
+              fontSize: 14.0, 
               fontWeight: FontWeight.normal),
               textAlign: TextAlign.center,
               ),
-              SizedBox(height: (MediaQuery.of(context).size.height * 0.04)),
-              /////////////////////////////////////////////////////////////// Contato
               const Text(
-              "Contato",
-              style: TextStyle(color: Colors.black, 
-              fontSize: 20.0, 
-              fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-              ),
-              SizedBox(height: (MediaQuery.of(context).size.height * 0.02)),
-              const Text(
-              "aplicativopaulaunb@gmail.com\nluizayoko@gmail.com",
+              "Caio Berg (Desenvolvedor)",
               style: TextStyle(color: Colors.black, 
               fontSize: 16.0, 
               fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
               ),
+              const Text(
+              "http://github.com/Caio-bergbjj",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 14.0, 
+              fontWeight: FontWeight.normal),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "Mateus Almeida (Desenvolvedor)",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 16.0, 
+              fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "http://github.com/Mateuszinnn",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 14.0, 
+              fontWeight: FontWeight.normal),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "Lucas de Pádua (Desenvolvedor)",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 16.0, 
+              fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "http://github.com/Padualb",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 14.0, 
+              fontWeight: FontWeight.normal),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "Pedro Lucas (Desenvolvedor)",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 16.0, 
+              fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "http://github.com/pedrolucas12",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 14.0, 
+              fontWeight: FontWeight.normal),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "Fellipe Silva (Desenvolvedor)",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 16.0, 
+              fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+              ),
+              const Text(
+              "http://github.com/fellipepcs",
+              style: TextStyle(color: Colors.black, 
+              fontSize: 14.0, 
+              fontWeight: FontWeight.normal),
+              textAlign: TextAlign.center,
+              ),
+              SizedBox(height: (MediaQuery.of(context).size.height * 0.02)),
             ],
           ),
         ),
