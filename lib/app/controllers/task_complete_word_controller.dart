@@ -9,6 +9,7 @@ class TaskCompleteWordController {
   late TaskCompleteWordModel task3;
   late TaskCompleteWordModel task4;
   late TaskCompleteWordModel taskParanoa;
+  late TaskCompleteWordModel taskTintas;
   Words words = Words();
 
   TaskCompleteWordController() {
@@ -18,6 +19,12 @@ class TaskCompleteWordController {
         audio: 'paula_paranoaWrite.mp3',
         words: [words.words[36]],
         lessonVowels: ['P', 'R', 'A', 'N', 'O', 'Á']);
+    taskTintas = TaskCompleteWordModel(
+        title:
+            'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
+        audio: 'paula_palavraWrite.mp3',
+        words: [words.words[50]],
+        lessonVowels: ['T', 'I', 'N', 'A', 'S']);
     task1 = TaskCompleteWordModel(
       lessonVowels: ['A', 'E', 'U'],
       words: [
@@ -46,7 +53,7 @@ class TaskCompleteWordController {
       lessonVowels: ['A', 'E', 'I', 'O', 'U'],
       words: [
         words.words[36], // PARANOÁ
-        words.words[32], // URSO
+        words.words[50], // TINTAS
         words.words[37], // OLHO
       ],
     );
@@ -70,6 +77,10 @@ class TaskCompleteWordController {
 
   TaskCompleteWordModel getTaskParanoa() {
     return taskParanoa;
+  }
+
+  TaskCompleteWordModel getTaskTintas() {
+    return taskTintas;
   }
 
   void makeAnswers(TaskCompleteWordModel task) {

@@ -4,6 +4,7 @@ import 'package:paula/app/controllers/task_controller.dart';
 import 'package:paula/app/controllers/task_paranoa_tour_controller.dart';
 import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
 import 'package:paula/app/model/task_model.dart';
+import 'package:paula/app/views/lessons/congratulations_paranoa.dart';
 import 'package:paula/app/views/lessons/task_complete_words.dart';
 import 'package:paula/app/views/lessons/task_paranoa_tour.dart';
 import 'package:paula/app/views/lessons/task_vogal_selection.dart';
@@ -30,8 +31,6 @@ class LessonParanoaController implements LessonControllerInterface {
         lessonController: this,
         taskController: vogalSelectionController,
         task: vogalSelectionController.getTaskParanoa()));
-    widgetsRouters.add(TaskParanoaTour(
-        lessonController: this, task: paranoaTourController.getTaskColors()));
     widgetsRouters.add(TaskCompleteWords(
         lessonController: this,
         task: completeWordController.getTask4(),
@@ -43,10 +42,16 @@ class LessonParanoaController implements LessonControllerInterface {
     widgetsRouters.add(TaskParanoaTour(
         lessonController: this, task: paranoaTourController.getTaskDurst()));
     widgetsRouters.add(TaskParanoaTour(
+        lessonController: this, task: paranoaTourController.getTaskColors()));
+    widgetsRouters.add(TaskWriteWords(
+        lessonController: this,
+        task: completeWordController.getTaskTintas(),
+        taskController: completeWordController));
+    widgetsRouters.add(TaskParanoaTour(
         lessonController: this, task: paranoaTourController.getTaskLake()));
     widgetsRouters.add(TaskParanoaTour(
         lessonController: this, task: paranoaTourController.getTaskSunday()));
-    widgetsRouters.add(TryAgainPage());
+    widgetsRouters.add(const CongratulationsParanoa());
   }
 
   @override

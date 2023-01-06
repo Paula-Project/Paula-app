@@ -34,7 +34,7 @@ class TaskParanoaTourController extends TaskController {
     taskLake = TaskParanoaTourModel(
       title: "Quando estou com calor, vou sempre no lago paranoá:",
       audioPath: "paula_paranoaLago.mp3",
-      words: [words.words[46], words.words[47]],
+      words: [words.words[47]],
     );
   }
   TaskParanoaTourModel getTaskFood() {
