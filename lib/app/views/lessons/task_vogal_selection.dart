@@ -1,4 +1,3 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
@@ -65,8 +64,8 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Padding(
-            padding: const EdgeInsets.only(
-                top: 50.0, bottom: 50.0, left: 15.0, right: 15.0),
+            padding:
+                const EdgeInsets.symmetric(vertical: 40.0, horizontal: 15.0),
             child: Column(
               children: [
                 TaskProgress(
@@ -160,6 +159,7 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
                                                       statusResolved:
                                                           statusResolved,
                                                       task: widget.task,
+                                                      word: word.text,
                                                       letter:
                                                           String.fromCharCode(
                                                                   letter)

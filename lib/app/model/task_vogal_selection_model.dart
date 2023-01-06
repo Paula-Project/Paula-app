@@ -13,7 +13,7 @@ class TaskVogalSelectionModel extends TaskModel {
   final List<Word> words;
   List<String> lettersCorrect = [];
   List<String> vogaisSelecionadas = [];
-  final List<String> vogais = ['A', 'E', 'I', 'O', 'U'];
+  final List<String> vogais = ['A', 'Á', 'E', 'I', 'O', 'U'];
 
   void makeAnswers() {
     for (int i = 0; i < words.length; i++) {

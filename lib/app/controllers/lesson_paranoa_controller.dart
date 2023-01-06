@@ -1,38 +1,51 @@
 import 'package:paula/app/controllers/lesson_controller_interface.dart';
+import 'package:paula/app/controllers/task_complete_word_controller.dart';
 import 'package:paula/app/controllers/task_controller.dart';
 import 'package:paula/app/controllers/task_paranoa_tour_controller.dart';
-import 'package:paula/app/controllers/task_words_paranoa_controller.dart';
+import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
 import 'package:paula/app/model/task_model.dart';
+import 'package:paula/app/views/lessons/task_complete_words.dart';
 import 'package:paula/app/views/lessons/task_paranoa_tour.dart';
-import 'package:paula/app/views/lessons/task_words_paranoa.dart';
+import 'package:paula/app/views/lessons/task_vogal_selection.dart';
+import 'package:paula/app/views/lessons/task_write_words.dart';
 import 'package:paula/app/views/lessons/try_again_page.dart';
 
 class LessonParanoaController implements LessonControllerInterface {
-  TaskWordsParanoaController taskWordsParanoaController =
-      TaskWordsParanoaController();
-  TaskParanoaTourController taskParanoaTourController =
-      TaskParanoaTourController();
+  TaskParanoaTourController paranoaTourController = TaskParanoaTourController();
+  TaskVogalSelectionController vogalSelectionController =
+      TaskVogalSelectionController();
+  TaskCompleteWordController completeWordController =
+      TaskCompleteWordController();
   List widgetsRouters = [];
   static int correctAnswers = 0;
-  int tasksQuantity = 2;
+  int tasksQuantity = 3;
 
   static int nextPage = -1;
   static bool completed = false;
 
   LessonParanoaController() {
     widgetsRouters.add(TaskParanoaTour(
-        lessonController: this, task: taskParanoaTourController.getTaskFood()));
-    widgetsRouters.add(TaskParanoaTour(
+        lessonController: this, task: paranoaTourController.getTaskFood()));
+    widgetsRouters.add(TaskVogalSelection(
         lessonController: this,
-        task: taskParanoaTourController.getTaskColors()));
+        taskController: vogalSelectionController,
+        task: vogalSelectionController.getTaskParanoa()));
     widgetsRouters.add(TaskParanoaTour(
+        lessonController: this, task: paranoaTourController.getTaskColors()));
+    widgetsRouters.add(TaskCompleteWords(
         lessonController: this,
-        task: taskParanoaTourController.getTaskDurst()));
-    widgetsRouters.add(TaskParanoaTour(
-        lessonController: this, task: taskParanoaTourController.getTaskLake()));
-    widgetsRouters.add(TaskParanoaTour(
+        task: completeWordController.getTask4(),
+        taskController: completeWordController));
+    widgetsRouters.add(TaskWriteWords(
         lessonController: this,
-        task: taskParanoaTourController.getTaskSunday()));
+        task: completeWordController.getTaskParanoa(),
+        taskController: completeWordController));
+    widgetsRouters.add(TaskParanoaTour(
+        lessonController: this, task: paranoaTourController.getTaskDurst()));
+    widgetsRouters.add(TaskParanoaTour(
+        lessonController: this, task: paranoaTourController.getTaskLake()));
+    widgetsRouters.add(TaskParanoaTour(
+        lessonController: this, task: paranoaTourController.getTaskSunday()));
     widgetsRouters.add(TryAgainPage());
   }
 
@@ -59,6 +72,7 @@ class LessonParanoaController implements LessonControllerInterface {
 
   @override
   reset() {
+    print("chamou reset!");
     nextPage = -1;
     correctAnswers = 0;
   }
@@ -73,7 +87,6 @@ class LessonParanoaController implements LessonControllerInterface {
   @override
   verifyAnswerNonControlled() {
     correctAnswers++;
-    throw UnimplementedError();
   }
 
   void onCompleted() {

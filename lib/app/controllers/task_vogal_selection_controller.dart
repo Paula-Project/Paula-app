@@ -1,5 +1,4 @@
 import 'package:paula/app/controllers/task_controller.dart';
-import 'package:paula/app/model/task_model.dart';
 import 'package:paula/app/model/task_vogal_selection_model.dart';
 import 'package:paula/app/model/words.dart';
 
@@ -9,6 +8,7 @@ class TaskVogalSelectionController implements TaskController {
   late TaskVogalSelectionModel task3;
   late TaskVogalSelectionModel task4;
   late TaskVogalSelectionModel task5;
+  late TaskVogalSelectionModel taskParanoa;
   Words words = Words();
   TaskVogalSelectionController() {
     task1 = TaskVogalSelectionModel(words: [
@@ -33,6 +33,9 @@ class TaskVogalSelectionController implements TaskController {
       words.words[37], //olho
       words.words[39] //isca
     ], audio: "paula_vowelSelection.mp3");
+    taskParanoa = TaskVogalSelectionModel(words: [
+      words.words[36], //paranoa
+    ], audio: "paula_vowelSelection.mp3");
   }
 
   TaskVogalSelectionModel getTask1() {
@@ -53,6 +56,10 @@ class TaskVogalSelectionController implements TaskController {
 
   TaskVogalSelectionModel getTask5() {
     return task5;
+  }
+
+  TaskVogalSelectionModel getTaskParanoa() {
+    return taskParanoa;
   }
 
   @override
