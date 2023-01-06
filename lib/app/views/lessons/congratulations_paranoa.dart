@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/views/components/audioManager.dart';
 import 'package:lottie/lottie.dart';
@@ -58,6 +59,8 @@ class _CongratulationsParanoaState extends State<CongratulationsParanoa>
       return false;
     }
 
+    var height = MediaQuery.of(context).size.height;
+
     return WillPopScope(
       onWillPop: () => _onwillpop(),
       child: Scaffold(
@@ -74,16 +77,20 @@ class _CongratulationsParanoaState extends State<CongratulationsParanoa>
           ),
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.only(
+              top: MediaQuery.of(context).padding.top,
+              bottom: MediaQuery.of(context).padding.bottom + 20),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(30, 100, 30, 10),
-                child: Column(
-                  children: [
-                    Stack(children: [
-                      Padding(
+              Column(
+                children: [
+                  Stack(children: [
+                    SizedBox(
+                      height: height * 0.3,
+                      child: Padding(
                         padding: const EdgeInsets.fromLTRB(8, 00, 8, 0),
-                        child: Text(
+                        child: AutoSizeText(
                           speech[randomNum],
                           textAlign: TextAlign.center,
                           style: const TextStyle(
@@ -92,71 +99,69 @@ class _CongratulationsParanoaState extends State<CongratulationsParanoa>
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
                           ),
+                          minFontSize: 25,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(3.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                                height: 200,
-                                child: Lottie.asset(
-                                    'assets/images/fireworks.json')),
-                          ],
-                        ),
-                      ),
-                    ]),
-                    Center(
-                      child: Stack(
-                        alignment: Alignment.center,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SizedBox(
                               height: 200,
                               child:
                                   Lottie.asset('assets/images/fireworks.json')),
-                          SizedBox(
-                              height: 350,
-                              child: Image.asset(
-                                "assets/images/paula/paula04.png",
-                                alignment: Alignment.center,
-                              )),
                         ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 70.0),
-                child: SizedBox(
-                    width: 200,
-                    height: 50,
-                    child: TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                              builder: (BuildContext context) => HomePage(),
-                            ),
-                            (route) => false,
-                          );
-                        },
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.white),
-                            foregroundColor:
-                                MaterialStateProperty.all<Color>(Colors.blue),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                  side: BorderSide.none),
+                  ]),
+                  Center(
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        SizedBox(
+                            height: height * 0.3,
+                            child:
+                                Lottie.asset('assets/images/fireworks.json')),
+                        SizedBox(
+                            height: height * 0.5,
+                            child: Image.asset(
+                              "assets/images/paula/paula04.png",
+                              alignment: Alignment.center,
                             )),
-                        child: const Text(
-                          "AVANÇAR",
-                          style: TextStyle(fontSize: 20),
-                        ))),
+                      ],
+                    ),
+                  ),
+                ],
               ),
+              SizedBox(
+                  width: 200,
+                  height: 50,
+                  child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => HomePage(),
+                          ),
+                          (route) => false,
+                        );
+                      },
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.white),
+                          foregroundColor:
+                              MaterialStateProperty.all<Color>(Colors.blue),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                side: BorderSide.none),
+                          )),
+                      child: const Text(
+                        "AVANÇAR",
+                        style: TextStyle(fontSize: 20),
+                      ))),
             ],
           ),
         ),
