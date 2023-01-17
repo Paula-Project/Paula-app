@@ -1,103 +1,145 @@
+import 'dart:math';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import '../components/ButtonNext.dart';
-import '../home_page.dart';
+import 'package:paula/app/controllers/module_vowels_controller.dart';
+import 'package:paula/app/views/components/audioManager.dart';
+import 'package:paula/app/views/lessons/lessons_vogais.dart';
 
 class TryAgainPage extends StatefulWidget {
-  const TryAgainPage({Key? key}) : super(key: key);
+  final ModuleVowelsController moduleVowelsController;
+  const TryAgainPage({Key? key, required this.moduleVowelsController})
+      : super(key: key);
 
   @override
   State<TryAgainPage> createState() => _TryAgainPageState();
 }
 
-class _TryAgainPageState extends State<TryAgainPage> {
+class _TryAgainPageState extends State<TryAgainPage>
+    with WidgetsBindingObserver {
+  AudioManager audioManager = AudioManager();
+  AudioManager audioManager2 = AudioManager();
+  List<String> speech = [
+    "Tente mais uma vez, você consegue!",
+    "Poxa, não foi dessa vez hein, mas você vai conseguir!",
+  ];
+  List<String> audios = [
+    "audios/paula/paula_tryAgain_1.mp3",
+    "audios/paula/paula_tryAgain_2.mp3",
+  ];
+  List<String> images = [
+    "assets/images/paula/paula06.png",
+    "assets/images/paula/paula07.png",
+  ];
+  int randomNum = Random().nextInt(2);
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    audioManager2.runAudio("audios/failed_sound.mp3");
+    audioManager.runAudio(audios[randomNum]);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    audioManager.stopAudio();
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    audioManager.didLifecycleChange(state);
+  }
+
   @override
   Widget build(BuildContext context) {
     Future<bool> _onwillpop() async {
       return false;
     }
 
+    var height = MediaQuery.of(context).size.height;
+
     return WillPopScope(
-      onWillPop: _onwillpop,
+      onWillPop: () => _onwillpop(),
       child: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
-            color: Colors.white,
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color.fromARGB(200, 100, 171, 226),
+                Color.fromARGB(255, 41, 171, 226),
+              ],
+            ),
           ),
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.only(
+              top: MediaQuery.of(context).padding.top,
+              bottom: MediaQuery.of(context).padding.bottom + 20),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(30, 100, 30, 10),
-                child: Container(
-                  height: (MediaQuery.of(context).size.height) * 0.6,
-                  width: (MediaQuery.of(context).size.width) * 0.8,
-                  decoration: const BoxDecoration(
-                    color: Color.fromRGBO(37, 85, 124, 1),
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 10.0,
-                        spreadRadius: 2.0,
-                      )
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(8, 10, 8, 0),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 20),
-                              child: Image.asset('assets/images/UnB_logo.png'),
-                            ),
-                            const Text(
-                              "TENTE NOVAMENTE!",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                color: Colors.white,
-                                fontSize: 35,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(top: 8.0),
-                              child: Text(
-                                "REFAÇA AS ATIVIDADES PARA CONSEGUIR MAIS ACERTOS",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white70,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 30),
-                              child: Image.asset('assets/images/UnB_logo.png'),
-                            ),
-                          ],
+              Column(
+                children: [
+                  SizedBox(
+                    height: height * 0.3,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 00, 8, 0),
+                      child: AutoSizeText(
+                        speech[randomNum],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
                         ),
+                        minFontSize: 25,
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                  Center(
+                    child: SizedBox(
+                        height: height * 0.4,
+                        child: Image.asset(
+                          images[randomNum],
+                          alignment: Alignment.center,
+                        )),
+                  ),
+                ],
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 70.0),
-                child: SizedBox(
-                    width: 350,
-                    height: 50,
-                    child: ButtonNext(
-                      pageWidget: HomePage(),
-                      allowedReturn: false,
-                      onPressed: () {},
-                    )),
-              ),
+              SizedBox(
+                  width: 200,
+                  height: 50,
+                  child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => LessonsVogais(
+                                moduleVowelsController:
+                                    widget.moduleVowelsController),
+                          ),
+                          (route) => false,
+                        );
+                      },
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.white),
+                          foregroundColor:
+                              MaterialStateProperty.all<Color>(Colors.blue),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                side: BorderSide.none),
+                          )),
+                      child: const Text(
+                        "AVANÇAR",
+                        style: TextStyle(fontSize: 20),
+                      ))),
             ],
           ),
         ),

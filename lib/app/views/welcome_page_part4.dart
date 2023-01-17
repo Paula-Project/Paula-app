@@ -21,14 +21,14 @@ class WelcomePagePart4 extends StatelessWidget {
                 context,
                 PageTransition(
                     type: PageTransitionType.rightToLeft,
-                    child: const WelcomePagePart3()));
+                    child: const SingupPage()));
           }
           if (details.delta.dx > 0) {
             Navigator.push(
                 context,
                 PageTransition(
                     type: PageTransitionType.leftToRight,
-                    child: const WelcomePagePart1()));
+                    child: const WelcomePagePart3()));
           }
         },
         child: Container(

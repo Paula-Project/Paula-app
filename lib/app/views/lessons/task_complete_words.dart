@@ -264,11 +264,10 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords>
                               onPressed: () {
                                 widget.taskController.makeAnswers(widget.task);
 
-                                if (widget.taskController.verifyAnswer()) {
-                                  isCorrect = true;
-                                  widget.lessonController
-                                      .verifyAnswerNonControlled();
-                                }
+                                isCorrect =
+                                    widget.taskController.verifyAnswer();
+                                widget.lessonController
+                                    .verifyAnswerNonControlled(isCorrect);
                                 widget.taskController.reset();
                                 showGeneralDialog(
                                   barrierColor: Colors.black.withOpacity(0.5),

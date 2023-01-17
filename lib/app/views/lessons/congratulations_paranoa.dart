@@ -28,7 +28,12 @@ class _CongratulationsParanoaState extends State<CongratulationsParanoa>
     "audios/paula/paula_parabens_2.mp3",
     "audios/paula/paula_parabens_3.mp3"
   ];
+  List<String> images = [
+    "assets/images/paula/paula04.png",
+    "assets/images/paula/paula10.png",
+  ];
   int randomNum = Random().nextInt(3);
+  int randomNumImg = Random().nextInt(2);
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
@@ -127,7 +132,7 @@ class _CongratulationsParanoaState extends State<CongratulationsParanoa>
                         SizedBox(
                             height: height * 0.5,
                             child: Image.asset(
-                              "assets/images/paula/paula04.png",
+                              images[randomNumImg],
                               alignment: Alignment.center,
                             )),
                       ],

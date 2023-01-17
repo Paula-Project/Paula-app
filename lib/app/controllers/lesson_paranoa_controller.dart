@@ -10,6 +10,7 @@ import 'package:paula/app/views/lessons/task_paranoa_tour.dart';
 import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 import 'package:paula/app/views/lessons/task_write_words.dart';
 import 'package:paula/app/views/lessons/try_again_page.dart';
+import 'package:paula/app/views/lessons/try_again_page_paranoa.dart';
 
 class LessonParanoaController implements LessonControllerInterface {
   TaskParanoaTourController paranoaTourController = TaskParanoaTourController();
@@ -19,6 +20,7 @@ class LessonParanoaController implements LessonControllerInterface {
       TaskCompleteWordController();
   List widgetsRouters = [];
   static int correctAnswers = 0;
+  static int wrongAnswers = 0;
   int tasksQuantity = 4;
 
   static int nextPage = -1;
@@ -69,6 +71,10 @@ class LessonParanoaController implements LessonControllerInterface {
     if (nextPage < widgetsRouters.length - 1) {
       nextPage++;
       onCompleted();
+      if (wrongAnswers > 1) {
+        reset();
+        return const TryAgainParanoaPage();
+      }
     } else {
       reset();
     }
@@ -77,25 +83,33 @@ class LessonParanoaController implements LessonControllerInterface {
 
   @override
   reset() {
-    print("chamou reset!");
     nextPage = -1;
     correctAnswers = 0;
+    wrongAnswers = 0;
+    vogalSelectionController.reset();
+    completeWordController.reset();
   }
 
   @override
   verifyAnswer(TaskModel task, TaskController taskController) {
     if (taskController.verify(task)) {
       correctAnswers++;
+    } else {
+      wrongAnswers++;
     }
   }
 
   @override
-  verifyAnswerNonControlled() {
-    correctAnswers++;
+  verifyAnswerNonControlled(bool isCorrect) {
+    if (isCorrect) {
+      correctAnswers++;
+      return true;
+    }
+    wrongAnswers++;
   }
 
   void onCompleted() {
-    if (correctAnswers >= tasksQuantity - 1) {
+    if (wrongAnswers <= 1 && correctAnswers >= tasksQuantity - 1) {
       completed = true;
     }
   }

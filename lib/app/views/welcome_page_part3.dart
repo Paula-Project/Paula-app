@@ -19,7 +19,7 @@ class WelcomePagePart3 extends StatelessWidget {
               context,
               PageTransition(
                   type: PageTransitionType.rightToLeft,
-                  child: const SingupPage()));
+                  child: const WelcomePagePart4()));
         }
         if (details.delta.dx > 0) {
           Navigator.push(

@@ -272,12 +272,10 @@ class _TaskWriteWordsState extends State<TaskWriteWords>
                                       widget.taskController
                                           .makeAnswers(widget.task);
 
-                                      if (widget.taskController
-                                          .verifyAnswer()) {
-                                        isCorrect = true;
-                                        widget.lessonController
-                                            .verifyAnswerNonControlled();
-                                      }
+                                      isCorrect =
+                                          widget.taskController.verifyAnswer();
+                                      widget.lessonController
+                                          .verifyAnswerNonControlled(isCorrect);
                                       widget.taskController.reset();
                                       showGeneralDialog(
                                         barrierColor:

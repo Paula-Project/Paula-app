@@ -6,6 +6,6 @@ abstract class LessonControllerInterface {
   verifyAnswer(TaskModel task, TaskController taskController);
   getTaskQuantity();
   getTaskCorrectAnswers();
-  verifyAnswerNonControlled();
+  verifyAnswerNonControlled(bool isCorrect);
   reset();
 }

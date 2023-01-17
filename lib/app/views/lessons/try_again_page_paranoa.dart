@@ -3,46 +3,37 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/module_vowels_controller.dart';
 import 'package:paula/app/views/components/audioManager.dart';
-import 'package:paula/app/views/lessons/lessons_vogais.dart';
-import 'package:lottie/lottie.dart';
+import 'package:paula/app/views/home_page.dart';
 
-class CongratulationsPage extends StatefulWidget {
-  final ModuleVowelsController moduleVowelsController;
-  const CongratulationsPage({Key? key, required this.moduleVowelsController})
-      : super(key: key);
+class TryAgainParanoaPage extends StatefulWidget {
+  const TryAgainParanoaPage({Key? key}) : super(key: key);
 
   @override
-  State<CongratulationsPage> createState() => _CongratulationsPageState();
+  State<TryAgainParanoaPage> createState() => _TryAgainParanoaPageState();
 }
 
-class _CongratulationsPageState extends State<CongratulationsPage>
+class _TryAgainParanoaPageState extends State<TryAgainParanoaPage>
     with WidgetsBindingObserver {
   AudioManager audioManager = AudioManager();
   AudioManager audioManager2 = AudioManager();
   List<String> speech = [
-    "Parabéns, \nvocê está indo muito bem",
-    "Muito bem, \né isso aí, Você é 10",
-    "Nossa, estou chocada, \nvocê é demais"
+    "Tente mais uma vez, você consegue!",
+    "Poxa, não foi dessa vez hein, mas você vai conseguir!",
   ];
   List<String> audios = [
-    "audios/paula/paula_parabens_1.mp3",
-    "audios/paula/paula_parabens_2.mp3",
-    "audios/paula/paula_parabens_3.mp3"
+    "audios/paula/paula_tryAgain_1.mp3",
+    "audios/paula/paula_tryAgain_2.mp3",
   ];
-
   List<String> images = [
-    "assets/images/paula/paula04.png",
-    "assets/images/paula/paula10.png",
+    "assets/images/paula/paula06.png",
+    "assets/images/paula/paula07.png",
   ];
-  int randomNum = Random().nextInt(3);
-  int randomNumImg = Random().nextInt(2);
+  int randomNum = Random().nextInt(2);
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    audioManager2.runAudio("audios/congrats_1.mp3");
-    Future.delayed(const Duration(seconds: 1), () {
-      audioManager.runAudio(audios[randomNum]);
-    });
+    audioManager2.runAudio("audios/failed_sound.mp3");
+    audioManager.runAudio(audios[randomNum]);
     super.initState();
   }
 
@@ -87,57 +78,34 @@ class _CongratulationsPageState extends State<CongratulationsPage>
               top: MediaQuery.of(context).padding.top,
               bottom: MediaQuery.of(context).padding.bottom + 20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
                 children: [
-                  Stack(children: [
-                    SizedBox(
-                      height: height * 0.3,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 00, 8, 0),
-                        child: AutoSizeText(
-                          speech[randomNum],
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontFamily: 'Poppins',
-                            color: Colors.white,
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          minFontSize: 25,
+                  SizedBox(
+                    height: height * 0.3,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 00, 8, 0),
+                      child: AutoSizeText(
+                        speech[randomNum],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
                         ),
+                        minFontSize: 25,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(3.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                              height: 200,
-                              child:
-                                  Lottie.asset('assets/images/fireworks.json')),
-                        ],
-                      ),
-                    ),
-                  ]),
+                  ),
                   Center(
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        SizedBox(
-                            height: height * 0.3,
-                            child:
-                                Lottie.asset('assets/images/fireworks.json')),
-                        SizedBox(
-                            height: height * 0.5,
-                            child: Image.asset(
-                              images[randomNumImg],
-                              alignment: Alignment.center,
-                            )),
-                      ],
-                    ),
+                    child: SizedBox(
+                        height: height * 0.4,
+                        child: Image.asset(
+                          images[randomNum],
+                          alignment: Alignment.center,
+                        )),
                   ),
                 ],
               ),
@@ -148,9 +116,7 @@ class _CongratulationsPageState extends State<CongratulationsPage>
                       onPressed: () {
                         Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(
-                            builder: (BuildContext context) => LessonsVogais(
-                                moduleVowelsController:
-                                    widget.moduleVowelsController),
+                            builder: (BuildContext context) => HomePage(),
                           ),
                           (route) => false,
                         );

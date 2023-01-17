@@ -14,6 +14,7 @@ import 'package:paula/app/views/lessons/lesson_introduction.dart';
 import 'package:paula/app/views/lessons/task_select_image.dart';
 import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 import 'package:paula/app/views/lessons/task_words_exemple.dart';
+import 'package:paula/app/views/lessons/try_again_page.dart';
 
 class LessonAEUController implements LessonControllerInterface {
   TaskMarkVowelController markVowelController = TaskMarkVowelController();
@@ -27,6 +28,7 @@ class LessonAEUController implements LessonControllerInterface {
 
   final ModuleVowelsController moduleVowelsController;
   static int correctAnswers = 0;
+  static int wrongAnswers = 0;
   int tasksQuantity = 8;
 
   static int nextPage = -1;
@@ -120,16 +122,23 @@ class LessonAEUController implements LessonControllerInterface {
     if (nextPage < widgetsRouters.length - 1) {
       nextPage++;
       onCompleted();
+      if (wrongAnswers > 2) {
+        reset();
+        return TryAgainPage(moduleVowelsController: moduleVowelsController);
+      }
     } else {
       reset();
     }
     return widgetsRouters[nextPage];
   }
 
+  failure() {}
+
   @override
   reset() {
     nextPage = -1;
     correctAnswers = 0;
+    wrongAnswers = 0;
     selectImageController.reset();
     markVowelController.reset();
     completeWordController.reset();
@@ -140,16 +149,22 @@ class LessonAEUController implements LessonControllerInterface {
   verifyAnswer(TaskModel task, TaskController taskController) {
     if (taskController.verify(task)) {
       correctAnswers++;
+    } else {
+      wrongAnswers++;
     }
   }
 
   @override
-  verifyAnswerNonControlled() {
-    correctAnswers++;
+  verifyAnswerNonControlled(bool isCorrect) {
+    if (isCorrect) {
+      correctAnswers++;
+      return true;
+    }
+    wrongAnswers++;
   }
 
   void onCompleted() {
-    if (correctAnswers >= tasksQuantity - 1) {
+    if (wrongAnswers <= 2 && correctAnswers >= tasksQuantity - 2) {
       completed = true;
     }
   }
