@@ -19,7 +19,7 @@ class LessonParanoaController implements LessonControllerInterface {
       TaskCompleteWordController();
   List widgetsRouters = [];
   static int correctAnswers = 0;
-  int tasksQuantity = 3;
+  int tasksQuantity = 4;
 
   static int nextPage = -1;
   static bool completed = false;

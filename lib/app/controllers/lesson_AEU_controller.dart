@@ -36,7 +36,6 @@ class LessonAEUController implements LessonControllerInterface {
 
   LessonAEUController({required this.moduleVowelsController}) {
     verifyisCompleted();
-
     widgetsRouters.add(LessonIntroduction(
       letter: 'A',
       titleIntroduction: "Esta é a letra A, repita comigo LETRA A.",

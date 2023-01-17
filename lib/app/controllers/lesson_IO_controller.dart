@@ -99,16 +99,6 @@ class LessonIOController implements LessonControllerInterface {
       lessonController: this,
       taskController: vogalSelectionController,
     ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisI2(),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
-    widgetsRouters.add(TaskVogalSelection(
-      task: vogalSelectionController.getTask5(),
-      lessonController: this,
-      taskController: vogalSelectionController,
-    ));
     widgetsRouters.add(CongratulationsPage(
       moduleVowelsController: moduleVowelsController,
     ));

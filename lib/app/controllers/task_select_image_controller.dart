@@ -37,13 +37,13 @@ class TaskSelectImageController extends TaskController {
 
     vogaisI = TaskSelectImageModel(
         title: "Selecione a imagem que começa com a som “I”:",
-        answer: words.words[20].text, //IOIO
+        answer: words.words[30].text, //igreja
         audio: "paula_selectionImage_I.mp3",
         words: [
           words.words[21], //meia
           words.words[14], //caneta
           words.words[6], //oculos
-          words.words[20], //ioio
+          words.words[30], //igreja
         ]);
 
     vogaisI2 = TaskSelectImageModel(

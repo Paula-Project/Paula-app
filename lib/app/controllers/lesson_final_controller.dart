@@ -23,7 +23,7 @@ class LessonFinalController implements LessonControllerInterface {
       TaskCompleteWordController();
   final ModuleVowelsController moduleVowelsController;
   static int correctAnswers = 0;
-  int tasksQuantity = 4;
+  int tasksQuantity = 7;
 
   static int nextPage = -1;
   static bool completed = false;
@@ -52,6 +52,21 @@ class LessonFinalController implements LessonControllerInterface {
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
       task: completeWordController.getTask3(),
+      taskController: completeWordController,
+    ));
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getVogaisI2(),
+      taskController: selectImageController,
+      lessonController: this,
+    ));
+    widgetsRouters.add(TaskVogalSelection(
+      task: vogalSelectionController.getTask5(),
+      lessonController: this,
+      taskController: vogalSelectionController,
+    ));
+    widgetsRouters.add(TaskCompleteWords(
+      lessonController: this,
+      task: completeWordController.getTask5(),
       taskController: completeWordController,
     ));
     widgetsRouters.add(CongratulationsVowelsPage(
