@@ -436,7 +436,7 @@ class _SingupPageState extends State<SingupPage> {
                                                 onPressed: () {
                                                   if (_key.currentState!
                                                       .validate()) {
-                                                    if (calcAge() > 1 &&
+                                                    if (calcAge() >= 1 &&
                                                         (isSelected[0] ||
                                                             isSelected[1] ||
                                                             isSelected[2])) {
@@ -465,7 +465,7 @@ class _SingupPageState extends State<SingupPage> {
                                                                     171,
                                                                     226),
                                                             content: Text(
-                                                              'Data de Nascimento inválida (aluno deve possuir no minimo 5 anos)'
+                                                              'Data de Nascimento inválida (aluno deve possuir no minimo 1 ano)'
                                                               ' e/ou genêro não selecionado',
                                                               style: TextStyle(
                                                                   color: Colors
