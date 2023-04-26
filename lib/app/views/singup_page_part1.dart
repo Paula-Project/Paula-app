@@ -436,7 +436,7 @@ class _SingupPageState extends State<SingupPage> {
                                                 onPressed: () {
                                                   if (_key.currentState!
                                                       .validate()) {
-                                                    if (calcAge() > 5 &&
+                                                    if (calcAge() > 1 &&
                                                         (isSelected[0] ||
                                                             isSelected[1] ||
                                                             isSelected[2])) {
