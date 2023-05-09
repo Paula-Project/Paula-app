@@ -7,6 +7,7 @@ import 'package:paula/app/controllers/task_select_image_controller.dart';
 import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
 import 'package:paula/app/controllers/task_words_exemple_controller.dart';
 import 'package:paula/app/model/task_model.dart';
+import 'package:paula/app/model/word.dart';
 import 'package:paula/app/views/lessons/task_complete_words.dart';
 import 'package:paula/app/views/lessons/task_mark_vowel.dart';
 import 'package:paula/app/views/lessons/congratulations_page.dart';
@@ -15,6 +16,7 @@ import 'package:paula/app/views/lessons/task_select_image.dart';
 import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 import 'package:paula/app/views/lessons/task_words_exemple.dart';
 import 'package:paula/app/views/lessons/try_again_page.dart';
+import 'package:paula/app/model/words.dart';
 
 class LessonAEUController implements LessonControllerInterface {
   TaskMarkVowelController markVowelController = TaskMarkVowelController();
@@ -25,6 +27,7 @@ class LessonAEUController implements LessonControllerInterface {
       TaskCompleteWordController();
   TaskWordsExempleController wordsExempleController =
       TaskWordsExempleController();
+  Words words = Words();
 
   final ModuleVowelsController moduleVowelsController;
   static int correctAnswers = 0;
@@ -36,8 +39,18 @@ class LessonAEUController implements LessonControllerInterface {
 
   List widgetsRouters = [];
 
+  List<Word> getRandomWords(String letter){
+    List<Word> filteredWords = words.words.where((word) => 
+      word.text.startsWith(letter)).toList();
+      filteredWords.shuffle(); 
+      List<Word> selectedWords = filteredWords.take(4).toList();
+      return selectedWords;
+  }
+
   LessonAEUController({required this.moduleVowelsController}) {
     verifyisCompleted();
+    List<Word> listWordsA = getRandomWords("A");
+
     widgetsRouters.add(LessonIntroduction(
       letter: 'A',
       titleIntroduction: "Esta é a letra A, repita comigo LETRA A.",
@@ -45,7 +58,7 @@ class LessonAEUController implements LessonControllerInterface {
       audioUrl: 'paula_introduction_A.mp3',
     ));
     widgetsRouters.add(TaskWordsExemple(
-      task: wordsExempleController.getTaskA(),
+      task: wordsExempleController.getTaskA(listWordsA),
       lessonController: this,
     ));
     widgetsRouters.add(TaskMarkVowel(
@@ -54,7 +67,7 @@ class LessonAEUController implements LessonControllerInterface {
       task: markVowelController.getTask1(),
     ));
     widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisA(),
+      task: selectImageController.getTask(listWordsA[1], "A"),
       taskController: selectImageController,
       lessonController: this,
     ));
@@ -74,7 +87,7 @@ class LessonAEUController implements LessonControllerInterface {
       task: markVowelController.getTask2(),
     ));
     widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisE(),
+      task: selectImageController.getTask(listWordsA[1], "E"),
       taskController: selectImageController,
       lessonController: this,
     ));
@@ -94,7 +107,7 @@ class LessonAEUController implements LessonControllerInterface {
       task: markVowelController.getTask3(),
     ));
     widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisU(),
+      task: selectImageController.getTask(listWordsA[1], "U"),
       taskController: selectImageController,
       lessonController: this,
     ));
