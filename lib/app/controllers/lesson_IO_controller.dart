@@ -56,11 +56,11 @@ class LessonIOController implements LessonControllerInterface {
       taskController: markVowelController,
       task: markVowelController.getTask4(),
     ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisI(),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
+    // widgetsRouters.add(TaskSelectImage(
+    //   task: selectImageController.getVogaisI(),
+    //   taskController: selectImageController,
+    //   lessonController: this,
+    // ));
     widgetsRouters.add(LessonIntroduction(
       letter: 'O',
       titleIntroduction: "Esta é a letra O, repita comigo LETRA O",
@@ -76,21 +76,21 @@ class LessonIOController implements LessonControllerInterface {
       taskController: markVowelController,
       task: markVowelController.getTask5(),
     ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisO(),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
+    // widgetsRouters.add(TaskSelectImage(
+    //   task: selectImageController.getVogaisO(),
+    //   taskController: selectImageController,
+    //   lessonController: this,
+    // ));
     widgetsRouters.add(TaskVogalSelection(
       task: vogalSelectionController.getTask2(),
       lessonController: this,
       taskController: vogalSelectionController,
     ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisO2(),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
+    // widgetsRouters.add(TaskSelectImage(
+    //   task: selectImageController.getVogaisO2(),
+    //   taskController: selectImageController,
+    //   lessonController: this,
+    // ));
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
       task: completeWordController.getTask2(),

@@ -1,4 +1,5 @@
 import 'package:paula/app/model/task_words_exemple_model.dart';
+import 'package:paula/app/model/word.dart';
 import 'package:paula/app/model/words.dart';
 
 class TaskWordsExempleController {
@@ -11,16 +12,7 @@ class TaskWordsExempleController {
   Words words = Words();
 
   TaskWordsExempleController() {
-    taskA = TaskWordsExempleModel(
-        title: "Você encontra a letra “A” em muitas palavras, como:",
-        letter: ["A", "Á", "À", "Â", "Ã"],
-        words: [
-          words.words[8], // AVIÃO
-          words.words[9], // ABACAXI
-          words.words[3], // ARROZ
-          words.words[4], // ARVORE
-        ],
-        audio: "paula_lessonExample_A.mp3");
+  
     taskE = TaskWordsExempleModel(
         title: "Você encontra a letra “E” em muitas palavras, como:",
         letter: ["E", "É", "Ê", 'Ẽ'],
@@ -72,7 +64,17 @@ class TaskWordsExempleController {
         ],
         audio: "paula_lessonExample_U.mp3");
   }
-  TaskWordsExempleModel getTaskA() {
+  TaskWordsExempleModel getTaskA(List<Word> words) {
+    taskA = TaskWordsExempleModel(
+        title: "Você encontra a letra “A” em muitas palavras, como:",
+        letter: ["A", "Á", "À", "Â", "Ã"],
+        words: [
+          words[0], 
+          words[1], 
+          words[2], 
+          words[3], 
+        ],
+        audio: "paula_lessonExample_A.mp3");
     return taskA;
   }
 

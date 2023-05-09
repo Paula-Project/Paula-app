@@ -36,11 +36,11 @@ class LessonFinalController implements LessonControllerInterface {
     widgetsRouters.add(TaskDiphthong(
       lessonController: this,
     ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisI(),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
+    // widgetsRouters.add(TaskSelectImage(
+    //   task: selectImageController.getVogaisI(),
+    //   taskController: selectImageController,
+    //   lessonController: this,
+    // ));
     widgetsRouters.add(TaskVogalSelection(
       task: vogalSelectionController.getTask3(),
       lessonController: this,
@@ -56,11 +56,11 @@ class LessonFinalController implements LessonControllerInterface {
       task: completeWordController.getTask3(),
       taskController: completeWordController,
     ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getVogaisI2(),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
+    // widgetsRouters.add(TaskSelectImage(
+    //   task: selectImageController.getVogaisI2(),
+    //   taskController: selectImageController,
+    //   lessonController: this,
+    // ));
     widgetsRouters.add(TaskVogalSelection(
       task: vogalSelectionController.getTask5(),
       lessonController: this,
