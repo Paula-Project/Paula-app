@@ -87,7 +87,7 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
                           },
                           child: Stack(children: [
                             Container(
-                              height: 100.0,
+                              height: 80.0,
                               decoration: const BoxDecoration(
                                   color: Color.fromRGBO(37, 85, 124, 1),
                                   borderRadius:
