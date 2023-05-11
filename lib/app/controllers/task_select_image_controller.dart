@@ -7,10 +7,9 @@ class TaskSelectImageController extends TaskController {
   late TaskSelectImageModel task;
   Words words = Words();
 
-
   TaskSelectImageController();
 
-  List<Word> getRandomWords(String letter) {
+  List<Word> getRandomWords(String letter, int numWords) {
     List<String> vogalList = ["A", "E", "I", "O", "U"];
     vogalList.removeAt(vogalList.indexOf(letter));
     List<Word> filteredWords = words.words
@@ -22,17 +21,17 @@ class TaskSelectImageController extends TaskController {
             word.text.startsWith(vogalList[3]))
         .toList();
     filteredWords.shuffle();
-    List<Word> selectedWords = filteredWords.take(3).toList();
+    List<Word> selectedWords = filteredWords.take(numWords).toList();
     return selectedWords;
   }
 
   TaskSelectImageModel getTask(Word word, String letter) {
-    List<Word> wordsRandom = getRandomWords(letter);
+    List<Word> wordsRandom = getRandomWords(letter, 3);
     wordsRandom.add(word);
     wordsRandom.shuffle();
     task = TaskSelectImageModel(
         title: "Selecione a imagem que começa com a som “$letter”:",
-        answer: word.text, // arvore
+        answer: word.text,
         audio: "paula_selectionImage_$letter.mp3",
         words: [
           wordsRandom[0],
@@ -42,6 +41,7 @@ class TaskSelectImageController extends TaskController {
         ]);
     return task;
   }
+
   @override
   bool verify(covariant TaskSelectImageModel task) {
     if (task.cardSelected == task.answer) {

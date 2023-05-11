@@ -3,6 +3,7 @@ import 'package:paula/app/model/letter.dart';
 //set words assets from /assets/words
 class Letters {
   List<Letter> letters = [];
+  List<Letter> lettersVowels = [];
   List<String> lettersList = [
     'A', // 0
     'B', // 1
@@ -31,7 +32,21 @@ class Letters {
     'Y', // 24
     'Z', // 25
   ];
+   List<String> letterListVowels = [
+    'A',
+    'E', 
+    'I', 
+    'O',
+    'U', 
+  ];
   List<String> soundsList = [];
+  List<String> imagesListVowels = [
+    'letter-a.png',
+    'letter-e.png',
+    'letter-i.png',
+    'letter-o.png',
+    'letter-u.png',
+  ];
   List<String> imagesList = [
     'letter-a.png',
     'antena.png',
@@ -69,8 +84,18 @@ class Letters {
     }
   }
 
+  void populateVowels() {
+    for (int i = 0; i < letterListVowels.length; i++) {
+      lettersVowels.add (Letter(
+          text: letterListVowels[i],
+          soundPath: '',
+          imagePath: imagesListVowels[i]));
+    }
+  }
+
   Letters() {
     populate();
+    populateVowels();
   }
 
   Map<String, dynamic> toJson() {

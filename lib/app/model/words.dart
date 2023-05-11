@@ -56,6 +56,8 @@ class Words {
     'Pé na Jaca', // 49
     'Tintas', // 50
     'Universal', // 51
+    'Bala', //52
+    'Faca', //53
   ];
   List<String> soundsList = [
     'abajur.mp3',
@@ -110,6 +112,8 @@ class Words {
     'paranoa_penaJaca.mp3',
     'paranoa_tintas1.mp3',
     'paranoa_universal.mp3',
+    'faca.mp3',
+    'bala.mp3',
   ];
   List<String> imagesList = [
     'abajur.png',
@@ -164,6 +168,8 @@ class Words {
     'paranoa_penaJaca.png',
     'paranoa_tintas1.png',
     'paranoa_Universal.png',
+    'bala.png',
+    'faca.png',
   ];
 
   void populate() {
