@@ -85,7 +85,12 @@ class LessonEController implements LessonControllerInterface {
       lessonController: this,
     ));
     widgetsRouters.add(TaskVogalSelection(
-      task: vogalSelectionController.getTaskA(),
+      task: vogalSelectionController.getTaskE1(),
+      lessonController: this,
+      taskController: vogalSelectionController,
+    ));
+    widgetsRouters.add(TaskVogalSelection(
+      task: vogalSelectionController.getTaskE2(),
       lessonController: this,
       taskController: vogalSelectionController,
     ));

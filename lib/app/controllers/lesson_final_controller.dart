@@ -42,7 +42,7 @@ class LessonFinalController implements LessonControllerInterface {
     //   lessonController: this,
     // ));
     widgetsRouters.add(TaskVogalSelection(
-      task: vogalSelectionController.getTask3(),
+      task: vogalSelectionController.getTaskA1(),
       lessonController: this,
       taskController: vogalSelectionController,
     ));
@@ -62,7 +62,7 @@ class LessonFinalController implements LessonControllerInterface {
     //   lessonController: this,
     // ));
     widgetsRouters.add(TaskVogalSelection(
-      task: vogalSelectionController.getTask5(),
+      task: vogalSelectionController.getTaskA2(),
       lessonController: this,
       taskController: vogalSelectionController,
     ));
