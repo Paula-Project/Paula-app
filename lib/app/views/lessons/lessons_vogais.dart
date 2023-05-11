@@ -68,29 +68,6 @@ class _LessonsVogaisState extends State<LessonsVogais>
         child: Center(
           child: Column(
             children: [
-              LessonButton(
-                isActive: true,
-                textContent: 'A - E - U',
-                audioManager: audioManager,
-                lessonController:
-                    widget.moduleVowelsController.lessonAEUController,
-              ),
-              LessonButton(
-                isActive: widget.moduleVowelsController.lessonAEUController
-                    .getCompleted(),
-                textContent: 'I - O',
-                audioManager: audioManager,
-                lessonController:
-                    widget.moduleVowelsController.lessonIOController,
-              ),
-              LessonButton(
-                isActive: widget.moduleVowelsController.lessonIOController
-                    .getCompleted(),
-                textContent: 'LIÇÃO FINAL',
-                audioManager: audioManager,
-                lessonController:
-                    widget.moduleVowelsController.lessonFinalController,
-              ),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -155,6 +132,49 @@ class _LessonsVogaisState extends State<LessonsVogais>
                       ),
                     )
                   ]),
+              LessonButton(
+                isActive: true,
+                textContent: 'A',
+                audioManager: audioManager,
+                lessonController:
+                    widget.moduleVowelsController.lessonAController,
+              ),
+              LessonButton(
+                isActive: true,
+                textContent: 'E',
+                audioManager: audioManager,
+                lessonController:
+                    widget.moduleVowelsController.lessonEController,
+              ),
+              LessonButton(
+                isActive: true,
+                textContent: 'I',
+                audioManager: audioManager,
+                lessonController:
+                    widget.moduleVowelsController.lessonIController,
+              ),
+              LessonButton(
+                isActive: true,
+                textContent: 'O',
+                audioManager: audioManager,
+                lessonController:
+                    widget.moduleVowelsController.lessonOController,
+              ),
+              LessonButton(
+                isActive: true,
+                textContent: 'U',
+                audioManager: audioManager,
+                lessonController:
+                    widget.moduleVowelsController.lessonUController,
+              ),
+              LessonButton(
+                isActive: widget.moduleVowelsController.lessonUController
+                    .getCompleted(),
+                textContent: 'LIÇÃO FINAL',
+                audioManager: audioManager,
+                lessonController:
+                    widget.moduleVowelsController.lessonFinalController,
+              ),
             ],
           ),
         ),

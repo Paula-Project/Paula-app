@@ -3,94 +3,44 @@ import 'package:paula/app/model/word.dart';
 import 'package:paula/app/model/words.dart';
 
 class TaskWordsExempleController {
-  late TaskWordsExempleModel taskA;
-  late TaskWordsExempleModel taskE;
-  late TaskWordsExempleModel taskI;
-  late TaskWordsExempleModel taskO;
-  late TaskWordsExempleModel taskU;
-
+  late TaskWordsExempleModel task;
   Words words = Words();
 
-  TaskWordsExempleController() {
-  
-    taskE = TaskWordsExempleModel(
-        title: "Você encontra a letra “E” em muitas palavras, como:",
-        letter: ["E", "É", "Ê", 'Ẽ'],
-        words: [
-          words.words[26], // ESCOVA
-          words.words[5], // ESCADA
-          words.words[28], // ELEFANTE
-          words.words[29], // ESTRELA
-        ],
-        audio: "paula_lessonExample_E.mp3");
-    taskI = TaskWordsExempleModel(
-        title: "Você encontra a letra “I” em muitas palavras, como:",
-        letter: [
-          "I",
-          "Í",
-          "Ì",
-        ],
-        words: [
-          words.words[19], // IGUANA
-          words.words[20], // IOIO
-          words.words[30], // IGREJA
-          words.words[31], // IOGURTE
-        ],
-        audio: "paula_lessonExample_I.mp3");
-    taskO = TaskWordsExempleModel(
-        title: "Você encontra a letra “O” em muitas palavras, como:",
-        letter: [
-          "O",
-          "Õ",
-          "Ô",
-        ],
-        words: [
-          words.words[22], // OVO
-          words.words[6], // OCULOS
-          words.words[24], // ONIBUS
-          words.words[37], // OLHO
-        ],
-        audio: "paula_lessonExample_O.mp3");
-    taskU = TaskWordsExempleModel(
-        title: "Você encontra a letra “U” em muitas palavras, como:",
-        letter: [
-          "U",
-        ],
-        words: [
-          words.words[32], // URSO
-          words.words[33], // UNHA
-          words.words[34], // UM
-          words.words[7], // UVA
-        ],
-        audio: "paula_lessonExample_U.mp3");
-  }
-  TaskWordsExempleModel getTaskA(List<Word> words) {
-    taskA = TaskWordsExempleModel(
-        title: "Você encontra a letra “A” em muitas palavras, como:",
-        letter: ["A", "Á", "À", "Â", "Ã"],
-        words: [
-          words[0], 
-          words[1], 
-          words[2], 
-          words[3], 
-        ],
-        audio: "paula_lessonExample_A.mp3");
-    return taskA;
+  TaskWordsExempleController();
+
+  List<Word> getRandomWords(String letter) {
+    List<Word> filteredWords =
+        words.words.where((word) => word.text.startsWith(letter)).toList();
+    filteredWords.shuffle();
+    List<Word> selectedWords = filteredWords.take(4).toList();
+    return selectedWords;
   }
 
-  TaskWordsExempleModel getTaskE() {
-    return taskE;
-  }
-
-  TaskWordsExempleModel getTaskI() {
-    return taskI;
-  }
-
-  TaskWordsExempleModel getTaskO() {
-    return taskO;
-  }
-
-  TaskWordsExempleModel getTaskU() {
-    return taskU;
+  TaskWordsExempleModel getTask(String letter) {
+    List<Word> wordsRandom = getRandomWords(letter);
+    wordsRandom.shuffle();
+    Map<String, List<String>> jsonMock = {
+      "A": ["A", "Á", "À", "Â", "Ã"],
+      "E": ["E", "É", "Ê", "Ẽ"],
+      "I": ["I", "Í", "Ì"],
+      "O": ["O", "Õ", "Ô"],
+      "U": ["U"]
+    };
+    List<String> letters = [];
+     if (jsonMock.containsKey(letter)) {
+      letters = jsonMock[letter]!;
+    }
+    TaskWordsExempleModel task = TaskWordsExempleModel(
+      title: "Você encontra a letra \"$letter\" em muitas palavras, como:",
+      letter: letters,
+      audio: "paula_lessonExample_$letter.mp3",
+      words: [
+        wordsRandom[0],
+        wordsRandom[1],
+        wordsRandom[2],
+        wordsRandom[3],
+      ],
+    );
+    return task;
   }
 }

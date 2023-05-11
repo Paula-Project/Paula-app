@@ -46,11 +46,11 @@ class LessonFinalController implements LessonControllerInterface {
       lessonController: this,
       taskController: vogalSelectionController,
     ));
-    widgetsRouters.add(TaskMarkVowel(
-      lessonController: this,
-      taskController: markVowelController,
-      task: markVowelController.getTask2(),
-    ));
+    // widgetsRouters.add(TaskMarkVowel(
+    //   lessonController: this,
+    //   taskController: markVowelController,
+    //   task: markVowelController.getTask2(),
+    // ));
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
       task: completeWordController.getTask3(),

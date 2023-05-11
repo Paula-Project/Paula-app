@@ -29,7 +29,7 @@ class TaskCompleteWordController {
     task1 = TaskCompleteWordModel(
       lessonVowels: ['A', 'E', 'U'],
       words: [
-        words.words[25], // SETA
+        words.words[15], // Capa
         words.words[7], // UVA
         words.words[10], // LATA
       ],

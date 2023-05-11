@@ -80,26 +80,26 @@ class _TaskMarkVowelState extends State<TaskMarkVowel>
                           audioManager.runAudio(widget.task.audio);
                         },
                         child: Container(
-                          height: (MediaQuery.of(context).size.height) * 0.17,
-                          width: (MediaQuery.of(context).size.width) * 0.38,
+                          height: (MediaQuery.of(context).size.height) * 0.15,
+                          width: (MediaQuery.of(context).size.width) * 0.35,
                           padding: const EdgeInsets.fromLTRB(0, 30, 0, 30),
                           decoration: const BoxDecoration(
                               color: Color.fromRGBO(37, 85, 124, 1),
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(15))),
+                                  BorderRadius.all(Radius.circular(17))),
                           child: const FittedBox(
                             child: Icon(Icons.volume_up_outlined),
                           ),
                         ),
                       ),
                       Wrap(
-                        runSpacing: 50,
+                        runSpacing: 20,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: widget.task.vowels
                             .map(
                               (letter) => CardImage(
                                 imageUrl: 'assets/alphabet/${letter.imagePath}',
-                                scale: 5.0,
+                                scale: 6.0,
                                 audioUrl: letter.soundPath,
                                 audioManager: audioManager,
                                 isSelected:
@@ -140,7 +140,7 @@ class _TaskMarkVowelState extends State<TaskMarkVowel>
                                           side: BorderSide.none))),
                               child: const Text('VERIFICAR',
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w600,
                                   )),
                               onPressed: () {
