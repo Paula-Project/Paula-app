@@ -1,3 +1,5 @@
+import 'package:paula/app/model/paranoa_words.dart';
+
 import '../model/task_complete_word_model.dart';
 import '../model/words.dart';
 
@@ -12,58 +14,58 @@ class TaskCompleteWordController {
   late TaskCompleteWordModel taskParanoa;
   late TaskCompleteWordModel taskTintas;
   Words words = Words();
-
+  ParanoaWords paranoaWords = ParanoaWords();
   TaskCompleteWordController() {
     taskParanoa = TaskCompleteWordModel(
         title:
             'Você consegue escrever paranoá? Arraste as letras para formar a palavra.',
         audio: 'paula_paranoaWrite.mp3',
-        words: [words.words[36]],
+        words: [paranoaWords.wordsList[12]],
         lessonVowels: ['P', 'R', 'A', 'N', 'O', 'Á']);
     taskTintas = TaskCompleteWordModel(
         title:
             'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
         audio: 'paula_palavraWrite.mp3',
-        words: [words.words[50]],
+        words: [paranoaWords.wordsList[10]],
         lessonVowels: ['T', 'I', 'N', 'A', 'S']);
     task1 = TaskCompleteWordModel(
       lessonVowels: ['A', 'E', 'U'],
       words: [
-        words.words[15], // Capa
-        words.words[7], // UVA
-        words.words[10], // LATA
+        words.wordsList[15], // Capa
+        words.wordsList[7], // UVA
+        words.wordsList[10], // LATA
       ],
     );
     task2 = TaskCompleteWordModel(
       lessonVowels: ['I', 'O'],
       words: [
-        words.words[22], // OVO
-        words.words[17], // DADO
-        words.words[20], // IOIO
+        words.wordsList[22], // OVO
+        words.wordsList[17], // DADO
+        words.wordsList[20], // IOIO
       ],
     );
     task3 = TaskCompleteWordModel(
       lessonVowels: ['A', 'E', 'I', 'O', 'U'],
       words: [
-        words.words[21], // MEIA
-        words.words[13], // BOLA
-        words.words[15], // CAPA
+        words.wordsList[21], // MEIA
+        words.wordsList[13], // BOLA
+        words.wordsList[15], // CAPA
       ],
     );
     task4 = TaskCompleteWordModel(
       lessonVowels: ['A', 'E', 'I', 'O', 'U'],
       words: [
-        words.words[36], // PARANOÁ
-        words.words[50], // TINTAS
-        words.words[37], // OLHO
+        paranoaWords.wordsList[12], // PARANOÁ
+        paranoaWords.wordsList[10], // TINTAS
+        words.wordsList[35], // OLHO
       ],
     );
     task5 = TaskCompleteWordModel(
       lessonVowels: ['A', 'E', 'I', 'O', 'U'],
       words: [
-        words.words[11], // Bebida
-        words.words[14], // Caneta
-        words.words[30], // Igreja
+        words.wordsList[11], // Bebida
+        words.wordsList[14], // Caneta
+        words.wordsList[30], // Igreja
       ],
     );
   }

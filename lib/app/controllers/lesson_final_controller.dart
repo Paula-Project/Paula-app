@@ -6,13 +6,14 @@ import 'package:paula/app/controllers/task_mark_vowel_controller.dart';
 import 'package:paula/app/controllers/task_select_image_controller.dart';
 import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
 import 'package:paula/app/model/task_model.dart';
+import 'package:paula/app/model/word.dart';
+import 'package:paula/app/utils/getRandomWords.dart';
 import 'package:paula/app/views/lessons/congratulations_vowels_page.dart';
 import 'package:paula/app/views/lessons/task_complete_words.dart';
 import 'package:paula/app/views/lessons/task_diphthong.dart';
 import 'package:paula/app/views/lessons/task_select_image.dart';
 import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 import 'package:paula/app/views/lessons/try_again_page.dart';
-
 import '../views/lessons/task_mark_vowel.dart';
 
 class LessonFinalController implements LessonControllerInterface {
@@ -25,7 +26,7 @@ class LessonFinalController implements LessonControllerInterface {
   final ModuleVowelsController moduleVowelsController;
   static int correctAnswers = 0;
   static int wrongAnswers = 0;
-  int tasksQuantity = 7;
+  int tasksQuantity = 10;
 
   static int nextPage = -1;
   static bool completed = false;
@@ -33,38 +34,54 @@ class LessonFinalController implements LessonControllerInterface {
   List widgetsRouters = [];
 
   LessonFinalController({required this.moduleVowelsController}) {
+    List<Word> listWords = getRandomWords(["A", "E", "I", "O", "U"], 5);
     widgetsRouters.add(TaskDiphthong(
       lessonController: this,
     ));
-    // widgetsRouters.add(TaskSelectImage(
-    //   task: selectImageController.getVogaisI(),
-    //   taskController: selectImageController,
-    //   lessonController: this,
-    // ));
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getTask(listWords[0], listWords[0].text[0]),
+      taskController: selectImageController,
+      lessonController: this,
+    ));
     widgetsRouters.add(TaskVogalSelection(
       task: vogalSelectionController.getTaskA1(),
       lessonController: this,
       taskController: vogalSelectionController,
     ));
-    // widgetsRouters.add(TaskMarkVowel(
-    //   lessonController: this,
-    //   taskController: markVowelController,
-    //   task: markVowelController.getTask2(),
-    // ));
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getTask(listWords[1], listWords[1].text[0]),
+      taskController: selectImageController,
+      lessonController: this,
+    ));
+    widgetsRouters.add(TaskMarkVowel(
+      lessonController: this,
+      taskController: markVowelController,
+      task: markVowelController.getTask("A"),
+    ));
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getTask(listWords[2], listWords[2].text[0]),
+      taskController: selectImageController,
+      lessonController: this,
+    ));
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
       task: completeWordController.getTask3(),
       taskController: completeWordController,
     ));
-    // widgetsRouters.add(TaskSelectImage(
-    //   task: selectImageController.getVogaisI2(),
-    //   taskController: selectImageController,
-    //   lessonController: this,
-    // ));
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getTask(listWords[3], listWords[3].text[0]),
+      taskController: selectImageController,
+      lessonController: this,
+    ));
     widgetsRouters.add(TaskVogalSelection(
       task: vogalSelectionController.getTaskA2(),
       lessonController: this,
       taskController: vogalSelectionController,
+    ));
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getTask(listWords[4], listWords[4].text[0]),
+      taskController: selectImageController,
+      lessonController: this,
     ));
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,

@@ -1,8 +1,8 @@
+import 'package:get/get.dart';
 import 'package:paula/app/controllers/task_controller.dart';
+import 'package:paula/app/model/letter.dart';
 import 'package:paula/app/model/letters.dart';
-import '../model/letter.dart';
-import '../model/task_mark_vowel_model.dart';
-import '../model/word.dart';
+import 'package:paula/app/model/task_mark_vowel_model.dart';
 
 class TaskMarkVowelController extends TaskController {
   int vowelSelected = 0;
@@ -10,15 +10,20 @@ class TaskMarkVowelController extends TaskController {
   Letters letters = Letters();
 
   TaskMarkVowelController();
-  
+
   TaskMarkVowelModel getTask(String letter) {
     List<Letter> listLetterVowels = [
-          letters.lettersVowels[1],
-          letters.lettersVowels[0],
-          letters.lettersVowels[4],
-          letters.lettersVowels[2],
-          letters.lettersVowels[3]
-        ];
+      letters.lettersVowels[0],
+      letters.lettersVowels[1],
+      letters.lettersVowels[2],
+      letters.lettersVowels[3],
+      letters.lettersVowels[4],
+    ];
+    listLetterVowels.removeWhere((element) => element.text == letter);
+    listLetterVowels.removeLast();
+    for (Letter e in letters.lettersVowels) {
+      listLetterVowels.addIf(e.text == letter, e);
+    }
     listLetterVowels.shuffle();
     task = TaskMarkVowelModel(
         answer: letter,

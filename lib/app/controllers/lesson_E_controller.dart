@@ -42,7 +42,7 @@ class LessonEController implements LessonControllerInterface {
 
   LessonEController({required this.moduleVowelsController}) {
     verifyisCompleted();
-    List<Word> listWordsE = getRandomWords(["E"], 5);
+    List<Word> listWordsE = getRandomWords(["E"], 4);
 
     widgetsRouters.add(LessonIntroduction(
       letter: 'E',
@@ -51,7 +51,7 @@ class LessonEController implements LessonControllerInterface {
       audioUrl: 'paula_introduction_E.mp3',
     ));
     widgetsRouters.add(TaskWordsExemple(
-      task: wordsExempleController.getTask("E"),
+      task: wordsExempleController.getTask("E", listWordsE),
       lessonController: this,
     ));
     widgetsRouters.add(TaskMarkVowel(
@@ -59,46 +59,49 @@ class LessonEController implements LessonControllerInterface {
       taskController: markVowelController,
       task: markVowelController.getTask("E"),
     ));
+    //1º task
     widgetsRouters.add(TaskSelectImage(
       task: selectImageController.getTask(listWordsE[0], "E"),
       taskController: selectImageController,
       lessonController: this,
     ));
+    //2º task
     widgetsRouters.add(TaskSelectImage(
       task: selectImageController.getTask(listWordsE[1], "E"),
       taskController: selectImageController,
       lessonController: this,
     ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getTask(listWordsE[2], "E"),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getTask(listWordsE[3], "E"),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getTask(listWordsE[4], "E"),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
+    //3º task
     widgetsRouters.add(TaskVogalSelection(
       task: vogalSelectionController.getTaskE1(),
       lessonController: this,
       taskController: vogalSelectionController,
     ));
+    //4º task
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getTask(listWordsE[2], "E"),
+      taskController: selectImageController,
+      lessonController: this,
+    ));
+    //5º task
     widgetsRouters.add(TaskVogalSelection(
       task: vogalSelectionController.getTaskE2(),
       lessonController: this,
       taskController: vogalSelectionController,
     ));
+    //6º task
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getTask(listWordsE[3], "E"),
+      taskController: selectImageController,
+      lessonController: this,
+    ));
+    //7º task
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
       task: completeWordController.getTask1(),
       taskController: completeWordController,
     ));
+    //8º task
     widgetsRouters.add(CongratulationsPage(
       moduleVowelsController: moduleVowelsController,
     ));
