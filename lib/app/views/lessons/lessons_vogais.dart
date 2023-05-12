@@ -140,28 +140,32 @@ class _LessonsVogaisState extends State<LessonsVogais>
                     widget.moduleVowelsController.lessonAController,
               ),
               LessonButton(
-                isActive: true,
+                isActive: widget.moduleVowelsController.lessonAController
+                    .getCompleted(),
                 textContent: 'E',
                 audioManager: audioManager,
                 lessonController:
                     widget.moduleVowelsController.lessonEController,
               ),
               LessonButton(
-                isActive: true,
+                isActive: widget.moduleVowelsController.lessonEController
+                    .getCompleted(),
                 textContent: 'I',
                 audioManager: audioManager,
                 lessonController:
                     widget.moduleVowelsController.lessonIController,
               ),
               LessonButton(
-                isActive: true,
+                isActive: widget.moduleVowelsController.lessonIController
+                    .getCompleted(),
                 textContent: 'O',
                 audioManager: audioManager,
                 lessonController:
                     widget.moduleVowelsController.lessonOController,
               ),
               LessonButton(
-                isActive: true,
+                isActive: widget.moduleVowelsController.lessonOController
+                    .getCompleted(),
                 textContent: 'U',
                 audioManager: audioManager,
                 lessonController:
