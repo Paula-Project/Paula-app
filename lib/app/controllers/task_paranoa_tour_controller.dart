@@ -1,6 +1,6 @@
 import 'package:paula/app/controllers/task_controller.dart';
+import 'package:paula/app/model/paranoa_words.dart';
 import 'package:paula/app/model/task_paranoa_tour_model.dart';
-import 'package:paula/app/model/words.dart';
 
 class TaskParanoaTourController extends TaskController {
   late TaskParanoaTourModel taskFood;
@@ -8,7 +8,7 @@ class TaskParanoaTourController extends TaskController {
   late TaskParanoaTourModel taskSunday;
   late TaskParanoaTourModel taskDurst;
   late TaskParanoaTourModel taskLake;
-  Words words = Words();
+  ParanoaWords words = ParanoaWords();
 
   TaskParanoaTourController() {
     taskFood = TaskParanoaTourModel(
