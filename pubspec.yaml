@@ -116,6 +116,8 @@ flutter:
     - assets/images/words/ioio.png
     - assets/images/words/isca.png
     - assets/images/words/lata.png
+    - assets/images/words/faca.png
+    - assets/images/words/bala.png
     - assets/images/words/meia.png
     - assets/images/words/oculos.png
     - assets/images/words/onibus.png
@@ -252,6 +254,8 @@ flutter:
     - assets/audios/words/ioio.mp3
     - assets/audios/words/isca.mp3
     - assets/audios/words/lata.mp3
+    - assets/audios/words/faca.mp3
+    - assets/audios/words/bala.mp3
     - assets/audios/words/meia.mp3
     - assets/audios/words/oculos.mp3
     - assets/audios/words/olho.mp3
