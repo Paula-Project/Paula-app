@@ -12,7 +12,7 @@ class TaskSelectImageController extends TaskController {
   List<Word> getRandomWords(String letter, int numWords) {
     List<String> vogalList = ["A", "E", "I", "O", "U"];
     vogalList.removeAt(vogalList.indexOf(letter));
-    List<Word> filteredWords = words.words
+    List<Word> filteredWords = words.wordsList
         .where((word) =>
             !word.text.startsWith(letter) &&
                 word.text.startsWith(vogalList[0]) ||

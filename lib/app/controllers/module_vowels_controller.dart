@@ -28,7 +28,6 @@ class ModuleVowelsController {
     lessonUController = LessonUController(moduleVowelsController: this);
   }
   setModuleVowelsCompleted(UsuarioAPI user, context) async {
-    print("setCompleted");
     try {
       user.progress = 10;
       var atualUser = Provider.of<UsuarioState>(context, listen: false);

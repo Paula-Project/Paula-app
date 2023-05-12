@@ -14,27 +14,27 @@ class TaskParanoaTourController extends TaskController {
     taskFood = TaskParanoaTourModel(
       title: "Quando estou com fome, penso logo em ir à:",
       audioPath: "paula_paranoaFome.mp3",
-      words: [words.words[41], words.words[44]],
+      words: [words.wordsList[1], words.wordsList[4]],
     );
     taskSunday = TaskParanoaTourModel(
       title: "Todo domingo gosto de ir à:",
       audioPath: "paula_paranoaDomingo.mp3",
-      words: [words.words[48], words.words[51]],
+      words: [words.wordsList[8], words.wordsList[11]],
     );
     taskColors = TaskParanoaTourModel(
       title: "O paranoá é um lugar muito colorido, pois aqui temos:",
       audioPath: "paula_paranoaColorido.mp3",
-      words: [words.words[42], words.words[50]],
+      words: [words.wordsList[2], words.wordsList[10]],
     );
     taskDurst = TaskParanoaTourModel(
       title: "Sempre que estou com sede, tenho muitas distribuidoras para ir:",
       audioPath: "paula_paranoaDistribuidoras.mp3",
-      words: [words.words[45], words.words[49]],
+      words: [words.wordsList[5], words.wordsList[9]],
     );
     taskLake = TaskParanoaTourModel(
       title: "Quando estou com calor, vou sempre no lago paranoá:",
       audioPath: "paula_paranoaLago.mp3",
-      words: [words.words[47]],
+      words: [words.wordsList[7]],
     );
   }
   TaskParanoaTourModel getTaskFood() {

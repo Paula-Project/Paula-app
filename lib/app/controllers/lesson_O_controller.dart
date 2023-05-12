@@ -51,7 +51,7 @@ class LessonOController implements LessonControllerInterface {
       audioUrl: 'paula_introduction_O.mp3',
     ));
     widgetsRouters.add(TaskWordsExemple(
-      task: wordsExempleController.getTask("O"),
+      task: wordsExempleController.getTask("O", listWordsO),
       lessonController: this,
     ));
     widgetsRouters.add(TaskMarkVowel(
@@ -69,30 +69,25 @@ class LessonOController implements LessonControllerInterface {
       taskController: selectImageController,
       lessonController: this,
     ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getTask(listWordsO[2], "O"),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getTask(listWordsO[3], "O"),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
-    widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getTask(listWordsO[0], "O"),
-      taskController: selectImageController,
-      lessonController: this,
-    ));
     widgetsRouters.add(TaskVogalSelection(
       task: vogalSelectionController.getTaskO1(),
       lessonController: this,
       taskController: vogalSelectionController,
     ));
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getTask(listWordsO[2], "O"),
+      taskController: selectImageController,
+      lessonController: this,
+    ));
     widgetsRouters.add(TaskVogalSelection(
       task: vogalSelectionController.getTaskO2(),
       lessonController: this,
       taskController: vogalSelectionController,
+    ));
+    widgetsRouters.add(TaskSelectImage(
+      task: selectImageController.getTask(listWordsO[3], "O"),
+      taskController: selectImageController,
+      lessonController: this,
     ));
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,

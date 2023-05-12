@@ -10,15 +10,13 @@ class TaskWordsExempleController {
 
   List<Word> getRandomWords(String letter) {
     List<Word> filteredWords =
-        words.words.where((word) => word.text.startsWith(letter)).toList();
+        words.wordsList.where((word) => word.text.startsWith(letter)).toList();
     filteredWords.shuffle();
     List<Word> selectedWords = filteredWords.take(4).toList();
     return selectedWords;
   }
 
-  TaskWordsExempleModel getTask(String letter) {
-    List<Word> wordsRandom = getRandomWords(letter);
-    wordsRandom.shuffle();
+  TaskWordsExempleModel getTask(String letter, List<Word> taskWords) {
     Map<String, List<String>> jsonMock = {
       "A": ["A", "Á", "À", "Â", "Ã"],
       "E": ["E", "É", "Ê", "Ẽ"],
@@ -27,7 +25,7 @@ class TaskWordsExempleController {
       "U": ["U"]
     };
     List<String> letters = [];
-     if (jsonMock.containsKey(letter)) {
+    if (jsonMock.containsKey(letter)) {
       letters = jsonMock[letter]!;
     }
     TaskWordsExempleModel task = TaskWordsExempleModel(
@@ -35,10 +33,10 @@ class TaskWordsExempleController {
       letter: letters,
       audio: "paula_lessonExample_$letter.mp3",
       words: [
-        wordsRandom[0],
-        wordsRandom[1],
-        wordsRandom[2],
-        wordsRandom[3],
+        taskWords[0],
+        taskWords[1],
+        taskWords[2],
+        taskWords[3],
       ],
     );
     return task;

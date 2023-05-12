@@ -1,4 +1,5 @@
 import 'package:paula/app/controllers/task_controller.dart';
+import 'package:paula/app/model/paranoa_words.dart';
 import 'package:paula/app/model/task_vogal_selection_model.dart';
 import 'package:paula/app/model/words.dart';
 
@@ -16,59 +17,60 @@ class TaskVogalSelectionController implements TaskController {
   late TaskVogalSelectionModel taskParanoa;
 
   Words words = Words();
+  ParanoaWords paranoaWords = ParanoaWords();
   TaskVogalSelectionController() {
     taskA1 = TaskVogalSelectionModel(words: [
-      words.words[15], //CAPA
-      words.words[10] //LATA
+      words.wordsList[15], //CAPA
+      words.wordsList[10] //LATA
     ], audio: "paula_vowelSelection.mp3");
 
     taskA2 = TaskVogalSelectionModel(words: [
-      words.words[52], //Bala
-      words.words[53] //Faca
+      words.wordsList[38], //Bala
+      words.wordsList[39] //Faca
     ], audio: "paula_vowelSelection.mp3");
 
     taskE1 = TaskVogalSelectionModel(words: [
-      words.words[5], //escada
-      words.words[14] //caneta
+      words.wordsList[5], //escada
+      words.wordsList[14] //caneta
     ], audio: "paula_vowelSelection.mp3");
 
     taskE2 = TaskVogalSelectionModel(words: [
-      words.words[25], //seta
-      words.words[28] //elefante
+      words.wordsList[25], //seta
+      words.wordsList[1] //Antena
     ], audio: "paula_vowelSelection.mp3");
 
     taskI1 = TaskVogalSelectionModel(words: [
-      words.words[9], //abacaxi
-      words.words[39] //isca
+      words.wordsList[9], //abacaxi
+      words.wordsList[37] //isca
     ], audio: "paula_vowelSelection.mp3");
 
     taskI2 = TaskVogalSelectionModel(words: [
-      words.words[21], //Meia
-      words.words[30] //igreja
+      words.wordsList[21], //Meia
+      words.wordsList[30] //igreja
     ], audio: "paula_vowelSelection.mp3");
 
     taskO1 = TaskVogalSelectionModel(words: [
-      words.words[13], //Bola
-      words.words[20] //ioio
+      words.wordsList[13], //Bola
+      words.wordsList[20] //ioio
     ], audio: "paula_vowelSelection.mp3");
 
     taskO2 = TaskVogalSelectionModel(words: [
-      words.words[22], //ovo
-      words.words[17] //dado
+      words.wordsList[22], //ovo
+      words.wordsList[17] //dado
     ], audio: "paula_vowelSelection.mp3");
 
     taskU1 = TaskVogalSelectionModel(words: [
-      words.words[7], //Uva
-      words.words[31] //Urso
+      words.wordsList[7], //Uva
+      words.wordsList[31] //Urso
     ], audio: "paula_vowelSelection.mp3");
 
     taskU2 = TaskVogalSelectionModel(words: [
-      words.words[24], //Onibus
-      words.words[33] //unha
+      words.wordsList[24], //Onibus
+      words.wordsList[33] //unha
     ], audio: "paula_vowelSelection.mp3");
 
     taskParanoa = TaskVogalSelectionModel(words: [
-      words.words[36], //paranoa
+      paranoaWords.wordsList[12], //paranoa
     ], audio: "paula_vowelSelection.mp3");
   }
 
