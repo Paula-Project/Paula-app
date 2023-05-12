@@ -1,4 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:paula/app/controllers/module_vowels_controller.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
@@ -23,83 +25,82 @@ class _CongratulationsVowelsPageState extends State<CongratulationsVowelsPage> {
       return false;
     }
 
+    String speech = "Parabéns, \n Você concluiu o módulo de vogais";
+    var height = MediaQuery.of(context).size.height;
+
     return WillPopScope(
       onWillPop: _onwillpop,
       child: Scaffold(
         body: Container(
           decoration: const BoxDecoration(
-            color: Colors.white,
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color.fromARGB(200, 100, 171, 226),
+                Color.fromARGB(255, 41, 171, 226),
+              ],
+            ),
           ),
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.only(
+              top: MediaQuery.of(context).padding.top,
+              bottom: MediaQuery.of(context).padding.bottom + 20),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(30, 100, 30, 10),
-                child: Container(
-                  height: (MediaQuery.of(context).size.height) * 0.6,
-                  width: (MediaQuery.of(context).size.width) * 0.8,
-                  decoration: const BoxDecoration(
-                    color: Color.fromRGBO(37, 85, 124, 1),
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 10.0,
-                        spreadRadius: 2.0,
-                      )
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(3.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Image.asset('assets/images/fireworks.png',
-                                scale: 6.0),
-                            Image.asset('assets/images/fireworks.png',
-                                scale: 6.0),
-                          ],
+              Column(
+                children: [
+                  Stack(children: [
+                    SizedBox(
+                      height: height * 0.3,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 00, 8, 0),
+                        child: AutoSizeText(
+                          speech,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontFamily: 'Poppins',
+                            color: Colors.white,
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          minFontSize: 25,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(8, 40, 8, 0),
-                        child: Column(
-                          children: const [
-                            Text(
-                              "PARABÉNS!!",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                color: Colors.white,
-                                fontSize: 40,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              "VOCÊ CONCLUIU O MÓDULO DE VOGAIS",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'Poppins',
-                                color: Colors.white70,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                              height: 200,
+                              child:
+                                  Lottie.asset('assets/images/fireworks.json')),
+                        ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 30),
-                        child: Image.asset(
-                            'assets/images/selos/Selo_vogais.png',
-                            scale: 3.5),
-                      ),
-                    ],
+                    ),
+                  ]),
+                  Center(
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        SizedBox(
+                            height: height * 0.3,
+                            child:
+                                Lottie.asset('assets/images/fireworks.json')),
+                        SizedBox(
+                            height: height * 0.2,
+                            child: Image.asset(
+                              'assets/images/selos/Selo_vogais.png',
+                              alignment: Alignment.center,
+                            )),
+                      ],
+                    ),
                   ),
-                ),
+                ],
               ),
               Consumer<UsuarioState>(builder: (context, usuarioState, child) {
                 UsuarioAPI usuarioLogado = usuarioState.getUsuario();
@@ -114,9 +115,9 @@ class _CongratulationsVowelsPageState extends State<CongratulationsVowelsPage> {
                       child: ElevatedButton(
                         style: ButtonStyle(
                             foregroundColor:
-                                MaterialStateProperty.all<Color>(Colors.white),
-                            backgroundColor:
                                 MaterialStateProperty.all<Color>(Colors.blue),
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.white),
                             shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
