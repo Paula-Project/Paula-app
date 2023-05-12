@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
                     "Paranoá",
                     LessonParanoaWelcome(
                         lessonController: lessonParanoaController),
-                    true),
+                    moduleVowelsController.getCompleted(usuarioLogado)),
                 /*ModuleButton(
                     Alignment.centerRight,
                     "Paranoá",
