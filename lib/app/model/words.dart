@@ -2,8 +2,8 @@ import 'package:paula/app/model/word.dart';
 
 //set words assets from /assets/words
 class Words {
-  List<Word> words = [];
-  List<String> wordsList = [
+  List<Word> wordsList = [];
+  List<String> textList = [
     'Abajur', // 0
     'Antena', // 1
     'Apito', // 2
@@ -39,25 +39,11 @@ class Words {
     'Urso', // 32
     'Unha', // 33
     'Um', // 34
-    'Paranoá', // 35
-    'Paranoá', // 36
-    'Olho', // 37
-    'Sorvete', // 38
-    'Isca', // 39
-    'Paranoá\nCarnes', // 40
-    'Paranoá\nPanificadora', // 41
-    'Paranoá\nTintas', // 42
-    'Paranoá\nUpa', // 43
-    'Casa\nNordestina', // 44
-    'Paraíba\nDistribuidora', // 45
-    'Lago Paranoá', // 46
-    'Lago Paranoá', // 47
-    'Paróquia', // 48
-    'Pé na Jaca', // 49
-    'Tintas', // 50
-    'Universal', // 51
-    'Bala', //52
-    'Faca', //53
+    'Olho', // 35
+    'Sorvete', // 36
+    'Isca', // 37
+    'Bala', //38
+    'Faca', //39
   ];
   List<String> soundsList = [
     'abajur.mp3',
@@ -95,25 +81,11 @@ class Words {
     'urso.mp3',
     'unha.mp3',
     'um.mp3',
-    'paranoa.mp3',
-    'paranoa.mp3',
     'olho.mp3',
     'sorvete.mp3',
     'isca.mp3',
-    'paranoa_carnes.mp3',
-    'paranoa_panificadora.mp3',
-    'paranoa_tintas.mp3',
-    'paranoa_upa.mp3',
-    'paranoa_casaNordestina.mp3',
-    'paranoa_distribuidora.mp3',
-    'paranoa_lago.mp3',
-    'paranoa_lago.mp3',
-    'paranoa_paroquia.mp3',
-    'paranoa_penaJaca.mp3',
-    'paranoa_tintas1.mp3',
-    'paranoa_universal.mp3',
-    'faca.mp3',
     'bala.mp3',
+    'faca.mp3',
   ];
   List<String> imagesList = [
     'abajur.png',
@@ -151,31 +123,17 @@ class Words {
     'urso.png',
     'unha.png',
     'um.png',
-    'paranoa.png',
-    'paranoa_letreiro.jpg',
     'olho.png',
     'sorvete.png',
     'isca.png',
-    'paranoa_carnes.jpg',
-    'paranoa_panificadora.jpg',
-    'paranoa_tintas.jpg',
-    'paranoa_upa.jpg',
-    'paranoa_casaNordestina.png',
-    'paranoa_Distribuidora.png',
-    'paranoa_lago1.png',
-    'paranoa_lago2.png',
-    'paranoa_paroquia.png',
-    'paranoa_penaJaca.png',
-    'paranoa_tintas1.png',
-    'paranoa_Universal.png',
     'bala.png',
     'faca.png',
   ];
 
   void populate() {
-    for (int i = 0; i < wordsList.length; i++) {
-      words.add(Word(
-          text: wordsList[i],
+    for (int i = 0; i < textList.length; i++) {
+      wordsList.add(Word(
+          text: textList[i],
           soundPath: soundsList[i],
           imagePath: imagesList[i]));
     }
@@ -186,8 +144,8 @@ class Words {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['words'] = this.words.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['wordsList'] = wordsList.map((v) => v.toJson()).toList();
     return data;
   }
 }
