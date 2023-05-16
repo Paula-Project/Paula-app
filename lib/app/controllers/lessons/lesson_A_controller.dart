@@ -7,15 +7,16 @@ import 'package:paula/app/controllers/tasks/task_select_image_controller.dart';
 import 'package:paula/app/controllers/tasks/task_vogal_selection_controller.dart';
 import 'package:paula/app/controllers/tasks/task_words_exemple_controller.dart';
 import 'package:paula/app/model/task_model.dart';
+import 'package:paula/app/model/task_select_image_model.dart';
 import 'package:paula/app/model/word.dart';
 import 'package:paula/app/utils/getRandomWords.dart';
-import 'package:paula/app/views/lessons/task_complete_words.dart';
-import 'package:paula/app/views/lessons/task_mark_vowel.dart';
+import 'package:paula/app/views/tasks/task_complete_words.dart';
+import 'package:paula/app/views/tasks/task_mark_vowel.dart';
 import 'package:paula/app/views/lessons/congratulations_page.dart';
 import 'package:paula/app/views/lessons/lesson_introduction.dart';
-import 'package:paula/app/views/lessons/task_select_image.dart';
-import 'package:paula/app/views/lessons/task_vogal_selection.dart';
-import 'package:paula/app/views/lessons/task_words_exemple.dart';
+import 'package:paula/app/views/tasks/task_select_image.dart';
+import 'package:paula/app/views/tasks/task_vogal_selection.dart';
+import 'package:paula/app/views/tasks/task_words_exemple.dart';
 import 'package:paula/app/views/lessons/try_again_page.dart';
 import 'package:paula/app/model/words.dart';
 
@@ -39,10 +40,17 @@ class LessonAController implements LessonControllerInterface {
   static bool completed = false;
 
   List widgetsRouters = [];
-
+  late TaskSelectImageModel task1;
+  late TaskSelectImageModel task2;
+  late TaskSelectImageModel task3;
+  late TaskSelectImageModel task4;
   LessonAController({required this.moduleVowelsController}) {
     verifyisCompleted();
     List<Word> listWordsA = getRandomWords(["A"], 4);
+    task1 = selectImageController.getTask(listWordsA[0], "A");
+    task2 = selectImageController.getTask(listWordsA[1], "A");
+    task3 = selectImageController.getTask(listWordsA[2], "A");
+    task4 = selectImageController.getTask(listWordsA[3], "A");
 
     widgetsRouters.add(LessonIntroduction(
       letter: 'A',
@@ -63,12 +71,12 @@ class LessonAController implements LessonControllerInterface {
       task: markVowelController.getTask("A"),
     )); //1º task
     widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getTask(listWordsA[0], "A"),
+      task: task1,
       taskController: selectImageController,
       lessonController: this,
     )); //2º task
     widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getTask(listWordsA[1], "A"),
+      task: task2,
       taskController: selectImageController,
       lessonController: this,
     )); //3º task
@@ -78,7 +86,7 @@ class LessonAController implements LessonControllerInterface {
       taskController: vogalSelectionController,
     )); //4º task
     widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getTask(listWordsA[2], "A"),
+      task: task3,
       taskController: selectImageController,
       lessonController: this,
     )); //5º task
@@ -88,7 +96,7 @@ class LessonAController implements LessonControllerInterface {
       taskController: vogalSelectionController,
     )); //6º task
     widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getTask(listWordsA[3], "A"),
+      task: task4,
       taskController: selectImageController,
       lessonController: this,
     )); //7º task
@@ -128,7 +136,10 @@ class LessonAController implements LessonControllerInterface {
     nextPage = -1;
     correctAnswers = 0;
     wrongAnswers = 0;
-    selectImageController.reset();
+    selectImageController.reset(task1);
+    selectImageController.reset(task2);
+    selectImageController.reset(task3);
+    selectImageController.reset(task4);
     markVowelController.reset();
     completeWordController.reset();
     vogalSelectionController.reset();

@@ -10,6 +10,9 @@ class TaskCompleteWordController {
   late TaskCompleteWordModel task3;
   late TaskCompleteWordModel task4;
   late TaskCompleteWordModel task5;
+  late TaskCompleteWordModel task6;
+  late TaskCompleteWordModel task7;
+  late TaskCompleteWordModel task8;
   late TaskCompleteWordModel taskParanoa;
   late TaskCompleteWordModel taskTintas;
   Words words = Words();
@@ -31,8 +34,8 @@ class TaskCompleteWordController {
       lessonVowels: ['A', 'E', 'U'],
       words: [
         words.wordsList[15], // Capa
-        words.wordsList[7], // UVA
-        words.wordsList[10], // LATA
+        words.wordsList[39], // Faca
+        words.wordsList[10], // Lata
       ],
     );
     task2 = TaskCompleteWordModel(
@@ -67,6 +70,31 @@ class TaskCompleteWordController {
         words.wordsList[30], // Igreja
       ],
     );
+    task6 = TaskCompleteWordModel(
+      lessonVowels: ['A', 'E', 'I', 'O', 'U'],
+      words: [
+        words.wordsList[11], // Bebida
+        words.wordsList[14], // Caneta
+        words.wordsList[30], // Igreja
+      ],
+    );
+
+    task7 = TaskCompleteWordModel(
+      lessonVowels: ['A', 'E', 'I', 'O', 'U'],
+      words: [
+        words.wordsList[20], // IOIO
+        words.wordsList[21], // MEIA
+        words.wordsList[30], // Igreja
+      ],
+    );
+    task8 = TaskCompleteWordModel(
+      lessonVowels: ['A', 'E', 'I', 'O', 'U'],
+      words: [
+        words.wordsList[7], // Uva
+        words.wordsList[32], // Urso
+        words.wordsList[33], // Unha
+      ],
+    );
   }
 
   TaskCompleteWordModel getTask1() {
@@ -87,6 +115,18 @@ class TaskCompleteWordController {
 
   TaskCompleteWordModel getTask5() {
     return task5;
+  }
+
+  TaskCompleteWordModel getTask6() {
+    return task6;
+  }
+
+  TaskCompleteWordModel getTask7() {
+    return task7;
+  }
+
+  TaskCompleteWordModel getTask8() {
+    return task8;
   }
 
   TaskCompleteWordModel getTaskParanoa() {

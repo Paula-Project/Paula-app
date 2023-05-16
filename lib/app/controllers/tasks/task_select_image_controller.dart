@@ -53,7 +53,7 @@ class TaskSelectImageController extends TaskController {
     }
   }
 
-  void reset() {
+  void reset(covariant TaskSelectImageModel task) {
     task.reset();
   }
 }

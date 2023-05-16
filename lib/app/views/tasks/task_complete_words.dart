@@ -50,8 +50,8 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords>
     audioManager.didLifecycleChange(state);
   }
 
-  Widget NoDraggableLetter(letter) => Container(
-        width: 35,
+  Widget noDraggableLetter(letter) => Container(
+        width: 40,
         height: MediaQuery.of(context).size.height * 0.08,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -70,18 +70,18 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords>
         ),
       );
 
-  Widget Target(int numList, bool accepted) => DragTarget<String>(
+  Widget target(int numList, bool accepted) => DragTarget<String>(
         builder: (BuildContext context, List<Object?> candidateData,
             List<dynamic> rejectedData) {
           return Container(
-            width: 35,
+            width: 40,
             height: MediaQuery.of(context).size.height * 0.08,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(5)),
               color: Color.fromRGBO(37, 85, 124, 1),
             ),
             child: accepted == true
-                ? NoDraggableLetter(
+                ? noDraggableLetter(
                     widget.taskController.vowelsSelected[numList])
                 : LetterBox(''),
           );
@@ -102,11 +102,11 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords>
     for (int i = 0; i < word.length; i++) {
       String letter = word[i].toUpperCase();
       if (widget.task.lessonVowels.contains(letter)) {
-        _widgets.add(Target(count, false));
+        _widgets.add(target(count, false));
         count = count + 1;
         widget.taskController.vowelsSelected.add('');
       } else {
-        _widgets.add(NoDraggableLetter(letter));
+        _widgets.add(noDraggableLetter(letter));
       }
     }
     print("makeword: $_widgets");
@@ -332,7 +332,7 @@ class LetterBox extends StatelessWidget {
   }
 
   Widget letterCard(context) => Container(
-        width: 35,
+        width: 50,
         height: MediaQuery.of(context).size.height * 0.08,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(5)),

@@ -40,7 +40,7 @@ class TaskVogalSelectionController implements TaskController {
     ], audio: "paula_vowelSelection.mp3");
 
     taskI1 = TaskVogalSelectionModel(words: [
-      words.wordsList[9], //abacaxi
+      words.wordsList[21], //Meia
       words.wordsList[37] //isca
     ], audio: "paula_vowelSelection.mp3");
 
@@ -61,7 +61,7 @@ class TaskVogalSelectionController implements TaskController {
 
     taskU1 = TaskVogalSelectionModel(words: [
       words.wordsList[7], //Uva
-      words.wordsList[31] //Urso
+      words.wordsList[32] //Urso
     ], audio: "paula_vowelSelection.mp3");
 
     taskU2 = TaskVogalSelectionModel(words: [

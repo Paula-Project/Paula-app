@@ -7,15 +7,16 @@ import 'package:paula/app/controllers/tasks/task_select_image_controller.dart';
 import 'package:paula/app/controllers/tasks/task_vogal_selection_controller.dart';
 import 'package:paula/app/controllers/tasks/task_words_exemple_controller.dart';
 import 'package:paula/app/model/task_model.dart';
+import 'package:paula/app/model/task_select_image_model.dart';
 import 'package:paula/app/model/word.dart';
 import 'package:paula/app/utils/getRandomWords.dart';
-import 'package:paula/app/views/lessons/task_complete_words.dart';
-import 'package:paula/app/views/lessons/task_mark_vowel.dart';
+import 'package:paula/app/views/tasks/task_complete_words.dart';
+import 'package:paula/app/views/tasks/task_mark_vowel.dart';
 import 'package:paula/app/views/lessons/congratulations_page.dart';
 import 'package:paula/app/views/lessons/lesson_introduction.dart';
-import 'package:paula/app/views/lessons/task_select_image.dart';
-import 'package:paula/app/views/lessons/task_vogal_selection.dart';
-import 'package:paula/app/views/lessons/task_words_exemple.dart';
+import 'package:paula/app/views/tasks/task_select_image.dart';
+import 'package:paula/app/views/tasks/task_vogal_selection.dart';
+import 'package:paula/app/views/tasks/task_words_exemple.dart';
 import 'package:paula/app/views/lessons/try_again_page.dart';
 import 'package:paula/app/model/words.dart';
 
@@ -40,10 +41,18 @@ class LessonOController implements LessonControllerInterface {
 
   List widgetsRouters = [];
 
+  late TaskSelectImageModel task1;
+  late TaskSelectImageModel task2;
+  late TaskSelectImageModel task3;
+  late TaskSelectImageModel task4;
   LessonOController({required this.moduleVowelsController}) {
     verifyisCompleted();
-    List<Word> listWordsO = getRandomWords(["O"], 4);
+    List<Word> listWords = getRandomWords(["O"], 4);
 
+    task1 = selectImageController.getTask(listWords[0], "O");
+    task2 = selectImageController.getTask(listWords[1], "O");
+    task3 = selectImageController.getTask(listWords[2], "O");
+    task4 = selectImageController.getTask(listWords[3], "O");
     widgetsRouters.add(LessonIntroduction(
       letter: 'O',
       titleIntroduction: "Esta é a letra O, repita comigo LETRA O.",
@@ -51,7 +60,7 @@ class LessonOController implements LessonControllerInterface {
       audioUrl: 'paula_introduction_O.mp3',
     ));
     widgetsRouters.add(TaskWordsExemple(
-      task: wordsExempleController.getTask("O", listWordsO),
+      task: wordsExempleController.getTask("O", listWords),
       lessonController: this,
     ));
     widgetsRouters.add(TaskMarkVowel(
@@ -60,12 +69,12 @@ class LessonOController implements LessonControllerInterface {
       task: markVowelController.getTask("O"),
     ));
     widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getTask(listWordsO[0], "O"),
+      task: task1,
       taskController: selectImageController,
       lessonController: this,
     ));
     widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getTask(listWordsO[1], "O"),
+      task: task2,
       taskController: selectImageController,
       lessonController: this,
     ));
@@ -75,7 +84,7 @@ class LessonOController implements LessonControllerInterface {
       taskController: vogalSelectionController,
     ));
     widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getTask(listWordsO[2], "O"),
+      task: task3,
       taskController: selectImageController,
       lessonController: this,
     ));
@@ -85,13 +94,13 @@ class LessonOController implements LessonControllerInterface {
       taskController: vogalSelectionController,
     ));
     widgetsRouters.add(TaskSelectImage(
-      task: selectImageController.getTask(listWordsO[3], "O"),
+      task: task4,
       taskController: selectImageController,
       lessonController: this,
     ));
     widgetsRouters.add(TaskCompleteWords(
       lessonController: this,
-      task: completeWordController.getTask1(),
+      task: completeWordController.getTask2(),
       taskController: completeWordController,
     ));
     widgetsRouters.add(CongratulationsPage(
@@ -125,7 +134,10 @@ class LessonOController implements LessonControllerInterface {
     nextPage = -1;
     correctAnswers = 0;
     wrongAnswers = 0;
-    selectImageController.reset();
+    selectImageController.reset(task1);
+    selectImageController.reset(task2);
+    selectImageController.reset(task3);
+    selectImageController.reset(task4);
     markVowelController.reset();
     completeWordController.reset();
     vogalSelectionController.reset();
