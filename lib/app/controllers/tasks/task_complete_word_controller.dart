@@ -55,7 +55,7 @@ class TaskCompleteWordController {
       ],
     );
     task4 = TaskCompleteWordModel(
-      lessonVowels: ['A', 'E', 'I', 'O', 'U'],
+      lessonVowels: ['A', 'E', 'I', 'O', 'U', 'Á'],
       words: [
         paranoaWords.wordsList[12], // PARANOÁ
         paranoaWords.wordsList[10], // TINTAS

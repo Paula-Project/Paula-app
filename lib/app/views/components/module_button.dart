@@ -23,12 +23,14 @@ class _ModuleButtonState extends State<ModuleButton> {
       alignment: widget._align,
       child: ElevatedButton(
         onPressed: () {
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-              builder: (BuildContext context) => widget._page,
-            ),
-            (route) => false,
-          );
+          if (widget._isActive) {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                builder: (BuildContext context) => widget._page,
+              ),
+              (route) => false,
+            );
+          }
         },
         style: ElevatedButton.styleFrom(
           minimumSize: Size(120.0, 120.0),

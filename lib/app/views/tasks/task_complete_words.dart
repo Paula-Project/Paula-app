@@ -50,8 +50,8 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords>
     audioManager.didLifecycleChange(state);
   }
 
-  Widget noDraggableLetter(letter) => Container(
-        width: 40,
+  Widget noDraggableLetter(letter, word) => Container(
+        width: 20,
         height: MediaQuery.of(context).size.height * 0.08,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -70,11 +70,11 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords>
         ),
       );
 
-  Widget target(int numList, bool accepted) => DragTarget<String>(
+  Widget target(int numList, bool accepted, String word) => DragTarget<String>(
         builder: (BuildContext context, List<Object?> candidateData,
             List<dynamic> rejectedData) {
           return Container(
-            width: 40,
+            width: 35,
             height: MediaQuery.of(context).size.height * 0.08,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -82,7 +82,7 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords>
             ),
             child: accepted == true
                 ? noDraggableLetter(
-                    widget.taskController.vowelsSelected[numList])
+                    widget.taskController.vowelsSelected[numList], word)
                 : LetterBox(''),
           );
         },
@@ -102,11 +102,11 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords>
     for (int i = 0; i < word.length; i++) {
       String letter = word[i].toUpperCase();
       if (widget.task.lessonVowels.contains(letter)) {
-        _widgets.add(target(count, false));
+        _widgets.add(target(count, false, word));
         count = count + 1;
         widget.taskController.vowelsSelected.add('');
       } else {
-        _widgets.add(noDraggableLetter(letter));
+        _widgets.add(noDraggableLetter(letter, word));
       }
     }
     print("makeword: $_widgets");
