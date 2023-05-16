@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/lesson_paranoa_controller.dart';
-import 'package:paula/app/controllers/task_words_paranoa_controller.dart';
+import 'package:paula/app/controllers/lessons/lesson_paranoa_controller.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/layout/layout.dart';
 import 'package:paula/app/views/lessons/lessons_vogais.dart';
 import 'package:paula/app/views/lessons/lesson_paranoa_welcome.dart';
 import 'package:provider/provider.dart';
-import '../controllers/module_vowels_controller.dart';
+import '../controllers/modules/module_vowels_controller.dart';
 import 'components/module_button.dart';
 
 class HomePage extends StatelessWidget {

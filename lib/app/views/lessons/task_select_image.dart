@@ -1,7 +1,6 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/lesson_controller_interface.dart';
-import 'package:paula/app/controllers/task_select_image_controller.dart';
+import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
+import 'package:paula/app/controllers/tasks/task_select_image_controller.dart';
 import 'package:paula/app/model/task_select_image_model.dart';
 import 'package:paula/app/views/components/CardImage.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';

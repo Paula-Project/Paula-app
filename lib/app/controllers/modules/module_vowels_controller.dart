@@ -1,14 +1,14 @@
-import 'package:paula/app/controllers/lesson_A_controller.dart';
-import 'package:paula/app/controllers/lesson_E_controller.dart';
-import 'package:paula/app/controllers/lesson_I_controller.dart';
-import 'package:paula/app/controllers/lesson_O_controller.dart';
-import 'package:paula/app/controllers/lesson_U_controller.dart';
+import 'package:paula/app/controllers/lessons/lesson_A_controller.dart';
+import 'package:paula/app/controllers/lessons/lesson_E_controller.dart';
+import 'package:paula/app/controllers/lessons/lesson_I_controller.dart';
+import 'package:paula/app/controllers/lessons/lesson_O_controller.dart';
+import 'package:paula/app/controllers/lessons/lesson_U_controller.dart';
 import 'package:paula/app/http/webclient.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:provider/provider.dart';
 
-import 'lesson_final_controller.dart';
+import '../lessons/lesson_final_controller.dart';
 
 class ModuleVowelsController {
   late final LessonAController lessonAController;

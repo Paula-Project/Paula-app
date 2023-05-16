@@ -1,11 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/lesson_controller_interface.dart';
+import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
 import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
 import 'package:paula/app/views/components/task_progress.dart';
-import 'package:paula/app/controllers/task_complete_word_controller.dart';
+import 'package:paula/app/controllers/tasks/task_complete_word_controller.dart';
 import 'package:paula/app/model/task_complete_word_model.dart';
 
 class TaskWriteWords extends StatefulWidget {

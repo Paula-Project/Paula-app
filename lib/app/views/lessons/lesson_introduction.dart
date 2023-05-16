@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:paula/app/controllers/lesson_controller_interface.dart';
+import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/DIalogTextBoxDown.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
 import 'package:paula/app/views/components/audioManager.dart';

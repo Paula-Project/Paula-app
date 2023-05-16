@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/lesson_controller_interface.dart';
+import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/model/task_words_exemple_model.dart';
 import 'package:paula/app/views/components/ButtonNext.dart';
 import 'package:paula/app/views/components/CardExemple.dart';
