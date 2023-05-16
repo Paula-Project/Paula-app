@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/module_vowels_controller.dart';
+import 'package:paula/app/controllers/modules/module_vowels_controller.dart';
 import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/lessons/lessons_vogais.dart';
 

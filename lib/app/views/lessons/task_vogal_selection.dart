@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/lesson_controller_interface.dart';
-import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
+import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
+import 'package:paula/app/controllers/tasks/task_vogal_selection_controller.dart';
 import 'package:paula/app/model/task_vogal_selection_model.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
 import 'package:paula/app/views/components/SelectLetterButton.dart';

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:paula/app/controllers/task_controller.dart';
+import 'package:paula/app/controllers/tasks/task_controller.dart';
 import 'package:paula/app/model/letter.dart';
 import 'package:paula/app/model/letters.dart';
 import 'package:paula/app/model/task_mark_vowel_model.dart';

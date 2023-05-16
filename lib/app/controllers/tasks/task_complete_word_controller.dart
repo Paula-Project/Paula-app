@@ -1,7 +1,6 @@
 import 'package:paula/app/model/paranoa_words.dart';
-
-import '../model/task_complete_word_model.dart';
-import '../model/words.dart';
+import 'package:paula/app/model/task_complete_word_model.dart';
+import 'package:paula/app/model/words.dart';
 
 class TaskCompleteWordController {
   List<String> vowelsSelected = [];

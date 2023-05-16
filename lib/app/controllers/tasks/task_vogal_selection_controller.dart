@@ -1,4 +1,4 @@
-import 'package:paula/app/controllers/task_controller.dart';
+import 'package:paula/app/controllers/tasks/task_controller.dart';
 import 'package:paula/app/model/paranoa_words.dart';
 import 'package:paula/app/model/task_vogal_selection_model.dart';
 import 'package:paula/app/model/words.dart';

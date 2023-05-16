@@ -7,7 +7,7 @@ import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/login_page.dart';
 import 'package:paula/app/views/person_data_page.dart';
 
-import '../../controllers/module_vowels_controller.dart';
+import '../../controllers/modules/module_vowels_controller.dart';
 
 class LessonsVogais extends StatefulWidget {
   final ModuleVowelsController moduleVowelsController;

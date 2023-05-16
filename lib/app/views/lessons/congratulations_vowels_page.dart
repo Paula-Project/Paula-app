@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:paula/app/controllers/module_vowels_controller.dart';
+import 'package:paula/app/controllers/modules/module_vowels_controller.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:provider/provider.dart';

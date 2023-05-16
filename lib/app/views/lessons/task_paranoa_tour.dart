@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/lesson_controller_interface.dart';
+import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/model/task_paranoa_tour_model.dart';
 import 'package:paula/app/views/components/CardParanoaTour.dart';
 import 'package:paula/app/views/components/audioManager.dart';

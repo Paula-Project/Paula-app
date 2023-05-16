@@ -1,15 +1,14 @@
-import 'package:paula/app/controllers/lesson_controller_interface.dart';
-import 'package:paula/app/controllers/task_complete_word_controller.dart';
-import 'package:paula/app/controllers/task_controller.dart';
-import 'package:paula/app/controllers/task_paranoa_tour_controller.dart';
-import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
+import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
+import 'package:paula/app/controllers/tasks/task_complete_word_controller.dart';
+import 'package:paula/app/controllers/tasks/task_controller.dart';
+import 'package:paula/app/controllers/tasks/task_paranoa_tour_controller.dart';
+import 'package:paula/app/controllers/tasks/task_vogal_selection_controller.dart';
 import 'package:paula/app/model/task_model.dart';
 import 'package:paula/app/views/lessons/congratulations_paranoa.dart';
 import 'package:paula/app/views/lessons/task_complete_words.dart';
 import 'package:paula/app/views/lessons/task_paranoa_tour.dart';
 import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 import 'package:paula/app/views/lessons/task_write_words.dart';
-import 'package:paula/app/views/lessons/try_again_page.dart';
 import 'package:paula/app/views/lessons/try_again_page_paranoa.dart';
 
 class LessonParanoaController implements LessonControllerInterface {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/lesson_controller_interface.dart';
+import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 
 class ButtonContinue extends StatelessWidget {
   final LessonControllerInterface lessonController;

@@ -1,10 +1,10 @@
-import 'package:paula/app/controllers/lesson_controller_interface.dart';
-import 'package:paula/app/controllers/module_vowels_controller.dart';
-import 'package:paula/app/controllers/task_complete_word_controller.dart';
-import 'package:paula/app/controllers/task_controller.dart';
-import 'package:paula/app/controllers/task_mark_vowel_controller.dart';
-import 'package:paula/app/controllers/task_select_image_controller.dart';
-import 'package:paula/app/controllers/task_vogal_selection_controller.dart';
+import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
+import 'package:paula/app/controllers/modules/module_vowels_controller.dart';
+import 'package:paula/app/controllers/tasks/task_complete_word_controller.dart';
+import 'package:paula/app/controllers/tasks/task_controller.dart';
+import 'package:paula/app/controllers/tasks/task_mark_vowel_controller.dart';
+import 'package:paula/app/controllers/tasks/task_select_image_controller.dart';
+import 'package:paula/app/controllers/tasks/task_vogal_selection_controller.dart';
 import 'package:paula/app/model/task_model.dart';
 import 'package:paula/app/model/word.dart';
 import 'package:paula/app/utils/getRandomWords.dart';
@@ -14,7 +14,7 @@ import 'package:paula/app/views/lessons/task_diphthong.dart';
 import 'package:paula/app/views/lessons/task_select_image.dart';
 import 'package:paula/app/views/lessons/task_vogal_selection.dart';
 import 'package:paula/app/views/lessons/try_again_page.dart';
-import '../views/lessons/task_mark_vowel.dart';
+import '../../views/lessons/task_mark_vowel.dart';
 
 class LessonFinalController implements LessonControllerInterface {
   TaskMarkVowelController markVowelController = TaskMarkVowelController();
