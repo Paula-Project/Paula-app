@@ -145,6 +145,29 @@ flutter:
     - assets/images/words/unha.png
     - assets/images/words/urso.png
     - assets/images/words/uva.png
+    - assets/images/words/avo.png
+    - assets/images/words/avô.png
+    - assets/images/words/neto.png
+    - assets/images/words/bebe.png
+    - assets/images/words/carro.png
+    - assets/images/words/mae.png
+    - assets/images/words/pai.png
+    - assets/images/words/cama.png
+    - assets/images/words/lapis.png
+    - assets/images/words/criança.png
+    - assets/images/words/menino.png
+    - assets/images/words/menina.png
+    - assets/images/words/cachorro.png
+    - assets/images/words/gato.png
+    - assets/images/words/vaca.png
+    - assets/images/words/lixo.png
+    - assets/images/words/escola.png
+    - assets/images/words/casa.png
+    - assets/images/words/capivara.png
+    - assets/images/words/churrasco.png
+    - assets/images/words/cafe.png
+    - assets/images/words/leite.png
+
 
     #Figuras dos selos
     - assets/images/selos/Selo_diario_off.png
