@@ -117,7 +117,7 @@ class Words {
     'carro.mp3',
     'onibus.mp3',
     'cavalo.mp3',
-    'mãe.mp3',
+    'mae.mp3',
     'pai.mp3',
     'cama.mp3',
     'lápis.mp3',

@@ -20,7 +20,7 @@ class LessonParanoaController implements LessonControllerInterface {
   List widgetsRouters = [];
   static int correctAnswers = 0;
   static int wrongAnswers = 0;
-  int tasksQuantity = 4;
+  int tasksQuantity = 12;
 
   static int nextPage = -1;
   static bool completed = false;
@@ -40,6 +40,10 @@ class LessonParanoaController implements LessonControllerInterface {
         lessonController: this,
         taskController: vogalSelectionController,
         task: vogalSelectionController.getTaskParanoa()));
+    widgetsRouters.add(TaskVogalSelection(
+        lessonController: this,
+        taskController: vogalSelectionController,
+        task: vogalSelectionController.getTaskParanoaA3()));
     widgetsRouters.add(TaskCompleteWords(
         lessonController: this,
         task: completeWordController.getTask4(),
@@ -48,7 +52,22 @@ class LessonParanoaController implements LessonControllerInterface {
         lessonController: this,
         task: completeWordController.getTaskParanoa(),
         taskController: completeWordController));
-
+    widgetsRouters.add(TaskVogalSelection(
+        lessonController: this,
+        taskController: vogalSelectionController,
+        task: vogalSelectionController.getTaskParanoaA4()));
+    widgetsRouters.add(TaskWriteWords(
+        lessonController: this,
+        task: completeWordController.getTaskCarro(),
+        taskController: completeWordController));
+    widgetsRouters.add(TaskWriteWords(
+        lessonController: this,
+        task: completeWordController.getTaskPalavrasParanoa(),
+        taskController: completeWordController));
+    widgetsRouters.add(TaskWriteWords(
+        lessonController: this,
+        task: completeWordController.getTaskLixo(),
+        taskController: completeWordController));
     widgetsRouters.add(TaskParanoaTour(
         lessonController: this, task: paranoaTourController.getTaskDurst()));
     widgetsRouters.add(TaskParanoaTour(
@@ -56,6 +75,10 @@ class LessonParanoaController implements LessonControllerInterface {
     widgetsRouters.add(TaskWriteWords(
         lessonController: this,
         task: completeWordController.getTaskTintas(),
+        taskController: completeWordController));
+    widgetsRouters.add(TaskWriteWords(
+        lessonController: this,
+        task: completeWordController.getTaskCama(),
         taskController: completeWordController));
     widgetsRouters.add(TaskParanoaTour(
         lessonController: this, task: paranoaTourController.getTaskLake()));
