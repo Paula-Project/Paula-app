@@ -304,9 +304,12 @@ flutter:
     - assets/audios/words/crianca.mp3
     - assets/audios/words/menino.mp3
     - assets/audios/words/menina.mp3
+    - assets/audios/words/cachorro.mp3
     - assets/audios/words/gato.mp3
     - assets/audios/words/vaca.mp3
     - assets/audios/words/lixo.mp3
+    - assets/audios/words/escola.mp3
+    - assets/audios/words/casa.mp3
     - assets/audios/words/capivara.mp3
     - assets/audios/words/churrasco.mp3
     - assets/audios/words/cafe.mp3
