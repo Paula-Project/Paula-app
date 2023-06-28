@@ -15,6 +15,8 @@ class TaskVogalSelectionController implements TaskController {
   late TaskVogalSelectionModel taskU1;
   late TaskVogalSelectionModel taskU2;
   late TaskVogalSelectionModel taskParanoa;
+  late TaskVogalSelectionModel taskParanoaA1;
+  late TaskVogalSelectionModel taskParanoaA2;
 
   Words words = Words();
   ParanoaWords paranoaWords = ParanoaWords();
@@ -72,6 +74,14 @@ class TaskVogalSelectionController implements TaskController {
     taskParanoa = TaskVogalSelectionModel(words: [
       paranoaWords.wordsList[12], //paranoa
     ], audio: "paula_vowelSelection.mp3");
+
+    taskParanoaA1 = TaskVogalSelectionModel(words: [
+      paranoaWords.wordsList[15], //mãe
+    ], audio: "paula_vowelSelection.mp3");
+
+    taskParanoaA2 = TaskVogalSelectionModel(words: [
+      paranoaWords.wordsList[16], //pai
+    ], audio: "paula_vowelSelection.mp3");
   }
 
   TaskVogalSelectionModel getTaskA1() {
@@ -116,6 +126,14 @@ class TaskVogalSelectionController implements TaskController {
 
   TaskVogalSelectionModel getTaskParanoa() {
     return taskParanoa;
+  }
+
+  TaskVogalSelectionModel getTaskParanoaA1() {
+    return taskParanoaA1;
+  }
+
+  TaskVogalSelectionModel getTaskParanoaA2() {
+    return taskParanoaA2;
   }
 
   @override

@@ -18,6 +18,9 @@ class ParanoaWords {
     'Universal', // 11
     'Paranoá', // 12
     'Paranoá', // 13
+    'churrasco', //14
+    'mãe', //15
+    'pai', //16
   ];
   List<String> soundsList = [
     'paranoa_carnes.mp3',
@@ -34,6 +37,9 @@ class ParanoaWords {
     'paranoa_universal.mp3',
     'paranoa.mp3',
     'paranoa.mp3',
+    'churrasco.mp3',
+    'mãe.mp3',
+    'pai.mp3',
   ];
   List<String> imagesList = [
     'paranoa_carnes.jpg',
@@ -50,6 +56,9 @@ class ParanoaWords {
     'paranoa_Universal.png',
     'paranoa.png',
     'paranoa_letreiro.jpg',
+    'churrasco.png',
+    'mae.png',
+    'pai.png'
   ];
 
   void populate() {

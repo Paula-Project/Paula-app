@@ -5,11 +5,11 @@ import 'package:paula/app/controllers/tasks/task_paranoa_tour_controller.dart';
 import 'package:paula/app/controllers/tasks/task_vogal_selection_controller.dart';
 import 'package:paula/app/model/task_model.dart';
 import 'package:paula/app/views/lessons/congratulations_paranoa.dart';
+import 'package:paula/app/views/lessons/try_again_page_paranoa.dart';
 import 'package:paula/app/views/tasks/task_complete_words.dart';
 import 'package:paula/app/views/tasks/task_paranoa_tour.dart';
 import 'package:paula/app/views/tasks/task_vogal_selection.dart';
 import 'package:paula/app/views/tasks/task_write_words.dart';
-import 'package:paula/app/views/lessons/try_again_page_paranoa.dart';
 
 class LessonParanoaController implements LessonControllerInterface {
   TaskParanoaTourController paranoaTourController = TaskParanoaTourController();
@@ -26,6 +26,14 @@ class LessonParanoaController implements LessonControllerInterface {
   static bool completed = false;
 
   LessonParanoaController() {
+    widgetsRouters.add(TaskVogalSelection(
+        lessonController: this,
+        taskController: vogalSelectionController,
+        task: vogalSelectionController.getTaskParanoaA1()));
+    widgetsRouters.add(TaskVogalSelection(
+        lessonController: this,
+        taskController: vogalSelectionController,
+        task: vogalSelectionController.getTaskParanoaA2()));
     widgetsRouters.add(TaskParanoaTour(
         lessonController: this, task: paranoaTourController.getTaskFood()));
     widgetsRouters.add(TaskVogalSelection(
@@ -40,6 +48,7 @@ class LessonParanoaController implements LessonControllerInterface {
         lessonController: this,
         task: completeWordController.getTaskParanoa(),
         taskController: completeWordController));
+
     widgetsRouters.add(TaskParanoaTour(
         lessonController: this, task: paranoaTourController.getTaskDurst()));
     widgetsRouters.add(TaskParanoaTour(
