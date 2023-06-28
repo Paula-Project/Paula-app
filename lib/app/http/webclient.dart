@@ -53,11 +53,12 @@ Future<UsuarioAPI?> cadastroUsuario(Usuario usuario) async {
       headers: {'Content-type': 'application/json'},
       body: usuarioJson);
 
-  Map<String, dynamic> json = jsonDecode(response.body);
-
   if (response.statusCode == 201) {
+    Map<String, dynamic> json = jsonDecode(response.body);
+    await PrefsService.saveUser(json);
     return UsuarioAPI(json['name'], json['username'], json['gender'],
-        json['age'], json['birthdate'], 0);
+        json['age'], json['birthdate'], json['progress'],
+        id: json['id'], token: json['token']);
   }
 
   return null;
