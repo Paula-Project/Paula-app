@@ -5,11 +5,11 @@ import 'package:paula/app/controllers/tasks/task_paranoa_tour_controller.dart';
 import 'package:paula/app/controllers/tasks/task_vogal_selection_controller.dart';
 import 'package:paula/app/model/task_model.dart';
 import 'package:paula/app/views/lessons/congratulations_paranoa.dart';
+import 'package:paula/app/views/lessons/try_again_page_paranoa.dart';
 import 'package:paula/app/views/tasks/task_complete_words.dart';
 import 'package:paula/app/views/tasks/task_paranoa_tour.dart';
 import 'package:paula/app/views/tasks/task_vogal_selection.dart';
 import 'package:paula/app/views/tasks/task_write_words.dart';
-import 'package:paula/app/views/lessons/try_again_page_paranoa.dart';
 
 class LessonParanoaController implements LessonControllerInterface {
   TaskParanoaTourController paranoaTourController = TaskParanoaTourController();
@@ -20,18 +20,30 @@ class LessonParanoaController implements LessonControllerInterface {
   List widgetsRouters = [];
   static int correctAnswers = 0;
   static int wrongAnswers = 0;
-  int tasksQuantity = 4;
+  int tasksQuantity = 12;
 
   static int nextPage = -1;
   static bool completed = false;
 
   LessonParanoaController() {
+    widgetsRouters.add(TaskVogalSelection(
+        lessonController: this,
+        taskController: vogalSelectionController,
+        task: vogalSelectionController.getTaskParanoaA1()));
+    widgetsRouters.add(TaskVogalSelection(
+        lessonController: this,
+        taskController: vogalSelectionController,
+        task: vogalSelectionController.getTaskParanoaA2()));
     widgetsRouters.add(TaskParanoaTour(
         lessonController: this, task: paranoaTourController.getTaskFood()));
     widgetsRouters.add(TaskVogalSelection(
         lessonController: this,
         taskController: vogalSelectionController,
         task: vogalSelectionController.getTaskParanoa()));
+    widgetsRouters.add(TaskVogalSelection(
+        lessonController: this,
+        taskController: vogalSelectionController,
+        task: vogalSelectionController.getTaskParanoaA3()));
     widgetsRouters.add(TaskCompleteWords(
         lessonController: this,
         task: completeWordController.getTask4(),
@@ -40,6 +52,22 @@ class LessonParanoaController implements LessonControllerInterface {
         lessonController: this,
         task: completeWordController.getTaskParanoa(),
         taskController: completeWordController));
+    widgetsRouters.add(TaskVogalSelection(
+        lessonController: this,
+        taskController: vogalSelectionController,
+        task: vogalSelectionController.getTaskParanoaA4()));
+    widgetsRouters.add(TaskWriteWords(
+        lessonController: this,
+        task: completeWordController.getTaskCarro(),
+        taskController: completeWordController));
+    widgetsRouters.add(TaskWriteWords(
+        lessonController: this,
+        task: completeWordController.getTaskPalavrasParanoa(),
+        taskController: completeWordController));
+    widgetsRouters.add(TaskWriteWords(
+        lessonController: this,
+        task: completeWordController.getTaskLixo(),
+        taskController: completeWordController));
     widgetsRouters.add(TaskParanoaTour(
         lessonController: this, task: paranoaTourController.getTaskDurst()));
     widgetsRouters.add(TaskParanoaTour(
@@ -47,6 +75,10 @@ class LessonParanoaController implements LessonControllerInterface {
     widgetsRouters.add(TaskWriteWords(
         lessonController: this,
         task: completeWordController.getTaskTintas(),
+        taskController: completeWordController));
+    widgetsRouters.add(TaskWriteWords(
+        lessonController: this,
+        task: completeWordController.getTaskCama(),
         taskController: completeWordController));
     widgetsRouters.add(TaskParanoaTour(
         lessonController: this, task: paranoaTourController.getTaskLake()));

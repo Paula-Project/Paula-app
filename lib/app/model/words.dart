@@ -44,6 +44,30 @@ class Words {
     'Isca', // 37
     'Bala', //38
     'Faca', //39
+    'avó', //40
+    'avô', //41*
+    'neto', //42
+    'bebe', //43
+    'carro', //44
+    'onibus', //45
+    'cavalo', //46
+    'mãe', //47
+    'pai', //48
+    'cama', //49
+    'lápis', //50
+    'criança', //51
+    'menino', //52
+    'menina', //53
+    'cachorro', //54
+    'gato', //55
+    'vaca', //56
+    'lixo', //57
+    'escola', //58
+    'casa', //59
+    'capivara', //60
+    'churrasco', //61
+    'café', //62
+    'leite', //63
   ];
   List<String> soundsList = [
     'abajur.mp3',
@@ -86,6 +110,30 @@ class Words {
     'isca.mp3',
     'bala.mp3',
     'faca.mp3',
+    'avó.mp3',
+    'avô.mp3',
+    'neto.mp3',
+    'bebe.mp3',
+    'carro.mp3',
+    'onibus.mp3',
+    'cavalo.mp3',
+    'mae.mp3',
+    'pai.mp3',
+    'cama.mp3',
+    'lápis.mp3',
+    'criança.mp3',
+    'menino.mp3',
+    'menina.mp3',
+    'cachorro.mp3',
+    'gato.mp3',
+    'vaca.mp3',
+    'lixo.mp3',
+    'escola.mp3',
+    'casa.mp3',
+    'capivara.mp3',
+    'churrasco.mp3',
+    'café.mp3',
+    'leite.mp3',
   ];
   List<String> imagesList = [
     'abajur.png',
@@ -128,6 +176,30 @@ class Words {
     'isca.png',
     'bala.png',
     'faca.png',
+    'avo.png',
+    'avô.png',
+    'neto.png',
+    'bebe.png',
+    'carro.png',
+    'onibus.png',
+    'cavalo.png',
+    'mae.png',
+    'pai.png',
+    'cama.png',
+    'lapis.png',
+    'criança.png',
+    'menino.png',
+    'menina.png',
+    'cachorro.png',
+    'gato.png',
+    'vaca.png',
+    'lixo.png',
+    'escola.png',
+    'casa.png',
+    'capivara.png',
+    'churrasco.png',
+    'cafe.png',
+    'leite.png',
   ];
 
   void populate() {
