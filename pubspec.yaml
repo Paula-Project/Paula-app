@@ -103,7 +103,7 @@ flutter:
     - assets/images/words/caneta.png
     - assets/images/words/capa.png
     - assets/images/words/cavalo.png
-    - assets/images/words/dados.png
+    - assets/images/words/dado.png
     - assets/images/words/elefante.png
     - assets/images/words/envelope.png
     - assets/images/words/escada.png
@@ -145,6 +145,28 @@ flutter:
     - assets/images/words/unha.png
     - assets/images/words/urso.png
     - assets/images/words/uva.png
+    - assets/images/words/avó.png
+    - assets/images/words/avô.png
+    - assets/images/words/neto.png
+    - assets/images/words/bebe.png
+    - assets/images/words/carro.png
+    - assets/images/words/mae.png
+    - assets/images/words/pai.png
+    - assets/images/words/cama.png
+    - assets/images/words/lapis.png
+    - assets/images/words/criança.png
+    - assets/images/words/menino.png
+    - assets/images/words/menina.png
+    - assets/images/words/cachorro.png
+    - assets/images/words/gato.png
+    - assets/images/words/vaca.png
+    - assets/images/words/lixo.png
+    - assets/images/words/escola.png
+    - assets/images/words/casa.png
+    - assets/images/words/capivara.png
+    - assets/images/words/churrasco.png
+    - assets/images/words/cafe.png
+    - assets/images/words/leite.png
 
     #Figuras dos selos
     - assets/images/selos/Selo_diario_off.png
@@ -269,6 +291,28 @@ flutter:
     - assets/audios/words/unha.mp3
     - assets/audios/words/urso.mp3
     - assets/audios/words/uva.mp3
+    - assets/audios/words/avó.mp3
+    - assets/audios/words/avô.mp3
+    - assets/audios/words/neto.mp3
+    - assets/audios/words/bebe.mp3
+    - assets/audios/words/carro.mp3
+    - assets/audios/words/mae.mp3
+    - assets/audios/words/pai.mp3
+    - assets/audios/words/cama.mp3
+    - assets/audios/words/lapis.mp3
+    - assets/audios/words/crianca.mp3
+    - assets/audios/words/menino.mp3
+    - assets/audios/words/menina.mp3
+    - assets/audios/words/cachorro.mp3
+    - assets/audios/words/gato.mp3
+    - assets/audios/words/vaca.mp3
+    - assets/audios/words/lixo.mp3
+    - assets/audios/words/escola.mp3
+    - assets/audios/words/casa.mp3
+    - assets/audios/words/capivara.mp3
+    - assets/audios/words/churrasco.mp3
+    - assets/audios/words/cafe.mp3
+    - assets/audios/words/leite.mp3
     - assets/audios/words/paranoa_carnes.mp3
     - assets/audios/words/paranoa_casaNordestina.mp3
     - assets/audios/words/paranoa_distribuidora.mp3

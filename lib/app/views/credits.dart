@@ -128,6 +128,38 @@ class _CreditsPage extends State<CreditsPage> {
                     fontWeight: FontWeight.normal),
                 textAlign: TextAlign.center,
               ),
+              const Text(
+                "Fellipe Silva (Desenvolvedor)",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              const Text(
+                "http://github.com/fellipepcs",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.normal),
+                textAlign: TextAlign.center,
+              ),
+              const Text(
+                "Júlia Vitória (Desenvolvedora)",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              const Text(
+                "http://github.com/juhvitoria4",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.normal),
+                textAlign: TextAlign.center,
+              ),
               SizedBox(height: (MediaQuery.of(context).size.height * 0.025)),
               /////////////////////////////////////////////////////////////// Contato
               const Text(
@@ -248,22 +280,6 @@ class _CreditsPage extends State<CreditsPage> {
               ),
               const Text(
                 "http://github.com/pedrolucas12",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.normal),
-                textAlign: TextAlign.center,
-              ),
-              const Text(
-                "Fellipe Silva (Desenvolvedor)",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-              const Text(
-                "http://github.com/fellipepcs",
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 14.0,

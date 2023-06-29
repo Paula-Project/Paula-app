@@ -15,6 +15,10 @@ class TaskCompleteWordController {
   late TaskCompleteWordModel task8;
   late TaskCompleteWordModel taskParanoa;
   late TaskCompleteWordModel taskTintas;
+  late TaskCompleteWordModel taskCarro;
+  late TaskCompleteWordModel taskCafe;
+  late TaskCompleteWordModel taskLixo;
+  late TaskCompleteWordModel taskCama;
   Words words = Words();
   ParanoaWords paranoaWords = ParanoaWords();
   TaskCompleteWordController() {
@@ -30,12 +34,37 @@ class TaskCompleteWordController {
         audio: 'paula_palavraWrite.mp3',
         words: [paranoaWords.wordsList[10]],
         lessonVowels: ['T', 'I', 'N', 'A', 'S']);
+    taskCarro = TaskCompleteWordModel(
+        title:
+            'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
+        audio: 'paula_palavraWrite.mp3',
+        words: [paranoaWords.wordsList[21]],
+        lessonVowels: ['C', 'A', 'R', 'R', 'O']);
+    taskLixo = TaskCompleteWordModel(
+        title:
+            'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
+        audio: 'paula_palavraWrite.mp3',
+        words: [paranoaWords.wordsList[32]],
+        lessonVowels: ['L', 'I', 'X', 'O']);
+    taskCama = TaskCompleteWordModel(
+        title:
+            'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
+        audio: 'paula_palavraWrite.mp3',
+        words: [paranoaWords.wordsList[24]],
+        lessonVowels: ['C', 'A', 'M', 'A']);
     task1 = TaskCompleteWordModel(
       lessonVowels: ['A', 'E', 'U'],
       words: [
         words.wordsList[15], // Capa
         words.wordsList[39], // Faca
         words.wordsList[10], // Lata
+      ],
+    );
+    taskCafe = TaskCompleteWordModel(
+      lessonVowels: ['A', 'O', 'È'],
+      words: [
+        paranoaWords.wordsList[31], // Vaca
+        paranoaWords.wordsList[37], // Café
       ],
     );
     task2 = TaskCompleteWordModel(
@@ -135,6 +164,22 @@ class TaskCompleteWordController {
 
   TaskCompleteWordModel getTaskTintas() {
     return taskTintas;
+  }
+
+  TaskCompleteWordModel getTaskCarro() {
+    return taskCarro;
+  }
+
+  TaskCompleteWordModel getTaskLixo() {
+    return taskLixo;
+  }
+
+  TaskCompleteWordModel getTaskCama() {
+    return taskCama;
+  }
+
+  TaskCompleteWordModel getTaskPalavrasParanoa() {
+    return taskCafe;
   }
 
   void makeAnswers(TaskCompleteWordModel task) {
