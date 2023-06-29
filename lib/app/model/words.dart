@@ -45,7 +45,7 @@ class Words {
     'Bala', //38
     'Faca', //39
     'avó', //40
-    'avô', //41*
+    'avô', //41
     'neto', //42
     'bebe', //43
     'carro', //44
@@ -153,7 +153,7 @@ class Words {
     'caneta.png',
     'capa.png',
     'cavalo.png',
-    'dados.png',
+    'dado.png',
     'envelope.png',
     'iguana.png',
     'ioio.png',
@@ -176,7 +176,7 @@ class Words {
     'isca.png',
     'bala.png',
     'faca.png',
-    'avo.png',
+    'avó.png',
     'avô.png',
     'neto.png',
     'bebe.png',

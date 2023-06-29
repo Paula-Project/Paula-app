@@ -30,6 +30,8 @@ class LessonParanoaController implements LessonControllerInterface {
         lessonController: this,
         taskController: vogalSelectionController,
         task: vogalSelectionController.getTaskParanoaA1()));
+    widgetsRouters.add(TaskParanoaTour(
+        lessonController: this, task: paranoaTourController.getTaskSunday()));
     widgetsRouters.add(TaskVogalSelection(
         lessonController: this,
         taskController: vogalSelectionController,
@@ -40,6 +42,8 @@ class LessonParanoaController implements LessonControllerInterface {
         lessonController: this,
         taskController: vogalSelectionController,
         task: vogalSelectionController.getTaskParanoa()));
+    widgetsRouters.add(TaskParanoaTour(
+        lessonController: this, task: paranoaTourController.getTaskDurst()));
     widgetsRouters.add(TaskVogalSelection(
         lessonController: this,
         taskController: vogalSelectionController,
@@ -64,26 +68,22 @@ class LessonParanoaController implements LessonControllerInterface {
         lessonController: this,
         task: completeWordController.getTaskPalavrasParanoa(),
         taskController: completeWordController));
+    widgetsRouters.add(TaskParanoaTour(
+        lessonController: this, task: paranoaTourController.getTaskLake()));
     widgetsRouters.add(TaskWriteWords(
         lessonController: this,
         task: completeWordController.getTaskLixo(),
         taskController: completeWordController));
     widgetsRouters.add(TaskParanoaTour(
-        lessonController: this, task: paranoaTourController.getTaskDurst()));
-    widgetsRouters.add(TaskParanoaTour(
         lessonController: this, task: paranoaTourController.getTaskColors()));
-    widgetsRouters.add(TaskWriteWords(
-        lessonController: this,
-        task: completeWordController.getTaskTintas(),
-        taskController: completeWordController));
     widgetsRouters.add(TaskWriteWords(
         lessonController: this,
         task: completeWordController.getTaskCama(),
         taskController: completeWordController));
-    widgetsRouters.add(TaskParanoaTour(
-        lessonController: this, task: paranoaTourController.getTaskLake()));
-    widgetsRouters.add(TaskParanoaTour(
-        lessonController: this, task: paranoaTourController.getTaskSunday()));
+    widgetsRouters.add(TaskWriteWords(
+        lessonController: this,
+        task: completeWordController.getTaskTintas(),
+        taskController: completeWordController));
     widgetsRouters.add(const CongratulationsParanoa());
   }
 
@@ -102,7 +102,7 @@ class LessonParanoaController implements LessonControllerInterface {
     if (nextPage < widgetsRouters.length - 1) {
       nextPage++;
       onCompleted();
-      if (wrongAnswers > 1) {
+      if (wrongAnswers >= 4) {
         reset();
         return const TryAgainParanoaPage();
       }

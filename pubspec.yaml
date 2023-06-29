@@ -103,7 +103,7 @@ flutter:
     - assets/images/words/caneta.png
     - assets/images/words/capa.png
     - assets/images/words/cavalo.png
-    - assets/images/words/dados.png
+    - assets/images/words/dado.png
     - assets/images/words/elefante.png
     - assets/images/words/envelope.png
     - assets/images/words/escada.png
@@ -145,7 +145,7 @@ flutter:
     - assets/images/words/unha.png
     - assets/images/words/urso.png
     - assets/images/words/uva.png
-    - assets/images/words/avo.png
+    - assets/images/words/avó.png
     - assets/images/words/avô.png
     - assets/images/words/neto.png
     - assets/images/words/bebe.png
@@ -167,7 +167,6 @@ flutter:
     - assets/images/words/churrasco.png
     - assets/images/words/cafe.png
     - assets/images/words/leite.png
-
 
     #Figuras dos selos
     - assets/images/selos/Selo_diario_off.png
