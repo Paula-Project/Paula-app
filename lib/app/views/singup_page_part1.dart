@@ -155,8 +155,8 @@ class _SingupPageState extends State<SingupPage> {
                                               keyboardType: TextInputType.text,
                                               formatters: [
                                                 FilteringTextInputFormatter
-                                                    .allow(
-                                                        RegExp(r'[a-zA-Z\s]'))
+                                                    .allow(RegExp(
+                                                        r"[a-zA-ZçÇ'ÁÂãâáÉÊéêÍíÓóôÚú\s]"))
                                               ],
                                             ),
                                             Padding(
