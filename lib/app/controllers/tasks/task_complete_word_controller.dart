@@ -41,18 +41,17 @@ class TaskCompleteWordController {
         words: [paranoaWords.wordsList[21]],
         lessonVowels: ['C', 'A', 'R', 'R', 'O']);
     taskLixo = TaskCompleteWordModel(
-        title:
-            'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
+        title:'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
         audio: 'paula_palavraWrite.mp3',
         words: [paranoaWords.wordsList[32]],
         lessonVowels: ['L', 'I', 'X', 'O']);
     taskCama = TaskCompleteWordModel(
-        title:
-            'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
+        title:'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
         audio: 'paula_palavraWrite.mp3',
         words: [paranoaWords.wordsList[24]],
         lessonVowels: ['C', 'A', 'M', 'A']);
     task1 = TaskCompleteWordModel(
+      title: "Complete as palavras, arrastando as vogais em azul",
       lessonVowels: ['A', 'E', 'U'],
       words: [
         words.wordsList[15], // Capa
@@ -61,13 +60,15 @@ class TaskCompleteWordController {
       ],
     );
     taskCafe = TaskCompleteWordModel(
-      lessonVowels: ['A', 'O', 'È'],
+      title: "Complete as palavras, arrastando as vogais em azul",            
+      lessonVowels: ['A', 'O', 'É'],
       words: [
         paranoaWords.wordsList[31], // Vaca
         paranoaWords.wordsList[37], // Café
       ],
     );
     task2 = TaskCompleteWordModel(
+      title: "Complete as palavras, arrastando as vogais em azul",
       lessonVowels: ['I', 'O'],
       words: [
         words.wordsList[22], // OVO
@@ -76,6 +77,7 @@ class TaskCompleteWordController {
       ],
     );
     task3 = TaskCompleteWordModel(
+      title: "Complete as palavras, arrastando as vogais em azul",
       lessonVowels: ['A', 'E', 'I', 'O', 'U'],
       words: [
         words.wordsList[21], // MEIA
@@ -84,6 +86,7 @@ class TaskCompleteWordController {
       ],
     );
     task4 = TaskCompleteWordModel(
+      title: "Complete as palavras, arrastando as vogais em azul",
       lessonVowels: ['A', 'E', 'I', 'O', 'U', 'Á'],
       words: [
         paranoaWords.wordsList[12], // PARANOÁ
@@ -92,6 +95,7 @@ class TaskCompleteWordController {
       ],
     );
     task5 = TaskCompleteWordModel(
+      title: "Complete as palavras, arrastando as vogais em azul",
       lessonVowels: ['A', 'E', 'I', 'O', 'U'],
       words: [
         words.wordsList[11], // Bebida
@@ -100,6 +104,7 @@ class TaskCompleteWordController {
       ],
     );
     task6 = TaskCompleteWordModel(
+      title: "Complete as palavras, arrastando as vogais em azul",
       lessonVowels: ['A', 'E', 'I', 'O', 'U'],
       words: [
         words.wordsList[11], // Bebida
