@@ -1,10 +1,11 @@
 {
   "version": "0.2.0",
   "configurations": [
+
     {
-      "name": "Flutter (SM A305GT)",
+      "name": "iPhone SE (3rd generation) (mobile)",
       "program": "lib/main.dart",
-      "deviceId": "RQ8M702G1DB",
+      "deviceId": "DE2B2B27-5233-4E0F-BEB3-FE1B60011F15",
       "request": "launch",
       "type": "dart"
     },

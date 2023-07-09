@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class DialogTextBoxDown extends StatelessWidget {
@@ -18,9 +19,12 @@ class DialogTextBoxDown extends StatelessWidget {
               borderRadius: BorderRadius.circular(15)),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Text(
+            child: AutoSizeText(
               textContent,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
+              minFontSize: 12,
+              maxFontSize: 22,
+              textScaleFactor: 1,
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w300),
             ),
           ),
         ),

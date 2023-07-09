@@ -36,7 +36,7 @@ class _CardImageState extends State<CardImage> {
         widget.audioManager.runAudio("audios/words/${widget.audioUrl}");
       }),
       child: Container(
-          height: (MediaQuery.of(context).size.height) * 0.17,
+          height: (MediaQuery.of(context).size.width) * 0.35,
           width: (MediaQuery.of(context).size.width) * 0.35,
           decoration: BoxDecoration(
               color: widget.isSelected

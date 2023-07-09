@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
@@ -77,8 +78,9 @@ class _BoxDialogState extends State<BoxDialog> {
           return Container(
             width: width,
             color: Colors.transparent,
-            child: Text(
+            child: AutoSizeText(
               message,
+              textScaleFactor: 1,
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: color, fontSize: 30, fontWeight: FontWeight.bold),
@@ -89,7 +91,7 @@ class _BoxDialogState extends State<BoxDialog> {
       actionsPadding: widget.resposta == '' && !widget.feedback
           ? const EdgeInsets.only(bottom: 20)
           : const EdgeInsets.all(20),
-      actions: <Widget>[
+      actions: [
         ElevatedButton(
           onPressed: () {
             Navigator.of(context).pushAndRemoveUntil(
@@ -109,7 +111,7 @@ class _BoxDialogState extends State<BoxDialog> {
           ),
           child: Text(
             messageButton,
-            style: const TextStyle(fontSize: 25),
+            style: const TextStyle(fontSize: 20),
           ),
         ),
       ],

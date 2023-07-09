@@ -130,7 +130,11 @@ class _TaskWriteWordsState extends State<TaskWriteWords>
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          TaskTitle(title: widget.task.title, audio: widget.task.audio),
+          TaskTitle(
+            title: widget.task.title,
+            audio: widget.task.audio,
+            audioManager: audioManager
+          ),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
