@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class CardExemple extends StatefulWidget {
@@ -53,49 +54,51 @@ class _CardExempleState extends State<CardExemple> {
               borderRadius: BorderRadius.all(Radius.circular(15.0))),
           child: Padding(
             padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 00.0),
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 00.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
                   flex: 2,
                   child: SizedBox(
                       height: 100, child: Image.asset(widget.imageUrl)),
                 ),
+                const SizedBox(width: 15),
                 Expanded(
                   flex: 8,
                   child: SizedBox(
                     width: double.infinity,
                     child: Center(
-                        child: Padding(
-                      padding: const EdgeInsets.only(left: 25.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: widget.nameTxt.runes
-                            .map(
-                              (int rune) => Text(
-                                String.fromCharCode(rune).toUpperCase(),
-                                style: TextStyle(
-                                    fontSize: 30.0,
-                                    fontWeight: FontWeight.w900,
-                                    color: widget.letters.any((element) =>
-                                            String.fromCharCode(rune)
-                                                .toUpperCase() ==
-                                            element)
-                                        ? const Color.fromARGB(
-                                            255, 76, 163, 175)
-                                        : Colors.white,
-                                    letterSpacing: 5.0,
-                                    decoration: widget.letters.any((element) =>
-                                            String.fromCharCode(rune)
-                                                .toUpperCase() ==
-                                            element)
-                                        ? TextDecoration.underline
-                                        : TextDecoration.none),
-                              ),
-                            )
-                            .toList(),
-                      ),
-                    )),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: widget.nameTxt.runes
+                              .map(
+                                (int rune) => AutoSizeText(
+                                  String.fromCharCode(rune).toUpperCase(),
+                                  textScaleFactor: 1,
+                                  maxFontSize: 30,
+                                  minFontSize: 20,
+                                  style: TextStyle(
+                                    fontSize: 30,
+                                      fontWeight: FontWeight.w900,
+                                      color: widget.letters.any((element) =>
+                                              String.fromCharCode(rune)
+                                                  .toUpperCase() ==
+                                              element)
+                                          ? const Color.fromARGB(
+                                              255, 76, 163, 175)
+                                          : Colors.white,
+                                      letterSpacing: 5.0,
+                                      decoration: widget.letters.any((element) =>
+                                              String.fromCharCode(rune)
+                                                  .toUpperCase() ==
+                                              element)
+                                          ? TextDecoration.underline
+                                          : TextDecoration.none),
+                                ),
+                              )
+                              .toList(),
+                        )),
                   ),
                 ),
               ],

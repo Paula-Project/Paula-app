@@ -5,7 +5,8 @@ import 'package:paula/app/views/components/audioManager.dart';
 class TaskTitle extends StatefulWidget{
   final String title;
   final String audio;
-  const TaskTitle({super.key, required this.title, required this.audio, });
+  final AudioManager audioManager;
+  const TaskTitle({super.key, required this.title, required this.audio, required this.audioManager, });
 
   @override
   State<TaskTitle> createState() => _TaskTitleState();
@@ -13,34 +14,19 @@ class TaskTitle extends StatefulWidget{
 
 class _TaskTitleState extends State<TaskTitle> with WidgetsBindingObserver {
 
-
-  AudioManager audioManager = AudioManager();
    @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    audioManager.runAudio("audios/paula/${widget.audio}");
+    widget.audioManager.runAudio("audios/paula/${widget.audio}");
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    audioManager.stopAudio();
-    super.dispose();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    super.didChangeAppLifecycleState(state);
-    audioManager.didLifecycleChange(state);
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () { 
-        audioManager.runAudio(widget.audio);
-       },
+        widget.audioManager.runAudio("audios/paula/${widget.audio}");
+      },
       textColor: Colors.white,
       color: const Color.fromRGBO(37, 85, 124, 1),
       padding: const EdgeInsets.all(0),

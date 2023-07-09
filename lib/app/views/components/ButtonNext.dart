@@ -19,7 +19,6 @@ class ButtonNext extends StatelessWidget {
       children: [
         SizedBox(
           height: 50.0,
-          width: 150.0,
           child: ElevatedButton(
             style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
