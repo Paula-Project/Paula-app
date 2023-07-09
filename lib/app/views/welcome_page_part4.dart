@@ -13,51 +13,50 @@ class WelcomePagePart4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: GestureDetector(
-        onPanUpdate: (details) {
-          if (details.delta.dx < 0) {
-            Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.rightToLeft,
-                    child: const SingupPage()));
-          }
-          if (details.delta.dx > 0) {
-            Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.leftToRight,
-                    child: const WelcomePagePart3()));
-          }
-        },
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromARGB(200, 100, 171, 226),
-                Color.fromARGB(255, 41, 171, 226),
-              ],
+    final mediaQueryData = MediaQuery.of(context);
+    return MediaQuery(
+      data: mediaQueryData.copyWith(textScaleFactor: 1),
+      child: Material(
+        child: GestureDetector(
+          onPanUpdate: (details) {
+            if (details.delta.dx < 0) {
+              Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.rightToLeft,
+                      child: const SingupPage()));
+            }
+            if (details.delta.dx > 0) {
+              Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.leftToRight,
+                      child: const WelcomePagePart3()));
+            }
+          },
+          child: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color.fromARGB(200, 100, 171, 226),
+                  Color.fromARGB(255, 41, 171, 226),
+                ],
+              ),
             ),
-          ),
-          child: Column(children: [
-            Expanded(
-              flex: MediaQuery.of(context).size.height > 500 ? 3 : 2,
-              child: PaulaTitleComponent(),
-            ),
-            Expanded(
-                flex: MediaQuery.of(context).size.height > 500 ? 8 : 7,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal:
-                          MediaQuery.of(context).size.height > 600 ? 20 : 0),
+            child: Column(children: [
+              Expanded(
+                flex: MediaQuery.of(context).size.height > 500 ? 3 : 2,
+                child: PaulaTitleComponent(),
+              ),
+              Expanded(
+                  flex: MediaQuery.of(context).size.height > 500 ? 8 : 7,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(
-                          height: (MediaQuery.of(context).size.height * 0.4),
+                          height: (MediaQuery.of(context).size.height * 0.35),
                           child:
                               Image.asset('assets/images/paula/paula02.png')),
                       const DialogTextBox(
@@ -67,7 +66,7 @@ class WelcomePagePart4 extends StatelessWidget {
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height > 550
-                              ? 30
+                              ? 20
                               : 10),
                       SizedBox(
                         width: 140,
@@ -97,9 +96,9 @@ class WelcomePagePart4 extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),
-                ))
-          ]),
+                  ))
+            ]),
+          ),
         ),
       ),
     );

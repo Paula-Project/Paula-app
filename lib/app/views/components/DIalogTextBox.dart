@@ -35,19 +35,15 @@ class _DialogTextBoxState extends State<DialogTextBox> {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return MaterialButton(
       onPressed: () {
         _runAudio("audios/paula/${widget.audioUrl}");
       },
-      style: ButtonStyle(
-        foregroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-        overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
-        shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
-      ),
       child: Column(
+        mainAxisSize: MainAxisSize.max,
         children: [
           Row(
+            mainAxisSize: MainAxisSize.max,
             children: [
               ClipPath(
                 clipper: CustomTriangleClipper(),
@@ -65,7 +61,6 @@ class _DialogTextBoxState extends State<DialogTextBox> {
           ),
           Stack(children: [
             Container(
-              height: MediaQuery.of(context).size.height > 600 ? 100 : 70,
               decoration: BoxDecoration(
                   color: const Color.fromARGB(199, 37, 85, 124),
                   borderRadius: BorderRadius.circular(15)),
@@ -74,8 +69,9 @@ class _DialogTextBoxState extends State<DialogTextBox> {
                     MediaQuery.of(context).size.height > 510 ? 10.0 : 5),
                 child: AutoSizeText(
                   widget.TextContent,
+                  textScaleFactor: 1,
                   style: const TextStyle(
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.w300,
                       color: Colors.white),
                   minFontSize: 10,

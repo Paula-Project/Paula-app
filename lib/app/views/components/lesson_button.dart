@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/audioManager.dart';
@@ -45,7 +46,7 @@ class LessonButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                     side: BorderSide.none)),
           ),
-          child: Text(textContent, style: const TextStyle(fontSize: 30)),
+          child: AutoSizeText(textContent, textScaleFactor: 1, style: const TextStyle(fontSize: 26,),minFontSize: 15, textAlign: TextAlign.center,),
         ),
       ),
     );
