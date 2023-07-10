@@ -3,7 +3,6 @@ import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/model/task_words_paranoa_model.dart';
 import 'package:paula/app/views/components/CardParanoa.dart';
 import 'package:paula/app/views/components/buttonContinue.dart';
-import 'package:paula/app/views/components/exitDialog.dart';
 import 'package:paula/app/views/layout/task_layout.dart';
 
 class TaskWordsParanoa extends StatefulWidget {
@@ -58,8 +57,7 @@ class _TaskWordsParanoaState extends State<TaskWordsParanoa> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: widget.task.words
                         .map((word) => CardParanoa(
-                              imageUrl:
-                                  "assets/images/words/${word.imagePath}",
+                              imageUrl: "assets/images/words/${word.imagePath}",
                               nameTxt: word.text,
                               audioUrl: word.soundPath,
                             ))

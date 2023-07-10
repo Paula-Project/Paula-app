@@ -70,35 +70,34 @@ class _CardExempleState extends State<CardExemple> {
                     width: double.infinity,
                     child: Center(
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: widget.nameTxt.runes
-                              .map(
-                                (int rune) => AutoSizeText(
-                                  String.fromCharCode(rune).toUpperCase(),
-                                  textScaleFactor: 1,
-                                  maxFontSize: 30,
-                                  minFontSize: 20,
-                                  style: TextStyle(
-                                    fontSize: 30,
-                                      fontWeight: FontWeight.w900,
-                                      color: widget.letters.any((element) =>
-                                              String.fromCharCode(rune)
-                                                  .toUpperCase() ==
-                                              element)
-                                          ? const Color.fromARGB(
-                                              255, 76, 163, 175)
-                                          : Colors.white,
-                                      letterSpacing: 5.0,
-                                      decoration: widget.letters.any((element) =>
-                                              String.fromCharCode(rune)
-                                                  .toUpperCase() ==
-                                              element)
-                                          ? TextDecoration.underline
-                                          : TextDecoration.none),
-                                ),
-                              )
-                              .toList(),
-                        )),
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: widget.nameTxt.runes
+                          .map(
+                            (int rune) => AutoSizeText(
+                              String.fromCharCode(rune).toUpperCase(),
+                              textScaleFactor: 1,
+                              maxFontSize: 30,
+                              minFontSize: 20,
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w900,
+                                  color: widget.letters.any((element) =>
+                                          String.fromCharCode(rune)
+                                              .toUpperCase() ==
+                                          element)
+                                      ? const Color.fromARGB(255, 76, 163, 175)
+                                      : Colors.white,
+                                  letterSpacing: 5.0,
+                                  decoration: widget.letters.any((element) =>
+                                          String.fromCharCode(rune)
+                                              .toUpperCase() ==
+                                          element)
+                                      ? TextDecoration.underline
+                                      : TextDecoration.none),
+                            ),
+                          )
+                          .toList(),
+                    )),
                   ),
                 ),
               ],

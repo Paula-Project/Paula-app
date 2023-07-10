@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'components/paulaTitle.dart';
-import 'welcome_page_part2.dart';
+import 'package:paula/app/views/components/paulaTitle.dart';
+import 'package:paula/app/views/welcome_page_part2.dart';
 
 class WelcomePagePart1 extends StatelessWidget {
   const WelcomePagePart1({Key? key}) : super(key: key);

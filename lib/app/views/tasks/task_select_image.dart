@@ -54,8 +54,7 @@ class _TaskSelectImageState extends State<TaskSelectImage>
       shouldPop: true,
       taskProgress: TaskProgress(
         tasksNumber: widget.lessonController.getTaskQuantity(),
-        correctAnswer:
-            widget.lessonController.getTaskCorrectAnswers(),
+        correctAnswer: widget.lessonController.getTaskCorrectAnswers(),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -71,10 +70,9 @@ class _TaskSelectImageState extends State<TaskSelectImage>
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   TaskTitle(
-                    title: widget.task.title,
-                    audio: widget.task.audio,
-                    audioManager: audioManager
-                  ),
+                      title: widget.task.title,
+                      audio: widget.task.audio,
+                      audioManager: audioManager),
                   Wrap(
                     runAlignment: WrapAlignment.spaceBetween,
                     alignment: WrapAlignment.spaceBetween,
@@ -82,15 +80,13 @@ class _TaskSelectImageState extends State<TaskSelectImage>
                     children: widget.task.words
                         .map(
                           (word) => CardImage(
-                            imageUrl:
-                                "assets/images/words/${word.imagePath}",
+                            imageUrl: "assets/images/words/${word.imagePath}",
                             scale: 5.0,
                             audioUrl: word.soundPath,
                             audioManager: audioManager,
-                            isSelected:
-                                widget.task.cardSelected == word.text
-                                    ? true
-                                    : false,
+                            isSelected: widget.task.cardSelected == word.text
+                                ? true
+                                : false,
                             onPress: () {
                               setState(() {
                                 widget.task.cardSelected = word.text;
@@ -105,20 +101,15 @@ class _TaskSelectImageState extends State<TaskSelectImage>
                     child: ElevatedButton(
                       style: ButtonStyle(
                           foregroundColor:
-                              MaterialStateProperty.all<Color>(
-                                  Colors.white),
-                          backgroundColor: widget
-                                  .task.cardSelected.isNotEmpty
-                              ? MaterialStateProperty.all<Color>(
-                                  Colors.blue)
-                              : MaterialStateProperty.all<Color>(
-                                  Colors.grey),
-                          shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(10),
-                                  side: BorderSide.none))),
+                              MaterialStateProperty.all<Color>(Colors.white),
+                          backgroundColor: widget.task.cardSelected.isNotEmpty
+                              ? MaterialStateProperty.all<Color>(Colors.blue)
+                              : MaterialStateProperty.all<Color>(Colors.grey),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      side: BorderSide.none))),
                       child: const Text('VERIFICAR',
                           style: TextStyle(
                             fontSize: 18,
@@ -126,46 +117,31 @@ class _TaskSelectImageState extends State<TaskSelectImage>
                           )),
                       onPressed: () {
                         if (widget.task.cardSelected.isNotEmpty) {
-                          widget.lessonController.verifyAnswer(
-                              widget.task, widget.taskController);
+                          widget.lessonController
+                              .verifyAnswer(widget.task, widget.taskController);
                           showGeneralDialog(
-                            barrierColor:
-                                Colors.black.withOpacity(0.5),
+                            barrierColor: Colors.black.withOpacity(0.5),
                             transitionDuration:
                                 const Duration(milliseconds: 300),
                             barrierDismissible: false,
                             barrierLabel: '',
                             context: context,
-                            pageBuilder: (context, animation1,
-                                animation2) {
+                            pageBuilder: (context, animation1, animation2) {
                               return widget;
                             },
-                            transitionBuilder:
-                                (context, a1, a2, widget) {
-                              final curvedValue = Curves.easeInOut
-                                      .transform(a1.value) -
-                                  1;
+                            transitionBuilder: (context, a1, a2, widget) {
+                              final curvedValue =
+                                  Curves.easeInOut.transform(a1.value) - 1;
 
                               return Transform(
-                                transform:
-                                    Matrix4.translationValues(
-                                        0.0,
-                                        (curvedValue * -300),
-                                        0.0),
+                                transform: Matrix4.translationValues(
+                                    0.0, (curvedValue * -300), 0.0),
                                 child: Opacity(
                                   opacity: a1.value,
                                   child: BoxDialog(
-                                      controller: this
-                                          .widget
-                                          .lessonController,
-                                      feedback: this
-                                          .widget
-                                          .task
-                                          .isCorrect,
-                                      resposta: this
-                                          .widget
-                                          .task
-                                          .answer),
+                                      controller: this.widget.lessonController,
+                                      feedback: this.widget.task.isCorrect,
+                                      resposta: this.widget.task.answer),
                                 ),
                               );
                             },

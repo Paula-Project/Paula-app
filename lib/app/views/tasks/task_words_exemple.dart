@@ -49,9 +49,8 @@ class _TaskWordsExempleState extends State<TaskWordsExemple>
     return TaskLayout(
       shouldPop: true,
       taskProgress: TaskProgress(
-                tasksNumber: widget.lessonController.getTaskQuantity(),
-                correctAnswer:
-                    widget.lessonController.getTaskCorrectAnswers(),
+        tasksNumber: widget.lessonController.getTaskQuantity(),
+        correctAnswer: widget.lessonController.getTaskCorrectAnswers(),
       ),
       body: Material(
         child: Container(
@@ -64,10 +63,9 @@ class _TaskWordsExempleState extends State<TaskWordsExemple>
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TaskTitle(
-                title: widget.task.title,
-                audio: widget.task.audio,
-                audioManager: audioManager
-              ),
+                  title: widget.task.title,
+                  audio: widget.task.audio,
+                  audioManager: audioManager),
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

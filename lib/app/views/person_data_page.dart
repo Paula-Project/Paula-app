@@ -82,8 +82,8 @@ class PersonData extends StatelessWidget {
                               softWrap: true,
                               wrapWords: true,
                               style: const TextStyle(
-                                  color: Colors.black,),
-                              
+                                color: Colors.black,
+                              ),
                             ),
                             AutoSizeText(
                               '@${usuarioLogado.username}',
@@ -91,8 +91,7 @@ class PersonData extends StatelessWidget {
                               minFontSize: 18,
                               softWrap: false,
                               wrapWords: false,
-                              style: const TextStyle(
-                                  color: Colors.black),
+                              style: const TextStyle(color: Colors.black),
                             )
                           ],
                         ),
@@ -122,7 +121,7 @@ class PersonData extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                    AutoSizeText("Idade: ${usuarioLogado.age}",
+                      AutoSizeText("Idade: ${usuarioLogado.age}",
                           maxFontSize: 20,
                           minFontSize: 20,
                           style: const TextStyle(

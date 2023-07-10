@@ -1,13 +1,10 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/components/Input.dart';
 import 'package:paula/app/views/login_page.dart';
-import 'package:provider/provider.dart';
-import '../http/webclient.dart';
-import '../state/usuario_state.dart';
-import 'components/paulaTitle.dart';
+import 'package:paula/app/http/webclient.dart';
+import 'package:paula/app/views/components/paulaTitle.dart';
 import 'package:flutter/services.dart';
 
 class ChangePassword extends StatefulWidget {
@@ -94,49 +91,54 @@ class _ChangePassword extends State<ChangePassword> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
-                          flex: 1,
-                          child: Center(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
-                              child: Column(
-                                children: [
-                                  FittedBox(
-                                    fit: BoxFit.scaleDown,
-                                    child: Text("Redefinir Senha",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize:
-                                                MediaQuery.of(context).size.height >
-                                                        550
-                                                    ? 30
-                                                    : 20,
-                                            fontFamily: "Nunito",
-                                            fontWeight: FontWeight.w300)),
-                                  ),
-                                  FittedBox(
-                                    fit: BoxFit.scaleDown,
-                                    child: Text("Guarde sua senha nova em lugar seguro!",
-                                        textAlign: TextAlign.center,
-                                        maxLines: 2,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          
-                                          fontSize:
-                                              MediaQuery.of(context).size.height >
+                            flex: 1,
+                            child: Center(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: Column(
+                                  children: [
+                                    FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Text("Redefinir Senha",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: MediaQuery.of(context)
+                                                          .size
+                                                          .height >
                                                       550
-                                                  ? 20
-                                                  : 15,
-                                          fontWeight: FontWeight.w300,
-                                        )),
-                                  ),
-                                ],
+                                                  ? 30
+                                                  : 20,
+                                              fontFamily: "Nunito",
+                                              fontWeight: FontWeight.w300)),
+                                    ),
+                                    FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Text(
+                                          "Guarde sua senha nova em lugar seguro!",
+                                          textAlign: TextAlign.center,
+                                          maxLines: 2,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .height >
+                                                    550
+                                                ? 20
+                                                : 15,
+                                            fontWeight: FontWeight.w300,
+                                          )),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
                           Expanded(
-                            flex: MediaQuery.of(context).size.height > 700 ? 4 : 6,
+                            flex: MediaQuery.of(context).size.height > 700
+                                ? 4
+                                : 6,
                             child: Container(
                               width: double.infinity,
                               color: Colors.transparent,
@@ -156,12 +158,14 @@ class _ChangePassword extends State<ChangePassword> {
                                             30, 20, 30, 0),
                                         child: Center(
                                           child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
                                               Input(
                                                 labelInputTxt: 'Apelido',
                                                 controller: _apelidoController,
-                                                keyboardType: TextInputType.text,
+                                                keyboardType:
+                                                    TextInputType.text,
                                                 valid: (value) {
                                                   if (value!.isEmpty) {
                                                     return 'Apelido deve possuir no minimo 3 caracteres';
@@ -172,13 +176,15 @@ class _ChangePassword extends State<ChangePassword> {
                                                   return null;
                                                 },
                                                 formatters: [
-                                                  FilteringTextInputFormatter.allow(
-                                                      RegExp(r'[a-zA-Z0-9]'))
+                                                  FilteringTextInputFormatter
+                                                      .allow(RegExp(
+                                                          r'[a-zA-Z0-9]'))
                                                 ],
                                               ),
                                               Align(
                                                 alignment: Alignment.centerLeft,
-                                                child: Text("Data de Nascimento",
+                                                child: Text(
+                                                    "Data de Nascimento",
                                                     style: TextStyle(
                                                         color: Colors.blue,
                                                         fontSize: 25,
@@ -213,9 +219,11 @@ class _ChangePassword extends State<ChangePassword> {
                                                         selectedDateTxt,
                                                         style: const TextStyle(
                                                             fontSize: 25,
-                                                            fontFamily: "Nunito",
+                                                            fontFamily:
+                                                                "Nunito",
                                                             fontWeight:
-                                                                FontWeight.w300),
+                                                                FontWeight
+                                                                    .w300),
                                                       ),
                                                     ],
                                                   ),
@@ -225,7 +233,8 @@ class _ChangePassword extends State<ChangePassword> {
                                                 labelInputTxt: "Nova senha",
                                                 obscureTxt: true,
                                                 controller: _senhaController,
-                                                keyboardType: TextInputType.text,
+                                                keyboardType:
+                                                    TextInputType.text,
                                                 valid: (value) {
                                                   if (value!.trim().isEmpty) {
                                                     return 'Informe uma Senha';
@@ -242,7 +251,8 @@ class _ChangePassword extends State<ChangePassword> {
                                                 obscureTxt: true,
                                                 controller:
                                                     _senhaConfirmaController,
-                                                keyboardType: TextInputType.text,
+                                                keyboardType:
+                                                    TextInputType.text,
                                                 valid: (value) {
                                                   if (!(_senhaConfirmaController
                                                           .value ==
@@ -291,23 +301,27 @@ class _ChangePassword extends State<ChangePassword> {
                                                   onHover: (hover) {},
                                                   style: ButtonStyle(
                                                     foregroundColor:
-                                                        MaterialStateProperty.all<
-                                                            Color>(Colors.white),
+                                                        MaterialStateProperty
+                                                            .all<Color>(
+                                                                Colors.white),
                                                     backgroundColor:
-                                                        MaterialStateProperty.all<
-                                                            Color>(Colors.blue),
+                                                        MaterialStateProperty
+                                                            .all<Color>(
+                                                                Colors.blue),
                                                     shape: MaterialStateProperty.all<
                                                             RoundedRectangleBorder>(
                                                         RoundedRectangleBorder(
                                                             borderRadius:
                                                                 BorderRadius
-                                                                    .circular(10),
-                                                            side: BorderSide.none)),
+                                                                    .circular(
+                                                                        10),
+                                                            side: BorderSide
+                                                                .none)),
                                                   ),
                                                   child: const Text(
                                                       "Redefinir Senha",
-                                                      style:
-                                                          TextStyle(fontSize: 18)),
+                                                      style: TextStyle(
+                                                          fontSize: 18)),
                                                 ),
                                               ),
                                             ],

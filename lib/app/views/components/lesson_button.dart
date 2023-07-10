@@ -46,7 +46,15 @@ class LessonButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                     side: BorderSide.none)),
           ),
-          child: AutoSizeText(textContent, textScaleFactor: 1, style: const TextStyle(fontSize: 26,),minFontSize: 15, textAlign: TextAlign.center,),
+          child: AutoSizeText(
+            textContent,
+            textScaleFactor: 1,
+            style: const TextStyle(
+              fontSize: 26,
+            ),
+            minFontSize: 15,
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );

@@ -6,8 +6,8 @@ import 'package:paula/app/views/layout/layout.dart';
 import 'package:paula/app/views/lessons/lessons_vogais.dart';
 import 'package:paula/app/views/lessons/lesson_paranoa_welcome.dart';
 import 'package:provider/provider.dart';
-import '../controllers/modules/module_vowels_controller.dart';
-import 'components/module_button.dart';
+import 'package:paula/app/controllers/modules/module_vowels_controller.dart';
+import 'package:paula/app/views/components/module_button.dart';
 
 class HomePage extends StatelessWidget {
   ModuleVowelsController moduleVowelsController = ModuleVowelsController();

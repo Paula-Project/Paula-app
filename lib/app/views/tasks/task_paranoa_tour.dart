@@ -70,8 +70,8 @@ class _TaskParanoaTourState extends State<TaskParanoaTour>
                     ),
                     MaterialButton(
                       onPressed: () {
-                        audioManager.runAudio(
-                            "audios/paula/${widget.task.audioPath}");
+                        audioManager
+                            .runAudio("audios/paula/${widget.task.audioPath}");
                       },
                       padding: EdgeInsets.zero,
                       child: Row(
@@ -97,17 +97,14 @@ class _TaskParanoaTourState extends State<TaskParanoaTour>
                               padding: const EdgeInsets.all(10),
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
-                                  color:
-                                      const Color.fromARGB(199, 37, 85, 124),
+                                  color: const Color.fromARGB(199, 37, 85, 124),
                                   borderRadius: BorderRadius.circular(10)),
-                              child: AutoSizeText(
-                                widget.task.title,
-                                textScaleFactor: 1,
-                                style: const TextStyle(
-                                  fontSize: 22, 
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold
-                                )),
+                              child: AutoSizeText(widget.task.title,
+                                  textScaleFactor: 1,
+                                  style: const TextStyle(
+                                      fontSize: 22,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold)),
                             ),
                             const Positioned(
                               right: 10,
@@ -136,9 +133,7 @@ class _TaskParanoaTourState extends State<TaskParanoaTour>
                       )
                       .toList(),
                 ),
-                
                 ButtonContinue(lessonController: widget.lessonController),
-                
               ],
             ),
           )),

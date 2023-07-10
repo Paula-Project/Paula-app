@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:paula/app/views/components/exitDialog.dart';
 
 class TaskProgress extends StatelessWidget {
   final int tasksNumber;

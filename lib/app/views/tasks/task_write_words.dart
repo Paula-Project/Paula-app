@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
 import 'package:paula/app/views/components/audioManager.dart';
-import 'package:paula/app/views/components/exitDialog.dart';
 import 'package:paula/app/views/components/taskTitle.dart';
 import 'package:paula/app/views/components/task_progress.dart';
 import 'package:paula/app/controllers/tasks/task_complete_word_controller.dart';
@@ -124,17 +123,15 @@ class _TaskWriteWordsState extends State<TaskWriteWords>
       shouldPop: true,
       taskProgress: TaskProgress(
         tasksNumber: widget.lessonController.getTaskQuantity(),
-        correctAnswer:
-            widget.lessonController.getTaskCorrectAnswers(),
+        correctAnswer: widget.lessonController.getTaskCorrectAnswers(),
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           TaskTitle(
-            title: widget.task.title,
-            audio: widget.task.audio,
-            audioManager: audioManager
-          ),
+              title: widget.task.title,
+              audio: widget.task.audio,
+              audioManager: audioManager),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -143,15 +140,14 @@ class _TaskWriteWordsState extends State<TaskWriteWords>
                 Container(
                   decoration: const BoxDecoration(
                       color: Color.fromRGBO(209, 220, 221, 1),
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(15))),
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
                   child: Column(
                       children: widget.task.words
                           .map(
                             (word) => MaterialButton(
                               onPressed: (() {
-                                audioManager.runAudio(
-                                    "audios/words/${word.soundPath}");
+                                audioManager
+                                    .runAudio("audios/words/${word.soundPath}");
                               }),
                               child: Padding(
                                 padding: const EdgeInsets.all(10.0),
@@ -160,8 +156,8 @@ class _TaskWriteWordsState extends State<TaskWriteWords>
                                     SizedBox(
                                       height: 90,
                                       child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            bottom: 8.0),
+                                        padding:
+                                            const EdgeInsets.only(bottom: 8.0),
                                         child: Image.asset(
                                             'assets/images/words/${word.imagePath}'),
                                       ),
@@ -170,8 +166,7 @@ class _TaskWriteWordsState extends State<TaskWriteWords>
                                       width: double.infinity,
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment
-                                                .spaceEvenly,
+                                            MainAxisAlignment.spaceEvenly,
                                         children: makeWord(word.text),
                                       ),
                                     ),
@@ -185,13 +180,11 @@ class _TaskWriteWordsState extends State<TaskWriteWords>
                 FittedBox(
                   fit: BoxFit.fitWidth,
                   child: Padding(
-                    padding:
-                        const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0),
+                    padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children:
-                            LetterList.map((vowel) => LetterBox(vowel))
-                                .toList()),
+                        children: LetterList.map((vowel) => LetterBox(vowel))
+                            .toList()),
                   ),
                 ),
                 Container(
@@ -221,8 +214,7 @@ class _TaskWriteWordsState extends State<TaskWriteWords>
                                     fontWeight: FontWeight.w600,
                                   )),
                               onPressed: () {
-                                widget.taskController
-                                    .makeAnswers(widget.task);
+                                widget.taskController.makeAnswers(widget.task);
 
                                 isCorrect =
                                     widget.taskController.verifyAnswer();
@@ -230,8 +222,7 @@ class _TaskWriteWordsState extends State<TaskWriteWords>
                                     .verifyAnswerNonControlled(isCorrect);
                                 widget.taskController.reset();
                                 showGeneralDialog(
-                                  barrierColor:
-                                      Colors.black.withOpacity(0.5),
+                                  barrierColor: Colors.black.withOpacity(0.5),
                                   transitionDuration:
                                       const Duration(milliseconds: 300),
                                   barrierDismissible: false,
@@ -241,22 +232,19 @@ class _TaskWriteWordsState extends State<TaskWriteWords>
                                       (context, animation1, animation2) {
                                     return widget;
                                   },
-                                  transitionBuilder:
-                                      (context, a1, a2, widget) {
-                                    final curvedValue = Curves.easeInOut
-                                            .transform(a1.value) -
-                                        1;
+                                  transitionBuilder: (context, a1, a2, widget) {
+                                    final curvedValue =
+                                        Curves.easeInOut.transform(a1.value) -
+                                            1;
 
                                     return Transform(
-                                      transform:
-                                          Matrix4.translationValues(0.0,
-                                              (curvedValue * -300), 0.0),
+                                      transform: Matrix4.translationValues(
+                                          0.0, (curvedValue * -300), 0.0),
                                       child: Opacity(
                                         opacity: a1.value,
                                         child: BoxDialog(
-                                            controller: this
-                                                .widget
-                                                .lessonController,
+                                            controller:
+                                                this.widget.lessonController,
                                             feedback: isCorrect,
                                             resposta:
                                                 '${this.widget.task.words[0].text.toUpperCase()} '),
