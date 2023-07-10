@@ -1,8 +1,6 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:paula/app/model/usuario.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/service/prefs_service.dart';
 import 'package:paula/app/state/usuario_state.dart';

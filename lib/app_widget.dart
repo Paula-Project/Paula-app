@@ -1,17 +1,12 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:paula/app/service/prefs_service.dart';
 import 'package:paula/app/views/singup_page_part1.dart';
 import 'package:paula/app/views/splash_view.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'app/views/welcome_page_part1.dart';
-import 'app/views/welcome_page_part2.dart';
-import 'app/views/welcome_page_part3.dart';
-import 'app/views/login_page.dart';
-import 'app/views/home_page.dart';
+import 'package:paula/app/views/welcome_page_part1.dart';
+import 'package:paula/app/views/welcome_page_part2.dart';
+import 'package:paula/app/views/welcome_page_part3.dart';
+import 'package:paula/app/views/login_page.dart';
+import 'package:paula/app/views/home_page.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({Key? key}) : super(key: key);

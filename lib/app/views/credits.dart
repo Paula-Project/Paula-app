@@ -14,27 +14,30 @@ class _CreditsPage extends State<CreditsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(240, 240, 240, 1),
+      backgroundColor: const Color.fromRGBO(240, 240, 240, 1),
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Text("Créditos", style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal),),
-        centerTitle: true,
-        leading: OutlinedButton(
-          onPressed: () {
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                builder: (BuildContext context) => HomePage(),
-              ),
-              (route) => false,
-            );
-          },
-          child: const Icon(
-            Icons.arrow_back_sharp,
-            color: Colors.grey,
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: const Text(
+            "Créditos",
+            style:
+                TextStyle(color: Colors.black, fontWeight: FontWeight.normal),
           ),
-        )
-      ),
+          centerTitle: true,
+          leading: OutlinedButton(
+            onPressed: () {
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => HomePage(),
+                ),
+                (route) => false,
+              );
+            },
+            child: const Icon(
+              Icons.arrow_back_sharp,
+              color: Colors.grey,
+            ),
+          )),
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
@@ -46,12 +49,11 @@ class _CreditsPage extends State<CreditsPage> {
                 const AutoSizeText(
                   "Este é um aplicativo desenvolvido pela \n Universidade de Brasília\nDecanato de Extensão Decanato de Extensão REPE - Pólo Paranoá",
                   style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      ),
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                   textAlign: TextAlign.center,
-                  
                 ),
                 /////////////////////////////////////////////////////////////// Images
                 SizedBox(

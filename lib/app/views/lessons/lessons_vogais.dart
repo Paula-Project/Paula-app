@@ -1,13 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/lesson_button.dart';
-import 'package:paula/app/views/home_page.dart';
-import 'package:paula/app/views/login_page.dart';
-import 'package:paula/app/views/person_data_page.dart';
 import 'package:paula/app/views/layout/layout.dart';
-import '../../controllers/modules/module_vowels_controller.dart';
+import 'package:paula/app/controllers/modules/module_vowels_controller.dart';
 
 class LessonsVogais extends StatefulWidget {
   final ModuleVowelsController moduleVowelsController;
@@ -47,8 +43,8 @@ class _LessonsVogaisState extends State<LessonsVogais>
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Layout(
-        indexPage: 0,
-        bodyContent: SingleChildScrollView(
+      indexPage: 0,
+      bodyContent: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
@@ -95,7 +91,7 @@ class _LessonsVogaisState extends State<LessonsVogais>
                                 child: const AutoSizeText(
                                   "Vamos começar a estudar algumas palavras com as VOGAIS, elas são: A - E - I - O - U\nelas vão aparecer em todas as palavras.",
                                   style: TextStyle(
-                                    fontSize: 22,
+                                      fontSize: 22,
                                       fontWeight: FontWeight.w300,
                                       color: Colors.white),
                                   minFontSize: 12,
@@ -168,7 +164,6 @@ class _LessonsVogaisState extends State<LessonsVogais>
           ),
         ),
       ),
-      
     );
   }
 }

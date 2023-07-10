@@ -6,13 +6,12 @@ class TaskLayout extends StatelessWidget {
   final Widget taskProgress;
   final bool paddingDefault;
   final bool shouldPop;
-  const TaskLayout({
-    super.key, 
-    this.paddingDefault = true, 
-    required this.body, 
-    required this.shouldPop, 
-    required this.taskProgress
-  });
+  const TaskLayout(
+      {super.key,
+      this.paddingDefault = true,
+      required this.body,
+      required this.shouldPop,
+      required this.taskProgress});
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +24,11 @@ class TaskLayout extends StatelessWidget {
     }
 
     return WillPopScope(
-        onWillPop: () => onwillpop(),
-        child: Scaffold(
+      onWillPop: () => onwillpop(),
+      child: Scaffold(
           appBar: AppBar(
             elevation: 0,
-            title: taskProgress, 
+            title: taskProgress,
             automaticallyImplyLeading: false,
             centerTitle: true,
             leading: IconButton(
@@ -48,10 +47,11 @@ class TaskLayout extends StatelessWidget {
           ),
           backgroundColor: Colors.white,
           body: Padding(
-            padding: paddingDefault ? const EdgeInsets.only(left: 15, right: 15, bottom: 20) : EdgeInsets.zero,
+            padding: paddingDefault
+                ? const EdgeInsets.only(left: 15, right: 15, bottom: 20)
+                : EdgeInsets.zero,
             child: body,
-          ))
-          , 
-        );
+          )),
+    );
   }
 }

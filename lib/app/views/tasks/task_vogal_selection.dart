@@ -28,7 +28,7 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
     with WidgetsBindingObserver {
   bool isCorrect = false;
   bool statusResolved = false;
-  
+
   AudioManager audioManager = AudioManager();
 
   @override
@@ -57,9 +57,8 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
     return TaskLayout(
       shouldPop: true,
       taskProgress: TaskProgress(
-                tasksNumber: widget.lessonController.getTaskQuantity(),
-                correctAnswer:
-                    widget.lessonController.getTaskCorrectAnswers(),
+        tasksNumber: widget.lessonController.getTaskQuantity(),
+        correctAnswer: widget.lessonController.getTaskCorrectAnswers(),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -74,49 +73,48 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TaskTitle(
-                    title: "SELECIONE APENAS AS VOGAIS",
-                    audio: widget.task.audio,
-                    audioManager: audioManager
-                  ),
+                      title: "SELECIONE APENAS AS VOGAIS",
+                      audio: widget.task.audio,
+                      audioManager: audioManager),
                   Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: widget.task.words
                           .map((word) => Container(
-                            width: double.infinity,
-                            margin: EdgeInsets.only(bottom: 10),
-                            decoration: const BoxDecoration(
-                              color: Color.fromARGB(255, 194, 197, 199),
-                              borderRadius: BorderRadius.all(Radius.circular(15))),
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: MaterialButton(
-                              onPressed: (() {
-                                audioManager.runAudio(
-                                    "audios/words/${word.soundPath}");
-                              }),
-                              child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.center,
+                                width: double.infinity,
+                                margin: EdgeInsets.only(bottom: 10),
+                                decoration: const BoxDecoration(
+                                    color: Color.fromARGB(255, 194, 197, 199),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(15))),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                child: MaterialButton(
+                                  onPressed: (() {
+                                    audioManager.runAudio(
+                                        "audios/words/${word.soundPath}");
+                                  }),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        height: 87,
-                                          padding: const EdgeInsets.only(bottom: 10),
+                                          height: 87,
+                                          padding:
+                                              const EdgeInsets.only(bottom: 10),
                                           child: Image.asset(
                                               'assets/images/words/${word.imagePath}')),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
                                         children: word.text.runes
-                                            .map((letter) =>
-                                                SelectLetterButton(
+                                            .map((letter) => SelectLetterButton(
                                                   statusResolved:
                                                       statusResolved,
                                                   task: widget.task,
                                                   word: word.text,
-                                                  letter:
-                                                      String.fromCharCode(
-                                                              letter)
-                                                          .toUpperCase(),
+                                                  letter: String.fromCharCode(
+                                                          letter)
+                                                      .toUpperCase(),
                                                   addVogal: () => {
                                                     setState(() {
                                                       widget.task.addVogal(
@@ -138,8 +136,8 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
                                       )
                                     ],
                                   ),
-                            ),
-                          ))
+                                ),
+                              ))
                           .toList()),
                   SizedBox(
                     height: 50.0,
@@ -147,17 +145,15 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
                       style: ButtonStyle(
                           foregroundColor: MaterialStateProperty.all<Color>(
                               Colors.white),
-                          backgroundColor:
-                              widget.task.vogaisSelecionadas.isEmpty
-                                  ? MaterialStateProperty.all<Color>(
-                                      Colors.grey)
-                                  : MaterialStateProperty.all<Color>(
-                                      Colors.blue),
-                          shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  side: BorderSide.none))),
+                          backgroundColor: widget
+                                  .task.vogaisSelecionadas.isEmpty
+                              ? MaterialStateProperty.all<Color>(Colors.grey)
+                              : MaterialStateProperty.all<Color>(Colors.blue),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      side: BorderSide.none))),
                       child: const Text('VERIFICAR',
                           style: TextStyle(
                             fontSize: 18,
@@ -178,14 +174,12 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
                               barrierDismissible: false,
                               barrierLabel: '',
                               context: context,
-                              pageBuilder:
-                                  (context, animation1, animation2) {
+                              pageBuilder: (context, animation1, animation2) {
                                 return widget;
                               },
                               transitionBuilder: (context, a1, a2, widget) {
                                 final curvedValue =
-                                    Curves.easeInOut.transform(a1.value) -
-                                        1;
+                                    Curves.easeInOut.transform(a1.value) - 1;
 
                                 return Transform(
                                   transform: Matrix4.translationValues(
@@ -195,8 +189,7 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
                                     child: BoxDialog(
                                         controller:
                                             this.widget.lessonController,
-                                        feedback:
-                                            this.widget.task.isCorrect,
+                                        feedback: this.widget.task.isCorrect,
                                         resposta: ''),
                                   ),
                                 );

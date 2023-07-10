@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:paula/app/views/components/Input.dart';
 import 'package:paula/app/views/singup_page_part2.dart';
-import 'components/paulaTitle.dart';
+import 'package:paula/app/views/components/paulaTitle.dart';
 
 class SingupPage extends StatefulWidget {
   const SingupPage({Key? key}) : super(key: key);
@@ -89,11 +89,12 @@ class _SingupPageState extends State<SingupPage> {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           color: Colors.white,
-                                          fontSize:
-                                              MediaQuery.of(context).size.height >
-                                                      550
-                                                  ? 30
-                                                  : 20,
+                                          fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .height >
+                                                  550
+                                              ? 30
+                                              : 20,
                                           fontFamily: "Nunito",
                                           fontWeight: FontWeight.w300)),
                                 ),
@@ -116,7 +117,8 @@ class _SingupPageState extends State<SingupPage> {
                           ),
                         ),
                         Expanded(
-                          flex: MediaQuery.of(context).size.height > 700 ? 4 : 6,
+                          flex:
+                              MediaQuery.of(context).size.height > 700 ? 4 : 6,
                           child: Container(
                             width: double.infinity,
                             color: Colors.transparent,
@@ -156,7 +158,8 @@ class _SingupPageState extends State<SingupPage> {
                                                   }
                                                   return null;
                                                 },
-                                                keyboardType: TextInputType.text,
+                                                keyboardType:
+                                                    TextInputType.text,
                                                 formatters: [
                                                   FilteringTextInputFormatter
                                                       .allow(RegExp(
@@ -168,7 +171,8 @@ class _SingupPageState extends State<SingupPage> {
                                                     const EdgeInsets.fromLTRB(
                                                         5, 20, 15, 0),
                                                 child: Align(
-                                                  alignment: Alignment.centerLeft,
+                                                  alignment:
+                                                      Alignment.centerLeft,
                                                   child: Text(
                                                       "Data de Nascimento",
                                                       style: TextStyle(
@@ -226,9 +230,11 @@ class _SingupPageState extends State<SingupPage> {
                                                                     600
                                                                 ? 25
                                                                 : 18,
-                                                            fontFamily: "Nunito",
+                                                            fontFamily:
+                                                                "Nunito",
                                                             fontWeight:
-                                                                FontWeight.w300),
+                                                                FontWeight
+                                                                    .w300),
                                                       ),
                                                     ],
                                                   ),
@@ -247,7 +253,8 @@ class _SingupPageState extends State<SingupPage> {
                                                     const EdgeInsets.fromLTRB(
                                                         5, 0, 15, 0),
                                                 child: Align(
-                                                  alignment: Alignment.centerLeft,
+                                                  alignment:
+                                                      Alignment.centerLeft,
                                                   child: Text("Gênero",
                                                       style: TextStyle(
                                                           color: Colors.blue,
@@ -283,12 +290,15 @@ class _SingupPageState extends State<SingupPage> {
                                                         buttonIndex <
                                                             isSelected.length;
                                                         buttonIndex++) {
-                                                      if (buttonIndex == index) {
-                                                        isSelected[buttonIndex] =
+                                                      if (buttonIndex ==
+                                                          index) {
+                                                        isSelected[
+                                                                buttonIndex] =
                                                             !isSelected[
                                                                 buttonIndex];
                                                       } else {
-                                                        isSelected[buttonIndex] =
+                                                        isSelected[
+                                                                buttonIndex] =
                                                             false;
                                                       }
                                                     }
@@ -301,7 +311,8 @@ class _SingupPageState extends State<SingupPage> {
                                                 textStyle: const TextStyle(
                                                     fontSize: 16,
                                                     fontFamily: "Nunito",
-                                                    fontWeight: FontWeight.w300),
+                                                    fontWeight:
+                                                        FontWeight.w300),
                                                 isSelected: isSelected,
                                                 color: Colors.grey,
                                                 selectedColor: Colors.blue,
@@ -310,11 +321,12 @@ class _SingupPageState extends State<SingupPage> {
                                                 hoverColor: Colors.blueAccent,
                                                 children: <Widget>[
                                                   SizedBox(
-                                                    width: (MediaQuery.of(context)
-                                                                .size
-                                                                .width -
-                                                            60) /
-                                                        3,
+                                                    width:
+                                                        (MediaQuery.of(context)
+                                                                    .size
+                                                                    .width -
+                                                                60) /
+                                                            3,
                                                     child: Column(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -346,11 +358,12 @@ class _SingupPageState extends State<SingupPage> {
                                                     ),
                                                   ),
                                                   SizedBox(
-                                                    width: (MediaQuery.of(context)
-                                                                .size
-                                                                .width -
-                                                            60) /
-                                                        3,
+                                                    width:
+                                                        (MediaQuery.of(context)
+                                                                    .size
+                                                                    .width -
+                                                                60) /
+                                                            3,
                                                     child: Column(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -382,11 +395,12 @@ class _SingupPageState extends State<SingupPage> {
                                                     ),
                                                   ),
                                                   SizedBox(
-                                                    width: (MediaQuery.of(context)
-                                                                .size
-                                                                .width -
-                                                            60) /
-                                                        3,
+                                                    width:
+                                                        (MediaQuery.of(context)
+                                                                    .size
+                                                                    .width -
+                                                                60) /
+                                                            3,
                                                     child: Column(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -463,11 +477,12 @@ class _SingupPageState extends State<SingupPage> {
                                                             .showSnackBar(
                                                           const SnackBar(
                                                               backgroundColor:
-                                                                  Color.fromARGB(
-                                                                      255,
-                                                                      41,
-                                                                      171,
-                                                                      226),
+                                                                  Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          41,
+                                                                          171,
+                                                                          226),
                                                               content: Text(
                                                                 'Data de Nascimento inválida (aluno deve possuir no minimo 1 ano)'
                                                                 ' e/ou genêro não selecionado',
@@ -482,20 +497,22 @@ class _SingupPageState extends State<SingupPage> {
                                                   onHover: (hover) {},
                                                   style: ButtonStyle(
                                                     foregroundColor:
-                                                        MaterialStateProperty.all<
-                                                            Color>(Colors.white),
+                                                        MaterialStateProperty
+                                                            .all<Color>(
+                                                                Colors.white),
                                                     backgroundColor:
-                                                        MaterialStateProperty.all<
-                                                            Color>(Colors.blue),
-                                                    shape: MaterialStateProperty
-                                                        .all<RoundedRectangleBorder>(
-                                                            RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10),
-                                                                side: BorderSide
-                                                                    .none)),
+                                                        MaterialStateProperty
+                                                            .all<Color>(
+                                                                Colors.blue),
+                                                    shape: MaterialStateProperty.all<
+                                                            RoundedRectangleBorder>(
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
+                                                            side: BorderSide
+                                                                .none)),
                                                   ),
                                                   child: const Text("Próximo",
                                                       style: TextStyle(

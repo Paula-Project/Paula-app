@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/singup_page_part1.dart';
-import 'package:paula/app/views/welcome_page_part1.dart';
-import 'components/DIalogTextBox.dart';
-import 'welcome_page_part3.dart';
-import 'welcome_page_part1.dart';
-
-import 'components/paulaTitle.dart';
+import 'package:paula/app/views/components/DIalogTextBox.dart';
+import 'package:paula/app/views/welcome_page_part3.dart';
+import 'package:paula/app/views/components/paulaTitle.dart';
 
 class WelcomePagePart4 extends StatelessWidget {
   const WelcomePagePart4({Key? key}) : super(key: key);

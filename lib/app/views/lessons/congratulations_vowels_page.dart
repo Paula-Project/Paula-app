@@ -5,7 +5,7 @@ import 'package:paula/app/controllers/modules/module_vowels_controller.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:provider/provider.dart';
-import '../home_page.dart';
+import 'package:paula/app/views/home_page.dart';
 
 class CongratulationsVowelsPage extends StatefulWidget {
   final ModuleVowelsController moduleVowelsController;

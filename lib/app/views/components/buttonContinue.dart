@@ -22,13 +22,12 @@ class ButtonContinue extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     side: BorderSide.none))),
         child: const Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 10.0),
-          child:  Text('CONTINUAR',
+          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          child: Text('CONTINUAR',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                
               )),
         ),
         onPressed: () async {

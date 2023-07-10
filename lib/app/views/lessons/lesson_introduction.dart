@@ -68,12 +68,10 @@ class _LessonIntroductionState extends State<LessonIntroduction>
                   width: double.infinity,
                   decoration: const BoxDecoration(
                       color: Color.fromRGBO(37, 85, 124, 1),
-                      borderRadius:
-                          BorderRadius.all(Radius.circular(15.0))),
+                      borderRadius: BorderRadius.all(Radius.circular(15.0))),
                   child: Wrap(children: [
                     Container(
-                        decoration:
-                            const BoxDecoration(color: Colors.black26),
+                        decoration: const BoxDecoration(color: Colors.black26),
                         width: (MediaQuery.of(context).size.width - 60) / 2,
                         height: MediaQuery.of(context).size.height * 0.20,
                         child: Center(
@@ -107,8 +105,7 @@ class _LessonIntroductionState extends State<LessonIntroduction>
                           ),
                         )),
                     Container(
-                        decoration:
-                            const BoxDecoration(color: Colors.black26),
+                        decoration: const BoxDecoration(color: Colors.black26),
                         width: (MediaQuery.of(context).size.width - 60) / 2,
                         height: MediaQuery.of(context).size.height * 0.20,
                         child: Center(
@@ -124,10 +121,9 @@ class _LessonIntroductionState extends State<LessonIntroduction>
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: TaskTitle(
-                  audio: widget.audioUrl,
-                  title: widget.titleIntroduction, 
-                  audioManager: audioManager
-                ),
+                    audio: widget.audioUrl,
+                    title: widget.titleIntroduction,
+                    audioManager: audioManager),
               ),
               const SizedBox(
                 height: 5.0,

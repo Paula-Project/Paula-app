@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/components/DIalogTextBox.dart';
-import 'package:paula/app/views/singup_page_part1.dart';
 import 'package:paula/app/views/welcome_page_part4.dart';
-import 'welcome_page_part2.dart';
-
-import 'components/paulaTitle.dart';
+import 'package:paula/app/views/welcome_page_part2.dart';
+import 'package:paula/app/views/components/paulaTitle.dart';
 
 class WelcomePagePart3 extends StatelessWidget {
   const WelcomePagePart3({Key? key}) : super(key: key);
@@ -86,8 +84,8 @@ class WelcomePagePart3 extends StatelessWidget {
                             style: ButtonStyle(
                               foregroundColor:
                                   MaterialStateProperty.all<Color>(Colors.blue),
-                              backgroundColor:
-                                  MaterialStateProperty.all<Color>(Colors.white),
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.white),
                               shape: MaterialStateProperty.all<
                                       RoundedRectangleBorder>(
                                   RoundedRectangleBorder(

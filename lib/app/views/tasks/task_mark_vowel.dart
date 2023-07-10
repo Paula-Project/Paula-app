@@ -54,8 +54,7 @@ class _TaskMarkVowelState extends State<TaskMarkVowel>
       shouldPop: true,
       taskProgress: TaskProgress(
         tasksNumber: widget.lessonController.getTaskQuantity(),
-        correctAnswer:
-            widget.lessonController.getTaskCorrectAnswers(),
+        correctAnswer: widget.lessonController.getTaskCorrectAnswers(),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -79,8 +78,7 @@ class _TaskMarkVowelState extends State<TaskMarkVowel>
                       padding: const EdgeInsets.fromLTRB(0, 30, 0, 30),
                       decoration: const BoxDecoration(
                           color: Color.fromRGBO(37, 85, 124, 1),
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(17))),
+                          borderRadius: BorderRadius.all(Radius.circular(17))),
                       child: const FittedBox(
                         child: Icon(Icons.volume_up_outlined),
                       ),
@@ -97,10 +95,9 @@ class _TaskMarkVowelState extends State<TaskMarkVowel>
                             scale: 6.0,
                             audioUrl: letter.soundPath,
                             audioManager: audioManager,
-                            isSelected:
-                                widget.task.cardSelected == letter.text
-                                    ? true
-                                    : false,
+                            isSelected: widget.task.cardSelected == letter.text
+                                ? true
+                                : false,
                             onPress: () {
                               setState(() {
                                 widget.taskController
@@ -118,19 +115,17 @@ class _TaskMarkVowelState extends State<TaskMarkVowel>
                         height: 40.0,
                         child: ElevatedButton(
                           style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all<
-                                  Color>(Colors.white),
-                              backgroundColor:
-                                  widget.task.cardSelected != ""
-                                      ? MaterialStateProperty.all<Color>(
-                                          Colors.blue)
-                                      : MaterialStateProperty.all<Color>(
-                                          Colors.grey),
+                              foregroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.white),
+                              backgroundColor: widget.task.cardSelected != ""
+                                  ? MaterialStateProperty.all<Color>(
+                                      Colors.blue)
+                                  : MaterialStateProperty.all<Color>(
+                                      Colors.grey),
                               shape: MaterialStateProperty.all<
                                       RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(10),
                                       side: BorderSide.none))),
                           child: const Text('VERIFICAR',
                               style: TextStyle(
@@ -148,15 +143,12 @@ class _TaskMarkVowelState extends State<TaskMarkVowel>
                                 barrierDismissible: false,
                                 barrierLabel: '',
                                 context: context,
-                                pageBuilder:
-                                    (context, animation1, animation2) {
+                                pageBuilder: (context, animation1, animation2) {
                                   return widget;
                                 },
-                                transitionBuilder:
-                                    (context, a1, a2, widget) {
+                                transitionBuilder: (context, a1, a2, widget) {
                                   final curvedValue =
-                                      Curves.easeInOut.transform(a1.value) -
-                                          1;
+                                      Curves.easeInOut.transform(a1.value) - 1;
 
                                   return Transform(
                                     transform: Matrix4.translationValues(
@@ -166,10 +158,8 @@ class _TaskMarkVowelState extends State<TaskMarkVowel>
                                       child: BoxDialog(
                                           controller:
                                               this.widget.lessonController,
-                                          feedback:
-                                              this.widget.task.isCorrect,
-                                          resposta:
-                                              this.widget.task.answer),
+                                          feedback: this.widget.task.isCorrect,
+                                          resposta: this.widget.task.answer),
                                     ),
                                   );
                                 },

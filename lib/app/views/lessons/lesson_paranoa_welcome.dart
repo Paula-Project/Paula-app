@@ -78,12 +78,12 @@ class _LessonParanoaWelcomeState extends State<LessonParanoaWelcome>
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    child: 
-                      TaskTitle(
-                        title: "Bem-vindo ao Paranoá. Agora vamos conhecer a minha cidade.", 
-                        audio: "audios/paula/paula_paranoaWelcome.mp3",
-                        audioManager: audioManager,
-                      ),
+                    child: TaskTitle(
+                      title:
+                          "Bem-vindo ao Paranoá. Agora vamos conhecer a minha cidade.",
+                      audio: "audios/paula/paula_paranoaWelcome.mp3",
+                      audioManager: audioManager,
+                    ),
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.4,

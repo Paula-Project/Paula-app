@@ -68,9 +68,7 @@ class _SelectLetterButtonState extends State<SelectLetterButton> {
       height: 60,
       width: widget.word.length > 5 ? 35 : 40,
       child: TextButton(
-        onPressed: () => {
-          setState(() => selectLetter())
-        },
+        onPressed: () => {setState(() => selectLetter())},
         style: TextButton.styleFrom(
           backgroundColor: colorBgStatus(),
           alignment: Alignment.center,
