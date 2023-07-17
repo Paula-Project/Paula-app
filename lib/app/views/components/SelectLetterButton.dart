@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/model/task_vogal_selection_model.dart';
 
@@ -66,24 +67,21 @@ class _SelectLetterButtonState extends State<SelectLetterButton> {
     return Container(
       height: 60,
       width: widget.word.length > 5 ? 35 : 40,
-      margin: const EdgeInsets.all(5),
       child: TextButton(
-        onPressed: () => {
-          setState(() => {
-                selectLetter(),
-              }),
-        },
+        onPressed: () => {setState(() => selectLetter())},
         style: TextButton.styleFrom(
           backgroundColor: colorBgStatus(),
           alignment: Alignment.center,
-          textStyle: TextStyle(
+        ),
+        child: AutoSizeText(
+          widget.letter,
+          textScaleFactor: 1,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: colorFontStatus(),
             fontSize: widget.word.length > 5 ? 25 : 30,
             fontWeight: FontWeight.w700,
           ),
-        ),
-        child: Text(
-          widget.letter,
-          style: TextStyle(color: colorFontStatus()),
         ),
       ),
     );

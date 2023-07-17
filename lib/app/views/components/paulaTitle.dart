@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class PaulaTitleComponent extends StatelessWidget {
@@ -11,7 +12,8 @@ class PaulaTitleComponent extends StatelessWidget {
       child: FittedBox(
         fit: BoxFit.scaleDown,
         alignment: Alignment.center,
-        child: Text("PAULA",
+        child: AutoSizeText("PAULA",
+            textScaleFactor: 1,
             style: TextStyle(
               color: Colors.white,
               fontSize: 60,

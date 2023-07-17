@@ -1,13 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/lesson_button.dart';
-import 'package:paula/app/views/home_page.dart';
-import 'package:paula/app/views/login_page.dart';
-import 'package:paula/app/views/person_data_page.dart';
-
-import '../../controllers/modules/module_vowels_controller.dart';
+import 'package:paula/app/views/layout/layout.dart';
+import 'package:paula/app/controllers/modules/module_vowels_controller.dart';
 
 class LessonsVogais extends StatefulWidget {
   final ModuleVowelsController moduleVowelsController;
@@ -46,25 +42,9 @@ class _LessonsVogaisState extends State<LessonsVogais>
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white70,
-        elevation: 0,
-        title: OutlinedButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.fade, child: const LoginPage()));
-          },
-          child: const Icon(
-            Icons.logout,
-            color: Colors.grey,
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
+    return Layout(
+      indexPage: 0,
+      bodyContent: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
@@ -106,16 +86,17 @@ class _LessonsVogaisState extends State<LessonsVogais>
                                   color: const Color.fromARGB(199, 37, 85, 124),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                width: width * 0.5,
-                                height: height * 0.3,
+                                width: width * 0.55,
                                 padding: const EdgeInsets.all(15),
                                 child: const AutoSizeText(
                                   "Vamos começar a estudar algumas palavras com as VOGAIS, elas são: A - E - I - O - U\nelas vão aparecer em todas as palavras.",
                                   style: TextStyle(
-                                      fontSize: 26,
+                                      fontSize: 22,
                                       fontWeight: FontWeight.w300,
                                       color: Colors.white),
                                   minFontSize: 12,
+                                  maxFontSize: 22,
+                                  textScaleFactor: 1,
                                 ),
                               ),
                               const Positioned(
@@ -183,45 +164,6 @@ class _LessonsVogaisState extends State<LessonsVogais>
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex: 1,
-          backgroundColor: Colors.white,
-          elevation: 100,
-          iconSize: 40,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.black,
-          onTap: (index) {
-            switch (index) {
-              case 0:
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => HomePage(),
-                  ),
-                  (route) => false,
-                );
-                break;
-              case 1:
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => PersonData(),
-                  ),
-                  (route) => false,
-                );
-                break;
-            }
-          },
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                ),
-                label: "Home"),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person,
-                ),
-                label: "Perfil"),
-          ]),
     );
   }
 }

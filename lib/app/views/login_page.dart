@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:paula/app/views/change_password.dart';
 import 'package:paula/app/views/components/paulaTitle.dart';
-import 'package:paula/app/views/welcome_page_part1.dart';
 import 'package:paula/app/http/webclient.dart';
 import 'package:provider/provider.dart';
-import '../state/usuario_state.dart';
-import 'components/Loading.dart';
-import 'home_page.dart';
+import 'package:paula/app/state/usuario_state.dart';
+import 'package:paula/app/views/components/Loading.dart';
+import 'package:paula/app/views/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

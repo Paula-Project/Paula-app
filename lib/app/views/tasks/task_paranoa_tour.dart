@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/model/task_paranoa_tour_model.dart';
@@ -49,87 +50,91 @@ class _TaskParanoaTourState extends State<TaskParanoaTour>
     var width = MediaQuery.of(context).size.width;
     return TaskLayout(
       shouldPop: true,
+      paddingDefault: false,
+      taskProgress: Container(),
       body: Material(
           color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30),
-            child: SizedBox(
-              width: width,
-              height: height,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Image.asset(
-                        "assets/images/paula/paula09.png",
-                        width: width * 0.4,
-                      ),
-                      MaterialButton(
-                        onPressed: () {
-                          audioManager.runAudio(
-                              "audios/paula/${widget.task.audioPath}");
-                        },
-                        padding: EdgeInsets.zero,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10),
-                              child: ClipPath(
-                                clipper: CustomTriangleClipper(),
-                                child: Container(
-                                  width: 20,
-                                  height: 30,
-                                  decoration: const BoxDecoration(
-                                      color: Color.fromARGB(199, 37, 85, 124)),
-                                ),
+          child: Container(
+            width: width,
+            height: height,
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Row(
+                  children: [
+                    Image.asset(
+                      "assets/images/paula/paula09.png",
+                      width: width * 0.38,
+                    ),
+                    MaterialButton(
+                      onPressed: () {
+                        audioManager
+                            .runAudio("audios/paula/${widget.task.audioPath}");
+                      },
+                      padding: EdgeInsets.zero,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: ClipPath(
+                              clipper: CustomTriangleClipper(),
+                              child: Container(
+                                width: 20,
+                                height: 30,
+                                decoration: const BoxDecoration(
+                                    color: Color.fromARGB(199, 37, 85, 124)),
                               ),
                             ),
-                            Stack(children: [
-                              Container(
-                                width: (width - 45) / 2,
-                                padding: const EdgeInsets.all(15),
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                    color:
-                                        const Color.fromARGB(199, 37, 85, 124),
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Text(widget.task.title,
-                                    style: const TextStyle(
-                                        fontSize: 20, color: Colors.white)),
-                              ),
-                              const Positioned(
-                                right: 10,
-                                bottom: 10,
-                                child: Icon(
-                                  Icons.spatial_audio_off_sharp,
-                                  color: Colors.white,
-                                ),
-                              )
-                            ]),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: widget.task.words
-                        .map(
-                          (e) => CardParanoaTour(
-                            width: width,
-                            height: height,
-                            word: e,
-                            audioManager: audioManager,
                           ),
-                        )
-                        .toList(),
-                  ),
-                  ButtonContinue(lessonController: widget.lessonController)
-                ],
-              ),
+                          Stack(children: [
+                            Container(
+                              width: (width - 30) / 2,
+                              height: height * 0.22,
+                              padding: const EdgeInsets.all(10),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  color: const Color.fromARGB(199, 37, 85, 124),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: AutoSizeText(widget.task.title,
+                                  textScaleFactor: 1,
+                                  style: const TextStyle(
+                                      fontSize: 22,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold)),
+                            ),
+                            const Positioned(
+                              right: 10,
+                              bottom: 10,
+                              child: Icon(
+                                Icons.spatial_audio_off_sharp,
+                                color: Colors.white,
+                              ),
+                            )
+                          ]),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: widget.task.words
+                      .map(
+                        (e) => CardParanoaTour(
+                          width: width,
+                          height: height,
+                          word: e,
+                          audioManager: audioManager,
+                        ),
+                      )
+                      .toList(),
+                ),
+                ButtonContinue(lessonController: widget.lessonController),
+              ],
             ),
           )),
     );

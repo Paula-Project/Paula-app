@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/model/word.dart';
 import 'package:paula/app/views/components/audioManager.dart';
@@ -36,12 +37,13 @@ class CardParanoaTour extends StatelessWidget {
                 "assets/images/words/${word.imagePath}",
                 fit: BoxFit.fitHeight,
                 width: width - 80,
-                height: height * 0.15,
+                height: height * 0.13,
               ),
-              Text(word.text,
+              AutoSizeText(word.text,
                   textAlign: TextAlign.center,
+                  textScaleFactor: 1,
                   style: const TextStyle(
-                      fontSize: 30,
+                      fontSize: 22,
                       color: Colors.white,
                       fontWeight: FontWeight.bold)),
             ],

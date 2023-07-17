@@ -2,9 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
-import 'package:paula/app/views/components/DIalogTextBoxDown.dart';
-import 'package:paula/app/views/components/exitDialog.dart';
 import 'package:paula/app/views/components/audioManager.dart';
+import 'package:paula/app/views/components/taskTitle.dart';
 import 'package:paula/app/views/layout/task_layout.dart';
 
 class LessonIntroduction extends StatefulWidget {
@@ -53,138 +52,128 @@ class _LessonIntroductionState extends State<LessonIntroduction>
   Widget build(BuildContext context) {
     return TaskLayout(
       shouldPop: true,
-      body: Material(
-        child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-            ),
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(30.0),
-                  child: Container(
-                      alignment: Alignment.topCenter,
-                      height: MediaQuery.of(context).size.height * 0.4,
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                          color: Color.fromRGBO(37, 85, 124, 1),
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(15.0))),
-                      child: Wrap(children: [
-                        Container(
-                            decoration:
-                                const BoxDecoration(color: Colors.black26),
-                            width: (MediaQuery.of(context).size.width - 60) / 2,
-                            height: MediaQuery.of(context).size.height * 0.20,
-                            child: Center(
-                              child: AutoSizeText(
-                                minFontSize: 80,
-                                widget.letter.toUpperCase(),
-                                style: const TextStyle(
-                                  fontSize: 120,
-                                ),
-                              ),
-                            )),
-                        SizedBox(
-                            width: (MediaQuery.of(context).size.width - 60) / 2,
-                            height: MediaQuery.of(context).size.height * 0.20,
-                            child: Center(
-                              child: AutoSizeText(
-                                minFontSize: 80,
-                                widget.letter.toLowerCase(),
-                                style: const TextStyle(fontSize: 120),
-                              ),
-                            )),
-                        SizedBox(
-                            width: (MediaQuery.of(context).size.width - 60) / 2,
-                            height: MediaQuery.of(context).size.height * 0.20,
-                            child: Center(
-                              child: AutoSizeText(
-                                minFontSize: 80,
-                                widget.letter.toUpperCase(),
-                                style: const TextStyle(
-                                    fontSize: 120, fontFamily: 'Norican'),
-                              ),
-                            )),
-                        Container(
-                            decoration:
-                                const BoxDecoration(color: Colors.black26),
-                            width: (MediaQuery.of(context).size.width - 60) / 2,
-                            height: MediaQuery.of(context).size.height * 0.20,
-                            child: Center(
-                              child: AutoSizeText(
-                                minFontSize: 80,
-                                textAlign: TextAlign.center,
-                                widget.letter.toLowerCase(),
-                                style: const TextStyle(
-                                    fontSize: 120, fontFamily: 'Norican'),
-                              ),
-                            )),
-                      ])),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(30.0),
-                  child: MaterialButton(
-                      onPressed: () {
-                        audioManager
-                            .runAudio("audios/paula/${widget.audioUrl}");
-                      },
-                      child: DialogTextBoxDown(
-                          textContent: widget.titleIntroduction)),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Expanded(
-                  child: Stack(
-                    alignment: Alignment.bottomRight,
-                    children: [
-                      Container(
-                        alignment: Alignment.bottomCenter,
-                        width: (MediaQuery.of(context).size.width),
-                        height: 275,
-                        child: Image.asset(
-                          'assets/images/paula/paula03.png',
-                          scale: 1,
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 30,
-                        right: 30,
-                        child: Container(
-                          height: 60,
-                          width: 60,
-                          decoration: const BoxDecoration(
-                            color: Colors.lightBlue,
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
-                          ),
-                          child: Center(
-                            child: IconButton(
-                              color: Colors.white,
-                              iconSize: 40,
-                              icon: const Icon(
-                                Icons.arrow_forward_outlined,
-                              ),
-                              onPressed: () async {
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    PageTransition(
-                                        type: PageTransitionType.rightToLeft,
-                                        child: widget.controller.nextTask()),
-                                    (route) => false);
-                              },
+      taskProgress: Container(),
+      body: Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+          ),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                  alignment: Alignment.topCenter,
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                      color: Color.fromRGBO(37, 85, 124, 1),
+                      borderRadius: BorderRadius.all(Radius.circular(15.0))),
+                  child: Wrap(children: [
+                    Container(
+                        decoration: const BoxDecoration(color: Colors.black26),
+                        width: (MediaQuery.of(context).size.width - 60) / 2,
+                        height: MediaQuery.of(context).size.height * 0.20,
+                        child: Center(
+                          child: AutoSizeText(
+                            minFontSize: 80,
+                            widget.letter.toUpperCase(),
+                            style: const TextStyle(
+                              fontSize: 120,
                             ),
                           ),
+                        )),
+                    SizedBox(
+                        width: (MediaQuery.of(context).size.width - 60) / 2,
+                        height: MediaQuery.of(context).size.height * 0.20,
+                        child: Center(
+                          child: AutoSizeText(
+                            minFontSize: 80,
+                            widget.letter.toLowerCase(),
+                            style: const TextStyle(fontSize: 120),
+                          ),
+                        )),
+                    SizedBox(
+                        width: (MediaQuery.of(context).size.width - 60) / 2,
+                        height: MediaQuery.of(context).size.height * 0.20,
+                        child: Center(
+                          child: AutoSizeText(
+                            minFontSize: 80,
+                            widget.letter.toUpperCase(),
+                            style: const TextStyle(
+                                fontSize: 120, fontFamily: 'Norican'),
+                          ),
+                        )),
+                    Container(
+                        decoration: const BoxDecoration(color: Colors.black26),
+                        width: (MediaQuery.of(context).size.width - 60) / 2,
+                        height: MediaQuery.of(context).size.height * 0.20,
+                        child: Center(
+                          child: AutoSizeText(
+                            minFontSize: 80,
+                            textAlign: TextAlign.center,
+                            widget.letter.toLowerCase(),
+                            style: const TextStyle(
+                                fontSize: 120, fontFamily: 'Norican'),
+                          ),
+                        )),
+                  ])),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: TaskTitle(
+                    audio: widget.audioUrl,
+                    title: widget.titleIntroduction,
+                    audioManager: audioManager),
+              ),
+              const SizedBox(
+                height: 5.0,
+              ),
+              Expanded(
+                child: Stack(
+                  alignment: Alignment.bottomRight,
+                  children: [
+                    Container(
+                      alignment: Alignment.bottomCenter,
+                      width: (MediaQuery.of(context).size.width),
+                      height: 275,
+                      child: Image.asset(
+                        'assets/images/paula/paula03.png',
+                        scale: 1,
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 30,
+                      right: 30,
+                      child: Container(
+                        height: 60,
+                        width: 60,
+                        decoration: const BoxDecoration(
+                          color: Colors.lightBlue,
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                        ),
+                        child: Center(
+                          child: IconButton(
+                            color: Colors.white,
+                            iconSize: 40,
+                            icon: const Icon(
+                              Icons.arrow_forward_outlined,
+                            ),
+                            onPressed: () async {
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  PageTransition(
+                                      type: PageTransitionType.rightToLeft,
+                                      child: widget.controller.nextTask()),
+                                  (route) => false);
+                            },
+                          ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            )),
-      ),
+              ),
+            ],
+          )),
     );
   }
 }

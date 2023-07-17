@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/views/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'components/paulaTitle.dart';
-import 'welcome_page_part2.dart';
+import 'package:paula/app/views/components/paulaTitle.dart';
+import 'package:paula/app/views/welcome_page_part2.dart';
 
 class WelcomePagePart1 extends StatelessWidget {
   const WelcomePagePart1({Key? key}) : super(key: key);
@@ -57,7 +57,7 @@ class WelcomePagePart1 extends StatelessWidget {
                   ),
                   SizedBox(height: (MediaQuery.of(context).size.height * 0.02)),
                   SizedBox(
-                    width: MediaQuery.of(context).size.height > 400 ? 140 : 100,
+                    width: MediaQuery.of(context).size.height > 400 ? 200 : 120,
                     height: MediaQuery.of(context).size.height > 400 ? 40 : 25,
                     child: ElevatedButton(
                       onPressed: () {
@@ -80,23 +80,19 @@ class WelcomePagePart1 extends StatelessWidget {
                       ),
                       child: const FittedBox(
                         fit: BoxFit.scaleDown,
-                        child: Text("Avançar",
+                        child: Text("Primeiro acesso!",
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 20)),
                       ),
                     ),
                   ),
-                  Center(
-                    child: TextButton(
-                      child: const Text(
-                        "Já possuo login!",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w300,
-                            decoration: TextDecoration.underline),
-                      ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.height > 400 ? 200 : 120,
+                    height: MediaQuery.of(context).size.height > 400 ? 40 : 25,
+                    child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                             context,
@@ -104,8 +100,27 @@ class WelcomePagePart1 extends StatelessWidget {
                                 type: PageTransitionType.fade,
                                 child: const LoginPage()));
                       },
+                      style: ButtonStyle(
+                        foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Colors.transparent),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    side: BorderSide.none)),
+                      ),
+                      child: const FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          "Já possuo conta!",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
             )

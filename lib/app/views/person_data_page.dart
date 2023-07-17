@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
@@ -67,21 +68,33 @@ class PersonData extends StatelessWidget {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 10),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            name,
-                            style: const TextStyle(
-                                color: Colors.black, fontSize: 22),
-                          ),
-                          Text(
-                            '@${usuarioLogado.username}',
-                            style: const TextStyle(
-                                color: Colors.black, fontSize: 22),
-                          )
-                        ],
+                      child: Container(
+                        width: 200,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            AutoSizeText(
+                              name,
+                              maxFontSize: 25,
+                              minFontSize: 20,
+                              maxLines: 2,
+                              softWrap: true,
+                              wrapWords: true,
+                              style: const TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                            AutoSizeText(
+                              '@${usuarioLogado.username}',
+                              maxFontSize: 25,
+                              minFontSize: 18,
+                              softWrap: false,
+                              wrapWords: false,
+                              style: const TextStyle(color: Colors.black),
+                            )
+                          ],
+                        ),
                       ),
                     )
                   ],
@@ -108,7 +121,9 @@ class PersonData extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      Text("Idade: ${usuarioLogado.age}",
+                      AutoSizeText("Idade: ${usuarioLogado.age}",
+                          maxFontSize: 20,
+                          minFontSize: 20,
                           style: const TextStyle(
                               color: Colors.black, fontSize: 20)),
                       const SizedBox(

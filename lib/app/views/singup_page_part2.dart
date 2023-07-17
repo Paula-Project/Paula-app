@@ -5,8 +5,8 @@ import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/components/Input.dart';
 import 'package:paula/app/views/components/Loading.dart';
 import 'package:provider/provider.dart';
-import 'components/paulaTitle.dart';
-import 'home_page.dart';
+import 'package:paula/app/views/components/paulaTitle.dart';
+import 'package:paula/app/views/home_page.dart';
 import 'package:flutter/services.dart';
 
 class SingupPage2 extends StatefulWidget {
@@ -41,11 +41,15 @@ class _SingupPageState2 extends State<SingupPage2> {
   final TextEditingController _apelidoController = TextEditingController();
 
   bool isLoading = false;
-
   @override
-  Widget build(BuildContext context) => isLoading
-      ? const LoadingPage()
-      : Scaffold(
+  Widget build(BuildContext context) {
+    final mediaQueryData = MediaQuery.of(context);
+    if (isLoading) {
+      return const LoadingPage();
+    } else {
+      return MediaQuery(
+        data: mediaQueryData.copyWith(textScaleFactor: 1),
+        child: Scaffold(
           body: SingleChildScrollView(
             child: Container(
               decoration: backgroundBlueGradiend,
@@ -222,18 +226,7 @@ class _SingupPageState2 extends State<SingupPage2> {
                                                         : 15,
                                               ),
                                               SizedBox(
-                                                width: MediaQuery.of(context)
-                                                            .size
-                                                            .height >
-                                                        550
-                                                    ? 160
-                                                    : 140,
-                                                height: MediaQuery.of(context)
-                                                            .size
-                                                            .height >
-                                                        550
-                                                    ? 50
-                                                    : 30,
+                                                height: 50,
                                                 child: ElevatedButton(
                                                   onPressed: () async {
                                                     setState(() => isLoading =
@@ -313,7 +306,10 @@ class _SingupPageState2 extends State<SingupPage2> {
               ),
             ),
           ),
-        );
+        ),
+      );
+    }
+  }
 
   Future<bool> cadastro() async {
     var usuarioLogado = await cadastroUsuario(Usuario(

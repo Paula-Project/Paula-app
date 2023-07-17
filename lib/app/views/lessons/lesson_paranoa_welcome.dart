@@ -1,8 +1,10 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lessons/lesson_paranoa_controller.dart';
 import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/buttonContinue.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
+import 'package:paula/app/views/components/taskTitle.dart';
 
 class LessonParanoaWelcome extends StatefulWidget {
   final LessonParanoaController lessonController;
@@ -65,49 +67,29 @@ class _LessonParanoaWelcomeState extends State<LessonParanoaWelcome>
                     child: const Center(
                       child: Padding(
                         padding: EdgeInsets.all(12.0),
-                        child: Text(
+                        child: AutoSizeText(
                           "Paranoá",
+                          textScaleFactor: 1,
                           style: TextStyle(
                               fontSize: 70, fontWeight: FontWeight.w300),
                         ),
                       ),
                     ),
                   ),
-                  MaterialButton(
-                    onPressed: () {
-                      audioManager
-                          .runAudio("audios/paula/paula_paranoaWelcome.mp3");
-                    },
-                    child: Stack(children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height * 0.18,
-                        width: (MediaQuery.of(context).size.width * 0.8),
-                        decoration: const BoxDecoration(
-                          color: Color.fromRGBO(37, 85, 124, 1),
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                        ),
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: const Text(
-                            "Bem-vindo ao Paranoá. Agora vamos conhecer a minha cidade.",
-                            style: TextStyle(fontSize: 22)),
-                      ),
-                      const Positioned(
-                        right: 10,
-                        top: 10,
-                        child: Icon(
-                          Icons.spatial_audio_off_sharp,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ]),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: TaskTitle(
+                      title:
+                          "Bem-vindo ao Paranoá. Agora vamos conhecer a minha cidade.",
+                      audio: "audios/paula/paula_paranoaWelcome.mp3",
+                      audioManager: audioManager,
+                    ),
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.4,
-                    width: (MediaQuery.of(context).size.width * 0.8),
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.only(left: 50),
                     child: Align(
-                      alignment: Alignment.centerRight,
+                      alignment: Alignment.center,
                       child: Image.asset(
                         'assets/images/paula/paula08.png',
                         height: MediaQuery.of(context).size.height * 0.38,
