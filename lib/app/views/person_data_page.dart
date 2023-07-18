@@ -5,6 +5,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/layout/layout.dart';
+import 'package:paula/app/views/updateProfile.dart';
 import 'package:paula/app/views/welcome_page_part1.dart';
 import 'package:provider/provider.dart';
 
@@ -161,7 +162,7 @@ class PersonData extends StatelessWidget {
                                   context,
                                   PageTransition(
                                       type: PageTransitionType.rightToLeft,
-                                      child: const WelcomePagePart1()));
+                                      child: const UpdateProfile()));
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,

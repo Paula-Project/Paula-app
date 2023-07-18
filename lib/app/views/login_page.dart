@@ -103,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Container(
                                     decoration: const BoxDecoration(boxShadow: [
                                       BoxShadow(
-                                        color: Color.fromARGB(50, 0, 0, 0),
+                                        color: Color.fromARGB(49, 133, 75, 75),
                                         blurRadius: 15,
                                         offset: Offset(0, 5),
                                       ),
