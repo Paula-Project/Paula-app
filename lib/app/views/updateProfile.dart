@@ -39,143 +39,117 @@ class _UpdateProfileState extends State<UpdateProfile> {
         ),
       ),
       backgroundColor: Colors.white,
-      body: Container(
-        margin: EdgeInsetsDirectional.all(30),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              "Seu Nome",
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300),
-            ),
-            Container(height: 5),
-            Container(
-              decoration: const BoxDecoration(boxShadow: [
-                BoxShadow(
-                    color: Color.fromARGB(255, 202, 196, 196),
-                    blurRadius: 15,
-                    offset: Offset(0, 5))
-              ]),
-              child: TextFormField(
-                keyboardType: TextInputType.text,
-                inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]'))
-                ],
-                decoration: InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 6),
-                    fillColor: Color.fromRGBO(241, 241, 241, 1),
-                    filled: true,
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(8)),
-                    isDense: true),
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-            Container(height: 40),
-            const Text("Seu Apelido",
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsetsDirectional.all(30),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Seu Nome",
+                textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
-                    fontWeight: FontWeight.w300)),
-            Container(height: 5),
-            Container(
-              decoration: const BoxDecoration(boxShadow: [
-                BoxShadow(
-                    color: Color.fromARGB(255, 202, 196, 196),
-                    blurRadius: 15,
-                    offset: Offset(0, 5))
-              ]),
-              child: TextFormField(
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                    contentPadding:
-                        const EdgeInsets.symmetric(vertical: 10, horizontal: 6),
-                    isDense: true,
-                    fillColor: Color.fromRGBO(241, 241, 241, 1),
-                    filled: true,
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(8))),
-                obscureText: true,
-                style: const TextStyle(color: Colors.black),
+                    fontWeight: FontWeight.w300),
               ),
-            ),
-            Container(height: 40),
-            const Text(
-              "Data de Nascimento",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w300),
-            ),
-            Container(height: 5),
-            Container(
-              decoration: const BoxDecoration(boxShadow: [
-                BoxShadow(
-                    color: Color.fromARGB(255, 202, 196, 196),
-                    blurRadius: 15,
-                    offset: Offset(0, 5))
-              ]),
-              child: TextFormField(
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                    contentPadding:
-                        const EdgeInsets.symmetric(vertical: 10, horizontal: 6),
-                    isDense: true,
-                    fillColor: Color.fromRGBO(241, 241, 241, 1),
-                    filled: true,
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(8))),
-                obscureText: true,
-                style: const TextStyle(color: Colors.black),
+              Container(height: 5),
+              Container(
+                decoration: const BoxDecoration(boxShadow: [
+                  BoxShadow(
+                      color: Color.fromARGB(255, 202, 196, 196),
+                      blurRadius: 15,
+                      offset: Offset(0, 5))
+                ]),
+                child: TextFormField(
+                  keyboardType: TextInputType.text,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]'))
+                  ],
+                  decoration: InputDecoration(
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 6),
+                      fillColor: Color.fromRGBO(241, 241, 241, 1),
+                      filled: true,
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(8)),
+                      isDense: true),
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
-            ),
-            Container(height: 50),
-            Center(
-              child: Column(
-                children: [
-                  Center(
-                      child: ElevatedButton(
-                    style: ButtonStyle(
-                      foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.white),
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.blue),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              side: BorderSide.none)),
-                    ),
-                    onPressed: () {},
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [Text("Atualizar  "), Icon(Icons.create)],
-                    ),
-                  ))
-                ],
+              Container(height: 40),
+              const Text("Seu Apelido",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w300)),
+              Container(height: 5),
+              Container(
+                decoration: const BoxDecoration(boxShadow: [
+                  BoxShadow(
+                      color: Color.fromARGB(255, 202, 196, 196),
+                      blurRadius: 15,
+                      offset: Offset(0, 5))
+                ]),
+                child: TextFormField(
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 6),
+                      isDense: true,
+                      fillColor: Color.fromRGBO(241, 241, 241, 1),
+                      filled: true,
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(8))),
+                  obscureText: true,
+                  style: const TextStyle(color: Colors.black),
+                ),
               ),
-            ),
-            Container(height: 100),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Center(
-                    child: ElevatedButton(
+              Container(height: 40),
+              const Text(
+                "Data de Nascimento",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w300),
+              ),
+              Container(height: 5),
+              Container(
+                decoration: const BoxDecoration(boxShadow: [
+                  BoxShadow(
+                      color: Color.fromARGB(255, 202, 196, 196),
+                      blurRadius: 15,
+                      offset: Offset(0, 5))
+                ]),
+                child: TextFormField(
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 6),
+                      isDense: true,
+                      fillColor: Color.fromRGBO(241, 241, 241, 1),
+                      filled: true,
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(8))),
+                  obscureText: true,
+                  style: const TextStyle(color: Colors.black),
+                ),
+              ),
+              Container(height: 50),
+              Center(
+                child: Column(
+                  children: [
+                    Center(
+                        child: ElevatedButton(
                       style: ButtonStyle(
                         foregroundColor:
                             MaterialStateProperty.all<Color>(Colors.white),
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.red),
+                            MaterialStateProperty.all<Color>(Colors.blue),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
@@ -187,16 +161,48 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
                         children: const [
-                          Text("Apagar conta  "),
-                          Icon(Icons.delete)
+                          Text("Atualizar  "),
+                          Icon(Icons.create)
                         ],
                       ),
-                    ),
-                  )
-                ],
+                    ))
+                  ],
+                ),
               ),
-            )
-          ],
+              Container(height: 100),
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Center(
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          foregroundColor:
+                              MaterialStateProperty.all<Color>(Colors.white),
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.red),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      side: BorderSide.none)),
+                        ),
+                        onPressed: () {},
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: const [
+                            Text("Apagar conta  "),
+                            Icon(Icons.delete)
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
