@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:page_transition/page_transition.dart';
+import 'package:intl/intl.dart';
 import 'package:paula/app/views/person_data_page.dart';
 
 import 'home_page.dart';
@@ -15,6 +13,28 @@ class UpdateProfile extends StatefulWidget {
 }
 
 class _UpdateProfileState extends State<UpdateProfile> {
+  final _userNameController = TextEditingController();
+  final _nickNameController = TextEditingController();
+
+  DateTime _date = DateTime.now();
+  var selectedDateTxt = "";
+
+  Future<Null> _selectDate(BuildContext context) async {
+    DateTime? _datePicker = await showDatePicker(
+        context: context,
+        initialDate: _date,
+        firstDate: DateTime(1910, 1, 1),
+        locale: const Locale("pt", "BR"),
+        lastDate: DateTime.now());
+
+    if (_datePicker != null && _datePicker != _date) {
+      setState(() {
+        _date = _datePicker;
+        selectedDateTxt = DateFormat('dd/MM/yyyy').format(_datePicker);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,9 +83,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       offset: Offset(0, 5))
                 ]),
                 child: TextFormField(
+                  controller: _userNameController,
                   keyboardType: TextInputType.text,
                   inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]'))
+                    FilteringTextInputFormatter.allow(
+                        RegExp(r"[a-zA-ZçÇ'ÁÂãâáÉÊéêÍíÓóôÚú\s]"))
                   ],
                   decoration: InputDecoration(
                       contentPadding:
@@ -94,7 +116,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       offset: Offset(0, 5))
                 ]),
                 child: TextFormField(
+                  controller: _nickNameController,
                   keyboardType: TextInputType.text,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]'))
+                  ],
                   decoration: InputDecoration(
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 6),
@@ -104,7 +130,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       border: OutlineInputBorder(
                           borderSide: BorderSide.none,
                           borderRadius: BorderRadius.circular(8))),
-                  obscureText: true,
+                  obscureText: false,
                   style: const TextStyle(color: Colors.black),
                 ),
               ),
@@ -117,26 +143,35 @@ class _UpdateProfileState extends State<UpdateProfile> {
                     fontWeight: FontWeight.w300),
               ),
               Container(height: 5),
-              Container(
-                decoration: const BoxDecoration(boxShadow: [
-                  BoxShadow(
-                      color: Color.fromARGB(255, 202, 196, 196),
-                      blurRadius: 15,
-                      offset: Offset(0, 5))
-                ]),
-                child: TextFormField(
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 6),
-                      isDense: true,
-                      fillColor: Color.fromRGBO(241, 241, 241, 1),
-                      filled: true,
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(8))),
-                  obscureText: true,
-                  style: const TextStyle(color: Colors.black),
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
+                ),
+                onPressed: () {
+                  _selectDate(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Icon(
+                        Icons.date_range,
+                      ),
+                      Text(
+                        selectedDateTxt,
+                        style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.height > 600
+                                ? 25
+                                : 18,
+                            fontFamily: "Nunito",
+                            fontWeight: FontWeight.w300),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Container(height: 50),
@@ -156,7 +191,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                     borderRadius: BorderRadius.circular(10),
                                     side: BorderSide.none)),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        print(_userNameController.text);
+                        print(_nickNameController.text);
+                        print(selectedDateTxt);
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.min,
