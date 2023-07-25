@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/lessons/lesson_itapoa_controller.dart';
 import 'package:paula/app/controllers/lessons/lesson_paranoa_controller.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/layout/layout.dart';
+import 'package:paula/app/views/lessons/lesson_itapoa_welcome.dart';
 import 'package:paula/app/views/lessons/lessons_vogais.dart';
 import 'package:paula/app/views/lessons/lesson_paranoa_welcome.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +14,7 @@ import 'package:paula/app/views/components/module_button.dart';
 class HomePage extends StatelessWidget {
   ModuleVowelsController moduleVowelsController = ModuleVowelsController();
   LessonParanoaController lessonParanoaController = LessonParanoaController();
+  LessonItapoaController lessonItapoaController = LessonItapoaController();
 
   HomePage({Key? key}) : super(key: key);
   final int indexPage = 0;
@@ -40,12 +43,12 @@ class HomePage extends StatelessWidget {
                     LessonParanoaWelcome(
                         lessonController: lessonParanoaController),
                     moduleVowelsController.getCompleted(usuarioLogado)),
-                /*ModuleButton(
-                    Alignment.centerRight,
-                    "Paranoá",
-                    LessonParanoaWelcome(
-                        lessonController: lessonParanoaController),
-                    moduleVowelsController.getCompleted(usuarioLogado)),*/
+                ModuleButton(
+                    Alignment.centerLeft,
+                    "Itapoã",
+                    LessonItapoaWelcome(
+                        lessonController: lessonItapoaController),
+                    moduleVowelsController.getCompleted(usuarioLogado)),
               ]));
         }));
   }
