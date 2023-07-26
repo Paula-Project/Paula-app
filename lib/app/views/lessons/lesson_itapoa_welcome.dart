@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/lessons/lesson_itapoa_controller.dart';
 import 'package:paula/app/controllers/lessons/lesson_paranoa_controller.dart';
 import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/buttonContinue.dart';
@@ -7,7 +8,7 @@ import 'package:paula/app/views/components/exitDialog.dart';
 import 'package:paula/app/views/components/taskTitle.dart';
 
 class LessonItapoaWelcome extends StatefulWidget {
-  final LessonParanoaController lessonController;
+  final LessonItapoaController lessonController;
   const LessonItapoaWelcome({
     Key? key,
     required this.lessonController,
