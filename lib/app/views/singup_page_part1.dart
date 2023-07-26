@@ -189,6 +189,28 @@ class _SingupPageState extends State<SingupPage> {
                                                               FontWeight.w300)),
                                                 ),
                                               ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        10, 0, 15, 0),
+                                                child: Align(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text("Campo Opcional",
+                                                      style: TextStyle(
+                                                          color: Color.fromARGB(255, 18, 18, 18),
+                                                          fontSize: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .height >
+                                                                  600
+                                                              ? 9
+                                                              : 9,
+                                                          fontFamily: "Nunito",
+                                                          fontWeight:
+                                                              FontWeight.w300)),
+                                                ),
+                                              ),
                                               Container(
                                                 height: MediaQuery.of(context)
                                                             .size
@@ -265,6 +287,28 @@ class _SingupPageState extends State<SingupPage> {
                                                                   600
                                                               ? 25
                                                               : 18,
+                                                          fontFamily: "Nunito",
+                                                          fontWeight:
+                                                              FontWeight.w300)),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        10, 0, 15, 0),
+                                                child: Align(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text("Campo Opcional",
+                                                      style: TextStyle(
+                                                          color: Color.fromARGB(255, 18, 18, 18),
+                                                          fontSize: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .height >
+                                                                  600
+                                                              ? 9
+                                                              : 9,
                                                           fontFamily: "Nunito",
                                                           fontWeight:
                                                               FontWeight.w300)),
@@ -454,10 +498,6 @@ class _SingupPageState extends State<SingupPage> {
                                                   onPressed: () {
                                                     if (_key.currentState!
                                                         .validate()) {
-                                                      if (calcAge() >= 1 &&
-                                                          (isSelected[0] ||
-                                                              isSelected[1] ||
-                                                              isSelected[2])) {
                                                         Navigator.push(
                                                             context,
                                                             MaterialPageRoute(
@@ -471,27 +511,6 @@ class _SingupPageState extends State<SingupPage> {
                                                                 gender: _gender,
                                                               ),
                                                             ));
-                                                      } else {
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          const SnackBar(
-                                                              backgroundColor:
-                                                                  Color
-                                                                      .fromARGB(
-                                                                          255,
-                                                                          41,
-                                                                          171,
-                                                                          226),
-                                                              content: Text(
-                                                                'Data de Nascimento inválida (aluno deve possuir no minimo 1 ano)'
-                                                                ' e/ou genêro não selecionado',
-                                                                style: TextStyle(
-                                                                    color: Colors
-                                                                        .white),
-                                                              )),
-                                                        );
-                                                      }
                                                     }
                                                   },
                                                   onHover: (hover) {},
