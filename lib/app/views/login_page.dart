@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/views/change_password.dart';
 import 'package:paula/app/views/components/paulaTitle.dart';
 import 'package:paula/app/http/webclient.dart';
@@ -223,55 +224,8 @@ class _LoginPageState extends State<LoginPage> {
                                   );
                                 },
                                 onPressed: () async {
-                                  FocusScopeNode currentFocus =
-                                      FocusScope.of(context);
                                   if (_formkey.currentState!.validate()) {
-                                    bool log = false;
-                                    setState(() => isLoading = true);
-                                    try {
-                                      if (await login()) {
-                                        setState(() => isLoading = false);
-                                        FocusScope.of(context).unfocus();
-                                        log = true;
-                                      } else {
-                                        setState(() => isLoading = false);
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                              backgroundColor: Colors.white,
-                                              content: Text(
-                                                'Usuário ou senha inválidos',
-                                                style: TextStyle(
-                                                    color: Color.fromARGB(
-                                                        255, 41, 171, 226),
-                                                    fontSize: 20),
-                                              )),
-                                        );
-                                      }
-                                    } catch (e) {
-                                      setState(() => isLoading = false);
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        const SnackBar(
-                                            backgroundColor: Colors.white,
-                                            content: Text(
-                                              'Verifique a sua conexão com a internet.',
-                                              style: TextStyle(
-                                                  color: Color.fromARGB(
-                                                      255, 41, 171, 226),
-                                                  fontSize: 20),
-                                            )),
-                                      );
-                                    }
-                                    if (log) {
-                                      Navigator.of(context).pushAndRemoveUntil(
-                                        MaterialPageRoute(
-                                          builder: (BuildContext context) =>
-                                              HomePage(),
-                                        ),
-                                        (route) => false,
-                                      );
-                                    } else {}
+                                    login();
                                   }
                                 },
                               ),
@@ -306,16 +260,37 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ));
 
-  Future<bool> login() async {
-    var usuarioLogado =
-        await loginUsuario(_nicknameController.text, _passwordController.text);
-
-    if (usuarioLogado != null) {
-      var listaDeClientes = Provider.of<UsuarioState>(context, listen: false);
-      listaDeClientes.adicionaUsuario(usuarioLogado);
-      return true;
-    } else {
-      return false;
+  void login() async {
+    setState(() => isLoading = true);
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      var response = await loginUsuario(
+          _nicknameController.text, _passwordController.text);
+      setState(() => isLoading = false);
+      if (response is UsuarioAPI) {
+        if (!mounted) return;
+        var usuarios = Provider.of<UsuarioState>(context, listen: false);
+        usuarios.adicionaUsuario(response);
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (BuildContext context) => HomePage(),
+          ),
+          (route) => false,
+        );
+        return;
+      }
+      throw response;
+    } catch (err) {
+      setState(() => isLoading = false);
+      messenger.showSnackBar(
+        SnackBar(
+            backgroundColor: Colors.white,
+            content: Text(
+              err.toString(),
+              style: const TextStyle(
+                  color: Color.fromARGB(255, 41, 171, 226), fontSize: 20),
+            )),
+      );
     }
   }
 }
