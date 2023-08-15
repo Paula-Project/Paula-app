@@ -335,6 +335,24 @@ flutter:
     - assets/alphabet/letter-o.png
     - assets/alphabet/letter-u.png
 
+    #Audios Itapoã
+    - assets/audios/paula/paula_tour_itapoa.mp3
+    - assets/audios/words/itapoa.mp3
+    - assets/audios/words/panificadora_izadora.mp3
+    - assets/audios/paula/audio_pegar_onibus.mp3
+    - assets/audios/words/ponte_paranoa.mp3
+    - assets/audios/paula/passar_pela_ponte.mp3
+    - assets/audios/paula/escrita_itapoa.mp3
+    - assets/audios/paula/escrita_onibus.mp3
+
+
+    # Imagens Itapoã
+    - assets/images/words/itapoa_madeira.png
+    - assets/images/words/itapoa_panificadora.png
+    - assets/images/words/itapoa.png
+    - assets/images/words/onibus_itapoa.png
+    - assets/images/words/ponte.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
