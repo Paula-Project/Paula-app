@@ -1,3 +1,4 @@
+import 'package:paula/app/model/itapoa_words.dart';
 import 'package:paula/app/model/paranoa_words.dart';
 import 'package:paula/app/model/task_complete_word_model.dart';
 import 'package:paula/app/model/words.dart';
@@ -19,8 +20,12 @@ class TaskCompleteWordController {
   late TaskCompleteWordModel taskCafe;
   late TaskCompleteWordModel taskLixo;
   late TaskCompleteWordModel taskCama;
+  late TaskCompleteWordModel taskItapoa;
+  late TaskCompleteWordModel taskItapoaA1;
+
   Words words = Words();
   ParanoaWords paranoaWords = ParanoaWords();
+  ItapoaWords itapoaWords = ItapoaWords();
   TaskCompleteWordController() {
     taskParanoa = TaskCompleteWordModel(
         title:
@@ -28,6 +33,18 @@ class TaskCompleteWordController {
         audio: 'paula_paranoaWrite.mp3',
         words: [paranoaWords.wordsList[12]],
         lessonVowels: ['P', 'R', 'A', 'N', 'O', 'Á']);
+    taskItapoa = TaskCompleteWordModel(
+        title:
+            'Você consegue escrever Itapoã? Arraste as letras para formar a palavra.',
+        audio: 'escrita_itapoa.mp3',
+        words: [itapoaWords.wordsList[1]],
+        lessonVowels: ['T', 'I', 'A', 'O', 'P', 'Ã']);
+    taskItapoaA1 = TaskCompleteWordModel(
+        title:
+            'Você consegue escrever Ônibus? Arraste as letras para formar a palavra.',
+        audio: 'escrita_onibus.mp3',
+        words: [itapoaWords.wordsList[3]],
+        lessonVowels: ['N', 'I', 'B', 'Ô', 'U', 'S']);
     taskTintas = TaskCompleteWordModel(
         title:
             'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
@@ -181,6 +198,14 @@ class TaskCompleteWordController {
 
   TaskCompleteWordModel getTaskCama() {
     return taskCama;
+  }
+
+  TaskCompleteWordModel getTaskItapoa() {
+    return taskItapoa;
+  }
+
+  TaskCompleteWordModel getTaskItapoaA1() {
+    return taskItapoaA1;
   }
 
   TaskCompleteWordModel getTaskPalavrasParanoa() {

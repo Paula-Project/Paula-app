@@ -26,7 +26,7 @@ class _LessonItapoaWelcomeState extends State<LessonItapoaWelcome>
   void initState() {
     widget.lessonController.reset();
     WidgetsBinding.instance.addObserver(this);
-    audioManager.runAudio("audios/paula/paula_paranoaWelcome.mp3");
+    audioManager.runAudio("audios/paula/paula_tour_itapoa.mp3");
     super.initState();
   }
 
@@ -69,7 +69,7 @@ class _LessonItapoaWelcomeState extends State<LessonItapoaWelcome>
                       child: Padding(
                         padding: EdgeInsets.all(12.0),
                         child: AutoSizeText(
-                          "Paranoá",
+                          "Itapoã",
                           textScaleFactor: 1,
                           style: TextStyle(
                               fontSize: 70, fontWeight: FontWeight.w300),
@@ -81,8 +81,8 @@ class _LessonItapoaWelcomeState extends State<LessonItapoaWelcome>
                     padding: EdgeInsets.symmetric(horizontal: 20.0),
                     child: TaskTitle(
                       title:
-                          "Bem-vindo ao Paranoá. Agora vamos conhecer a minha cidade.",
-                      audio: "audios/paula/paula_paranoaWelcome.mp3",
+                          "Bem-vindo ao Itapoã. Agora vamos conhecer a minha cidade.",
+                      audio: "audios/paula/paula_tour_itapoa.mp3",
                       audioManager: audioManager,
                     ),
                   ),
