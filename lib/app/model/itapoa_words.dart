@@ -4,11 +4,11 @@ import 'package:paula/app/model/word.dart';
 class ItapoaWords {
   List<Word> wordsList = [];
   List<String> textList = [
-    "Panificadora \n Izadora",
-    "Itapoã",
-    "Itapoã",
-    "Ônibus",
-    "Ponte",
+    "PANIFICADORA \n IZADORA",
+    "ITAPOÃ",
+    "ITAPOÃ",
+    "ÔNIBUS",
+    "PONTE JK",
   ];
   List<String> soundsList = [
     "panificadora_izadora.mp3",
