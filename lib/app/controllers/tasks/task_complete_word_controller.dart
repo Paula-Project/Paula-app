@@ -41,7 +41,7 @@ class TaskCompleteWordController {
         lessonVowels: ['T', 'I', 'A', 'O', 'P', 'Ã']);
     taskItapoaA1 = TaskCompleteWordModel(
         title:
-            'Você consegue escrever Ônibus? Arraste as letras para formar a palavra.',
+            'Você consegue escrever ÔNIBUS? Arraste as letras para formar a palavra.',
         audio: 'escrita_onibus.mp3',
         words: [itapoaWords.wordsList[3]],
         lessonVowels: ['N', 'I', 'B', 'Ô', 'U', 'S']);
