@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:paula/app/views/singup_page_part1.dart';
 import 'package:paula/app/views/splash_view.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -23,7 +24,7 @@ class _AppWidgetState extends State<AppWidget> {
       super.initState();
     }
 
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       theme: ThemeData(
