@@ -15,12 +15,13 @@ class LoadingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: backgroundBlueGradiend,
-        //color: Colors.blue[200]?.withOpacity(0.9),
-        child: const SpinKitCubeGrid(
-          size: 100,
-          color: Colors.white,
+    return const Scaffold(
+        backgroundColor: Color.fromARGB(255, 41, 171, 226),
+        body: Center(
+          child: SpinKitCubeGrid(
+            size: 100,
+            color: Colors.white,
+          ),
         ));
   }
 }
