@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:paula/app/controllers/modules/module_vowels_controller.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
+import 'package:paula/app/views/components/audioManager.dart';
 import 'package:provider/provider.dart';
 import 'package:paula/app/views/home_page.dart';
 
@@ -18,7 +19,29 @@ class CongratulationsVowelsPage extends StatefulWidget {
       _CongratulationsVowelsPageState();
 }
 
-class _CongratulationsVowelsPageState extends State<CongratulationsVowelsPage> {
+class _CongratulationsVowelsPageState extends State<CongratulationsVowelsPage>
+    with WidgetsBindingObserver {
+  AudioManager audioManager = AudioManager();
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    audioManager.runAudio("audios/congrats_1.mp3");
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    audioManager.stopAudio();
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    audioManager.didLifecycleChange(state);
+  }
+
   @override
   Widget build(BuildContext context) {
     Future<bool> _onwillpop() async {
