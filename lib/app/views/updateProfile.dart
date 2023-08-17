@@ -1,7 +1,20 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:paula/app/controllers/web/user_controller.dart';
+import 'package:paula/app/http/app_exceptions.dart';
+import 'package:paula/app/http/base_client.dart';
+import 'package:paula/app/http/webclient.dart';
+import 'package:paula/app/model/usuarioAPI.dart';
+import 'package:paula/app/service/prefs_service.dart';
+import 'package:paula/app/state/usuario_state.dart';
+import 'package:paula/app/utils/calc_age.dart';
+import 'package:paula/app/views/components/SnackBar.dart';
 import 'package:paula/app/views/person_data_page.dart';
+import 'package:paula/app/views/welcome_page_part1.dart';
+import 'package:provider/provider.dart';
 
 import 'home_page.dart';
 
@@ -13,26 +26,41 @@ class UpdateProfile extends StatefulWidget {
 }
 
 class _UpdateProfileState extends State<UpdateProfile> {
-  final _userNameController = TextEditingController();
-  final _nickNameController = TextEditingController();
-
-  DateTime _date = DateTime.now();
+  final _nameController = TextEditingController();
+  final _usernameController = TextEditingController();
+  late UsuarioAPI usuario;
+  late DateTime _date;
   var selectedDateTxt = "";
 
-  Future<Null> _selectDate(BuildContext context) async {
-    DateTime? _datePicker = await showDatePicker(
+  Future<Null> _selectDate(BuildContext context, currentDate) async {
+    DateTime? datePicker = await showDatePicker(
         context: context,
-        initialDate: _date,
+        initialDate: DateTime.parse(currentDate),
+        fieldHintText: currentDate,
+        fieldLabelText: currentDate,
+        currentDate: DateTime.parse(currentDate),
         firstDate: DateTime(1910, 1, 1),
         locale: const Locale("pt", "BR"),
         lastDate: DateTime.now());
 
-    if (_datePicker != null && _datePicker != _date) {
+    if (datePicker != null && datePicker != _date) {
       setState(() {
-        _date = _datePicker;
-        selectedDateTxt = DateFormat('dd/MM/yyyy').format(_datePicker);
+        _date = datePicker;
+        selectedDateTxt = DateFormat('dd/MM/yyyy').format(datePicker);
       });
     }
+  }
+
+  @override
+  void initState() {
+    var usuarioState = Provider.of<UsuarioState>(context, listen: false);
+    usuario = usuarioState.getUsuario();
+    _nameController.text = usuario.name;
+    _usernameController.text = usuario.username;
+    selectedDateTxt =
+        DateFormat('dd/MM/yyyy').format(DateTime.parse(usuario.birthdate));
+    _date = DateTime.parse(usuario.birthdate);
+    super.initState();
   }
 
   @override
@@ -47,7 +75,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
           onPressed: () {
             Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
-                builder: (BuildContext context) => HomePage(),
+                builder: (BuildContext context) => PersonData(),
               ),
               (route) => false,
             );
@@ -83,7 +111,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       offset: Offset(0, 5))
                 ]),
                 child: TextFormField(
-                  controller: _userNameController,
+                  controller: _nameController,
                   keyboardType: TextInputType.text,
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(
@@ -116,7 +144,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       offset: Offset(0, 5))
                 ]),
                 child: TextFormField(
-                  controller: _nickNameController,
+                  controller: _usernameController,
                   keyboardType: TextInputType.text,
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]'))
@@ -151,7 +179,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       MaterialStateProperty.all<Color>(Colors.blue),
                 ),
                 onPressed: () {
-                  _selectDate(context);
+                  _selectDate(context, usuario.birthdate);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -192,9 +220,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                     side: BorderSide.none)),
                       ),
                       onPressed: () {
-                        print(_userNameController.text);
-                        print(_nickNameController.text);
-                        print(selectedDateTxt);
+                        update();
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -226,7 +252,9 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                       borderRadius: BorderRadius.circular(10),
                                       side: BorderSide.none)),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          delete();
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
@@ -284,5 +312,49 @@ class _UpdateProfileState extends State<UpdateProfile> {
                 label: "Perfil"),
           ]),
     );
+  }
+
+  Future update() async {
+    String json = jsonEncode({
+      "name": _nameController.text,
+      "username": usuario.username,
+      "new_username": _usernameController.text,
+      "gender": usuario.gender,
+      "birthdate": DateFormat('yyyy-MM-dd').format(_date),
+      "age": calcAge(_date),
+      "progress": usuario.progress,
+      "token": usuario.token
+    });
+    var listaDeClientes = Provider.of<UsuarioState>(context, listen: false);
+    await UserController().updateUser(json).then((res) => {
+          if (res is UsuarioAPI)
+            {
+              listaDeClientes.adicionaUsuario(res),
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => PersonData(),
+                ),
+                (route) => false,
+              ),
+            },
+        });
+  }
+
+  delete() async {
+    var user = Provider.of<UsuarioState>(context, listen: false);
+    await UserController().deleteUser(usuario.id).then((res) => {
+          if (res)
+            {
+              PrefsService.removeUser().then((e) {
+                user.resetUSER();
+              }),
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (BuildContext context) => const WelcomePagePart1(),
+                ),
+                (route) => false,
+              ),
+            },
+        });
   }
 }
