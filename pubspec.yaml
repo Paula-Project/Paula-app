@@ -45,7 +45,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  get:
+  get: ^4.6.5
   intl: ^0.17.0
   auto_size_text: ^3.0.0
 
@@ -169,12 +169,14 @@ flutter:
     - assets/images/words/leite.png
 
     #Figuras dos selos
-    - assets/images/selos/Selo_diario_off.png
-    - assets/images/selos/Selo_mensal_off.png
-    - assets/images/selos/Selo_palavras_off.png
-    - assets/images/selos/Selo_silabas_off.png
+    - assets/images/selos/Selo_itapoa_off.png
+    - assets/images/selos/Selo_itapoa_on.png
+    - assets/images/selos/Selo_paranoa_off.png
+    - assets/images/selos/Selo_paranoa_on.png
+    - assets/images/selos/Selo_escrita_off.png
+    - assets/images/selos/Selo_escrita_on.png
     - assets/images/selos/Selo_vogais_off.png
-    - assets/images/selos/Selo_vogais.png
+    - assets/images/selos/Selo_vogais_on.png
 
     #Logo unb
     - assets/images/UnB_logo.png
