@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:paula/app/utils/calc_age.dart';
 import 'package:paula/app/views/components/Input.dart';
 import 'package:paula/app/views/login_page.dart';
 import 'package:paula/app/http/webclient.dart';
@@ -267,10 +268,14 @@ class _ChangePassword extends State<ChangePassword> {
                                                 height: 45,
                                                 child: ElevatedButton(
                                                   onPressed: () async {
+                                                    var messenger =
+                                                        ScaffoldMessenger.of(
+                                                            context);
                                                     if (_key.currentState!
                                                         .validate()) {
-                                                      if (calcAge() > 5) {
+                                                      if (calcAge(_date) > 5) {
                                                         if (await changePassword()) {
+                                                          if (!mounted) return;
                                                           Navigator.of(context)
                                                               .pushAndRemoveUntil(
                                                             MaterialPageRoute(
@@ -281,20 +286,16 @@ class _ChangePassword extends State<ChangePassword> {
                                                             (route) => false,
                                                           );
                                                         } else {
-                                                          ScaffoldMessenger.of(
-                                                                  context)
-                                                              .showSnackBar(
-                                                                  const SnackBar(
-                                                                      content: Text(
-                                                                          'Erro ao alterar senha \n Dados incorretos')));
+                                                          messenger.showSnackBar(
+                                                              const SnackBar(
+                                                                  content: Text(
+                                                                      'Erro ao alterar senha \n Dados incorretos')));
                                                         }
                                                       } else {
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                                const SnackBar(
-                                                                    content: Text(
-                                                                        'Você deve ter mais de 5 anos para usar a Paula')));
+                                                        messenger.showSnackBar(
+                                                            const SnackBar(
+                                                                content: Text(
+                                                                    'Você deve ter mais de 5 anos para usar a Paula')));
                                                       }
                                                     }
                                                   },
@@ -341,19 +342,6 @@ class _ChangePassword extends State<ChangePassword> {
         ),
       ),
     );
-  }
-
-  int calcAge() {
-    DateTime hoje = DateTime.now();
-    int idade = hoje.year - _date.year;
-    if (hoje.month < _date.month) {
-      idade--;
-    } else if (hoje.month == _date.month) {
-      if (hoje.day < _date.day) {
-        idade--;
-      }
-    }
-    return idade;
   }
 
   Future<bool> changePassword() async {

@@ -1,26 +1,26 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/layout/layout.dart';
+import 'package:paula/app/views/updateProfile.dart';
 import 'package:provider/provider.dart';
 
 class PersonData extends StatelessWidget {
   PersonData({Key? key}) : super(key: key);
   final List selosOn = [
-    "assets/images/selos/Selo_vogais.png",
-    "assets/images/selos/Selo_diario_off.png",
-    "assets/images/selos/Selo_mensal_off.png",
-    "assets/images/selos/Selo_palavras_off.png",
-    "assets/images/selos/Selo_silabas_off.png",
+    "assets/images/selos/Selo_vogais_on.png",
+    "assets/images/selos/Selo_paranoa_on.png",
+    "assets/images/selos/Selo_itapoa_on.png",
+    "assets/images/selos/Selo_escrita_on.png",
   ];
   final List selosOff = [
     "assets/images/selos/Selo_vogais_off.png",
-    "assets/images/selos/Selo_diario_off.png",
-    "assets/images/selos/Selo_mensal_off.png",
-    "assets/images/selos/Selo_palavras_off.png",
-    "assets/images/selos/Selo_silabas_off.png",
+    "assets/images/selos/Selo_paranoa_off.png",
+    "assets/images/selos/Selo_itapoa_off.png",
+    "assets/images/selos/Selo_escrita_off.png",
   ];
   @override
   Widget build(BuildContext context) {
@@ -138,6 +138,38 @@ class PersonData extends StatelessWidget {
                       Text("Gênero: $gender",
                           style: const TextStyle(
                               color: Colors.black, fontSize: 20)),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: ElevatedButton(
+                            style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.white),
+                              backgroundColor:
+                                  MaterialStateProperty.all<Color>(Colors.blue),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      side: BorderSide.none)),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.rightToLeft,
+                                      child: const UpdateProfile()));
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: const [
+                                Text("Editar dados   "),
+                                Icon(Icons.create)
+                              ],
+                            )),
+                      ),
                     ],
                   ),
                 ),
@@ -162,32 +194,39 @@ class PersonData extends StatelessWidget {
                         height: 10,
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: Wrap(
+                          width: MediaQuery.of(context).size.width,
+                          child: Wrap(
                             spacing: MediaQuery.of(context).size.width / 14,
                             runSpacing: 30,
                             crossAxisAlignment: WrapCrossAlignment.end,
-                            alignment: WrapAlignment.center,
-                            children: usuarioLogado.progress >= 10
-                                ? selosOn
-                                    .map((e) => Image.asset(
-                                          e,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              5,
-                                        ))
-                                    .toList()
-                                : selosOff
-                                    .map((e) => Image.asset(
-                                          e,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              5,
-                                        ))
-                                    .toList()),
-                      ),
+                            alignment: WrapAlignment.start,
+                            children: [
+                              Image.asset(
+                                usuarioLogado.progress >= 10
+                                    ? selosOn[0]
+                                    : selosOff[0],
+                                width: MediaQuery.of(context).size.width / 5,
+                              ),
+                              Image.asset(
+                                usuarioLogado.progress >= 20
+                                    ? selosOn[1]
+                                    : selosOff[1],
+                                width: MediaQuery.of(context).size.width / 5,
+                              ),
+                              Image.asset(
+                                usuarioLogado.progress >= 30
+                                    ? selosOn[2]
+                                    : selosOff[2],
+                                width: MediaQuery.of(context).size.width / 5,
+                              ),
+                              Image.asset(
+                                usuarioLogado.progress >= 40
+                                    ? selosOn[3]
+                                    : selosOff[3],
+                                width: MediaQuery.of(context).size.width / 5,
+                              ),
+                            ],
+                          )),
                     ],
                   ),
                 ),
