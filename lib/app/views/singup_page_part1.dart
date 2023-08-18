@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:paula/app/views/components/Input.dart';
-import 'package:paula/app/views/singup_page_part2.dart';
 import 'package:paula/app/views/components/paulaTitle.dart';
+import 'package:paula/app/views/singup_page_part2.dart';
 
 class SingupPage extends StatefulWidget {
   const SingupPage({Key? key}) : super(key: key);
@@ -189,6 +189,30 @@ class _SingupPageState extends State<SingupPage> {
                                                               FontWeight.w300)),
                                                 ),
                                               ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        10, 0, 15, 0),
+                                                child: Align(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text("Campo Opcional",
+                                                      style: TextStyle(
+                                                          color: const Color
+                                                                  .fromARGB(
+                                                              255, 18, 18, 18),
+                                                          fontSize: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .height >
+                                                                  600
+                                                              ? 12
+                                                              : 9,
+                                                          fontFamily: "Nunito",
+                                                          fontWeight:
+                                                              FontWeight.w300)),
+                                                ),
+                                              ),
                                               Container(
                                                 height: MediaQuery.of(context)
                                                             .size
@@ -265,6 +289,30 @@ class _SingupPageState extends State<SingupPage> {
                                                                   600
                                                               ? 25
                                                               : 18,
+                                                          fontFamily: "Nunito",
+                                                          fontWeight:
+                                                              FontWeight.w300)),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        10, 0, 15, 0),
+                                                child: Align(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text("Campo Opcional",
+                                                      style: TextStyle(
+                                                          color: const Color
+                                                                  .fromARGB(
+                                                              255, 18, 18, 18),
+                                                          fontSize: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .height >
+                                                                  600
+                                                              ? 12
+                                                              : 9,
                                                           fontFamily: "Nunito",
                                                           fontWeight:
                                                               FontWeight.w300)),
@@ -454,44 +502,19 @@ class _SingupPageState extends State<SingupPage> {
                                                   onPressed: () {
                                                     if (_key.currentState!
                                                         .validate()) {
-                                                      if (calcAge() >= 1 &&
-                                                          (isSelected[0] ||
-                                                              isSelected[1] ||
-                                                              isSelected[2])) {
-                                                        Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                              builder: (BuildContext
-                                                                      context) =>
-                                                                  SingupPage2(
-                                                                name:
-                                                                    _nameController
-                                                                        .text,
-                                                                date: _date,
-                                                                gender: _gender,
-                                                              ),
-                                                            ));
-                                                      } else {
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          const SnackBar(
-                                                              backgroundColor:
-                                                                  Color
-                                                                      .fromARGB(
-                                                                          255,
-                                                                          41,
-                                                                          171,
-                                                                          226),
-                                                              content: Text(
-                                                                'Data de Nascimento inválida (aluno deve possuir no minimo 1 ano)'
-                                                                ' e/ou genêro não selecionado',
-                                                                style: TextStyle(
-                                                                    color: Colors
-                                                                        .white),
-                                                              )),
-                                                        );
-                                                      }
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (BuildContext
+                                                                    context) =>
+                                                                SingupPage2(
+                                                              name:
+                                                                  _nameController
+                                                                      .text,
+                                                              date: _date,
+                                                              gender: _gender,
+                                                            ),
+                                                          ));
                                                     }
                                                   },
                                                   onHover: (hover) {},
