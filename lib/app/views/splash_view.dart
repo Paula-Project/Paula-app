@@ -84,9 +84,13 @@ class _SplashViewState extends State<SplashView> {
   adicionaUsuario(user) {
     var User = Provider.of<UsuarioState>(context, listen: false);
     Map<String, dynamic> json = jsonDecode(user);
-    User.adicionaUsuario(UsuarioAPI(json['name'], json['username'],
-        json['gender'], json['age'], json['birthdate'], json['progress'],
-        id: json['id'], token: json['token']));
+    User.adicionaUsuario(UsuarioAPI(
+        json['name'], json['username'], json['progress'],
+        gender: json['gender'],
+        age: json['age'],
+        birthdate: json['birthdate'],
+        id: json['id'],
+        token: json['token']));
     return true;
   }
 }

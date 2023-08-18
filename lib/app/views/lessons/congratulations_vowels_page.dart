@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:paula/app/controllers/modules/module_vowels_controller.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
+import 'package:paula/app/views/components/audioManager.dart';
 import 'package:provider/provider.dart';
 import 'package:paula/app/views/home_page.dart';
 
@@ -18,7 +19,29 @@ class CongratulationsVowelsPage extends StatefulWidget {
       _CongratulationsVowelsPageState();
 }
 
-class _CongratulationsVowelsPageState extends State<CongratulationsVowelsPage> {
+class _CongratulationsVowelsPageState extends State<CongratulationsVowelsPage>
+    with WidgetsBindingObserver {
+  AudioManager audioManager = AudioManager();
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    audioManager.runAudio("audios/congrats_1.mp3");
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    audioManager.stopAudio();
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    audioManager.didLifecycleChange(state);
+  }
+
   @override
   Widget build(BuildContext context) {
     Future<bool> _onwillpop() async {
@@ -28,6 +51,7 @@ class _CongratulationsVowelsPageState extends State<CongratulationsVowelsPage> {
     String speech = "Parabéns, \n Você concluiu o módulo de vogais";
     var height = MediaQuery.of(context).size.height;
 
+    widget.moduleVowelsController.setModuleCompleted(context);
     return WillPopScope(
       onWillPop: _onwillpop,
       child: Scaffold(
@@ -94,7 +118,7 @@ class _CongratulationsVowelsPageState extends State<CongratulationsVowelsPage> {
                         SizedBox(
                             height: height * 0.2,
                             child: Image.asset(
-                              'assets/images/selos/Selo_vogais.png',
+                              'assets/images/selos/Selo_vogais_on.png',
                               alignment: Alignment.center,
                             )),
                       ],
@@ -102,47 +126,42 @@ class _CongratulationsVowelsPageState extends State<CongratulationsVowelsPage> {
                   ),
                 ],
               ),
-              Consumer<UsuarioState>(builder: (context, usuarioState, child) {
-                UsuarioAPI usuarioLogado = usuarioState.getUsuario();
-                return Container(
-                  margin: const EdgeInsets.only(top: 70.0),
+              Container(
+                margin: const EdgeInsets.only(top: 70.0),
+                child: SizedBox(
+                  width: 350,
+                  height: 50,
                   child: SizedBox(
-                    width: 350,
-                    height: 50,
-                    child: SizedBox(
-                      height: 50.0,
-                      width: 75.0,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                            foregroundColor:
-                                MaterialStateProperty.all<Color>(Colors.blue),
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.white),
-                            shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    side: BorderSide.none))),
-                        child: const Text('AVANÇAR',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                            )),
-                        onPressed: () {
-                          widget.moduleVowelsController
-                              .setModuleVowelsCompleted(usuarioLogado, context);
-                          Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                              builder: (BuildContext context) => HomePage(),
-                            ),
-                            (route) => false,
-                          );
-                        },
-                      ),
+                    height: 50.0,
+                    width: 75.0,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          foregroundColor:
+                              MaterialStateProperty.all<Color>(Colors.blue),
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.white),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      side: BorderSide.none))),
+                      child: const Text('AVANÇAR',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          )),
+                      onPressed: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => HomePage(),
+                          ),
+                          (route) => false,
+                        );
+                      },
                     ),
                   ),
-                );
-              }),
+                ),
+              )
             ],
           ),
         ),

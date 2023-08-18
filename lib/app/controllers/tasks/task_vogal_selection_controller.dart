@@ -1,4 +1,5 @@
 import 'package:paula/app/controllers/tasks/task_controller.dart';
+import 'package:paula/app/model/itapoa_words.dart';
 import 'package:paula/app/model/paranoa_words.dart';
 import 'package:paula/app/model/task_vogal_selection_model.dart';
 import 'package:paula/app/model/words.dart';
@@ -19,9 +20,14 @@ class TaskVogalSelectionController implements TaskController {
   late TaskVogalSelectionModel taskParanoaA2;
   late TaskVogalSelectionModel taskParanoaA3;
   late TaskVogalSelectionModel taskParanoaA4;
-
+  late TaskVogalSelectionModel taskItapoa;
+  late TaskVogalSelectionModel taskItapoaA1;
+  late TaskVogalSelectionModel taskItapoaA2;
+  
   Words words = Words();
   ParanoaWords paranoaWords = ParanoaWords();
+  ItapoaWords itapoaWords = ItapoaWords();
+
   TaskVogalSelectionController() {
     taskA1 = TaskVogalSelectionModel(words: [
       words.wordsList[15], //CAPA
@@ -91,6 +97,18 @@ class TaskVogalSelectionController implements TaskController {
     taskParanoaA4 = TaskVogalSelectionModel(words: [
       paranoaWords.wordsList[30], //capivara
     ], audio: "paula_vowelSelection.mp3");
+    taskParanoaA4 = TaskVogalSelectionModel(words: [
+      paranoaWords.wordsList[30], //capivara
+    ], audio: "paula_vowelSelection.mp3");
+    taskItapoa = TaskVogalSelectionModel(words: [
+        itapoaWords.wordsList[1], //Itapoa Madeira
+    ], audio: "paula_vowelSelection.mp3");
+    taskItapoaA1 = TaskVogalSelectionModel(words: [
+        itapoaWords.wordsList[2], //Itapoa Placa
+    ], audio: "paula_vowelSelection.mp3");
+    taskItapoaA2 = TaskVogalSelectionModel(words: [
+        paranoaWords.wordsList[14], //Churrasco
+    ], audio: "paula_vowelSelection.mp3");
   }
 
   TaskVogalSelectionModel getTaskA1() {
@@ -151,6 +169,18 @@ class TaskVogalSelectionController implements TaskController {
 
   TaskVogalSelectionModel getTaskParanoaA4() {
     return taskParanoaA4;
+  }
+
+  TaskVogalSelectionModel getTaskItapoa() {
+    return taskItapoa;
+  }
+
+  TaskVogalSelectionModel getTaskItapoaA1() {
+    return taskItapoaA1;
+  }
+  
+   TaskVogalSelectionModel getTaskItapoaA2() {
+    return taskItapoaA2;
   }
 
   @override

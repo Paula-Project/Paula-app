@@ -1,8 +1,7 @@
 import 'dart:convert';
-
+import 'dart:io';
 import 'package:http/http.dart';
 import 'package:http_interceptor/http_interceptor.dart';
-
 import 'package:paula/app/model/usuario.dart';
 import 'package:paula/app/service/prefs_service.dart';
 import '../model/usuarioAPI.dart';
@@ -19,27 +18,40 @@ class LoggingInterceptor implements InterceptorContract {
   }
 }
 
-Future<UsuarioAPI?> loginUsuario(String username, String password) async {
+Future loginUsuario(String username, String password) async {
   final Client client =
       InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
   final String usuarioJson =
       jsonEncode({"username": username, "password": password});
+  try {
+    Response response = await client.post(
+        Uri.https('paula-api.herokuapp.com', '/login/'),
+        headers: {'Content-type': 'application/json'},
+        body: usuarioJson);
 
-  final Response response = await client.post(
-      Uri.https('paula-api.herokuapp.com', '/login/'),
-      headers: {'Content-type': 'application/json'},
-      body: usuarioJson);
-
-  if (response.statusCode == 200) {
     Map<String, dynamic> json = jsonDecode(response.body);
-    await PrefsService.saveUser(json);
-    return UsuarioAPI(json['name'], json['username'], json['gender'],
-        json['age'], json['birthdate'], json['progress'],
-        id: json['id'], token: json['token']);
+    switch (response.statusCode) {
+      case 200:
+        await PrefsService.saveUser(json);
+        return UsuarioAPI(json['name'], json['username'], json['progress'],
+            gender: json['gender'],
+            age: json['age']!,
+            birthdate: json['birthdate']!,
+            id: json['id'],
+            token: json['token']);
+      case 404:
+        throw "Usuário ou senha incorretos.";
+      default:
+        throw "Não foi possível Entrar.";
+    }
+  } catch (err) {
+    if (err is SocketException) {
+      throw "Sem conexão com a internet.";
+    } else {
+      rethrow;
+    }
   }
-
-  return null;
 }
 
 Future<UsuarioAPI?> cadastroUsuario(Usuario usuario) async {
@@ -47,7 +59,6 @@ Future<UsuarioAPI?> cadastroUsuario(Usuario usuario) async {
       InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
   final String usuarioJson = jsonEncode(usuario.mapJson());
-
   final Response response = await client.post(
       Uri.https('paula-api.herokuapp.com', '/cadastro/'),
       headers: {'Content-type': 'application/json'},
@@ -56,9 +67,12 @@ Future<UsuarioAPI?> cadastroUsuario(Usuario usuario) async {
   if (response.statusCode == 201) {
     Map<String, dynamic> json = jsonDecode(response.body);
     await PrefsService.saveUser(json);
-    return UsuarioAPI(json['name'], json['username'], json['gender'],
-        json['age'], json['birthdate'], json['progress'],
-        id: json['id'], token: json['token']);
+    return UsuarioAPI(json['name'], json['username'], json['progress'],
+        gender: json['gender']!,
+        age: json['age']!,
+        birthdate: json['birthdate']!,
+        id: json['id'],
+        token: json['token']);
   }
 
   return null;

@@ -27,12 +27,13 @@ class ModuleVowelsController {
     lessonOController = LessonOController(moduleVowelsController: this);
     lessonUController = LessonUController(moduleVowelsController: this);
   }
-  setModuleVowelsCompleted(UsuarioAPI user, context) async {
+  setModuleCompleted(context) async {
+    var usuarioState = Provider.of<UsuarioState>(context, listen: false);
+    UsuarioAPI user = usuarioState.getUsuario();
+    if (user.progress >= 10) return;
     try {
-      user.progress = 10;
-      var atualUser = Provider.of<UsuarioState>(context, listen: false);
       var progress = await addProgress(user.username);
-      atualUser.progressUpdate(user, progress);
+      usuarioState.progressUpdate(user, progress);
     } catch (error) {
       print(error);
     }

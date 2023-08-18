@@ -1,23 +1,22 @@
-import 'dart:math';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/lessons/lesson_paranoa_controller.dart';
+import 'package:paula/app/controllers/lessons/lesson_itapoa_controller.dart';
 import 'package:paula/app/views/components/audioManager.dart';
 import 'package:lottie/lottie.dart';
 import 'package:paula/app/views/home_page.dart';
 
-class CongratulationsParanoa extends StatefulWidget {
-  final LessonParanoaController lessonController;
-  const CongratulationsParanoa({
+class CongratulationsItapoa extends StatefulWidget {
+  final LessonItapoaController lessonController;
+  const CongratulationsItapoa({
     Key? key,
     required this.lessonController,
   }) : super(key: key);
 
   @override
-  State<CongratulationsParanoa> createState() => _CongratulationsParanoaState();
+  State<CongratulationsItapoa> createState() => _CongratulationsItapoaState();
 }
 
-class _CongratulationsParanoaState extends State<CongratulationsParanoa>
+class _CongratulationsItapoaState extends State<CongratulationsItapoa>
     with WidgetsBindingObserver {
   AudioManager audioManager = AudioManager();
   @override
@@ -46,7 +45,7 @@ class _CongratulationsParanoaState extends State<CongratulationsParanoa>
       return false;
     }
 
-    String speech = "Parabéns, \n Você concluiu o módulo do Paranoá!";
+    String speech = "Parabéns, \n Você concluiu o módulo do Itapoã!";
     var height = MediaQuery.of(context).size.height;
 
     widget.lessonController.setModuleCompleted(context);
@@ -116,7 +115,7 @@ class _CongratulationsParanoaState extends State<CongratulationsParanoa>
                         SizedBox(
                             height: height * 0.2,
                             child: Image.asset(
-                              'assets/images/selos/Selo_paranoa_on.png',
+                              'assets/images/selos/Selo_itapoa_on.png',
                               alignment: Alignment.center,
                             )),
                       ],

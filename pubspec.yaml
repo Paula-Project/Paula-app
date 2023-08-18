@@ -15,7 +15,8 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 3.5.0+12
+
+version: 3.5.0+13
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
@@ -45,7 +46,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  get:
+  get: ^4.6.5
   intl: ^0.17.0
   auto_size_text: ^3.0.0
 
@@ -169,12 +170,14 @@ flutter:
     - assets/images/words/leite.png
 
     #Figuras dos selos
-    - assets/images/selos/Selo_diario_off.png
-    - assets/images/selos/Selo_mensal_off.png
-    - assets/images/selos/Selo_palavras_off.png
-    - assets/images/selos/Selo_silabas_off.png
+    - assets/images/selos/Selo_itapoa_off.png
+    - assets/images/selos/Selo_itapoa_on.png
+    - assets/images/selos/Selo_paranoa_off.png
+    - assets/images/selos/Selo_paranoa_on.png
+    - assets/images/selos/Selo_escrita_off.png
+    - assets/images/selos/Selo_escrita_on.png
     - assets/images/selos/Selo_vogais_off.png
-    - assets/images/selos/Selo_vogais.png
+    - assets/images/selos/Selo_vogais_on.png
 
     #Logo unb
     - assets/images/UnB_logo.png
@@ -334,6 +337,24 @@ flutter:
     - assets/alphabet/letter-i.png
     - assets/alphabet/letter-o.png
     - assets/alphabet/letter-u.png
+
+    #Audios Itapoã
+    - assets/audios/paula/paula_tour_itapoa.mp3
+    - assets/audios/words/itapoa.mp3
+    - assets/audios/words/panificadora_izadora.mp3
+    - assets/audios/paula/audio_pegar_onibus.mp3
+    - assets/audios/words/ponte_paranoa.mp3
+    - assets/audios/paula/passar_pela_ponte.mp3
+    - assets/audios/paula/escrita_itapoa.mp3
+    - assets/audios/paula/escrita_onibus.mp3
+
+
+    # Imagens Itapoã
+    - assets/images/words/itapoa_madeira.png
+    - assets/images/words/itapoa_panificadora.png
+    - assets/images/words/itapoa.png
+    - assets/images/words/onibus_itapoa.png
+    - assets/images/words/ponte.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
