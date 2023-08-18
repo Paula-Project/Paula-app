@@ -4,13 +4,17 @@ import 'package:paula/app/controllers/tasks/task_controller.dart';
 import 'package:paula/app/controllers/tasks/task_itapoa_tour-controller.dart';
 import 'package:paula/app/controllers/tasks/task_mark_vowel_controller.dart';
 import 'package:paula/app/controllers/tasks/task_vogal_selection_controller.dart';
+import 'package:paula/app/http/webclient.dart';
 import 'package:paula/app/model/task_model.dart';
+import 'package:paula/app/model/usuarioAPI.dart';
+import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/lessons/congratulations_itapoa.dart';
 import 'package:paula/app/views/lessons/try_again_page_paranoa.dart';
 import 'package:paula/app/views/tasks/task_itapoa_tour.dart';
 import 'package:paula/app/views/tasks/task_mark_vowel.dart';
 import 'package:paula/app/views/tasks/task_vogal_selection.dart';
 import 'package:paula/app/views/tasks/task_write_words.dart';
+import 'package:provider/provider.dart';
 
 class LessonItapoaController implements LessonControllerInterface {
   TaskItapoaTourController itapoaLessonController = TaskItapoaTourController();
@@ -64,7 +68,9 @@ class LessonItapoaController implements LessonControllerInterface {
         lessonController: this,
         taskController: vogalSelectionController,
         task: vogalSelectionController.getTaskItapoaA2()));
-    widgetsRouters.add(const CongratulationsItapoa());
+    widgetsRouters.add(CongratulationsItapoa(
+      lessonController: this,
+    ));
   }
 
   @override
@@ -75,6 +81,19 @@ class LessonItapoaController implements LessonControllerInterface {
   @override
   int getTaskQuantity() {
     return tasksQuantity;
+  }
+
+  setModuleCompleted(context) async {
+    var usuarioState = Provider.of<UsuarioState>(context, listen: false);
+    UsuarioAPI user = usuarioState.getUsuario();
+    if (user.progress >= 30) return;
+    try {
+      var progress = await addProgress(user.username);
+      usuarioState.progressUpdate(user, progress);
+    } catch (error) {
+      print(error);
+    }
+    completed = true;
   }
 
   @override

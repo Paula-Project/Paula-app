@@ -3,13 +3,17 @@ import 'package:paula/app/controllers/tasks/task_complete_word_controller.dart';
 import 'package:paula/app/controllers/tasks/task_controller.dart';
 import 'package:paula/app/controllers/tasks/task_paranoa_tour_controller.dart';
 import 'package:paula/app/controllers/tasks/task_vogal_selection_controller.dart';
+import 'package:paula/app/http/webclient.dart';
 import 'package:paula/app/model/task_model.dart';
+import 'package:paula/app/model/usuarioAPI.dart';
+import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/lessons/congratulations_paranoa.dart';
 import 'package:paula/app/views/lessons/try_again_page_paranoa.dart';
 import 'package:paula/app/views/tasks/task_complete_words.dart';
 import 'package:paula/app/views/tasks/task_paranoa_tour.dart';
 import 'package:paula/app/views/tasks/task_vogal_selection.dart';
 import 'package:paula/app/views/tasks/task_write_words.dart';
+import 'package:provider/provider.dart';
 
 class LessonParanoaController implements LessonControllerInterface {
   TaskParanoaTourController paranoaTourController = TaskParanoaTourController();
@@ -26,6 +30,9 @@ class LessonParanoaController implements LessonControllerInterface {
   static bool completed = false;
 
   LessonParanoaController() {
+    widgetsRouters.add(CongratulationsParanoa(
+      lessonController: this,
+    ));
     widgetsRouters.add(TaskVogalSelection(
         lessonController: this,
         taskController: vogalSelectionController,
@@ -84,7 +91,6 @@ class LessonParanoaController implements LessonControllerInterface {
         lessonController: this,
         task: completeWordController.getTaskTintas(),
         taskController: completeWordController));
-    widgetsRouters.add(const CongratulationsParanoa());
   }
 
   @override
@@ -95,6 +101,19 @@ class LessonParanoaController implements LessonControllerInterface {
   @override
   int getTaskQuantity() {
     return tasksQuantity;
+  }
+
+  setModuleCompleted(context) async {
+    var usuarioState = Provider.of<UsuarioState>(context, listen: false);
+    UsuarioAPI user = usuarioState.getUsuario();
+    if (user.progress >= 20) return;
+    try {
+      var progress = await addProgress(user.username);
+      usuarioState.progressUpdate(user, progress);
+    } catch (error) {
+      print(error);
+    }
+    completed = true;
   }
 
   @override
