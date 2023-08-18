@@ -1,9 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class Usuario extends ChangeNotifier{
+class Usuario extends ChangeNotifier {
   String _name;
   String _username;
   String _gender;
@@ -11,24 +9,18 @@ class Usuario extends ChangeNotifier{
   String _password;
   late int _age;
 
-  Usuario(
-      this._name,
-      this._username,
-      this._gender,
-      this._password,
-      this._birthdate
-      ){
+  Usuario(this._name, this._username, this._gender, this._password,
+      this._birthdate) {
     _age = calcAge();
-
   }
 
-  int calcAge(){
+  int calcAge() {
     DateTime hoje = DateTime.now();
     int idade = hoje.year - _birthdate.year;
-    if (hoje.month<_birthdate.month) {
+    if (hoje.month < _birthdate.month) {
       idade--;
-    } else if (hoje.month==_birthdate.month){
-      if (hoje.day<_birthdate.day) {
+    } else if (hoje.month == _birthdate.month) {
+      if (hoje.day < _birthdate.day) {
         idade--;
       }
     }
@@ -70,6 +62,7 @@ class Usuario extends ChangeNotifier{
   set name(String value) {
     _name = value;
   }
+
   Map<String, dynamic> mapJson() {
     return {
       'username': _username,

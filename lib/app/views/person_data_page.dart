@@ -33,9 +33,9 @@ class PersonData extends StatelessWidget {
           String name = nameList.length > 1
               ? nameList.getRange(0, 2).join(" ")
               : nameList[0];
-
           var dateTxt = DateFormat('dd/MM/yyyy')
-              .format(DateTime.parse(usuarioLogado.birthdate));
+              .format(DateTime.parse(usuarioLogado.birthdate!));
+
           var gender = ' ';
           switch (usuarioLogado.gender) {
             case 'male':
@@ -74,16 +74,12 @@ class PersonData extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            AutoSizeText(
+                            Text(
                               name,
-                              maxFontSize: 25,
-                              minFontSize: 20,
                               maxLines: 2,
                               softWrap: true,
-                              wrapWords: true,
                               style: const TextStyle(
-                                color: Colors.black,
-                              ),
+                                  color: Colors.black, fontSize: 20),
                             ),
                             AutoSizeText(
                               '@${usuarioLogado.username}',
@@ -121,7 +117,8 @@ class PersonData extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      AutoSizeText("Idade: ${usuarioLogado.age}",
+                      AutoSizeText(
+                          "Idade: ${usuarioLogado.age != null ? usuarioLogado.age : ""}",
                           maxFontSize: 20,
                           minFontSize: 20,
                           style: const TextStyle(
@@ -129,13 +126,14 @@ class PersonData extends StatelessWidget {
                       const SizedBox(
                         height: 15,
                       ),
-                      Text("Data de nascimento: $dateTxt",
+                      Text(
+                          "Data de nascimento: ${dateTxt != null ? dateTxt : ""}",
                           style: const TextStyle(
                               color: Colors.black, fontSize: 20)),
                       const SizedBox(
                         height: 15,
                       ),
-                      Text("Gênero: $gender",
+                      Text("Gênero: ${gender != null ? gender : ""}",
                           style: const TextStyle(
                               color: Colors.black, fontSize: 20)),
                       const SizedBox(

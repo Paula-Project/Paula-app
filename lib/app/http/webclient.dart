@@ -34,9 +34,12 @@ Future loginUsuario(String username, String password) async {
     switch (response.statusCode) {
       case 200:
         await PrefsService.saveUser(json);
-        return UsuarioAPI(json['name'], json['username'], json['gender'],
-            json['age'], json['birthdate'], json['progress'],
-            id: json['id'], token: json['token']);
+        return UsuarioAPI(json['name'], json['username'], json['progress'],
+            gender: json['gender'],
+            age: json['age']!,
+            birthdate: json['birthdate']!,
+            id: json['id'],
+            token: json['token']);
       case 404:
         throw "Usuário ou senha incorretos.";
       default:
@@ -56,7 +59,6 @@ Future<UsuarioAPI?> cadastroUsuario(Usuario usuario) async {
       InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
   final String usuarioJson = jsonEncode(usuario.mapJson());
-
   final Response response = await client.post(
       Uri.https('paula-api.herokuapp.com', '/cadastro/'),
       headers: {'Content-type': 'application/json'},
@@ -65,9 +67,12 @@ Future<UsuarioAPI?> cadastroUsuario(Usuario usuario) async {
   if (response.statusCode == 201) {
     Map<String, dynamic> json = jsonDecode(response.body);
     await PrefsService.saveUser(json);
-    return UsuarioAPI(json['name'], json['username'], json['gender'],
-        json['age'], json['birthdate'], json['progress'],
-        id: json['id'], token: json['token']);
+    return UsuarioAPI(json['name'], json['username'], json['progress'],
+        gender: json['gender']!,
+        age: json['age']!,
+        birthdate: json['birthdate']!,
+        id: json['id'],
+        token: json['token']);
   }
 
   return null;

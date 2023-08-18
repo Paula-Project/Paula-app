@@ -58,8 +58,8 @@ class _UpdateProfileState extends State<UpdateProfile> {
     _nameController.text = usuario.name;
     _usernameController.text = usuario.username;
     selectedDateTxt =
-        DateFormat('dd/MM/yyyy').format(DateTime.parse(usuario.birthdate));
-    _date = DateTime.parse(usuario.birthdate);
+        DateFormat('dd/MM/yyyy').format(DateTime.parse(usuario.birthdate!));
+    _date = DateTime.parse(usuario.birthdate!);
     super.initState();
   }
 

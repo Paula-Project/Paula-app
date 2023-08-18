@@ -1,13 +1,15 @@
-import 'dart:math';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/lessons/lesson_itapoa_controller.dart';
 import 'package:paula/app/views/components/audioManager.dart';
 import 'package:lottie/lottie.dart';
 import 'package:paula/app/views/home_page.dart';
 
 class CongratulationsItapoa extends StatefulWidget {
+  final LessonItapoaController lessonController;
   const CongratulationsItapoa({
     Key? key,
+    required this.lessonController,
   }) : super(key: key);
 
   @override
@@ -17,30 +19,10 @@ class CongratulationsItapoa extends StatefulWidget {
 class _CongratulationsItapoaState extends State<CongratulationsItapoa>
     with WidgetsBindingObserver {
   AudioManager audioManager = AudioManager();
-  AudioManager audioManager2 = AudioManager();
-  List<String> speech = [
-    "Parabéns, \nvocê está indo muito bem",
-    "Muito bem, \né isso aí, Você é 10",
-    "Nossa, estou chocada, \nvocê é demais"
-  ];
-  List<String> audios = [
-    "audios/paula/paula_parabens_1.mp3",
-    "audios/paula/paula_parabens_2.mp3",
-    "audios/paula/paula_parabens_3.mp3"
-  ];
-  List<String> images = [
-    "assets/images/paula/paula04.png",
-    "assets/images/paula/paula10.png",
-  ];
-  int randomNum = Random().nextInt(3);
-  int randomNumImg = Random().nextInt(2);
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
-    audioManager2.runAudio("audios/congrats_1.mp3");
-    Future.delayed(const Duration(seconds: 1), () {
-      audioManager.runAudio(audios[randomNum]);
-    });
+    audioManager.runAudio("audios/congrats_1.mp3");
     super.initState();
   }
 
@@ -59,13 +41,14 @@ class _CongratulationsItapoaState extends State<CongratulationsItapoa>
 
   @override
   Widget build(BuildContext context) {
-    print("$randomNum");
     Future<bool> _onwillpop() async {
       return false;
     }
 
+    String speech = "Parabéns, \n Você concluiu o módulo do Itapoã!";
     var height = MediaQuery.of(context).size.height;
 
+    widget.lessonController.setModuleCompleted(context);
     return WillPopScope(
       onWillPop: () => _onwillpop(),
       child: Scaffold(
@@ -86,7 +69,7 @@ class _CongratulationsItapoaState extends State<CongratulationsItapoa>
               top: MediaQuery.of(context).padding.top,
               bottom: MediaQuery.of(context).padding.bottom + 20),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Column(
                 children: [
@@ -96,7 +79,7 @@ class _CongratulationsItapoaState extends State<CongratulationsItapoa>
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(8, 00, 8, 0),
                         child: AutoSizeText(
-                          speech[randomNum],
+                          speech,
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontFamily: 'Poppins',
@@ -130,9 +113,9 @@ class _CongratulationsItapoaState extends State<CongratulationsItapoa>
                             child:
                                 Lottie.asset('assets/images/fireworks.json')),
                         SizedBox(
-                            height: height * 0.5,
+                            height: height * 0.2,
                             child: Image.asset(
-                              images[randomNumImg],
+                              'assets/images/selos/Selo_itapoa_on.png',
                               alignment: Alignment.center,
                             )),
                       ],
@@ -140,33 +123,40 @@ class _CongratulationsItapoaState extends State<CongratulationsItapoa>
                   ),
                 ],
               ),
-              SizedBox(
-                  width: 200,
-                  height: 50,
-                  child: TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => HomePage(),
-                          ),
-                          (route) => false,
-                        );
-                      },
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white),
-                          foregroundColor:
-                              MaterialStateProperty.all<Color>(Colors.blue),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                                side: BorderSide.none),
-                          )),
-                      child: const Text(
-                        "AVANÇAR",
-                        style: TextStyle(fontSize: 20),
-                      ))),
+              Container(
+                  margin: const EdgeInsets.only(top: 70.0),
+                  child: SizedBox(
+                    width: 350,
+                    height: 50,
+                    child: SizedBox(
+                        height: 50.0,
+                        width: 75.0,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                              foregroundColor:
+                                  MaterialStateProperty.all<Color>(Colors.blue),
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.white),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      side: BorderSide.none))),
+                          child: const Text('AVANÇAR',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                              )),
+                          onPressed: () {
+                            Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                builder: (BuildContext context) => HomePage(),
+                              ),
+                              (route) => false,
+                            );
+                          },
+                        )),
+                  ))
             ],
           ),
         ),

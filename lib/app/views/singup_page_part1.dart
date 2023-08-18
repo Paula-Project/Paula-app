@@ -48,7 +48,7 @@ class _SingupPageState extends State<SingupPage> {
 
   @override
   void initState() {
-    selectedDateTxt = DateFormat('dd/MM/yyyy').format(_date);
+    selectedDateTxt = '';
     super.initState();
   }
 
@@ -163,7 +163,7 @@ class _SingupPageState extends State<SingupPage> {
                                                 formatters: [
                                                   FilteringTextInputFormatter
                                                       .allow(RegExp(
-                                                          r"[a-zA-ZçÇ'ÁÂãâáÉÊéêÍíÓóôÚú\s]"))
+                                                          r"[a-zA-ZçÇ'\s]"))
                                                 ],
                                               ),
                                               Padding(

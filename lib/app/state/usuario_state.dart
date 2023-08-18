@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 
 class UsuarioState extends ChangeNotifier {
-  late UsuarioAPI _usuario = UsuarioAPI("", "", "", 0, "2002-10-03", 0);
+  late UsuarioAPI _usuario;
 
   UsuarioAPI getUsuario() => _usuario;
   void adicionaUsuario(UsuarioAPI usuarioLogado) {
@@ -17,7 +17,11 @@ class UsuarioState extends ChangeNotifier {
   }
 
   void resetUSER() {
-    _usuario = UsuarioAPI("", "", "", 0, "2002-10-03", 0);
+    _usuario = UsuarioAPI(
+      "",
+      "",
+      0,
+    );
     notifyListeners();
   }
 }

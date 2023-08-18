@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                     "Itapoã",
                     LessonItapoaWelcome(
                         lessonController: lessonItapoaController),
-                    moduleVowelsController.getCompleted(usuarioLogado)),
+                    usuarioLogado.progress >= 20),
               ]));
         }));
   }

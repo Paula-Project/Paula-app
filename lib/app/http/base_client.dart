@@ -83,14 +83,20 @@ class BaseClient {
       case 201:
         Map<String, dynamic> json = jsonDecode(response.body);
         await PrefsService.saveUser(json);
-        return UsuarioAPI(json['name'], json['username'], json['gender'],
-            json['age'], json['birthdate'], json['progress'],
-            id: json['id'], token: json['token']);
+        return UsuarioAPI(json['name'], json['username'], json['progress'],
+            gender: json['gender'],
+            age: json['age'],
+            birthdate: json['birthdate'],
+            id: json['id'],
+            token: json['token']);
       case 202:
         Map<String, dynamic> json = jsonDecode(response.body);
-        return UsuarioAPI(json['name'], json['new_username'], json['gender'],
-            json['age'], json['birthdate'], json['progress'],
-            id: json['id'], token: json['token']);
+        return UsuarioAPI(json['name'], json['new_username'], json['progress'],
+            gender: json['gender'],
+            age: json['age'],
+            birthdate: json['birthdate'],
+            id: json['id'],
+            token: json['token']);
       case 204:
         return Response("Usuario deletado com sucesso!", 204);
       case 404:

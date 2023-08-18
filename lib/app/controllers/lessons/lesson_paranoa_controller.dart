@@ -25,14 +25,10 @@ class LessonParanoaController implements LessonControllerInterface {
   static int correctAnswers = 0;
   static int wrongAnswers = 0;
   int tasksQuantity = 12;
-
   static int nextPage = -1;
   static bool completed = false;
 
   LessonParanoaController() {
-    widgetsRouters.add(CongratulationsParanoa(
-      lessonController: this,
-    ));
     widgetsRouters.add(TaskVogalSelection(
         lessonController: this,
         taskController: vogalSelectionController,
@@ -91,6 +87,9 @@ class LessonParanoaController implements LessonControllerInterface {
         lessonController: this,
         task: completeWordController.getTaskTintas(),
         taskController: completeWordController));
+    widgetsRouters.add(CongratulationsParanoa(
+      lessonController: this,
+    ));
   }
 
   @override
