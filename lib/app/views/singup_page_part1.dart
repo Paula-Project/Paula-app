@@ -198,13 +198,15 @@ class _SingupPageState extends State<SingupPage> {
                                                       Alignment.centerLeft,
                                                   child: Text("Campo Opcional",
                                                       style: TextStyle(
-                                                          color: Color.fromARGB(255, 18, 18, 18),
+                                                          color: const Color
+                                                                  .fromARGB(
+                                                              255, 18, 18, 18),
                                                           fontSize: MediaQuery.of(
                                                                           context)
                                                                       .size
                                                                       .height >
                                                                   600
-                                                              ? 9
+                                                              ? 12
                                                               : 9,
                                                           fontFamily: "Nunito",
                                                           fontWeight:
@@ -301,13 +303,15 @@ class _SingupPageState extends State<SingupPage> {
                                                       Alignment.centerLeft,
                                                   child: Text("Campo Opcional",
                                                       style: TextStyle(
-                                                          color: Color.fromARGB(255, 18, 18, 18),
+                                                          color: const Color
+                                                                  .fromARGB(
+                                                              255, 18, 18, 18),
                                                           fontSize: MediaQuery.of(
                                                                           context)
                                                                       .size
                                                                       .height >
                                                                   600
-                                                              ? 9
+                                                              ? 12
                                                               : 9,
                                                           fontFamily: "Nunito",
                                                           fontWeight:
@@ -498,19 +502,19 @@ class _SingupPageState extends State<SingupPage> {
                                                   onPressed: () {
                                                     if (_key.currentState!
                                                         .validate()) {
-                                                        Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                              builder: (BuildContext
-                                                                      context) =>
-                                                                  SingupPage2(
-                                                                name:
-                                                                    _nameController
-                                                                        .text,
-                                                                date: _date,
-                                                                gender: _gender,
-                                                              ),
-                                                            ));
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (BuildContext
+                                                                    context) =>
+                                                                SingupPage2(
+                                                              name:
+                                                                  _nameController
+                                                                      .text,
+                                                              date: _date,
+                                                              gender: _gender,
+                                                            ),
+                                                          ));
                                                     }
                                                   },
                                                   onHover: (hover) {},
