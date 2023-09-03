@@ -47,7 +47,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   get: ^4.6.5
-  intl: ^0.17.0
+  intl: ^0.18.1
   auto_size_text: ^3.0.0
 
 dev_dependencies:
@@ -168,7 +168,9 @@ flutter:
     - assets/images/words/churrasco.png
     - assets/images/words/cafe.png
     - assets/images/words/leite.png
-
+    
+  
+    
     #Figuras dos selos
     - assets/images/selos/Selo_itapoa_off.png
     - assets/images/selos/Selo_itapoa_on.png
@@ -347,6 +349,22 @@ flutter:
     - assets/audios/paula/passar_pela_ponte.mp3
     - assets/audios/paula/escrita_itapoa.mp3
     - assets/audios/paula/escrita_onibus.mp3
+    - assets/audios/words/praça.mp3
+    - assets/audios/words/moto.mp3
+    - assets/audios/words/avenida.mp3
+    - assets/audios/words/hospital.mp3
+    - assets/audios/words/farmacia.mp3
+    - assets/audios/words/celular.mp3
+    - assets/audios/words/computador.mp3
+    - assets/audios/words/copo.mp3
+    - assets/audios/words/chave.mp3
+    - assets/audios/words/relogio.mp3
+    - assets/audios/words/bicicleta.mp3
+    - assets/audios/words/mochila.mp3
+    - assets/audios/words/colher.mp3
+    - assets/audios/words/garfo.mp3
+    - assets/audios/words/panela.mp3
+    - assets/audios/words/cadeira.mp3
 
 
     # Imagens Itapoã
@@ -355,6 +373,22 @@ flutter:
     - assets/images/words/itapoa.png
     - assets/images/words/onibus_itapoa.png
     - assets/images/words/ponte.png
+    - assets/images/words/praça.jpg
+    - assets/images/words/moto.png
+    - assets/images/words/avenida.jpg
+    - assets/images/words/hospital.png
+    - assets/images/words/farmacia.png
+    - assets/images/words/celular.png
+    - assets/images/words/computador.png
+    - assets/images/words/copo.png
+    - assets/images/words/chave.png
+    - assets/images/words/relogio.png
+    - assets/images/words/bicicleta.png
+    - assets/images/words/mochila.png
+    - assets/images/words/colher.png
+    - assets/images/words/garfo.png
+    - assets/images/words/panela.png
+    - assets/images/words/cadeira.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
