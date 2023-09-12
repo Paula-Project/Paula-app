@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/controllers/tasks/task_complete_word_controller.dart';
 import 'package:paula/app/controllers/tasks/task_controller.dart';
@@ -48,6 +49,10 @@ class LessonItapoaController implements LessonControllerInterface {
         lessonController: this,
         task: completeWordController.getTaskItapoaA1(),
         taskController: completeWordController));
+    widgetsRouters.add(TaskWriteWords(
+        lessonController: this,
+        task: completeWordController.getTaskItapoaAveinda(),
+        taskController: completeWordController));
     widgetsRouters.add(TaskItapoaTour(
         lessonController: this,
         task: itapoaLessonController.getPasseioPonte()));
@@ -56,10 +61,25 @@ class LessonItapoaController implements LessonControllerInterface {
         taskController: vogalSelectionController,
         task: vogalSelectionController.getTaskItapoaA1()));
     widgetsRouters.add(TaskMarkVowel(
+        lessonController: this,
+        task: markVowelController.getTask("I"),
+        taskController: markVowelController));
+    widgetsRouters.add(TaskMarkVowel(
       lessonController: this,
       taskController: markVowelController,
       task: markVowelController.getTask("E"),
     ));
+    widgetsRouters.add(TaskMarkVowel(
+      lessonController: this,
+      taskController: markVowelController,
+      task: markVowelController.getTask("A"),
+    ));
+    widgetsRouters.add(TaskMarkVowel(
+      lessonController: this,
+      taskController: markVowelController,
+      task: markVowelController.getTask("O"),
+    ));
+
     widgetsRouters.add(TaskVogalSelection(
         lessonController: this,
         taskController: vogalSelectionController,
@@ -68,6 +88,15 @@ class LessonItapoaController implements LessonControllerInterface {
         lessonController: this,
         taskController: vogalSelectionController,
         task: vogalSelectionController.getTaskItapoaA2()));
+    widgetsRouters.add(TaskVogalSelection(
+        lessonController: this,
+        taskController: vogalSelectionController,
+        task: vogalSelectionController.getTaskItapoaA3()));
+    widgetsRouters.add(TaskVogalSelection(
+        lessonController: this,
+        taskController: vogalSelectionController,
+        task: vogalSelectionController.getTaskItapoaA4()));
+
     widgetsRouters.add(CongratulationsItapoa(
       lessonController: this,
     ));
