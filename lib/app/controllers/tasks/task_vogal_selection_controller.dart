@@ -23,7 +23,8 @@ class TaskVogalSelectionController implements TaskController {
   late TaskVogalSelectionModel taskItapoa;
   late TaskVogalSelectionModel taskItapoaA1;
   late TaskVogalSelectionModel taskItapoaA2;
-  
+  late TaskVogalSelectionModel taskItapoaA3;
+
   Words words = Words();
   ParanoaWords paranoaWords = ParanoaWords();
   ItapoaWords itapoaWords = ItapoaWords();
@@ -101,13 +102,16 @@ class TaskVogalSelectionController implements TaskController {
       paranoaWords.wordsList[30], //capivara
     ], audio: "paula_vowelSelection.mp3");
     taskItapoa = TaskVogalSelectionModel(words: [
-        itapoaWords.wordsList[1], //Itapoa Madeira
+      itapoaWords.wordsList[1], //Itapoa Madeira
     ], audio: "paula_vowelSelection.mp3");
     taskItapoaA1 = TaskVogalSelectionModel(words: [
-        itapoaWords.wordsList[2], //Itapoa Placa
+      itapoaWords.wordsList[2], //Itapoa Placa
     ], audio: "paula_vowelSelection.mp3");
     taskItapoaA2 = TaskVogalSelectionModel(words: [
-        paranoaWords.wordsList[14], //Churrasco
+      paranoaWords.wordsList[14], //Churrasco
+    ], audio: "paula_vowelSelection.mp3");
+    taskItapoaA3 = TaskVogalSelectionModel(words: [
+      itapoaWords.wordsList[12], //praça
     ], audio: "paula_vowelSelection.mp3");
   }
 
@@ -178,9 +182,13 @@ class TaskVogalSelectionController implements TaskController {
   TaskVogalSelectionModel getTaskItapoaA1() {
     return taskItapoaA1;
   }
-  
-   TaskVogalSelectionModel getTaskItapoaA2() {
+
+  TaskVogalSelectionModel getTaskItapoaA2() {
     return taskItapoaA2;
+  }
+
+  TaskVogalSelectionModel getTaskItapoaA3() {
+    return taskItapoaA3;
   }
 
   @override

@@ -22,6 +22,7 @@ class TaskCompleteWordController {
   late TaskCompleteWordModel taskCama;
   late TaskCompleteWordModel taskItapoa;
   late TaskCompleteWordModel taskItapoaA1;
+  late TaskCompleteWordModel taskItapoaAvenida;
 
   Words words = Words();
   ParanoaWords paranoaWords = ParanoaWords();
@@ -45,6 +46,9 @@ class TaskCompleteWordController {
         audio: 'escrita_onibus.mp3',
         words: [itapoaWords.wordsList[3]],
         lessonVowels: ['N', 'I', 'B', 'Ô', 'U', 'S']);
+    taskItapoaAvenida = TaskCompleteWordModel(
+        words: [itapoaWords.wordsList[7]],
+        lessonVowels: ['A', 'V', 'E', 'N', 'I', 'D', 'A']);
     taskTintas = TaskCompleteWordModel(
         title:
             'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
@@ -58,12 +62,14 @@ class TaskCompleteWordController {
         words: [paranoaWords.wordsList[21]],
         lessonVowels: ['C', 'A', 'R', 'R', 'O']);
     taskLixo = TaskCompleteWordModel(
-        title:'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
+        title:
+            'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
         audio: 'paula_palavraWrite.mp3',
         words: [paranoaWords.wordsList[32]],
         lessonVowels: ['L', 'I', 'X', 'O']);
     taskCama = TaskCompleteWordModel(
-        title:'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
+        title:
+            'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
         audio: 'paula_palavraWrite.mp3',
         words: [paranoaWords.wordsList[24]],
         lessonVowels: ['C', 'A', 'M', 'A']);
@@ -77,7 +83,7 @@ class TaskCompleteWordController {
       ],
     );
     taskCafe = TaskCompleteWordModel(
-      title: "Complete as palavras, arrastando as vogais em azul",            
+      title: "Complete as palavras, arrastando as vogais em azul",
       lessonVowels: ['A', 'O', 'É'],
       words: [
         paranoaWords.wordsList[31], // Vaca
@@ -206,6 +212,10 @@ class TaskCompleteWordController {
 
   TaskCompleteWordModel getTaskItapoaA1() {
     return taskItapoaA1;
+  }
+
+  TaskCompleteWordModel getTaskItapoaAveinda() {
+    return taskItapoaAvenida;
   }
 
   TaskCompleteWordModel getTaskPalavrasParanoa() {
