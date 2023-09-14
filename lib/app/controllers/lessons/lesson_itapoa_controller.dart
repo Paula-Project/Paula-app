@@ -51,7 +51,15 @@ class LessonItapoaController implements LessonControllerInterface {
         taskController: completeWordController));
     widgetsRouters.add(TaskWriteWords(
         lessonController: this,
-        task: completeWordController.getTaskItapoaAveinda(),
+        task: completeWordController.getTaskItapoachave(),
+        taskController: completeWordController));
+    widgetsRouters.add(TaskWriteWords(
+        lessonController: this,
+        task: completeWordController.getTaskItapoaPanela(),
+        taskController: completeWordController));
+    widgetsRouters.add(TaskWriteWords(
+        lessonController: this,
+        task: completeWordController.getTaskItapoaCelular(),
         taskController: completeWordController));
     widgetsRouters.add(TaskItapoaTour(
         lessonController: this,
@@ -112,6 +120,10 @@ class LessonItapoaController implements LessonControllerInterface {
         lessonController: this,
         taskController: vogalSelectionController,
         task: vogalSelectionController.getTaskItapoaA8()));
+    widgetsRouters.add(TaskVogalSelection(
+        lessonController: this,
+        taskController: vogalSelectionController,
+        task: vogalSelectionController.getTaskItapoaA9()));
 
     widgetsRouters.add(CongratulationsItapoa(
       lessonController: this,

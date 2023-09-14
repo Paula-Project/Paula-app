@@ -29,6 +29,8 @@ class TaskVogalSelectionController implements TaskController {
   late TaskVogalSelectionModel taskItapoaA6;
   late TaskVogalSelectionModel taskItapoaA7;
   late TaskVogalSelectionModel taskItapoaA8;
+  late TaskVogalSelectionModel taskItapoaA9;
+  late TaskVogalSelectionModel taskItapoaA10;
 
   Words words = Words();
   ParanoaWords paranoaWords = ParanoaWords();
@@ -121,18 +123,23 @@ class TaskVogalSelectionController implements TaskController {
     taskItapoaA4 = TaskVogalSelectionModel(words: [
       itapoaWords.wordsList[6], //moto
     ], audio: "paula_vowelSelection.mp3");
-    taskItapoaA5 = TaskVogalSelectionModel(words: [
-      itapoaWords.wordsList[8], //hospital
-      itapoaWords.wordsList[9] //farmácia
-    ], audio: "paula_vowelSelection.mp3");
+    taskItapoaA5 = TaskVogalSelectionModel(
+        words: [itapoaWords.wordsList[14], itapoaWords.wordsList[15]],
+        audio: "paula_vowelSelection.mp3");
     taskItapoaA6 = TaskVogalSelectionModel(words: [
       itapoaWords.wordsList[9], //farmácia
     ], audio: "paula_vowelSelection.mp3");
     taskItapoaA7 = TaskVogalSelectionModel(words: [
-      itapoaWords.wordsList[10], //celular
+      itapoaWords.wordsList[12], //celular
     ], audio: "paula_vowelSelection.mp3");
     taskItapoaA8 = TaskVogalSelectionModel(words: [
       itapoaWords.wordsList[11], //Computador
+    ], audio: "paula_vowelSelection.mp3");
+    taskItapoaA9 = TaskVogalSelectionModel(words: [
+      itapoaWords.wordsList[7], //Computador
+    ], audio: "paula_vowelSelection.mp3");
+    taskItapoaA10 = TaskVogalSelectionModel(words: [
+      itapoaWords.wordsList[13], //Computador
     ], audio: "paula_vowelSelection.mp3");
   }
 
@@ -230,6 +237,14 @@ class TaskVogalSelectionController implements TaskController {
 
   TaskVogalSelectionModel getTaskItapoaA8() {
     return taskItapoaA8;
+  }
+
+  TaskVogalSelectionModel getTaskItapoaA9() {
+    return taskItapoaA9;
+  }
+
+  TaskVogalSelectionModel getTaskItapoaA10() {
+    return taskItapoaA10;
   }
 
   @override
