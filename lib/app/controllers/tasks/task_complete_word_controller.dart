@@ -22,7 +22,9 @@ class TaskCompleteWordController {
   late TaskCompleteWordModel taskCama;
   late TaskCompleteWordModel taskItapoa;
   late TaskCompleteWordModel taskItapoaA1;
-  late TaskCompleteWordModel taskItapoaAvenida;
+  late TaskCompleteWordModel taskItapoachave;
+  late TaskCompleteWordModel taskItapoaCelular;
+  late TaskCompleteWordModel taskItapoaPanela;
 
   Words words = Words();
   ParanoaWords paranoaWords = ParanoaWords();
@@ -46,15 +48,21 @@ class TaskCompleteWordController {
         audio: 'escrita_onibus.mp3',
         words: [itapoaWords.wordsList[3]],
         lessonVowels: ['N', 'I', 'B', 'Ô', 'U', 'S']);
-    taskItapoaAvenida = TaskCompleteWordModel(
-        words: [itapoaWords.wordsList[7]],
-        lessonVowels: ['A', 'V', 'E', 'N', 'I', 'D', 'A']);
+    taskItapoachave = TaskCompleteWordModel(
+        words: [itapoaWords.wordsList[10]],
+        lessonVowels: ['C', 'H', 'A', 'V', 'E']);
+    taskItapoaCelular = TaskCompleteWordModel(
+        words: [itapoaWords.wordsList[8]],
+        lessonVowels: ['C', 'E', 'L', 'U', 'L', 'A', 'R']);
+    taskItapoaPanela = TaskCompleteWordModel(
+        words: [itapoaWords.wordsList[16]],
+        lessonVowels: ['P', 'A', 'N', 'E', 'L', 'A']);
     taskTintas = TaskCompleteWordModel(
         title:
             'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
         audio: 'paula_palavraWrite.mp3',
         words: [paranoaWords.wordsList[10]],
-        lessonVowels: ['T', 'I', 'N', 'A', 'S']);
+        lessonVowels: ['T', 'I', 'N', 'T', 'A', 'S']);
     taskCarro = TaskCompleteWordModel(
         title:
             'Você consegue escrever essa palavra? Arraste as letras para formar a palavra.',
@@ -214,8 +222,16 @@ class TaskCompleteWordController {
     return taskItapoaA1;
   }
 
-  TaskCompleteWordModel getTaskItapoaAveinda() {
-    return taskItapoaAvenida;
+  TaskCompleteWordModel getTaskItapoachave() {
+    return taskItapoachave;
+  }
+
+  TaskCompleteWordModel getTaskItapoaCelular() {
+    return taskItapoaCelular;
+  }
+
+  TaskCompleteWordModel getTaskItapoaPanela() {
+    return taskItapoaPanela;
   }
 
   TaskCompleteWordModel getTaskPalavrasParanoa() {
