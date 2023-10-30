@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/lessons/lesson_draw_controller.dart';
 import 'package:paula/app/controllers/lessons/lesson_itapoa_controller.dart';
 import 'package:paula/app/controllers/lessons/lesson_paranoa_controller.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/layout/layout.dart';
+import 'package:paula/app/views/lessons/lesson_draw_letter.dart';
 import 'package:paula/app/views/lessons/lesson_itapoa_welcome.dart';
 import 'package:paula/app/views/lessons/lessons_vogais.dart';
 import 'package:paula/app/views/lessons/lesson_paranoa_welcome.dart';
@@ -15,6 +17,7 @@ class HomePage extends StatelessWidget {
   ModuleVowelsController moduleVowelsController = ModuleVowelsController();
   LessonParanoaController lessonParanoaController = LessonParanoaController();
   LessonItapoaController lessonItapoaController = LessonItapoaController();
+  LessonDrawController lessonDrawController = LessonDrawController();
 
   HomePage({Key? key}) : super(key: key);
   final int indexPage = 0;
@@ -48,7 +51,12 @@ class HomePage extends StatelessWidget {
                     "Itapoã",
                     LessonItapoaWelcome(
                         lessonController: lessonItapoaController),
-                    usuarioLogado.progress >= 20),
+                    true),
+                ModuleButton(
+                    Alignment.centerRight,
+                    "Escrita",
+                    LessonDrawLetter(lessonController: lessonDrawController),
+                    true),
               ]));
         }));
   }

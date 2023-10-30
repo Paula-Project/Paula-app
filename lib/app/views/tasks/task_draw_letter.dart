@@ -175,6 +175,8 @@ class _TaskDrawLetterState extends State<TaskDrawLetter>
                             await IAController().verifyAnswer(imageBytes);
                         loading.value = !loading.value;
                         // ignore: use_build_context_synchronously
+                        widget.lessonController.verifyAnswerNonControlled(
+                            response == widget.letter);
                         showGeneralDialog(
                           barrierColor: Colors.black.withOpacity(0.5),
                           transitionDuration: const Duration(milliseconds: 300),
