@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
 import 'package:http/http.dart';
 import 'package:http_interceptor/http_interceptor.dart';
 import 'package:paula/app/http/app_exceptions.dart';
@@ -35,11 +33,8 @@ class IAClient {
     try {
       var response = await request.send();
       return response.stream.bytesToString();
-    } on SocketException {
-      throw FetchDataException("Sem conexão com a internet", uri.toString());
-    } on TimeoutException {
-      throw ApiNotRespondingException(
-          "Tente novamente mais tarde.", uri.toString());
+    } catch (e) {
+      throw Exception('Erro ao se comunicar com o serviddor');
     }
   }
 }

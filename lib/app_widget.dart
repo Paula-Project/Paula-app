@@ -37,15 +37,10 @@ class _AppWidgetState extends State<AppWidget> {
       supportedLocales: const [
         Locale("pt", "BR"),
       ],
-      routes: {
-        "/": (context) => const SplashView(),
-        "/welcome_part1": (context) => const WelcomePagePart1(),
-        "/welcome_part2": (context) => const WelcomePagePart2(),
-        "/welcome_part3": (context) => const WelcomePagePart3(),
-        "/login": (context) => const LoginPage(),
-        "/singup_part1": (context) => const SingupPage(),
-        "/home": (context) => HomePage()
-      },
+      getPages: [
+        GetPage(name: '/', page: () => const SplashView()),
+        GetPage(name: '/home', page: () => HomePage()),
+      ],
     );
   }
 }
