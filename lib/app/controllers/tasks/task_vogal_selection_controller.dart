@@ -114,32 +114,41 @@ class TaskVogalSelectionController implements TaskController {
     taskItapoaA1 = TaskVogalSelectionModel(words: [
       itapoaWords.wordsList[2], //Itapoa Placa
     ], audio: "paula_vowelSelection.mp3");
-    taskItapoaA2 = TaskVogalSelectionModel(words: [
-      paranoaWords.wordsList[14], //Churrasco
-    ], audio: "paula_vowelSelection.mp3");
-    taskItapoaA3 = TaskVogalSelectionModel(words: [
-      itapoaWords.wordsList[5], //praça*
-    ], audio: "paula_vowelSelection.mp3");
+
+    //taskItapoaA2 = TaskVogalSelectionModel(words: [
+     // paranoaWords.wordsList[14], //Churrasco
+    //], audio: "paula_vowelSelection.mp3");
+
+    //taskItapoaA3 = TaskVogalSelectionModel(words: [
+     // itapoaWords.wordsList[5], //praça*
+    //], audio: "paula_vowelSelection.mp3");
+
     taskItapoaA4 = TaskVogalSelectionModel(words: [
-      itapoaWords.wordsList[6], //moto
+      words.wordsList[64], //moto
     ], audio: "paula_vowelSelection.mp3");
+
     taskItapoaA5 = TaskVogalSelectionModel(
-        words: [itapoaWords.wordsList[14], itapoaWords.wordsList[15]],
+        words: [words.wordsList[71], words.wordsList[72]],
         audio: "paula_vowelSelection.mp3");
-    taskItapoaA6 = TaskVogalSelectionModel(words: [
+
+    /* taskItapoaA6 = TaskVogalSelectionModel(words: [
       itapoaWords.wordsList[9], //farmácia
-    ], audio: "paula_vowelSelection.mp3");
-    taskItapoaA7 = TaskVogalSelectionModel(words: [
-      itapoaWords.wordsList[12], //celular
-    ], audio: "paula_vowelSelection.mp3");
+    ], audio: "paula_vowelSelection.mp3");*/
+
+    //taskItapoaA7 = TaskVogalSelectionModel(words: [
+   //   itapoaWords.wordsList[12], //celular
+   // ], audio: "paula_vowelSelection.mp3");
+
     taskItapoaA8 = TaskVogalSelectionModel(words: [
-      itapoaWords.wordsList[11], //Computador
+      words.wordsList[70], //Computador
     ], audio: "paula_vowelSelection.mp3");
+
     taskItapoaA9 = TaskVogalSelectionModel(words: [
-      itapoaWords.wordsList[7], //Computador
+      words.wordsList[7], //Computador
     ], audio: "paula_vowelSelection.mp3");
+
     taskItapoaA10 = TaskVogalSelectionModel(words: [
-      itapoaWords.wordsList[13], //Computador
+      words.wordsList[13], //Computador
     ], audio: "paula_vowelSelection.mp3");
   }
 
