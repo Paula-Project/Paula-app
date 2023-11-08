@@ -68,6 +68,18 @@ class Words {
     'churrasco', //61
     'café', //62
     'leite', //63
+    'Moto', //64
+    'Celular', //65
+    'Copo',//66
+    'Chave', //67
+    'Relógio', //68
+    'Bicicleta', //69'
+    'Mochila', //70
+    'Colher', //71
+    'Garfo', //72
+    'Panela', //73
+
+
   ];
   List<String> soundsList = [
     'abajur.mp3',
@@ -134,6 +146,16 @@ class Words {
     'churrasco.mp3',
     'café.mp3',
     'leite.mp3',
+    "celular.mp3",
+    "copo.mp3",
+    "chave.mp3",
+    "relogio.mp3",
+    "bicicleta.mp3",
+    "mochila.mp3",
+    "colher.mp3",
+    "garfo.mp3",
+    "panela.mp3",
+    'moto.mp3',
   ];
   List<String> imagesList = [
     'abajur.png',
@@ -200,6 +222,16 @@ class Words {
     'churrasco.png',
     'cafe.png',
     'leite.png',
+    "celular.png", //8*
+    "copo.png", //9
+    "chave.png", //10
+    "relogio.png", //11
+    "bicicleta.png", //12
+    "mochila.png", //3
+    "colher.png", //14
+    "garfo.png", //15
+    "panela.png", //16
+    'moto.png',
   ];
 
   void populate() {
