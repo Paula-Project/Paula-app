@@ -76,10 +76,11 @@ class _LessonDrawLetterState extends State<LessonDrawLetter>
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: TaskTitle(
-                      title: "Vamos escrever algumas letras?",
-                      audio: "",
+                      title:
+                          "Pronto para praticar a escrita das letras? Vamos lá!\n Conecte-se à internet para começar.",
+                      audio: "paula_draw_letter_introduction.mp3",
                       audioManager: audioManager,
                     ),
                   ),

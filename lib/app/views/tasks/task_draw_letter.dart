@@ -1,13 +1,12 @@
-import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
+import 'package:paula/app/controllers/tasks/task_draw_letter_controller.dart';
 import 'package:paula/app/controllers/web/ia_controller.dart';
-import 'package:paula/app/http/ia_client.dart';
+import 'package:paula/app/model/task_draw_letter_model.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
 import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/drawing/drawing_point.dart';
@@ -17,9 +16,13 @@ import 'package:paula/app/views/layout/task_layout.dart';
 
 class TaskDrawLetter extends StatefulWidget {
   final LessonControllerInterface lessonController;
-  final String letter;
+  final TaskDrawLetterModel task;
+  final TaskDrawLetterController taskController;
   const TaskDrawLetter(
-      {super.key, required this.lessonController, required this.letter});
+      {super.key,
+      required this.lessonController,
+      required this.task,
+      required this.taskController});
 
   @override
   _TaskDrawLetterState createState() => _TaskDrawLetterState();
@@ -58,8 +61,8 @@ class _TaskDrawLetterState extends State<TaskDrawLetter>
       body: Column(
         children: [
           TaskTitle(
-              title: "Escreva a Letra ${widget.letter} no espaço abaixo:",
-              audio: "assets/audios/vogal_selection.mp3",
+              title: widget.task.title,
+              audio: widget.task.titleAudio,
               audioManager: audioManager),
           Expanded(
             child: Column(
@@ -174,9 +177,10 @@ class _TaskDrawLetterState extends State<TaskDrawLetter>
                         var response =
                             await IAController().verifyAnswer(imageBytes);
                         loading.value = !loading.value;
+                        widget.task.response = response;
+                        widget.lessonController
+                            .verifyAnswer(widget.task, widget.taskController);
                         // ignore: use_build_context_synchronously
-                        widget.lessonController.verifyAnswerNonControlled(
-                            response == widget.letter);
                         showGeneralDialog(
                           barrierColor: Colors.black.withOpacity(0.5),
                           transitionDuration: const Duration(milliseconds: 300),
@@ -197,9 +201,10 @@ class _TaskDrawLetterState extends State<TaskDrawLetter>
                                 opacity: a1.value,
                                 child: BoxDialog(
                                     controller: this.widget.lessonController,
-                                    feedback: response == this.widget.letter,
-                                    resposta:
-                                        "Letra ${this.widget.letter}\n e você escreveu a Letra ${response}"),
+                                    feedback: this.widget.task.isCorrect,
+                                    resposta: this.widget.task.isCorrect
+                                        ? ""
+                                        : "Letra ${this.widget.task.letter}\n e você escreveu a Letra ${this.widget.task.response}"),
                               ),
                             );
                           },
