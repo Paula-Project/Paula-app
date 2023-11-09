@@ -247,6 +247,18 @@ flutter:
     - assets/audios/paula/paula_paranoaLago.mp3
     - assets/audios/paula/paula_paranoaWelcome.mp3
 
+    #Audio Paula Escreva Letra IA
+    - assets/audios/paula/paula_draw_letter_introduction.mp3
+    - assets/audios/paula/paula_draw_letter_A.mp3
+    - assets/audios/paula/paula_draw_letter_E.mp3
+    - assets/audios/paula/paula_draw_letter_I.mp3
+    - assets/audios/paula/paula_draw_letter_O.mp3
+    - assets/audios/paula/paula_draw_letter_U.mp3
+    - assets/audios/paula/paula_draw_letter_wrong_A.mp3
+    - assets/audios/paula/paula_draw_letter_wrong_E.mp3
+    - assets/audios/paula/paula_draw_letter_wrong_I.mp3
+    - assets/audios/paula/paula_draw_letter_wrong_O.mp3
+    - assets/audios/paula/paula_draw_letter_wrong_U.mp3
     #Audios Paula tente Novamente
     - assets/audios/paula/paula_tryAgain_1.mp3
     - assets/audios/paula/paula_tryAgain_2.mp3
