@@ -57,8 +57,6 @@ class LessonItapoaController implements LessonControllerInterface {
         task: completeWordController.getTaskItapoachave(),
         taskController: completeWordController));*/
 
-    
-
     widgetsRouters.add(TaskWriteWords(
         lessonController: this,
         task: completeWordController.getTaskItapoaCelular(),

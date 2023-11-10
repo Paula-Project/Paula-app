@@ -119,9 +119,9 @@ class TaskVogalSelectionController implements TaskController {
      // paranoaWords.wordsList[14], //Churrasco
     //], audio: "paula_vowelSelection.mp3");
 
-    //taskItapoaA3 = TaskVogalSelectionModel(words: [
-     // itapoaWords.wordsList[5], //praça*
-    //], audio: "paula_vowelSelection.mp3");
+    taskItapoaA3 = TaskVogalSelectionModel(words: [
+      itapoaWords.wordsList[5], //praça*
+    ], audio: "paula_vowelSelection.mp3");
 
     taskItapoaA4 = TaskVogalSelectionModel(words: [
       words.wordsList[64], //moto
@@ -144,7 +144,7 @@ class TaskVogalSelectionController implements TaskController {
     ], audio: "paula_vowelSelection.mp3");
 
     taskItapoaA9 = TaskVogalSelectionModel(words: [
-      words.wordsList[7], //Computador
+      words.wordsList[67], //Computador
     ], audio: "paula_vowelSelection.mp3");
 
     taskItapoaA10 = TaskVogalSelectionModel(words: [
