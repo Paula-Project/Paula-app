@@ -47,26 +47,26 @@ class TaskCompleteWordController {
         title:
             'Você consegue escrever ÔNIBUS? Arraste as letras para formar a palavra.',
         audio: 'escrita_onibus.mp3',
-        words: [itapoaWords.wordsList[3]],
+        words: [words.wordsList[45]],
         lessonVowels: ['N', 'I', 'B', 'Ô', 'U', 'S']);
 
     taskItapoachave = TaskCompleteWordModel(
         title: 
             'Você consegue escrever CHAVE? Arraste as letras para formar a palavra',
         audio: 'escrita_chave.mp3',
-        words: [itapoaWords.wordsList[10]],
+        words: [words.wordsList[10]],
         lessonVowels: ['C', 'H', 'A', 'V', 'E']);
 
     taskItapoaCelular = TaskCompleteWordModel(
         title: 'Você consegue escrever CELULAR? Arraste as letras para formar a palavra',
         audio: 'escrita_celular.mp3',
-        words: [itapoaWords.wordsList[8]],
+        words: [words.wordsList[65]],
         lessonVowels: ['C', 'E', 'L', 'U', 'L', 'A', 'R']);
 
     taskItapoaPanela = TaskCompleteWordModel(
         title: 'Você consegue escrever PANELA? Arraste as letras para formar a palavra',
         audio: 'escrita_panela.mp3',
-        words: [itapoaWords.wordsList[16]],
+        words: [words.wordsList[73]],
         lessonVowels: ['P', 'A', 'N', 'E', 'L', 'A']);
     taskTintas = TaskCompleteWordModel(
         title:
