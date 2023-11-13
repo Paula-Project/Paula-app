@@ -52,16 +52,11 @@ class LessonItapoaController implements LessonControllerInterface {
         task: completeWordController.getTaskItapoaA1(),
         taskController: completeWordController));
 
-    /*widgetsRouters.add(TaskWriteWords(
-        lessonController: this,
-        task: completeWordController.getTaskItapoachave(),
-        taskController: completeWordController));*/
-
     widgetsRouters.add(TaskWriteWords(
         lessonController: this,
         task: completeWordController.getTaskItapoaCelular(),
         taskController: completeWordController));
-        
+
     widgetsRouters.add(TaskVogalSelection(
         lessonController: this,
         taskController: vogalSelectionController,
@@ -81,12 +76,6 @@ class LessonItapoaController implements LessonControllerInterface {
         task: markVowelController.getTask("I"),
         taskController: markVowelController));
 
-    /*widgetsRouters.add(TaskMarkVowel(
-      lessonController: this,
-      taskController: markVowelController,
-      task: markVowelController.getTask("E"),
-    ));*/
-
     widgetsRouters.add(TaskMarkVowel(
       lessonController: this,
       taskController: markVowelController,
@@ -103,16 +92,6 @@ class LessonItapoaController implements LessonControllerInterface {
         taskController: vogalSelectionController,
         task: vogalSelectionController.getTaskParanoaA3()));
 
-   /* widgetsRouters.add(TaskVogalSelection(
-        lessonController: this,
-        taskController: vogalSelectionController,
-        task: vogalSelectionController.getTaskItapoaA2()));
-
-    widgetsRouters.add(TaskVogalSelection(
-        lessonController: this,
-        taskController: vogalSelectionController,
-        task: vogalSelectionController.getTaskItapoaA3()));*/
-
     widgetsRouters.add(TaskVogalSelection(
         lessonController: this,
         taskController: vogalSelectionController,
@@ -121,29 +100,16 @@ class LessonItapoaController implements LessonControllerInterface {
     widgetsRouters.add(TaskWriteWords(
         lessonController: this,
         task: completeWordController.getTaskItapoaPanela(),
-        taskController: completeWordController));    
+        taskController: completeWordController));
 
     widgetsRouters.add(TaskVogalSelection(
         lessonController: this,
         taskController: vogalSelectionController,
         task: vogalSelectionController.getTaskItapoaA5()));
-
-    /*widgetsRouters.add(TaskVogalSelection(
-        lessonController: this,
-        taskController: vogalSelectionController,
-        task: vogalSelectionController.getTaskItapoaA6()));*/
-
-    /*widgetsRouters.add(TaskVogalSelection(
-        lessonController: this,
-        taskController: vogalSelectionController,
-        task: vogalSelectionController.getTaskItapoaA7()));*/
-
     widgetsRouters.add(TaskVogalSelection(
         lessonController: this,
         taskController: vogalSelectionController,
         task: vogalSelectionController.getTaskItapoaA8()));
-
-    
 
     widgetsRouters.add(CongratulationsItapoa(
       lessonController: this,

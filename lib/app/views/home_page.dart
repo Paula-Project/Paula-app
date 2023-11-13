@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                     "Itapoã",
                     LessonItapoaWelcome(
                         lessonController: lessonItapoaController),
-                    usuarioLogado.progress == 0),
+                    LessonParanoaController.completed),
               ]));
         }));
   }

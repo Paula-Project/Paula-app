@@ -47,7 +47,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   get: ^4.6.5
-  intl: ^0.18.1
+  intl:
   auto_size_text: ^3.0.0
 
 dev_dependencies:
@@ -168,9 +168,7 @@ flutter:
     - assets/images/words/churrasco.png
     - assets/images/words/cafe.png
     - assets/images/words/leite.png
-    
-  
-    
+
     #Figuras dos selos
     - assets/images/selos/Selo_itapoa_off.png
     - assets/images/selos/Selo_itapoa_on.png
@@ -347,6 +345,8 @@ flutter:
     - assets/audios/paula/audio_pegar_onibus.mp3
     - assets/audios/words/ponte_paranoa.mp3
     - assets/audios/paula/passar_pela_ponte.mp3
+    - assets/audios/paula/escrita_celular.mp3
+    - assets/audios/paula/escrita_panela.mp3
     - assets/audios/paula/escrita_itapoa.mp3
     - assets/audios/paula/escrita_onibus.mp3
     - assets/audios/words/praça.mp3
@@ -365,7 +365,6 @@ flutter:
     - assets/audios/words/garfo.mp3
     - assets/audios/words/panela.mp3
     - assets/audios/words/cadeira.mp3
-
 
     # Imagens Itapoã
     - assets/images/words/itapoa_madeira.png
