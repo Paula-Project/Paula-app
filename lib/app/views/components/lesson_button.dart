@@ -43,7 +43,7 @@ class LessonButton extends StatelessWidget {
                 : MaterialStateProperty.all<Color>(Colors.grey),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(30),
                     side: BorderSide.none)),
           ),
           child: AutoSizeText(

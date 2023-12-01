@@ -61,6 +61,12 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         child: Center(
           child: Column(
             children: [
+              Container(
+                child: Text(
+                  "Vogais",
+                ),
+
+              ),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
