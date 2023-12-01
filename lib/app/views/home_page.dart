@@ -189,7 +189,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                 width: 20,
                                 height: 25,
                                 decoration: const BoxDecoration(
-                                    color: Color.fromARGB(199, 37, 85, 124)),
+                                    color: Color.fromARGB(197, 241, 106, 8)),
                               ),
                             ),
                           ),
@@ -203,7 +203,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                                 width: width * 0.55,
                                 padding: const EdgeInsets.all(15),
                                 child: const AutoSizeText(
-                                  "Vamos conhecer as minhas cidades?\nQuero te mostrar de pertinho o Paranoá e o Itapoã!",
+                                  "Vamos conhecer as minhas cidades?Quero te mostrar de pertinho o Paranoá e o Itapoã!",
                                   style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.w300,
