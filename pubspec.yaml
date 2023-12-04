@@ -232,6 +232,7 @@ flutter:
 
     #Audios Paula lesson_vogais
     - assets/audios/paula/paula_lessonVogais.mp3
+    - assets/audios/paula/paula_cidades.mp3
 
     #Audios Paula task_vogal_selection
     - assets/audios/paula/paula_vowelSelection.mp3

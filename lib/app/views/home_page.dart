@@ -174,7 +174,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                     MaterialButton(
                       onPressed: () {
                         audioManager
-                            .runAudio("audios/paula/paula_lessonVogais.mp3");
+                            .runAudio("audios/paula/paula_cidades.mp3");
                       },
                       padding: EdgeInsets.zero,
                       child: Row(
