@@ -8,12 +8,14 @@ class LessonButton2 extends StatelessWidget {
   final bool isActive;
   final LessonControllerInterface lessonController;
   final AudioManager audioManager;
+  final String? imgPath;
   const LessonButton2({
     Key? key,
     required this.textContent,
     required this.isActive,
     required this.lessonController,
     required this.audioManager,
+    this.imgPath
   }) : super(key: key);
 
   @override
@@ -39,21 +41,37 @@ class LessonButton2 extends StatelessWidget {
           style: ButtonStyle(
             foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
             backgroundColor: isActive
-                ? MaterialStateProperty.all<Color>(const Color.fromARGB(197, 241, 106, 8))
+                ? MaterialStateProperty.all<Color>(Colors.deepOrange)
                 : MaterialStateProperty.all<Color>(Colors.grey),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                     side: BorderSide.none)),
           ),
-          child: AutoSizeText(
-            textContent,
-            textScaleFactor: 1,
-            style: const TextStyle(
-              fontSize: 26,
-            ),
-            minFontSize: 15,
-            textAlign: TextAlign.center,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              if (imgPath != null)
+                Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: Image.asset(
+                    imgPath ?? '',
+                    width: 120, 
+                    height: 120,
+                  ),
+                ),
+              Expanded(
+                child: AutoSizeText(
+                  textContent,
+                  textScaleFactor: 1,
+                  style: const TextStyle(
+                    fontSize: 26,
+                  ),
+                  minFontSize: 15,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
           ),
         ),
       ),

@@ -8,12 +8,14 @@ class LessonButton extends StatelessWidget {
   final bool isActive;
   final LessonControllerInterface lessonController;
   final AudioManager audioManager;
+  final String? imgPath;
   const LessonButton({
     Key? key,
     required this.textContent,
     required this.isActive,
     required this.lessonController,
     required this.audioManager,
+    this.imgPath
   }) : super(key: key);
 
   @override
@@ -46,14 +48,30 @@ class LessonButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                     side: BorderSide.none)),
           ),
-          child: AutoSizeText(
-            textContent,
-            textScaleFactor: 1,
-            style: const TextStyle(
-              fontSize: 26,
-            ),
-            minFontSize: 15,
-            textAlign: TextAlign.center,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              if (imgPath != null)
+                Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: Image.asset(
+                    imgPath ?? '',
+                    width: 50, 
+                    height: 50,
+                  ),
+                ),
+              Expanded(
+                child: AutoSizeText(
+                  textContent,
+                  textScaleFactor: 1,
+                  style: const TextStyle(
+                    fontSize: 26,
+                  ),
+                  minFontSize: 15,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
           ),
         ),
       ),

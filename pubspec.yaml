@@ -89,6 +89,14 @@ flutter:
     - assets/images/paula/paula08.png
     - assets/images/paula/paula09.png
     - assets/images/paula/paula10.png
+    - assets/images/paula/a.png
+    - assets/images/paula/e.png
+    - assets/images/paula/i.png
+    - assets/images/paula/o.png
+    - assets/images/paula/u.png
+    - assets/images/paula/paranoa_letreiro2.jpg
+    - assets/images/paula/itapoa2.png
+
 
     #Figuras das palavras
     - assets/images/words/abacaxi.png
