@@ -9,6 +9,7 @@ import 'package:paula/app/model/task_model.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/lessons/congratulations_itapoa.dart';
+import 'package:paula/app/views/lessons/lesson_itapoa_welcome.dart';
 import 'package:paula/app/views/lessons/try_again_page_paranoa.dart';
 import 'package:paula/app/views/tasks/task_itapoa_tour.dart';
 import 'package:paula/app/views/tasks/task_mark_vowel.dart';
@@ -32,6 +33,7 @@ class LessonItapoaController implements LessonControllerInterface {
   static bool completed = false;
 
   LessonItapoaController() {
+    widgetsRouters.add(LessonItapoaWelcome(lessonController: this));
     widgetsRouters.add(TaskItapoaTour(
         lessonController: this, task: itapoaLessonController.getTaskFood()));
     widgetsRouters.add(TaskVogalSelection(

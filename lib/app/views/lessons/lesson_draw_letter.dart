@@ -1,6 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
+import 'package:paula/app/controllers/web/network_controller.dart';
+import 'package:paula/app/views/components/ButtonNext.dart';
 import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/buttonContinue.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
@@ -8,6 +11,7 @@ import 'package:paula/app/views/components/taskTitle.dart';
 
 class LessonDrawLetter extends StatefulWidget {
   final LessonControllerInterface lessonController;
+  
   const LessonDrawLetter({
     Key? key,
     required this.lessonController,
@@ -20,11 +24,12 @@ class LessonDrawLetter extends StatefulWidget {
 class _LessonDrawLetterState extends State<LessonDrawLetter>
     with WidgetsBindingObserver {
   AudioManager audioManager = AudioManager();
+  NetworkController networkController = Get.find<NetworkController>();
 
   @override
   void initState() {
-    widget.lessonController.reset();
     WidgetsBinding.instance.addObserver(this);
+    networkController.checkConnectionStatus();
     super.initState();
   }
 
@@ -32,6 +37,7 @@ class _LessonDrawLetterState extends State<LessonDrawLetter>
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     audioManager.stopAudio();
+    networkController.clearConnectionStatus();
     super.dispose();
   }
 
@@ -44,7 +50,7 @@ class _LessonDrawLetterState extends State<LessonDrawLetter>
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () => exitDialog(context),
+      onWillPop: () => exitDialog(context, widget.lessonController),
       child: Material(
         child: Container(
           decoration: const BoxDecoration(

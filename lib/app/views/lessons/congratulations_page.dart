@@ -1,15 +1,16 @@
 import 'dart:math';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/controllers/modules/module_vowels_controller.dart';
 import 'package:paula/app/views/components/audioManager.dart';
+import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/lessons/lessons_vogais.dart';
 import 'package:lottie/lottie.dart';
 
 class CongratulationsPage extends StatefulWidget {
-  final ModuleVowelsController moduleVowelsController;
-  const CongratulationsPage({Key? key, required this.moduleVowelsController})
-      : super(key: key);
+  final LessonControllerInterface lessonController;
+  const CongratulationsPage({super.key, required this.lessonController});
 
   @override
   State<CongratulationsPage> createState() => _CongratulationsPageState();
@@ -146,11 +147,11 @@ class _CongratulationsPageState extends State<CongratulationsPage>
                   height: 50,
                   child: TextButton(
                       onPressed: () {
+                        
+                       widget.lessonController.reset();
                         Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(
-                            builder: (BuildContext context) => LessonsVogais(
-                                moduleVowelsController:
-                                    widget.moduleVowelsController),
+                            builder: (BuildContext context) => HomePage()
                           ),
                           (route) => false,
                         );

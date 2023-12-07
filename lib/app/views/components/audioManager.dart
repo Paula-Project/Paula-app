@@ -6,7 +6,7 @@ class AudioManager {
 
   runAudio(String path) async {
     try {
-      await audioPlayer.play(AssetSource(path));
+      await audioPlayer.play(AssetSource(path), balance: 0.0);
     } catch (error) {
       print(error.toString());
     }

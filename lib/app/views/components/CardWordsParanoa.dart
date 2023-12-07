@@ -22,7 +22,7 @@ class _CardParanoaState extends State<CardParanoa> {
 
   _runAudio(String path) async {
     try {
-      await audioPlayer?.play(AssetSource(path));
+      await audioPlayer?.play(AssetSource(path), balance:0.0);
     } catch (error) {
       print(error.toString());
     }

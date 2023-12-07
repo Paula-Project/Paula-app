@@ -112,7 +112,7 @@ class LessonIController implements LessonControllerInterface {
     ));
     //8º task
     widgetsRouters.add(CongratulationsPage(
-      moduleVowelsController: moduleVowelsController,
+      lessonController: this,
     ));
   }
 

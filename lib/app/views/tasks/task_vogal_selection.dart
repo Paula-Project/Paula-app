@@ -55,6 +55,7 @@ class _TaskVogalSelectionState extends State<TaskVogalSelection>
     changeStatus(String status) {}
 
     return TaskLayout(
+      lessonController: widget.lessonController,
       shouldPop: true,
       taskProgress: TaskProgress(
         tasksNumber: widget.lessonController.getTaskQuantity(),

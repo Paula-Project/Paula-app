@@ -123,6 +123,7 @@ class _TaskCompleteWordsState extends State<TaskCompleteWords>
         tasksNumber: widget.lessonController.getTaskQuantity(),
         correctAnswer: widget.lessonController.getTaskCorrectAnswers(),
       ),
+      lessonController: widget.lessonController,
       body: Container(
         decoration: const BoxDecoration(
           color: Colors.white,

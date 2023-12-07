@@ -16,7 +16,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 
-version: 3.5.0+13
+version: 3.5.1+14
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
@@ -46,7 +46,7 @@ dependencies:
   path_provider: ^2.0.5
   cupertino_icons: ^1.0.2
   get: ^4.6.5
-  intl: ^0.18.0
+  intl: ^0.18.1
   auto_size_text: ^3.0.0
   connectivity_plus: ^5.0.2
 

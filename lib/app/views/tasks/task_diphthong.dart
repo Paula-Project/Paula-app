@@ -46,6 +46,7 @@ class _TaskDiphthongState extends State<TaskDiphthong>
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return TaskLayout(
+      lessonController: widget.lessonController,
       shouldPop: true,
       taskProgress: Container(),
       body:

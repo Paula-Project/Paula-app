@@ -8,6 +8,7 @@ import 'package:paula/app/model/task_model.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/lessons/congratulations_paranoa.dart';
+import 'package:paula/app/views/lessons/lesson_paranoa_welcome.dart';
 import 'package:paula/app/views/lessons/try_again_page_paranoa.dart';
 import 'package:paula/app/views/tasks/task_complete_words.dart';
 import 'package:paula/app/views/tasks/task_paranoa_tour.dart';
@@ -29,6 +30,7 @@ class LessonParanoaController implements LessonControllerInterface {
   static bool completed = false;
 
   LessonParanoaController() {
+    //widgetsRouters.add(LessonParanoaWelcome(lessonController: this));
     widgetsRouters.add(TaskVogalSelection(
         lessonController: this,
         taskController: vogalSelectionController,

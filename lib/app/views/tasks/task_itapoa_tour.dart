@@ -49,6 +49,7 @@ class _TaskItapoaTourState extends State<TaskItapoaTour>
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return TaskLayout(
+      lessonController: widget.lessonController,
       shouldPop: true,
       paddingDefault: false,
       taskProgress: Container(),

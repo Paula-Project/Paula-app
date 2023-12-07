@@ -53,6 +53,7 @@ class _LessonIntroductionState extends State<LessonIntroduction>
     return TaskLayout(
       shouldPop: true,
       taskProgress: Container(),
+      lessonController: widget.controller,
       body: Container(
           decoration: const BoxDecoration(
             color: Colors.white,

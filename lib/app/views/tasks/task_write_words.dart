@@ -120,6 +120,7 @@ class _TaskWriteWordsState extends State<TaskWriteWords>
     var LetterList = widget.task.lessonVowels;
     LetterList.sort();
     return TaskLayout(
+      lessonController: widget.lessonController,
       shouldPop: true,
       taskProgress: TaskProgress(
         tasksNumber: widget.lessonController.getTaskQuantity(),

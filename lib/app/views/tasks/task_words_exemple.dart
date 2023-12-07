@@ -47,6 +47,7 @@ class _TaskWordsExempleState extends State<TaskWordsExemple>
   @override
   Widget build(BuildContext context) {
     return TaskLayout(
+      lessonController: widget.lessonController,
       shouldPop: true,
       taskProgress: TaskProgress(
         tasksNumber: widget.lessonController.getTaskQuantity(),

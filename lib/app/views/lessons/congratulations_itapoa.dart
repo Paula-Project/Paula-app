@@ -148,6 +148,7 @@ class _CongratulationsItapoaState extends State<CongratulationsItapoa>
                                 fontWeight: FontWeight.w600,
                               )),
                           onPressed: () {
+                            widget.lessonController.reset();
                             Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(
                                 builder: (BuildContext context) => HomePage(),

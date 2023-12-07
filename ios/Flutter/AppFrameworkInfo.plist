@@ -14,13 +14,19 @@
 	<string>App</string>
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleVersion</key>
+	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
-	<key>MinimumOSVersion</key>
+	<key>LSApplicationCategoryType</key>
 	<string>9.0</string>
+	<key>MinimumOSVersion</key>
+	<string>12.0.0</string>
+	<key>CFBundleDisplayName</key>
+	<string>3.5.1</string>
+	<key>CFBundleVersion</key>
+	<string>3.5.1</string>
+	<key>CFBundleGetInfoString</key>
+	<string>3.5.1</string>
 </dict>
 </plist>

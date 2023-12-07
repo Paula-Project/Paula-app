@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/views/home_page.dart';
 
 Future<bool> exitDialog(
   BuildContext context,
+  LessonControllerInterface lessonController,
 ) async {
   await showDialog(
       context: context,
@@ -38,6 +40,7 @@ Future<bool> exitDialog(
                 )),
             IconButton(
                 onPressed: () {
+                  lessonController.reset();
                   Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(
                       builder: (BuildContext context) => HomePage(),

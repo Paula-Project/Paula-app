@@ -51,6 +51,7 @@ class _TaskMarkVowelState extends State<TaskMarkVowel>
   @override
   Widget build(BuildContext context) {
     return TaskLayout(
+      lessonController: widget.lessonController,
       shouldPop: true,
       taskProgress: TaskProgress(
         tasksNumber: widget.lessonController.getTaskQuantity(),

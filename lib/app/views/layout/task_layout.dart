@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/exitDialog.dart';
 
 class TaskLayout extends StatelessWidget {
@@ -6,18 +7,19 @@ class TaskLayout extends StatelessWidget {
   final Widget taskProgress;
   final bool paddingDefault;
   final bool shouldPop;
+  final LessonControllerInterface lessonController;
   const TaskLayout(
       {super.key,
       this.paddingDefault = true,
       required this.body,
       required this.shouldPop,
-      required this.taskProgress});
+      required this.taskProgress, required this.lessonController});
 
   @override
   Widget build(BuildContext context) {
     onwillpop() {
       if (shouldPop) {
-        return exitDialog(context);
+        return exitDialog(context, lessonController);
       } else {
         return Future.value(false);
       }
@@ -35,7 +37,8 @@ class TaskLayout extends StatelessWidget {
               alignment: Alignment.centerRight,
               color: Colors.black54,
               onPressed: () {
-                exitDialog(context);
+
+                exitDialog(context, lessonController);
               },
               icon: const Icon(
                 Icons.close,

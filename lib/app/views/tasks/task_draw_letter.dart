@@ -2,10 +2,12 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/controllers/tasks/task_draw_letter_controller.dart';
 import 'package:paula/app/controllers/web/ia_controller.dart';
+import 'package:paula/app/controllers/web/network_controller.dart';
 import 'package:paula/app/model/task_draw_letter_model.dart';
 import 'package:paula/app/views/components/BoxDialog.dart';
 import 'package:paula/app/views/components/audioManager.dart';
@@ -30,6 +32,7 @@ class TaskDrawLetter extends StatefulWidget {
 
 class _TaskDrawLetterState extends State<TaskDrawLetter>
     with WidgetsBindingObserver {
+  NetworkController networkController = Get.find<NetworkController>();
   Color selectedColor = Colors.black;
   double strokeWidth = 10;
   List<dynamic> drawingPoints = [];
@@ -40,6 +43,7 @@ class _TaskDrawLetterState extends State<TaskDrawLetter>
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
+    networkController.checkConnectionStatus();
     super.initState();
   }
 
@@ -47,13 +51,15 @@ class _TaskDrawLetterState extends State<TaskDrawLetter>
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     audioManager.stopAudio();
+    networkController.clearConnectionStatus();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return TaskLayout(
-      shouldPop: false,
+      lessonController: widget.lessonController,
+      shouldPop: true,
       taskProgress: TaskProgress(
         tasksNumber: widget.lessonController.getTaskQuantity(),
         correctAnswer: widget.lessonController.getTaskCorrectAnswers(),

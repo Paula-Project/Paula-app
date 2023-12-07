@@ -51,6 +51,7 @@ class _TaskSelectImageState extends State<TaskSelectImage>
   @override
   Widget build(BuildContext context) {
     return TaskLayout(
+      lessonController: widget.lessonController,
       shouldPop: true,
       taskProgress: TaskProgress(
         tasksNumber: widget.lessonController.getTaskQuantity(),

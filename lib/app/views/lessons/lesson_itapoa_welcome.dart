@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/controllers/lessons/lesson_itapoa_controller.dart';
 import 'package:paula/app/controllers/lessons/lesson_paranoa_controller.dart';
 import 'package:paula/app/views/components/audioManager.dart';
@@ -8,7 +9,7 @@ import 'package:paula/app/views/components/exitDialog.dart';
 import 'package:paula/app/views/components/taskTitle.dart';
 
 class LessonItapoaWelcome extends StatefulWidget {
-  final LessonItapoaController lessonController;
+  final LessonControllerInterface lessonController;
   const LessonItapoaWelcome({
     Key? key,
     required this.lessonController,
@@ -24,7 +25,6 @@ class _LessonItapoaWelcomeState extends State<LessonItapoaWelcome>
 
   @override
   void initState() {
-    widget.lessonController.reset();
     WidgetsBinding.instance.addObserver(this);
     audioManager.runAudio("audios/paula/paula_tour_itapoa.mp3");
     super.initState();
@@ -46,7 +46,7 @@ class _LessonItapoaWelcomeState extends State<LessonItapoaWelcome>
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () => exitDialog(context),
+      onWillPop: () => exitDialog(context, widget.lessonController),
       child: Material(
         child: Container(
           decoration: const BoxDecoration(

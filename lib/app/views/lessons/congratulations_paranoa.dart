@@ -149,6 +149,7 @@ class _CongratulationsParanoaState extends State<CongratulationsParanoa>
                                 fontWeight: FontWeight.w600,
                               )),
                           onPressed: () {
+                            widget.lessonController.reset();
                             Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(
                                 builder: (BuildContext context) => HomePage(),

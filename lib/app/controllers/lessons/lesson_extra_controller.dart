@@ -6,6 +6,8 @@ import 'package:paula/app/model/task_model.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/views/home_page.dart';
+import 'package:paula/app/views/lessons/congratulations_page.dart';
+import 'package:paula/app/views/lessons/lesson_draw_letter.dart';
 import 'package:paula/app/views/lessons/try_again_page_paranoa.dart';
 import 'package:paula/app/views/tasks/task_draw_letter.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +24,7 @@ class LessonExtraController implements LessonControllerInterface {
   static bool completed = false;
 
   LessonExtraController() {
+    widgetsRouters.add(LessonDrawLetter(lessonController: this));
     widgetsRouters.add(TaskDrawLetter(
         lessonController: this,
         task: taskDrawLetterController.getTaskA(),
@@ -42,6 +45,10 @@ class LessonExtraController implements LessonControllerInterface {
         lessonController: this,
         task: taskDrawLetterController.getTaskU(),
         taskController: taskDrawLetterController));
+    
+    widgetsRouters.add(CongratulationsPage(
+      lessonController: this,
+    ));
   }
 
   @override
@@ -70,7 +77,7 @@ class LessonExtraController implements LessonControllerInterface {
   @override
   nextTask() {
     if (nextPage < widgetsRouters.length - 1) {
-      nextPage++;
+      nextPage =  nextPage + 1;
       onCompleted();
       if (wrongAnswers >= 4) {
         reset();

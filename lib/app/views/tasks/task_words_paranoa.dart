@@ -22,6 +22,7 @@ class _TaskWordsParanoaState extends State<TaskWordsParanoa> {
   @override
   Widget build(BuildContext context) {
     return TaskLayout(
+      lessonController: widget.lessonController,
       shouldPop: true,
       taskProgress: Container(),
       body: Container(

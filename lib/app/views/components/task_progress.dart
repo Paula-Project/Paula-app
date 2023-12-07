@@ -16,7 +16,7 @@ class TaskProgress extends StatelessWidget {
       children: [
         for (int i = 0; i < tasksNumber; i++)
           Container(
-              margin: EdgeInsets.only(left: ((width / 6) / (tasksNumber + 1))),
+              margin: EdgeInsets.only(left: ((width / 7) / (tasksNumber + 1))),
               decoration: BoxDecoration(
                 color: i < correctAnswer ? Colors.green : Colors.black26,
                 borderRadius: const BorderRadius.all(Radius.circular(5)),

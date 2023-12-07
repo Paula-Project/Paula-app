@@ -49,6 +49,7 @@ class _TaskParanoaTourState extends State<TaskParanoaTour>
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return TaskLayout(
+      lessonController: widget.lessonController,
       shouldPop: true,
       paddingDefault: false,
       taskProgress: Container(),

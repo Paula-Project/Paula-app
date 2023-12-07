@@ -6,18 +6,30 @@ import 'package:get/get.dart';
 
 class NetworkController extends GetxController {
   var connectionStatus = 0.obs;
+  bool showConnectionStatus = true;
 
   late StreamSubscription<InternetConnectionStatus> _subscription;
 
   @override
   void onInit() {
     super.onInit();
-    _subscription =
-        InternetConnectionChecker().onStatusChange.listen(_updateConnectCheck);
+  }
+
+  void checkConnectionStatus() {
+    showConnectionStatus = true;
+    InternetConnectionChecker().onStatusChange.listen(_updateConnectCheck);
+  }
+
+  void clearConnectionStatus(){
+    showConnectionStatus = false;
+    if (Get.isSnackbarOpen) {
+      Get.closeCurrentSnackbar();
+    }
   }
 
   _updateConnectCheck(InternetConnectionStatus status) {
-    if (status == InternetConnectionStatus.disconnected) {
+    
+    if (status == InternetConnectionStatus.disconnected && showConnectionStatus)  {
       Get.rawSnackbar(
         messageText: const Text('Sem conexão com a internet',
             style: TextStyle(color: Colors.white, fontSize: 14)),
