@@ -10,9 +10,8 @@ main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  final AudioContext audioContext = AudioContext(
+  const AudioContext audioContext = AudioContext(
     iOS: AudioContextIOS(
-      defaultToSpeaker: true,
       category: AVAudioSessionCategory.playback,
       options: [
         AVAudioSessionOptions.defaultToSpeaker,

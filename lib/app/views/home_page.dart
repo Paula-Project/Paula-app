@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:paula/app/controllers/lessons/lesson_draw_controller.dart';
+import 'package:paula/app/controllers/lessons/lesson_extra_controller.dart';
 import 'package:paula/app/controllers/lessons/lesson_itapoa_controller.dart';
 import 'package:paula/app/controllers/lessons/lesson_paranoa_controller.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
@@ -49,12 +49,11 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   ModuleVowelsController moduleVowelsController = ModuleVowelsController();
   LessonParanoaController lessonParanoaController = LessonParanoaController();
   LessonItapoaController lessonItapoaController = LessonItapoaController();
-  LessonDrawController lessonDrawController = LessonDrawController();
-
+  LessonExtraController lessonExtraController = LessonExtraController();
 
   final int indexPage = 0;
 
-    @override
+  @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
@@ -69,24 +68,34 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Expanded(child: Divider(color: Colors.blue,),),
-                  Padding(padding: EdgeInsets.symmetric(horizontal: 8),
-                  child: Text('Vogais', style: TextStyle(fontSize: 30, color: Colors.blue),),
+                  Expanded(
+                    child: Divider(
+                      color: Colors.blue,
+                    ),
                   ),
-                  Expanded(child: Divider(color: Colors.blue,),),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: Text(
+                      'Vogais',
+                      style: TextStyle(fontSize: 30, color: Colors.blue),
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      color: Colors.blue,
+                    ),
+                  ),
                 ],
               ),
               const Padding(padding: EdgeInsets.all(22)),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.max,                  
-                  children: [   
-                                    
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
                     Image.asset(
                       "assets/images/paula/paula05.png",
                       height: height * 0.25,
-                      
                     ),
                     MaterialButton(
                       onPressed: () {
@@ -145,77 +154,92 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                     )
                   ]),
               LessonButton(
-                  isActive: true,
-                  textContent: 'Vogal A',
-                  audioManager: audioManager,
-                  lessonController: moduleVowelsController.lessonAController,
-                  imgPath: "assets/images/paula/a.png",
-                ),
-                LessonButton(
-                  isActive: true,
-                  textContent: 'Vogal E',
-                  audioManager: audioManager,
-                  lessonController: moduleVowelsController.lessonEController,
-                  imgPath: "assets/images/paula/e.png",
-                ),
-                LessonButton(
-                  isActive: true,
-                  textContent: 'Vogal I',
-                  audioManager: audioManager,
-                  lessonController: moduleVowelsController.lessonIController,
-                  imgPath: "assets/images/paula/i.png",
-                ),
-                LessonButton(
-                  isActive: true,
-                  textContent: 'Vogal O',
-                  audioManager: audioManager,
-                  lessonController: moduleVowelsController.lessonOController,
-                  imgPath: "assets/images/paula/o.png",
-                ),
-                LessonButton(
-                  isActive: true,
-                  textContent: 'Vogal U',
-                  audioManager: audioManager,
-                  lessonController: moduleVowelsController.lessonUController,
-                  imgPath: "assets/images/paula/u.png",
-                ),
-                LessonButton(
-                  isActive: true,
-                  textContent: 'Lição Final',
-                  audioManager: audioManager,
-                  lessonController: moduleVowelsController.lessonFinalController,
-                ),
-                const Padding(padding: EdgeInsets.all(22)),
-                const Row(
+                isActive: true,
+                textContent: 'Vogal A',
+                audioManager: audioManager,
+                lessonController: moduleVowelsController.lessonAController,
+                imgPath: "assets/images/paula/a.png",
+              ),
+              LessonButton(
+                isActive: true,
+                textContent: 'Vogal E',
+                audioManager: audioManager,
+                lessonController: moduleVowelsController.lessonEController,
+                imgPath: "assets/images/paula/e.png",
+              ),
+              LessonButton(
+                isActive: true,
+                textContent: 'Vogal I',
+                audioManager: audioManager,
+                lessonController: moduleVowelsController.lessonIController,
+                imgPath: "assets/images/paula/i.png",
+              ),
+              LessonButton(
+                isActive: true,
+                textContent: 'Vogal O',
+                audioManager: audioManager,
+                lessonController: moduleVowelsController.lessonOController,
+                imgPath: "assets/images/paula/o.png",
+              ),
+              LessonButton(
+                isActive: true,
+                textContent: 'Vogal U',
+                audioManager: audioManager,
+                lessonController: moduleVowelsController.lessonUController,
+                imgPath: "assets/images/paula/u.png",
+              ),
+              LessonButton(
+                isActive: true,
+                textContent: 'Lição Final',
+                audioManager: audioManager,
+                lessonController: moduleVowelsController.lessonFinalController,
+              ),
+              LessonButton(
+                isActive: true,
+                textContent: 'Lição Extra',
+                audioManager: audioManager,
+                lessonController: moduleVowelsController.lessonFinalController,
+              ),
+              const Padding(padding: EdgeInsets.all(22)),
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Expanded(child: Divider(color: Colors.deepOrange,),),
-                  Padding(padding: EdgeInsets.symmetric(horizontal: 8),
-                  child: Text('Cidades', style: TextStyle(fontSize: 30, color: Colors.deepOrange),),
+                  Expanded(
+                    child: Divider(
+                      color: Colors.deepOrange,
+                    ),
                   ),
-                  Expanded(child: Divider(color: Colors.deepOrange,),),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: Text(
+                      'Cidades',
+                      style: TextStyle(fontSize: 30, color: Colors.deepOrange),
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      color: Colors.deepOrange,
+                    ),
+                  ),
                 ],
               ),
               const Padding(padding: EdgeInsets.all(22)),
-                Row(
+              Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    
                     MaterialButton(
                       onPressed: () {
-                        audioManager
-                            .runAudio("audios/paula/paula_cidades.mp3");
+                        audioManager.runAudio("audios/paula/paula_cidades.mp3");
                       },
                       padding: EdgeInsets.zero,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          
                           Stack(
                             children: [
                               Container(
@@ -267,20 +291,19 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                       height: height * 0.25,
                     ),
                   ]),
-                LessonButton2(
+              LessonButton2(
                   isActive: true,
                   textContent: 'Paranoá',
                   audioManager: audioManager,
                   lessonController: lessonParanoaController,
-                  imgPath: "assets/images/paula/paranoa_letreiro2.jpg"
-                ),
-                LessonButton2(
-                  isActive: true,
-                  textContent: 'Itapoã',
-                  audioManager: audioManager,
-                  lessonController: lessonItapoaController,
-                  imgPath: "assets/images/paula/itapoa2.png",
-                ),
+                  imgPath: "assets/images/paula/paranoa_letreiro2.jpg"),
+              LessonButton2(
+                isActive: true,
+                textContent: 'Itapoã',
+                audioManager: audioManager,
+                lessonController: lessonItapoaController,
+                imgPath: "assets/images/paula/itapoa2.png",
+              ),
             ],
           ),
         ),
@@ -305,6 +328,3 @@ class CustomTriangleClipperRight extends CustomClipper<Path> {
     return false;
   }
 }
-
-
-          
