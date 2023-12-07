@@ -5,6 +5,7 @@ import 'package:paula/app/http/webclient.dart';
 import 'package:paula/app/model/task_model.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/state/usuario_state.dart';
+import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/lessons/try_again_page_paranoa.dart';
 import 'package:paula/app/views/tasks/task_draw_letter.dart';
 import 'package:provider/provider.dart';
@@ -73,7 +74,7 @@ class LessonExtraController implements LessonControllerInterface {
       onCompleted();
       if (wrongAnswers >= 4) {
         reset();
-        return const TryAgainParanoaPage();
+        return HomePage();
       }
     } else {
       reset();

@@ -198,7 +198,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                 isActive: true,
                 textContent: 'Lição Extra',
                 audioManager: audioManager,
-                lessonController: moduleVowelsController.lessonFinalController,
+                lessonController: lessonExtraController,
               ),
               const Padding(padding: EdgeInsets.all(22)),
               const Row(

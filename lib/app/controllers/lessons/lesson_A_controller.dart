@@ -10,6 +10,7 @@ import 'package:paula/app/model/task_model.dart';
 import 'package:paula/app/model/task_select_image_model.dart';
 import 'package:paula/app/model/word.dart';
 import 'package:paula/app/utils/getRandomWords.dart';
+import 'package:paula/app/views/home_page.dart';
 import 'package:paula/app/views/tasks/task_complete_words.dart';
 import 'package:paula/app/views/tasks/task_mark_vowel.dart';
 import 'package:paula/app/views/lessons/congratulations_page.dart';
@@ -121,7 +122,7 @@ class LessonAController implements LessonControllerInterface {
       onCompleted();
       if (wrongAnswers > 2) {
         reset();
-        return TryAgainPage(moduleVowelsController: moduleVowelsController);
+        return HomePage();
       }
     } else {
       reset();
