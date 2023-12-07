@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/web/depedency_injection.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:provider/provider.dart';
 import 'package:paula/app_widget.dart';
@@ -11,4 +12,5 @@ main() {
     create: (context) => UsuarioState(),
     child: const AppWidget(),
   ));
+  DependencyInjection.init();
 }
