@@ -89,6 +89,14 @@ flutter:
     - assets/images/paula/paula08.png
     - assets/images/paula/paula09.png
     - assets/images/paula/paula10.png
+    - assets/images/paula/a.png
+    - assets/images/paula/e.png
+    - assets/images/paula/i.png
+    - assets/images/paula/o.png
+    - assets/images/paula/u.png
+    - assets/images/paula/paranoa_letreiro2.jpg
+    - assets/images/paula/itapoa2.png
+
 
     #Figuras das palavras
     - assets/images/words/abacaxi.png
@@ -232,6 +240,7 @@ flutter:
 
     #Audios Paula lesson_vogais
     - assets/audios/paula/paula_lessonVogais.mp3
+    - assets/audios/paula/paula_cidades.mp3
 
     #Audios Paula task_vogal_selection
     - assets/audios/paula/paula_vowelSelection.mp3

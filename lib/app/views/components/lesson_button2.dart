@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:paula/app/controllers/lessons/lesson_controller_interface.dart';
 import 'package:paula/app/views/components/audioManager.dart';
 
-class LessonButton extends StatelessWidget {
+class LessonButton2 extends StatelessWidget {
   final String textContent;
   final bool isActive;
   final LessonControllerInterface lessonController;
   final AudioManager audioManager;
   final String? imgPath;
-  const LessonButton({
+  const LessonButton2({
     Key? key,
     required this.textContent,
     required this.isActive,
@@ -41,7 +41,7 @@ class LessonButton extends StatelessWidget {
           style: ButtonStyle(
             foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
             backgroundColor: isActive
-                ? MaterialStateProperty.all<Color>(Colors.blue)
+                ? MaterialStateProperty.all<Color>(Colors.deepOrange)
                 : MaterialStateProperty.all<Color>(Colors.grey),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
@@ -56,8 +56,8 @@ class LessonButton extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 10.0),
                   child: Image.asset(
                     imgPath ?? '',
-                    width: 50, 
-                    height: 50,
+                    width: 120, 
+                    height: 120,
                   ),
                 ),
               Expanded(
