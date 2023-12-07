@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:paula/app/controllers/lessons/lesson_draw_controller.dart';
 import 'package:paula/app/controllers/lessons/lesson_itapoa_controller.dart';
 import 'package:paula/app/controllers/lessons/lesson_paranoa_controller.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
@@ -8,6 +9,7 @@ import 'package:paula/app/views/components/audioManager.dart';
 import 'package:paula/app/views/components/lesson_button.dart';
 import 'package:paula/app/views/components/lesson_button2.dart';
 import 'package:paula/app/views/layout/layout.dart';
+import 'package:paula/app/views/lessons/lesson_draw_letter.dart';
 import 'package:paula/app/views/lessons/lesson_itapoa_welcome.dart';
 import 'package:paula/app/views/lessons/lessons_vogais.dart';
 import 'package:paula/app/views/lessons/lesson_paranoa_welcome.dart';
@@ -47,6 +49,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   ModuleVowelsController moduleVowelsController = ModuleVowelsController();
   LessonParanoaController lessonParanoaController = LessonParanoaController();
   LessonItapoaController lessonItapoaController = LessonItapoaController();
+  LessonDrawController lessonDrawController = LessonDrawController();
 
 
   final int indexPage = 0;

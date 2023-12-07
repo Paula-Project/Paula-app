@@ -1,17 +1,12 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:paula/app/controllers/web/user_controller.dart';
-import 'package:paula/app/http/app_exceptions.dart';
-import 'package:paula/app/http/base_client.dart';
-import 'package:paula/app/http/webclient.dart';
 import 'package:paula/app/model/usuarioAPI.dart';
 import 'package:paula/app/service/prefs_service.dart';
 import 'package:paula/app/state/usuario_state.dart';
 import 'package:paula/app/utils/calc_age.dart';
-import 'package:paula/app/views/components/SnackBar.dart';
 import 'package:paula/app/views/person_data_page.dart';
 import 'package:paula/app/views/welcome_page_part1.dart';
 import 'package:provider/provider.dart';
