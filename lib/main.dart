@@ -10,23 +10,16 @@ main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  final AudioContext audioContext = AudioContext(
+  const AudioContext audioContext = AudioContext(
     iOS: AudioContextIOS(
       category: AVAudioSessionCategory.playback,
       options: [
         AVAudioSessionOptions.defaultToSpeaker,
         AVAudioSessionOptions.mixWithOthers,
-      ], defaultToSpeaker: true,
-    ),
-    android: AudioContextAndroid(
-      isSpeakerphoneOn: true,
-      stayAwake: true,
-      contentType: AndroidContentType.music,
-      usageType: AndroidUsageType.assistanceSonification,
-      audioFocus: AndroidAudioFocus.gain,
+      ],
     ),
   );
-  AudioPlayer.global.setGlobalAudioContext(audioContext);
+  AudioPlayer.global.setAudioContext(audioContext);
 
   runApp(ChangeNotifierProvider(
     create: (context) => UsuarioState(),

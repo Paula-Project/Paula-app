@@ -13,7 +13,8 @@ class TaskLayout extends StatelessWidget {
       this.paddingDefault = true,
       required this.body,
       required this.shouldPop,
-      required this.taskProgress, required this.lessonController});
+      required this.taskProgress,
+      required this.lessonController});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,6 @@ class TaskLayout extends StatelessWidget {
               alignment: Alignment.centerRight,
               color: Colors.black54,
               onPressed: () {
-
                 exitDialog(context, lessonController);
               },
               icon: const Icon(

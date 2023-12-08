@@ -137,8 +137,11 @@ class _TaskDrawLetterState extends State<TaskDrawLetter>
                         setState(() => drawingPoints = []);
                         hasTouched = false;
                       },
-                      icon: const Icon(Icons.clear),
-                      label: const Text("Limpar"),
+                      icon: const Icon(Icons.clear, color: Colors.white),
+                      label: const Text(
+                        "Limpar",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ],
                 ),

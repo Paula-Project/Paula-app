@@ -111,7 +111,7 @@ class _BoxDialogState extends State<BoxDialog> {
           ),
           child: Text(
             messageButton,
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 20, color: Colors.white),
           ),
         ),
       ],
